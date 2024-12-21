@@ -1,0 +1,50 @@
+body.t-s15{
+    background-image: url(../images/background/s15-bg.jpg);
+    background-position: center;
+    background-size: cover;
+    color:white
+}
+
+#snow {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 1;
+    background-image: url("../images/background/cherryblossom1.png"),
+    url("../images/background/cherryblossom2.png"),
+    url("../images/background/cherryblossom3.png");
+    animation: a-snow 10s linear infinite, a-snow-fade 10s cubic-bezier(0, 0.3, 1, 0.7) infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes a-snow {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    50% { background-position: 500px 500px, 100px 200px, -100px 150px; }
+    100% { background-position: 1000px 1000px, 200px 400px, -200px 300px; }
+  }
+  
+  @keyframes a-snow-fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+.c-multiplier-entry-root-container,
+.l-options-grid,
+.ttshop-container,
+.c-teresa-container,
+.l-effarig-relics, .l-effarig-shop, .l-effarig-run,
+.l-enslaved-top-container, .l-enslaved-shop-container, .c-enslaved-run-button,
+.c-v-unlock-container,  .c-v-unlock-container, .l-v-milestones-grid,
+.c-dark-matter-dimension-container,.o-laitela-run-button,.l-laitela-annihilation-container,
+.l-pelle-panel-container,
+.c-perk-network,
+div.vis-tooltip,
+.c-current-glyph-effects,.c-glyph-sacrifice-options,.l-expanding-control-box__container,.c-reality-reminder,
+.l-challenge-box,.o-subtab__tooltip,.c-autobuyer-box-row{
+backdrop-filter: blur(1rem);
+}
