@@ -424,13 +424,14 @@ export const migrations = {
       // More sidebars
       player.options.sidebarResourceType = [0,0,0,0]
 
-      // Disclaimer Modal
-      window.disclaimerModal = setInterval(() => {
-        if (GameUI.initialized) {
+      if (player.options.confirmations.disclaimerModal) {
+        window.disclaimerModalInterval = setTimeout(() => {
+          if (GameUI.initialized) {
           Modal.disclaimer.show();
-          clearInterval(window.disclaimerModal);
-        }
-      }, 500);
+          clearTimeout(window.disclaimerModalInterval);
+          }
+        }, 500);
+      }
     }
   },
 

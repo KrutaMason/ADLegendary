@@ -62,8 +62,8 @@ export default {
     },
     Progress() {
       const progress = !this.hasIPUnlock ? this.antimatter.add(1).log10() / this.amRequirement.add(1).log10() : Math.min((this.antimatter.add(1).log10() / this.amRequirement.add(1).log10())/2,0.5) + Math.min((this.infinitypoints.add(1).log10() / Math.log10(this.ipRequirement+1))/2,0.5);
-      if (progress > 1 || this.canUnlock) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1 || this.canUnlock) return `100%`;
+      return `${progress * 100}%`;
     },
   },
 };

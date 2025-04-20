@@ -18,8 +18,8 @@ export const raQuotes = {
   realityEnter: {
     id: 1,
     lines: [
-      { text: `I have not seen the others in so long... Can you help me 
-        remember them? I could give you powers in exchange.`,
+      { text: `I have not seen the others in so long... Can you help me \
+remember them? I could give you powers in exchange.`,
         //image: "ra_pose.png"
       },
     ]
@@ -38,8 +38,8 @@ export const raQuotes = {
     id: 3,
     requirement: () => Ra.pets.teresa.level >= 15,
     lines: [
-      { text: `Teresa dealt with machines, I believe. I remember visiting 
-        Teresa’s shop a few times. <br> Wait, someone else had a shop too, right?`,
+      { text: `Teresa dealt with machines, I believe. I remember visiting \
+Teresa’s shop a few times. <br> Wait, someone else had a shop too, right?`,
         //image: "ra_teresa.png",
         background: primaryBackground("teresa")
       }
@@ -59,8 +59,8 @@ export const raQuotes = {
     id: 5,
     requirement: () => Ra.pets.effarig.level >= 15,
     lines: [
-      { text: `Effarig was very particular? And I also remember a frightening
-         Reality... <br> It was about... suffering?`,
+      { text: `Effarig was very particular? And I also remember a frightening \
+Reality... <br> It was about... suffering?`,
          //image: "ra_effarig.png",
         background: primaryBackground("effarig")
       }
@@ -125,8 +125,8 @@ export const raQuotes = {
     id: 11,
     requirement: () => Ra.totalPetLevel >= 50,
     lines: [
-      { text: `Realities are my homes, yet I cannot make my own Reality. 
-        <br> I can only copy the ones of my friends.`,
+      { text: `Realities are my homes, yet I cannot make my own Reality. \
+<br> I can only copy the ones of my friends.`,
         //image: "ra_home.png"
       }, {
         text: `But... why am I hearing voices? Are they asking for help?`,

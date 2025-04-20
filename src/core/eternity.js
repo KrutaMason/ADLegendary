@@ -1,7 +1,6 @@
 import { GameMechanicState, SetPurchasableMechanicState } from "./game-mechanics";
 import { DC } from "./constants";
 import FullScreenAnimationHandler from "./full-screen-animation-handler";
-import { playAudio } from "../game";
 
 function giveEternityRewards(auto) {
   player.records.bestEternity.time = Math.min(player.records.thisEternity.time, player.records.bestEternity.time);
@@ -58,6 +57,8 @@ function giveEternityRewards(auto) {
 
 export function eternityAnimation() {
   FullScreenAnimationHandler.display("a-eternify", 3);
+  if (player.options.audio.eternity) AudioManagement.playSound("reset_wait");
+
 }
 
 export function eternityResetRequest() {
@@ -108,7 +109,7 @@ export function eternity(force, auto, specialConditions = {}) {
 
   player.challenge.eternity.current = 0;
   if (!specialConditions.enteringEC && !Pelle.isDoomed) {
-    if(player.dilation.active)AudioManagement.playSound(auto?"dilation_exitauto":"dilation_exit")
+    if (player.options.audio.eternity && player.dilation.active) AudioManagement.playSound(`reset_dilate-${auto?"exitauto":"exit"}`)
     player.dilation.active = false;
   }
   resetInfinityRuns();
@@ -143,7 +144,7 @@ export function eternity(force, auto, specialConditions = {}) {
   ECTimeStudyState.invalidateCachedRequirements();
 
   PelleStrikes.eternity.trigger();
-  AudioManagement.playSound("reset_eternity")
+  if (player.options.audio.eternity) AudioManagement.playSound("reset_eternity")
   EventHub.dispatch(GAME_EVENT.ETERNITY_RESET_AFTER);
   return true;
 }
@@ -162,7 +163,6 @@ export function animateAndEternity(callback) {
       animateAndUndilate(callback);
     } else {
       eternityAnimation();
-      AudioManagement.playSound("reset_wait");
       setTimeout(() => {
         eternity();
         if (callback) callback();

@@ -30,7 +30,17 @@ export default {
 </template>
 
 <style scoped>
+.c-modal__inner {
+  border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
+  border-radius: var(--var-border-radius, 0.5rem);
+  padding: 0.6rem;
+  background: linear-gradient(transparent,var(--base) 500%);
+  background-origin: border-box;
+  --base: var(--color-accent)
+}
+
 .c-modal__header {
   margin-bottom: 0.5rem;
+  margin-top: -0.6rem;
 }
 </style>

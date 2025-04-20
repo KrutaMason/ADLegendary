@@ -32,6 +32,7 @@ export default {
   methods: {
     toggle() {
       this.setting = !this.setting;
+      AudioManagement.playSound(!this.setting?"click_light":"click_light-reverse")
       this.confirmation.option = this.setting;
     }
   }

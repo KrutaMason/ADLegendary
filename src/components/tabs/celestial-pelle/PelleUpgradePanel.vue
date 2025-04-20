@@ -89,11 +89,15 @@ export default {
         </div>
         <div class="c-armageddon-resources-container">
           <div>
-            You have <span class="c-remnants-amount">{{ format(remnants, 2) }}</span> Remnants.
+            You have 
+            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(remnants) }">{{ format(remnants, 2) }}</span>
+             Remnants.
           </div>
           <div>
-            You have <span class="c-remnants-amount">{{ format(realityShards, 2) }}</span> Reality Shards.
-            <span class="c-remnants-amount">+{{ format(shardRate, 2, 2) }}/s</span>
+            You have 
+            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(realityShards) }">{{ format(realityShards, 2) }}</span>
+             Reality Shards.
+            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(shardRate) }">+{{ format(shardRate, 2, 2) }}/s</span>
           </div>
         </div>
       </div>
@@ -193,8 +197,15 @@ export default {
 }
 
 .c-remnants-amount {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-family: Cambria;
   font-weight: bold;
   color: var(--color-pelle--base);
 }
+
+.c-remnants-amount--fixed {
+  font-family: Typewriter;
+  font-weight: normal;
+}
+
 </style>

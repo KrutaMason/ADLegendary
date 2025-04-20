@@ -2767,7 +2767,11 @@ export const news = [
   },
   {
     id: "a415",
-    text:`When the dimensions antimatter`,
+    text: `When the dimensions antimatter`,
+  },
+  {
+    id: "a416",
+    text: "New study shows that way too many incremental games have news tickers"
   },
   {
     id: "l1",

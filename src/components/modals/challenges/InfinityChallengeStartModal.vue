@@ -61,6 +61,7 @@ export default {
   <ModalWrapperChoice
     option="challenges"
     @confirm="handleYesClick"
+    :style="{'--base':'var(--color-infinity)'}"
   >
     <template #header>
       {{ entranceLabel }}

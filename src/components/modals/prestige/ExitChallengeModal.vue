@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     isCelestial() {
-      return this.challengeName.match("Reality");
+      return this.normalName.match("Reality");
     },
     isRestarting() {
       return this.isCelestial ? player.options.retryCelestial : player.options.retryChallenge;

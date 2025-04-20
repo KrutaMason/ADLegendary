@@ -216,3 +216,14 @@ window.makeEnumeration = function makeEnumeration(items) {
   const last = items[items.length - 1];
   return `${commaSeparated}, and ${last}`;
 };
+
+// Cambria doesn't support Bar and Blob symbols. This function helps some texts change the font to Typewriter.
+window.isInaccessible = function isInaccessible(value) {
+  if (Notations.current.name === "Bar" || Notations.current.name === "Blobs") return true;
+  else if (Notations.current.name === "ALL") {
+    var index = Math.floor(Math.log2(new Decimal(value).abs().plus(2).log2())) % 17;
+    if (index === 13 || index === 15) return true
+    else return false
+  }
+  else return false
+}

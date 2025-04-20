@@ -78,7 +78,7 @@ export default {
       manualRequestDimensionBoost(bulk);
     },
     fillProgress() {
-      let normalFill = formatPercents(Math.max((this.dimamount-this.previousrequirement.amount) / (this.requirement.amount-this.previousrequirement.amount),0),2);
+      let normalFill = `${Math.max((this.dimamount-this.previousrequirement.amount) / (this.requirement.amount-this.previousrequirement.amount),0)*100}%`;
       if (NormalChallenge(8).isRunning) return player.dimensionBoosts >= (InfinityChallenge(1).isRunning?2:5) ? "0%" : normalFill
       if (Ra.isRunning) return player.dimensionBoosts >= 4 ? "0%" : normalFill
       return normalFill
@@ -89,7 +89,7 @@ export default {
 
 <template>
   <div class="reset-container dimboost">
-    <h4>Dimension Boost ({{ boostCountText }})</h4>
+    <h4>Dimension Boost (<span class="reset-container--fixed">{{ boostCountText }}</span>)</h4>
     <span>Requires: {{ formatInt(requirement.amount) }} {{ dimName }}</span>
     <button
       :class="classObject"

@@ -46,9 +46,9 @@ export default {
       most often.
     -->
     <div class="c-autoprestige-box-row">
-    <RealityAutobuyerBox
-      style="--fade: var(--color-reality);"
-      class="c-reality-pos"
+    <BigCrunchAutobuyerBox
+      style="--fade: var(--color-infinity);"
+      class="c-infinity-pos"
       is-modal
     />
     <EternityAutobuyerBox
@@ -56,15 +56,15 @@ export default {
       class="c-eternity-pos"
       is-modal
     />
-    <BigCrunchAutobuyerBox
-      style="--fade: var(--color-infinity);"
-      class="c-infinity-pos"
+    <RealityAutobuyerBox
+      style="--fade: var(--color-reality);"
+      class="c-reality-pos"
       is-modal
     />
     </div>
     <div class="c-autoprestige-box-row">
-    <GalaxyAutobuyerBox is-modal class="c-softreset-pos" style="--fade: var(--color-celestials);"/>
     <DimensionBoostAutobuyerBox is-modal class="c-softreset-pos" style="--fade: #00ee00;"/>
+    <GalaxyAutobuyerBox is-modal class="c-softreset-pos" style="--fade: var(--color-celestials);"/>
     </div>
   </ModalWrapper>
 </template>

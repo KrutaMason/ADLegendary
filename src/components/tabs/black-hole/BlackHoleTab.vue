@@ -184,7 +184,7 @@ export default {
       Unlocking the Black Hole also gives {{ formatInt(10) }} Automator Points.
     </div>
     <template v-else>
-      <div class="c-subtab-option-container">
+      <div class="c-subtab-option-container c-subtab-option-container--border">
         <button
           class="o-primary-btn o-primary-btn--subtab-option"
           @click="togglePause"

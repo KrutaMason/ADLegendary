@@ -26,6 +26,10 @@ export default {
       tesseractWidth: "",
       completionWidth:"",
       autobuyerWidth:"",
+      dangerWidth:"",
+      isInEC4: false,
+      currentInfinities: new Decimal(0),
+      maximumInfinities: new Decimal(0),
       isTesseractUnlocked: false,
       antimatter: new Decimal(0),
       autobuyer:{
@@ -110,6 +114,10 @@ export default {
       this.peakIPRate.copyFrom(player.records.thisInfinity.bestIPmin);
       this.peakIPRateVal.copyFrom(player.records.thisInfinity.bestIPminVal);
       this.showIPRate = this.peakIPRate.lte(this.rateThreshold);
+      this.isInEC4 = EternityChallenge(4).isRunning;
+      this.currentInfinities.copyFrom(Currency.infinities);
+      this.maximumInfinities = new Decimal(EternityChallenge(4).config.restriction(EternityChallenge(4).completions))
+      if (this.isInEC4) this.dangerWidth = this.DangerProgress();
 
       this.tesseractCost = Tesseracts.nextCost;
       this.tesseractWidth = this.tesseractProgress();
@@ -136,21 +144,25 @@ export default {
     },
     tesseractProgress() {
       const progress = this.currentIP.add(1).log10() / this.tesseractCost.log10();
-      if (progress > 1) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1) return `100%`;
+      return `${progress * 100}%`;
     },
     ChallengeProgress() {
       const progress = this.antimatter.add(1).log10() / this.infinityGoal.log10();
-      if (progress > 1) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1) return `100%`;
+      return `${progress * 100}%`;
     },
     AutobuyerProgress() {
       let progress = 1
       if (this.autobuyer.mode===0) progress = this.gainedIP.div(this.autobuyer.value).toNumber();
       if (this.autobuyer.mode===1) progress = ( this.autobuyer.time - this.autobuyer.nextTime ) / this.autobuyer.time;
       if (this.autobuyer.mode===2) progress = Math.max(( this.gainedIP.add(1).log10() - this.autobuyer.highestPrevPrestige.add(1).log10() ) / ( this.autobuyer.nextValue.add(1).log10() - this.autobuyer.highestPrevPrestige.add(1).log10() ),0);
-      if (progress > 1) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1) return `100%`;
+      return `${progress * 100}%`;
+    },
+    DangerProgress() {
+      if (EternityChallenge(4).completions >= 4) return `100%`
+      return `${this.currentInfinities.toNumber() / this.maximumInfinities.toNumber() * 100}%`
     },
   },
 };
@@ -222,6 +234,12 @@ export default {
           style="position: absolute;"
           :width="tesseractWidth"
           />
+          <FillBar
+          v-if="isInEC4"
+          class="o-fill-bar--red"
+          style="position: absolute;"
+          :width="dangerWidth"
+          />
         </template>
     </div>
   </button>
@@ -242,5 +260,10 @@ export default {
 .o-fill-bar--tesseract {
   background: linear-gradient(transparent -100%,#2ebce6 300%);
   box-shadow: 0 0 1rem var(--color-text) inset;
+}
+.o-fill-bar--red {
+  background: url(../../../../public/images/upgrades/ec-red.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
+  animation: a-possible 2s linear infinite;
+  box-shadow: 0 0 .5rem #ffffff inset, 0 0 1rem red inset;
 }
 </style>

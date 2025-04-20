@@ -8,7 +8,8 @@ export default {
    },
    methods: {
     update() {
-      this.width = Math.min(Replicanti.amount.log10() / replicantiCap().log10(), 1)
+      this.progress = Math.min(Replicanti.amount.log10() / replicantiCap().log10(), 1)
+      this.width = `${this.progress * 100}%`
     }
    }
 }
@@ -18,9 +19,9 @@ export default {
     <div class="c-replicanti-bar">
       <div 
       class="c-replicanti-bar-fill"
-      :style="{'width':formatPercents(width, 2)}"
+      :style="{'width':width}"
       />
-      {{ formatPercents(width, 2) }}
+      {{ formatPercents(progress, 2) }}
     </div>
 </template>
 

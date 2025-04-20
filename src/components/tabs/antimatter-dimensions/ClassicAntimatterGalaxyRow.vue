@@ -125,8 +125,8 @@ export default {
     <div
       class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount l-text-wrapper"
     >
-      {{ typeName }} ({{ sumText }}):
-      requires {{ formatInt(requirement.amount) }} {{ dimName }}
+      {{ typeName }} (<span class="l-dim-row__prestige-text--fixed">{{ sumText }}</span>):
+      requires <span :class="{'l-dim-row__prestige-text--fixed': isInaccessible(requirement.amount) }">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
       <div class="l-scaling-text-wrapper">
         {{ hasIncreasedScaling ? costScalingText : "" }}
       </div>
@@ -153,6 +153,9 @@ export default {
 
 .l-scaling-text-wrapper {
   height: 2rem;
+  font-family: Typewriter;
+  font-weight: normal;
+  font-size:1.4rem
 }
 
 .o-primary-btn--galaxy {

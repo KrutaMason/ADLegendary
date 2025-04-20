@@ -25,14 +25,12 @@ export default {
       isDoomed: false,
       antimatter: new Decimal(0),
       antimatterPerSec: new Decimal(0),
-      needTextFix: false,
     };
   },
   methods: {
     update() {
       this.shouldDisplay = player.break || !Player.canCrunch;
       if (!this.shouldDisplay) return;
-      this.needTextFix = Notations.current.name === "Bar"
       this.isModern = player.options.newUI;
       this.isDoomed = Pelle.isDoomed;
       this.antimatter.copyFrom(Currency.antimatter);
@@ -51,7 +49,7 @@ export default {
     <span class="c-game-background__antimatter">
       You have <span 
       class="c-game-header__antimatter"
-      :class="{'c-game-header__antimatter--fixed': needTextFix }"
+      :class="{'c-game-header__antimatter--fixed': isInaccessible(antimatter) }"
       >{{ format(antimatter, 2, 1) }}</span> antimatter.
     </span>
     <div
@@ -87,7 +85,7 @@ export default {
   border-image: linear-gradient(90deg, transparent,var(--color-accent), transparent) 1;
 }
 .c-game-header__antimatter--fixed{
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   line-height: unset;
   font-weight: normal;
   font-family: typewriter;

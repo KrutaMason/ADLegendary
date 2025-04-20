@@ -34,6 +34,7 @@ export default {
 <template>
   <ModalWrapperChoice
     option="deleteGlyphSetSave"
+    :style="{'--base':'var(--color-reality)'}"
     @confirm="handleYesClick"
   >
     <template #header>
@@ -44,6 +45,9 @@ export default {
       <GlyphSetPreview
         :is-in-modal="true"
         :glyphs="glyphSet"
+        :needsCrates="2"
+        marginsize="0.2rem 0.4rem"
+        :maxlength="Infinity"
       />
       This will not affect your actual Glyphs, only the saved preset.
     </div>

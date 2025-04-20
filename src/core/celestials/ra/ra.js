@@ -240,7 +240,7 @@ const pets = mapGameDataToObject(
 
 export const Ra = {
   displayName: "Ra",
-  displayTitle: "Memorator Ra",
+  displayTitle: "Ra, The Abandoned",
   fullName: "Ra, Celestial of the Forgotten",
   celestialOf: "the Forgotten",
   possessiveName: "Ra's",

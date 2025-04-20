@@ -37,6 +37,9 @@ export default {
     };
   },
   computed: {
+    symbol() {
+      return this.celestial.symbol;
+    },
     effects() {
       return GameDatabase.celestials.descriptions[this.number].effects().split("\n");
     },
@@ -45,10 +48,22 @@ export default {
       return description ? description() : "";
     },
     topLabel() {
-      return `${this.labelmode ? this.name+" Reality" : this.name+" "+this.celestial.RealityName}`;
+      return `${this.labelmode ? `${this.name} Reality` : `${this.name} ${this.celestial.RealityName}`}`;
     },
     message() {
       return `Perform a Reality reset and enter ${this.labelmode ? this.name+" Reality" : this.name+" "+this.celestial.RealityName}, in which:`;
+    },
+    color() {
+      switch (this.number) {
+        case 0: return `var(--color-teresa--base)`;
+        case 1: return `var(--color-effarig--base)`;
+        case 2: return `var(--color-enslaved--base)`;;
+        case 3: return `var(--color-v--base)`;
+        case 4: return `var(--color-ra--base)`;
+        case 5: return `var(--color-laitela--accent)`;
+        case 6: return "";
+        default: return "";
+      }
     },
     extraLine() {
       switch (this.number) {
@@ -90,7 +105,7 @@ export default {
     },
     handleYesClick() {
       beginProcessReality(getRealityProps(true));
-      AudioManagement.playSound("reset_reality-enter")
+      if (player.options.audio.reality) AudioManagement.playSound("reset_reality-enter")
       switch (this.number) {
         case 0: return Teresa.initializeRun();
         case 1: return Effarig.initializeRun();
@@ -107,9 +122,14 @@ export default {
 </script>
 
 <template>
-  <ModalWrapperChoice @confirm="handleYesClick">
+  <ModalWrapperChoice 
+  @confirm="handleYesClick"
+  :style="{'--base':color}"
+  >
     <template #header>
+      <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" /> 
       {{ topLabel }}
+      <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" /> 
     </template>
     <div class="c-modal-message__text">
       {{ message }}

@@ -49,8 +49,7 @@ export default {
       AudioManagement.playSound("glyph_drop",undefined,[0.975,1.025])
     },
     removeGlyph(id, force) {
-      GlyphSacrificeHandler.removeGlyph(Glyphs.findById(id), force);
-      if(!player.options.confirmations.glyphSacrifice)AudioManagement.playSound("glyph_sacrifice",undefined,[0.9,1.1])
+      GlyphSacrificeHandler.removeGlyph(Glyphs.findById(id), force, true);
     },
     clickGlyph(col, id) {
       const glyph = Glyphs.findById(id);

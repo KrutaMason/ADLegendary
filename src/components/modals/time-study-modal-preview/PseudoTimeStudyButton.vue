@@ -38,9 +38,9 @@ export default {
       return {
         "o-pseudo-time-study": true,
         "l-time-study": true,
-        "c-pelle-useless": this.isUseless,
-        "c-pelle-useless--bought": this.isUseless && this.isBought,
-        "c-pelle-useless--unavailable": this.isUseless && !this.isBought,
+        "c-pseudo-pelle-useless": this.isUseless,
+        "c-pseudo-pelle-useless--bought": this.isUseless && this.isBought,
+        "c-pseudo-pelle-useless--unavailable": this.isUseless && !this.isBought,
         "o-pseudo-time-study--small": this.setup.isSmall,
         "o-time-study--unavailable": !this.isBought && !this.isUseless,
         "o-time-study--bought": this.isBought && !this.isUseless,
@@ -143,4 +143,17 @@ export default {
   50% { opacity: 0.7; }
   100% { opacity: 0; }
 }
+
+.c-pseudo-pelle-useless {
+  background-color: crimson;
+}
+
+.c-pseudo-pelle-useless--unavailable {
+  background-color: #513d41;
+}
+
+.c-pseudo-pelle-useless--bought {
+  background-color: #8f2b3f;
+}
+
 </style>

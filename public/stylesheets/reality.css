@@ -1,10 +1,13 @@
 
 /* #region reality-tab */
 
-.c-reality-tab__reality-machines {
+  .c-reality-tab__reality-machines {
     color: var(--color-reality);
   }
-  
+  .c-reality-tab__reality-machines--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
+  }
   /* #region themes */
   
   /* #region t-dark t-s6 t-s10 */
@@ -77,6 +80,11 @@
     align-items: center;
     margin: 1.2rem;
     padding: 0 0.5rem;
+    text-align: center;
+    transition-duration: 0.15s;
+    font-size: 1rem;
+    font-family: Typewriter, serif;
+    cursor: pointer;
   }
   
   .c-reality-upgrade-btn {
@@ -84,14 +92,14 @@
     transition-duration: 0.15s;
     font-size: 1rem;
     font-family: Typewriter, serif;
-    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));background-position: center;
+    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background-position: center;
     --bg-image:url(../images/upgrades/bought.png);
     box-shadow: var(--box-shadow);
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
     border: var(--var-border-width, 0.2rem) solid;
     border-image: var(--leg-border-reality) 3;
     border-radius: var(--var-border-radius, 0.5rem);
-    cursor: pointer;
   }
   .c-reality-upgrade-btn--available {
     --bg-dark: #ffffff;
@@ -100,6 +108,10 @@
     color: var(--color-reality-dark);
     text-shadow: -0.1rem -0.1rem 0.3rem white,0.1rem 0.1rem 0.3rem white;
   }
+  .c-glyphs-tab-doomed .c-reality-upgrade-btn--available{
+    --bg-dark: #ffffff;
+    --bg-bright: #ffc6c9;
+  }
   .s-base--dark .c-reality-upgrade-btn--available {
     --bg-image:url(../images/upgrades/bought.png);
     color: var(--color-reality-light);
@@ -107,29 +119,30 @@
     --bg-bright:#0b0e0b;
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
   }
+
+  .t-amoled .c-reality-upgrade-btn--available {
+    --bg-dark:#111611;
+    --bg-bright:#000000;
+  }
   .t-hex .c-reality-upgrade-btn--available {
     --bg-dark:#2a2222;
     --bg-bright:#0e0b0b;
   }
   .t-s14 .c-reality-upgrade-btn--available,
-  .c-glyphs-tab-doomed .c-reality-upgrade-btn--available{
+  .s-base--dark .c-glyphs-tab-doomed .c-reality-upgrade-btn--available{
     --bg-dark:#2a0000;
     --bg-bright:#0e0000;
   }
   .c-imaginary-upgrade-btn {
-    text-align: center;
-    transition-duration: 0.15s;
-    font-size: 1rem;
-    font-family: Typewriter, serif;
     color: #e7d5ff;
-    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));background-position: center;
+    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background-position: center;
     --bg-image:url(../images/upgrades/bought.png);
     box-shadow: var(--box-shadow);
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;;
     border: var(--var-border-width, 0.2rem) solid;
     border-image: url(../images/frames/upgrade-imaginary.png) 3;
     border-radius: var(--var-border-radius, 0.5rem);
-    cursor: pointer;
   }
   .c-imaginary-upgrade-btn--available{
     --bg-dark: #e8c6ff;
@@ -434,12 +447,23 @@
     border-radius: var(--var-border-radius, 0.4rem);
     -webkit-user-select: none;
     user-select: none;
-    background: var(--color-background);
+    background: url(../images/perks/foreground.png),url(../images/perks/background_light.png);
+    background-blend-mode: difference;
+    animation: a-perkbg 300s infinite linear;
     border-image: var(--leg-border-reality) 3 round;
     box-shadow: inset 0px 0px 5rem var(--color-background);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0%);
     touch-action: pan-y;
     -webkit-user-drag: none;
+    box-sizing: content-box;
+  }
+  .s-base--dark .c-perk-network {
+    background: url(../images/perks/foreground.png),url(../images/perks/background.png);
+    background-blend-mode: difference;
+  }
+  @keyframes a-perkbg {
+    0% {background-position: 0rem 0rem, 0rem 0rem;}
+    100% {background-position: 190rem 120rem, -95rem -60rem;}
   }
   
   .c-perk-network__canvas {

@@ -55,6 +55,7 @@ export default {
 <template>
   <ModalWrapperChoice
     :option="isDoomed ? 'armageddon' : undefined"
+    style="--base:var(--color-pelle--base)"
     @confirm="handleYesClick"
   >
     <template #header>

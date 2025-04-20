@@ -1,5 +1,6 @@
 <script>
 import FillBar from "@/components/FillBar";
+import { EternityChallenge } from "../../../core/eternity-challenge";
 
 export default {
   name: "EternityButton",
@@ -36,6 +37,8 @@ export default {
       CompletionWidth:"",
       BulkCompletionWidth:"",
       autobuyerWidth:"",
+      dangerWidth:"",
+      isInEC12: false,
       autobuyer:{
         value: 0,
         nextValue:0,
@@ -138,6 +141,10 @@ export default {
       this.headerTextColored = player.options.headerTextColored;
       this.CompletionWidth = this.ChallengeProgress()
       this.BulkCompletionWidth = this.BulkChallengeProgress()
+      this.isInEC12 = EternityChallenge(12).isRunning;
+      this.currentDuration = Time.thisEternity.totalSeconds;
+      this.maximumDuration = EternityChallenge(12).config.restriction(EternityChallenge(12).completions)
+      if (this.isInEC12) this.dangerWidth = this.DangerProgress();
       if (!this.canEternity) {
         this.type = EP_BUTTON_DISPLAY_TYPE.CANNOT_ETERNITY;
         return;
@@ -204,21 +211,24 @@ export default {
     },
     ChallengeProgress() {
       const progress = this.currentIP.add(1).log10() / this.eternityGoal.log10();
-      if (progress > 1) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1) return `100%`;
+      return `${progress * 100}%`;
     },
     BulkChallengeProgress() {
       const progress = (this.currentIP.add(1).log10()-this.nextGoalAtminus.log10()) / (this.nextGoalAt.log10()-this.nextGoalAtminus.log10());
-      if (progress > 1 || this.fullyCompleted) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1 || this.fullyCompleted) return `100%`;
+      return `${progress * 100}%`;
+    },
+    DangerProgress() {
+      return `${this.currentDuration / this.maximumDuration * 100}%`;
     },
     AutobuyerProgress() {
       let progress = 1
       if (this.autobuyer.mode===0) progress = this.gainedEP.div(this.autobuyer.value).toNumber();
       if (this.autobuyer.mode===1) progress = ( this.autobuyer.time - this.autobuyer.nextTime ) / this.autobuyer.time;
       if (this.autobuyer.mode===2) progress = Math.max(( this.gainedEP.add(1).log10() - this.autobuyer.highestPrevPrestige.add(1).log10() ) / ( this.autobuyer.nextValue.add(1).log10() - this.autobuyer.highestPrevPrestige.add(1).log10() ),0);
-      if (progress > 1) return `${formatPercents(1)}`;
-      return `${formatPercents(progress, 2, 2)}`;
+      if (progress > 1) return `100%`;
+      return `${progress * 100}%`;
     },
   },
 };
@@ -336,23 +346,31 @@ const EP_BUTTON_DISPLAY_TYPE = {
         </template>
         <template v-if="type === 6">
           <FillBar
+          v-if="!fullyCompleted"
           class="o-fill-bar--eternity"
           :class="{ 'o-fill-bar--dilated': isDilation }"
           :width="BulkCompletionWidth"
           style="position: absolute;"
           />
         </template>
+        <FillBar
+          v-if="isInEC12"
+          class="o-fill-bar--red"
+          :width="dangerWidth"
+          style="position: absolute;"
+        />
     </div>
   </button>
 </template>
 
 <style scoped>
-.o-fill-bar--dilated {
-  background: linear-gradient(transparent -100%,var(--color-dilation) 250%);
-  box-shadow: 0 0 1rem white inset;
-}
 .o-prestige-button:hover>.o-fill-container>.o-fill-bar--eternity{
-  background: linear-gradient(transparent -100%,var(--color-text) 300%);
+  background: linear-gradient(transparent -100%, var(--color-text) 300%);
+}
+.o-fill-bar--red {
+  background: url(../../../../public/images/upgrades/ec-red.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
+  animation: a-possible 2s linear infinite;
+  box-shadow: 0 0 .5rem #ffffff inset, 0 0 1rem red inset;
 }
 .o-prestige-button:hover>.o-fill-container>.o-fill-bar--dilated{
   background: linear-gradient(transparent -100%,white 300%);

@@ -89,6 +89,12 @@ export default {
   z-index: 3;
   justify-content: space-between;
   align-items: center;
+  border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
+  border-radius: var(--var-border-radius, 0.5rem);
+  padding: 0.6rem;
+  background: linear-gradient(transparent, var(--base) 500%);
+  background-origin: border-box;
+  --base: var(--color-accent)
 }
 
 .modal-progress-bar__hbox {
@@ -100,27 +106,44 @@ export default {
 .modal-progress-bar__bg {
   width: 20rem;
   height: 2rem;
-  background: black;
+  background: linear-gradient(gray -50%,#222222 49%, black 50%, #222222);
   margin-right: 1rem;
   margin-left: 1rem;
 }
 
 .modal-progress-bar__fg {
   height: 100%;
-  background: blue;
+  background: linear-gradient(lightblue -50%,blue 49%, darkblue 50%, blue);
 }
 
 .modal-progress-bar__buttons {
   display: flex;
   flex-direction: row;
-  width: 25rem;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0.5rem;
+  border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
+  border-bottom: none;
+  border-radius: var(--var-border-radius, 1rem) var(--var-border-radius, 1rem) 0 0;
+  margin-bottom: -0.6rem;
 }
 
 .modal-progress-bar__label {
-  font-size: large;
-  padding-bottom: 0.5rem;
+  font-size: x-large;
+  font-family: cambria;
+  font-weight: bold;
+  line-height: 1.1;
+  padding: 0.2rem 2rem;
+  margin-bottom: 0.5rem;
+  margin-top: -0.6rem;
+  border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
+  border-top: none;
+  border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
+  background-image: linear-gradient(90deg, 
+  color-mix(in srgb, var(--base) 10%, transparent), 
+  color-mix(in srgb, var(--base) 35%, transparent), 
+  color-mix(in srgb, var(--base) 10%, transparent));
+  background-origin: border-box;
 }
 
 .modal-progress-bar__margin {

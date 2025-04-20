@@ -8,7 +8,7 @@ export const Teresa = {
   lastUnlock: "effarig",
   pouredAmountCap: 1e24,
   displayName: "Teresa",
-  displayTitle: "Teresa",
+  displayTitle: "Teresa, The Gatekeeper",
   fullName: "Teresa, Celestial of Reality",
   celestialOf: "Reality",
   possessiveName: "Teresa's",

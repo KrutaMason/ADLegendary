@@ -170,7 +170,8 @@ function easeOut(x) {
           :class="{ 'c-quote-overlay--background': !isFocused(quoteId, lineId) }"
           :quote="quote.quote"
           :current-line="lineId"
-          :has-type-effect="false"
+          :auto-start="false"
+          :replay-visible="true"
           primary
           :style="quoteStyle(quoteId, lineId)"
         />

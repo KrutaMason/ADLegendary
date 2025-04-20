@@ -1,5 +1,4 @@
 <script>
-import { AudioManagement } from '../../../game';
 
 function averageRun(allRuns) {
   // Filter out all runs which have the default infinite value for time, but if we're left with no valid runs then we
@@ -248,7 +247,7 @@ export default {
         <i :class="dropDownIconClass" />
       </span>
       <span style="font-family:cambria;font-weight:bold;line-height:1.1;font-size:1.5rem">
-        <h3>Last {{ formatInt(10) }} {{ plural }}:</h3>
+        <h3>Last <span :class="{'c-past-runs-prestige__fixed': isInaccessible(10)}">{{ formatInt(10) }}</span> {{ plural }}:</h3>
       </span>
     </div>
     <div v-show="shown" class="c-row-container-color">
@@ -328,7 +327,7 @@ export default {
   margin:0.5rem;
   border:var(--var-border-width,0.1rem) solid var(--color);
   border-radius: var(--var-border-radius,0.5rem);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--color) inset
+  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color) inset
 }
 .c-past-runs-prestige__infinity {
 --color:var(--color-infinity)
@@ -338,5 +337,8 @@ export default {
 }
 .c-past-runs-prestige__reality {
 --color:var(--color-reality)
+}
+.c-past-runs-prestige__fixed {
+  font-family: Typewriter
 }
 </style>

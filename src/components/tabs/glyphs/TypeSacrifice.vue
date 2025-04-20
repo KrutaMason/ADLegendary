@@ -34,15 +34,17 @@ export default {
       };
       const color = GlyphAppearanceHandler.getBorderColor(this.type);
       const animateReality = this.typeConfig.id === "reality" && !player.reality.glyphs.cosmetics.colorMap.reality;
-      const bgcolor = this.typeConfig.id === "reality" && !player.reality.glyphs.cosmetics.colorMap.reality 
-      ? "#88888888" : GlyphAppearanceHandler.getBorderColor(this.type)+"40"
+      const bgcolor = animateReality 
+      ? "color-mix(in srgb,var(--color-reality) 25%,transparent)" : GlyphAppearanceHandler.getBorderColor(this.type)+"40"
       return {
-        color: this.typeConfig.id === "dilation"&&!Theme.current().isDark()?"#469713":color,
-        "text-shadow": `-1px 1px 1px var(--color-text-base), 1px 1px 1px var(--color-text-base),
-                            -1px -1px 1px var(--color-text-base), 1px -1px 1px var(--color-text-base),
+        color: this.typeConfig.id === "dilation" && !Theme.current().isDark()?"#469713":color,
+        "border-color": animateReality ? "color-mix(in srgb,var(--color-reality) 50%,transparent)":color+"88",
+        "text-shadow": `-1px 1px 2px var(--color-text-inverted), 1px 1px 2px var(--color-text-inverted),
+                            -1px -1px 2px var(--color-text-inverted), 1px -1px 2px var(--color-text-inverted),
                             0 0 3px ${color}`,
+        "--color-text-base":"var(--color-text-inverted)",
         animation: animateReality ? "a-reality-glyph-description-cycle 10s infinite" : undefined,
-        "background": `linear-gradient(90deg,var(--fade),${bgcolor},var(--fade))`,
+        "background": `linear-gradient(90deg,${bgcolor},var(--fade) 10%,${bgcolor},var(--fade) 90%,${bgcolor})`,
         "position": "relative"
       };
     },
@@ -149,30 +151,32 @@ export default {
         {{ symbol }}
       </div>
       <div class="l-sacrificed-glyphs__type-amount c-sacrificed-glyphs__type-amount">
-        {{ formatAmount }}<span
+        <span :class="{'c-sacrificed-glyphs__type-amount--fixed': isInaccessible(formatAmount) }">{{ formatAmount }}</span>
+        <span
         :class="{'c-sacrificed-glyphs__type-new-amount-glow':showNewSacrifice}"
           class="c-sacrificed-glyphs__type-new-amount c-sacrificed-glyphs__type-new-amount-hidden"
         >
-         + {{ formatNewAmount }} ➜ {{ formatTotalAmount }}
+         + <span :class="{'c-sacrificed-glyphs__type-amount--fixed': isInaccessible(formatNewAmount) }">{{ formatNewAmount }}</span>
+          ➜ <span :class="{'c-sacrificed-glyphs__type-amount--fixed': isInaccessible(formatTotalAmount) }">{{ formatTotalAmount }}</span>
         </span>
       </div>
       <div class="l-sacrificed-glyphs__type-boosts">
-        <span v-if="stars[0]" v-tooltip="tooltip(0)" style="cursor:pointer">★</span>
-        <span v-if="stars[1]" v-tooltip="tooltip(1)" style="cursor:pointer">★</span>
-        <span v-if="stars[2]" v-tooltip="tooltip(2)" style="cursor:pointer">★</span>
-        <span v-if="stars[3]" v-tooltip="tooltip(3)" style="cursor:pointer">★</span>
+        <span 
+          v-for="i in 4"
+          :key="i"
+          v-if="stars[i-1]" 
+          v-tooltip="tooltip(i-1)"
+        >★</span>
       </div>
     </div>
     <span
       :class="{'c-sacrificed-glyphs__type-new-amount':showNewSacrifice}"
-      style="transition:0.15s all, 0s font-style"
     >
       {{ showNewSacrifice?newDescription:description }}
     </span><br>
     <span
       v-if="stars[2]&&this.type!=='reality'"
       :class="{'c-sacrificed-glyphs__type-new-amount':showNewSacrifice}"
-      style="transition:0.15s all, 0s font-style"
     >
     ★ {{ showNewSacrifice?newboostDescription:boostdescription }} ★
     </span>
@@ -199,10 +203,14 @@ export default {
 }
 .l-sacrificed-glyphs__type-boosts{
   position: absolute;
+  display: flex;
   right: 0rem;
   top: 0rem;
   font-size: 1.5rem;
   line-height: 1;
   margin-right: 0.5rem;
+}
+.l-sacrificed-glyphs__type-boosts > span{
+  cursor: pointer
 }
 </style>

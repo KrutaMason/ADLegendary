@@ -59,6 +59,7 @@ class InfinityChallengeState extends GameMechanicState {
     player.challenge.infinity.current = this.id;
     if (!Enslaved.isRunning) Tab.dimensions.antimatter.show();
     player.break = true;
+    AudioManagement.playSound("challenge_enter")
     if (EternityChallenge.isRunning) Achievement(115).unlock();
     if (EternityChallenge.isRunning&&player.dilation.active&&isInCelestialReality()) SecretAchievement(55).unlock();
   }
@@ -67,8 +68,9 @@ class InfinityChallengeState extends GameMechanicState {
     return (player.challenge.infinity.completedBits & (1 << this.id)) !== 0;
   }
 
-  complete() {
+  complete(sound = false) {
     player.challenge.infinity.completedBits |= 1 << this.id;
+    if (sound) AudioManagement.playSound("challenge_complete")
     EventHub.dispatch(GAME_EVENT.INFINITY_CHALLENGE_COMPLETED);
   }
 

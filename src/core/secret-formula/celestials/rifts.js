@@ -206,7 +206,7 @@ export const pelleRifts = {
       {
         resource: "paradox",
         requirement: 0.25,
-        description: () => `Dilated Time gain becomes Tachyon Particles ${formatPow(1.4, 1, 1)}`,
+        description: () => `Dilated Time gain becomes Tachyons ${formatPow(1.4, 1, 1)}`,
         effect: 1.4
       },
       {

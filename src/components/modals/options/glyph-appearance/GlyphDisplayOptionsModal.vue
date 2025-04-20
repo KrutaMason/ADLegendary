@@ -111,7 +111,10 @@ export default {
 </script>
 
 <template>
-  <ModalWrapperOptions class="c-modal-options__glyph">
+  <ModalWrapperOptions 
+  class="c-modal-options__glyph"
+  :style="{'--base':'var(--color-reality)'}"
+  >
     <template #header>
       Glyph Display Options
     </template>
@@ -180,7 +183,7 @@ export default {
 
 <style scoped>
 .c-modal-options__glyph {
-  width: 55rem;
+  width: 57rem;
 }
 .c-glyph-visual-options {
   width: 55rem;

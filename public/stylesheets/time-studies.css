@@ -225,12 +225,14 @@
   width: 20rem;
   height: 6rem;
   position: relative;
-  font-family: Typewriter, serif;
-  font-size: 1.65rem;
+  font-family: Cambria;
+  font-size: 1.8rem;
   font-weight: bold;
   background: var(--bg-image), linear-gradient(var(--bg-bright), var(--bg-dark));
+  background-position: center;
   border: 0.1rem solid var(--border);
   box-shadow: 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px;
+  text-shadow: var(--text--shadow);
   border-radius: var(--var-border-radius, 0.4rem);
   margin: 1rem;
   transition-duration: 0.2s;
@@ -282,7 +284,6 @@
   background-position: center;
   box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
   text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
-  background-color: crimson;
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
@@ -301,7 +302,6 @@
 }
 
 .c-pelle-useless--unavailable:hover {
-  background-color: var(--color-bad);
   cursor: default;
 }
 
@@ -310,7 +310,6 @@
   --bg-dark: #741a28;
   color: #f089a3;
   --border: #bb3c5c;
-  background-color: crimson;
 }
 /* #region o-time-study */
 
@@ -318,7 +317,6 @@
   width: 18rem;height: 10rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
-  background-color: black;
   background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
   background-position: center;
   box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
@@ -343,7 +341,6 @@
   cursor: pointer;
 }
 .o-time-study--available:hover {
-  background-color: #00bcd4;
   color: white;
   animation: none;
 }
@@ -401,7 +398,6 @@
 }
 .o-time-study-normal--available:hover {
   --bg-dark: #2894bb;
-  background-color: var(--color-eternity);
 }
 .t-hex .o-time-study-normal--available {
   --border: #56ff46;
@@ -413,67 +409,55 @@
 .o-time-study-antimatter-dim--available {
   color: #22aa48;
   --border: #22aa48;
-  border-color: #198036;
 }
 
 .o-time-study-antimatter-dim--available:hover {
   --bg-dark: #198036;
-  background-color: #22aa48;
 }
 
 .o-time-study-infinity-dim--available {
   color: #b67f33;
   --border: #b67f33;
-  border-color: #8b6227;
 }
 
 .o-time-study-infinity-dim--available:hover {
   --bg-dark: #8b6227;
-  background-color: #b67f33;
 }
 
 .o-time-study-time-dim--available {
   color: #b241e3;
   --border: #b241e3;
-  border-color: #951ec8;
 }
 
 .o-time-study-time-dim--available:hover {
   --bg-dark: #631485;
-  background-color: #b241e3;
 }
 
 .o-time-study-active--available {
   color: #ff0000;
   --border: #ff0000;
-  border-color: #cc0000;
 }
 
 .o-time-study-active--available:hover {
   --bg-dark: #ac0000;
-  background-color: #e60000;
 }
 
 .o-time-study-passive--available {
   color: #8358d8;
   --border: #8358d8;
-  border-color: #4b288f;
 }
 
 .o-time-study-passive--available:hover {
   --bg-dark: #713fd8;
-  background-color: #5e33b6;
 }
 
 .o-time-study-idle--available {
   color: #0080ff;
   --border: #0080ff;
-  border-color: #0066cc;
 }
 
 .o-time-study-idle--available:hover {
   --bg-dark: #006bd6;
-  background-color: #0080ff;
 }
 
 .o-time-study-light--available {
@@ -512,11 +496,11 @@
 
 .o-time-study-eternity-challenge--complete {
   box-shadow: inset 0px 0px 15px #083a11,#138626 inset 0px 0px 0px 2px;
-  ;}
+  --border: #138626;
+}
 
 .o-time-study-dilation--available {
   color: #64dd17;
-  background-color: black;
   --border: #64dd17;
   animation: a-time-study-dilation 10s infinite;
 }
@@ -571,13 +555,14 @@
 }
 
 .o-time-study-normal--unavailable {
-  background-color: #9e9e9e;
   --bg-dark: var(--leg-bg-dark);
   --bg-bright: var(--leg-bg-bright);
+  background-color: #9e9e9e;
 }
-.t-dark .o-time-study--unavailable:hover, .t-s6 .o-time-study--unavailable:hover, .t-s10 .o-time-study--unavailable:hover {
-  background-color: var(--color-bad);
-  border-color: var(--color-bad);
+.t-dark .o-time-study--unavailable:hover,
+.t-s6 .o-time-study--unavailable:hover,
+.t-s10 .o-time-study--unavailable:hover {
+  --border: var(--color-bad);
 }
 
 .o-time-study-antimatter-dim--unavailable {
@@ -992,7 +977,6 @@
   --bg-dark: #741a28;
   color: gold;
   --border: gold;
-  background-color: #745DC9;
   --bg-image: url(../images/time-studies/ts-secret.png);
 }
 
@@ -1005,7 +989,6 @@
   --bg-dark: #741a28;
   color: gold;
   --border: gold;
-  background-color: #745DC9;
   --bg-image: url(../images/time-studies/ts-secret.png);
 }
 
@@ -1015,7 +998,6 @@
   --bg-dark: #5b361f;
   color: var(--color-enslaved--base);
   --border: var(--color-enslaved--base);
-  background-color: var(--color-enslaved--base);
   --bg-image: url(../images/time-studies/ts-normal.png);
   transition: all 1s;
   animation: a-time-study 0.5s infinite;

@@ -158,8 +158,8 @@ export default {
       />
     </div>
     <div class="o-pelle-rift-bar-percentage">
-      <i>{{ formatPercents(percentage, 3) }} </i>
-      <span v-if="!isMaxed">({{ isActive ? "Filling" : "Idle" }})</span>
+      <span :class="{'o-pelle-rift-bar-percentage--fixed': isInaccessible(percentage) }">{{ formatPercents(percentage, 3) }}</span>
+      <span v-if="!isMaxed"> ( {{ isActive ? "Filling" : "Idle" }} )</span>
     </div>
     <CustomizeableTooltip
       class="o-pelle-rift-bar-milestone-hover-container"
@@ -352,12 +352,19 @@ export default {
 /* #region PERCENTAGE STYLES */
 .o-pelle-rift-bar-percentage {
   z-index: 2;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--color-text);
+  font-family: Cambria;
+  font-weight: bold;
   text-shadow: 0.1rem 0.1rem 0.3rem var(--color-pelle--base),-0.1rem -0.1rem 0.3rem var(--color-pelle--base);
 
   /* This keeps the percentage from blocking the hover area */
   pointer-events: none;
+}
+
+.o-pelle-rift-bar-percentage--fixed {
+  font-family: Typewriter;
+  font-weight: normal;
 }
 
 .c-pelle-rift-bar--idle .l-overflow-hidden,

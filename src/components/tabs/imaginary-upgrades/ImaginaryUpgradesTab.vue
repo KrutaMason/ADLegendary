@@ -45,10 +45,17 @@ export default {
 <template>
   <div class="l-reality-upgrade-grid">
     <div class="c-cap-text">
-      Your Machine cap is <span class="c-reality-tab__reality-machines">{{ capStr }}</span>.
+      Your Machine cap is 
+      <span class="c-reality-tab__reality-machines"
+      :class="{'c-reality-tab__reality-machines--fixed': isInaccessible(this.capRM) }"
+      >{{ capStr }}</span>.
     </div>
     <div class="c-cap-text">
-      Without the cap, you would have gained <span class="c-reality-tab__reality-machines">{{ format(baseRMunCap,2) }}</span> Reality Machines from Reality.
+      Without the cap, you would have gained 
+      <span class="c-reality-tab__reality-machines"
+      :class="{'c-reality-tab__reality-machines--fixed': isInaccessible(baseRMunCap) }"
+      >
+        {{ format(baseRMunCap,2) }}</span> Reality Machines from Reality.
     </div>
     <div class="c-info-text">
       You have reached the limits of Reality and cannot hold more than {{ format(capRM) }} Reality Machines.
@@ -95,13 +102,17 @@ export default {
 <style scoped>
 .c-cap-text {
   color: var(--color-text);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-family: cambria;
+  font-weight: bold;
+  line-height: 1.1;
 }
 
 .c-info-text {
   color: var(--color-text);
   margin: 1.5rem;
 }
+
 .c-reality-upgrade-row-title{
   border-bottom: 0.1rem solid;
   border-top: 0.1rem solid;
@@ -111,7 +122,6 @@ export default {
   margin-bottom:1rem;
   font-family:cambria;
   font-weight: bold;
-  line-height: 1.1;
   font-size: 1.5rem;
 }
 </style>

@@ -95,8 +95,7 @@ export default {
       if (isNaN(id)) return;
       const glyph = Glyphs.findById(id);
       if (!glyph) return;
-      GlyphSacrificeHandler.sacrificeGlyph(glyph, true);
-      AudioManagement.playSound("glyph_sacrifice",undefined,[0.9,1.1])
+      GlyphSacrificeHandler.sacrificeGlyph(glyph, true, true);
       this.hasDragover = false;
     },
     toggleAlteration() {
@@ -160,7 +159,7 @@ export default {
     </div>
     <br>
     <div class="c-sacrificed-glyphs__header">
-      Glyph Sacrifice Boosts:
+      Glyph Sacrifice Boosts
     </div>
     <div v-if="anySacrifices && !isDoomed">
       <div v-if="teresaMult > 1">

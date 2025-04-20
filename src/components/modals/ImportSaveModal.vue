@@ -144,7 +144,8 @@ export default {
 <template>
   <ModalWrapperChoice
     :show-cancel="!inputIsValid"
-    :show-confirm="false"
+    :show-confirm="inputIsValid"
+    @confirm="importSave"
   >
     <template #header>
       Input your save
@@ -214,13 +215,8 @@ export default {
         </div>
       </div>
     </div>
-
-    <PrimaryButton
-      v-if="inputIsValid"
-      class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
-      @click="importSave"
-    >
+    <template #confirm-text>
       Import
-    </PrimaryButton>
+    </template>
   </ModalWrapperChoice>
 </template>

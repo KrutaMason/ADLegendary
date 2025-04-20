@@ -536,6 +536,6 @@ dev.forceCloudSave = async function() {
 dev.unlockAllCosmeticSets = function() {
   player.reality.glyphs.cosmetics.unlockedFromNG = Object.keys(GameDatabase.reality.glyphCosmeticSets);
 };
-dev.notifytest = function() {
-  GameUI.notify.info([`Hello there!`, `You have a notifcation from testing`],5000)
+dev.notifytest = function(primary, secondary) {
+  GameUI.notify.info([primary, secondary],5000)
 }

@@ -75,7 +75,7 @@ export default {
 
 <style scoped>
 .l-wrapper {
-  width: 62rem;
+  width: 65rem;
 }
 
 .t-s12 .l-wrapper {

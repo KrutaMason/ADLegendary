@@ -346,8 +346,7 @@ export const AutomatorCommands = [
     compile: ctx => {
       const notifyText = ctx.StringLiteral || ctx.StringLiteralSingleQuote;
       return () => {
-        AudioManagement.playSound("automator_notify")
-        GameUI.notify.automator(["The Automator: Notify Call",`${notifyText[0].image}`]);
+        GameUI.notify.automator(["The Automator: Notify Call",`${notifyText[0].image}`],undefined,"notif_tomato");
         AutomatorData.logCommandEvent(`NOTIFY call: ${notifyText[0].image}`, ctx.startLine);
         return AUTOMATOR_COMMAND_STATUS.NEXT_INSTRUCTION;
       };

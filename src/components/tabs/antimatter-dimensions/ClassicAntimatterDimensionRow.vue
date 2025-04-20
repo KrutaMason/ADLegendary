@@ -52,7 +52,7 @@ export default {
     amountText() {
       if (this.formattedAmount) return this.formattedAmount;
       const amount = this.tier < 8 ? format(this.amount, 2) : formatInt(this.amount);
-      return `${amount} (${formatInt(this.boughtBefore10)})`;
+      return `${amount} (${this.isContinuumActive?"ᛝ":formatInt(this.boughtBefore10)})`;
     },
     singleText() {
       if (this.isCapped) return "Capped";

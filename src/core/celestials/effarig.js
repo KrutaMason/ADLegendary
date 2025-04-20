@@ -135,7 +135,7 @@ class EffarigUnlockState extends BitUpgradeState {
   purchase() {
     if (this.isUnlocked || !Currency.relicShards.purchase(this.cost)) return;
     this.unlock();
-    AudioManagement.playSound("purchase_rebuyable")
+    AudioManagement.playSound("glyph_sacrifice")
     this.config.onPurchased?.();
   }
 }

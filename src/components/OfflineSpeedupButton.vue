@@ -23,6 +23,7 @@ export default {
     buttonClass() {
       return {
         "o-primary-btn--width-medium": true,
+        "c-modal-message__okay-btn": true,
         "o-primary-btn--disabled": !this.canBeClicked,
       };
     }

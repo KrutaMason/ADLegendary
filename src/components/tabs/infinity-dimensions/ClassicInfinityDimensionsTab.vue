@@ -88,7 +88,7 @@ export default {
 
 <template>
   <div class="l-infinity-dim-tab">
-    <div class="c-subtab-option-container">
+    <div class="c-subtab-option-container c-subtab-option-container--border">
       <PrimaryButton
         v-if="!isEC8Running"
         class="o-primary-btn--subtab-option"
@@ -107,18 +107,24 @@ export default {
     <div>
       <p>
         You have
-        <span class="c-infinity-dim-description__accent">{{ format(infinityPower, 2, 1) }}</span>
+        <span class="c-infinity-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(infinityPower) }"
+        >{{ format(infinityPower, 2, 1) }}</span>
         Infinity Power,
         <br>
         <span v-if="!isEC9Running">
           increased by
-          <span class="c-infinity-dim-description__accent">{{ formatPow(conversionRate, 2, 3) }}</span>
+          <span class="c-infinity-dim-description__accent"
+          :class="{'c-dim-description__accent--fixed': isInaccessible(conversionRate) }"
+          >{{ formatPow(conversionRate, 2, 3) }}</span>
         </span>
         <span v-else>
           translated
         </span>
         to a
-        <span class="c-infinity-dim-description__accent">{{ formatX(dimMultiplier, 2, 1) }}</span>
+        <span class="c-infinity-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(dimMultiplier) }"
+        >{{ formatX(dimMultiplier, 2, 1) }}</span>
         multiplier on all
         <span v-if="!isEC9Running">Antimatter Dimensions.</span>
         <span v-else>Time Dimensions due to Eternity Challenge 9.</span>
@@ -139,7 +145,7 @@ export default {
         @mouseleave="showNextCap(false)"
       >
         <p class="c-infinity-dim-tab__tesseract-button__title">
-          Buy a Tesseract ({{ tesseractCountString }})
+          Buy a Tesseract (<span :class="{'c-infinity-dim-tab__tesseract-button__title--fixed': isInaccessible(tesseractCountString) }">{{ tesseractCountString }}</span>)
         </p>
         <p>Increase Dimension caps by {{ formatInt(nextDimCapIncrease, 2) }}</p>
         <p><b>Costs: {{ format(tesseractCost) }} IP</b></p>

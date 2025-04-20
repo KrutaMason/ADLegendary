@@ -224,6 +224,7 @@ export default {
     :show-confirm="inputIsValid"
     class="c-modal-import-tree"
     @confirm="confirm"
+    :style="{'--base':'var(--color-eternity)'}"
   >
     <template #header>
       {{ modalTitle }}

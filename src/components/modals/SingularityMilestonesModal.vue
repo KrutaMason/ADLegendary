@@ -105,7 +105,9 @@ export default {
 </script>
 
 <template>
-  <ModalWrapper>
+  <ModalWrapper
+  :style="{'--base':'var(--color-laitela--accent)'}"
+  >
     <template #header>
       Singularity Milestones
     </template>
@@ -132,7 +134,7 @@ export default {
         />
       </div>
     </div>
-    <div class="l-singularity-milestone-sort-container">
+    <div class="o-descriptionBlock l-singularity-milestone-sort-container">
       <button
         class="c-singularity-milestone-modal-sort-button"
         @click="cycleButton(0)"

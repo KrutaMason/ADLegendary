@@ -29,6 +29,14 @@ export default {
       Modal.s12Games.show();
     },
     image: "desktop--games.png"
-  }],
+  },
+  //{
+  //  name: "Change Background",
+  //  action() {
+  //    Modal.s12Background.show();
+  //  },
+  //  image: "desktop--games.png"
+  //}
+  ],
   selected: -1,
 };

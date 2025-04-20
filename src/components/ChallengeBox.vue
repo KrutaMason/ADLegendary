@@ -102,8 +102,9 @@ export default {
       type="challenges"
       class="l-hint-text--challenge"
       style="width:100%;text-align:right"
+      :class="{'l-hint-text--challenge--fixed': isInaccessible(bestTime) }"
     >
-      {{this.bestTime}}
+      {{ bestTime }}
     </HintText>
     <slot name="top" />
     <div class="l-challenge-box__fill" />
