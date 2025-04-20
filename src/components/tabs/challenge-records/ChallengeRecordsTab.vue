@@ -25,7 +25,8 @@ export default {
 </script>
 
 <template>
-  <div class="l-challenge-records-tab c-stats-tab">
+  <div class="c-stats-tab">
+    <div class="l-challenge-records-tab">
     <ChallengeRecordsList
       :start="2"
       :times="normalChallenges"
@@ -38,5 +39,6 @@ export default {
       name="Infinity Challenge"
       class="l-challenge-records-tab__infinity_challenges"
     />
+  </div>
   </div>
 </template>

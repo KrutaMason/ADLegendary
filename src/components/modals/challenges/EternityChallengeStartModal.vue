@@ -52,6 +52,7 @@ export default {
   methods: {
     handleYesClick() {
       this.challenge.start(true);
+      AudioManagement.playSound("challenge_enter")
       EventHub.ui.offAll(this);
     }
   },
@@ -62,6 +63,7 @@ export default {
   <ModalWrapperChoice
     option="challenges"
     @confirm="handleYesClick"
+    :style="{'--base':'var(--color-eternity)'}"
   >
     <template #header>
       {{ entranceLabel }}

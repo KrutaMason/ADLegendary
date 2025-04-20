@@ -120,21 +120,46 @@
   opacity: 0.75;
   z-index: -1
 }
-.t-legendary .o-tab-btn--bordered::before,
-.t-legendary-metro .o-tab-btn--bordered::before{
+
+.s-base--metro .o-tab-btn--bordered::before{
   background-position-y: -51px;
 }
-.t-dark .o-tab-btn--bordered::before,
-.t-dark-metro .o-tab-btn--bordered::before,
-.t-amoled .o-tab-btn--bordered::before,
-.t-amoled-metro .o-tab-btn--bordered::before,
-.t-s6 .o-tab-btn--bordered::before,
-.t-s10 .o-tab-btn--bordered::before{
+.t-legacy .o-tab-btn--bordered::before{
   background-position-y: -102px;
 }
-.t-legacy .o-tab-btn--bordered::before{
+.t-dark .o-tab-btn--bordered::before,
+.t-s6 .o-tab-btn--bordered::before{
   background-position-y: -153px;
 }
+.t-dark-metro .o-tab-btn--bordered::before,
+.t-s10 .o-tab-btn--bordered::before{
+  background-position-y: -204px;
+}
+.t-amoled .o-tab-btn--bordered::before{
+  background-position-y: -255px;
+}
+.t-amoled-metro .o-tab-btn--bordered::before{
+  background-position-y: -306px;
+}
+/*.t-s1 .o-tab-btn--bordered::before{
+  background-position-y: -357px;
+}
+.t-s4 .o-tab-btn--bordered::before{
+  background-position-y: -408px;
+}*/
+.t-s5 .o-tab-btn--bordered::before{
+  background-position-y: -459px;
+}
+.t-s7 .o-tab-btn--bordered::before{
+  background-position-y: -510px;
+}
+.t-s14 .o-tab-btn--bordered::before{
+  background-position-y: -561px;
+}
+/*.t-s15 .o-tab-btn--bordered::before{
+  background-position-y: -612px;
+}*/
+
 .o-tab-btn--bordered:first-child:before{
   background-position-x: -145px;
   width: 18.5rem;
@@ -168,9 +193,50 @@
   height: 3.5rem;
   background-image: url(../images/visuals/subtab-texture.png);
   background-position-x: 0px;
-  background-position-y: 0px !important;
+  background-position-y: 0px;
+  opacity: 0.75;
   z-index: -1
 }
+
+.s-base--metro .o-tab-btn--secondary--bordered::before{
+  background-position-y: -35px;
+}
+.t-legacy .o-tab-btn--secondary--bordered::before{
+  background-position-y: -70px;
+}
+.t-dark .o-tab-btn--secondary--bordered::before,
+.t-s6 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -105px;
+}
+.t-dark-metro .o-tab-btn--secondary--bordered::before,
+.t-s10 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -140px;
+}
+.t-amoled .o-tab-btn--secondary--bordered::before{
+  background-position-y: -175px;
+}
+.t-amoled-metro .o-tab-btn--secondary--bordered::before{
+  background-position-y: -210px;
+}
+/*.t-s1 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -245px;
+}
+.t-s4 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -280px;
+}*/
+.t-s5 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -315px;
+}
+.t-s7 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -350px;
+}
+.t-s14 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -385px;
+}
+/*.t-s15 .o-tab-btn--secondary--bordered::before{
+  background-position-y: -420px;
+}*/
+
 .o-tab-btn--secondary--bordered:first-child:before{
   background-position-x: -201px;
   width: 23.1rem;

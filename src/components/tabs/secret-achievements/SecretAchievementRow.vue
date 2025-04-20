@@ -36,7 +36,7 @@ export default {
       this.setStyleOfRowBg()
     },
     getRowColor(location) {
-      if (location.isUnlocked) return `${Theme.isDark?"#406b5c80":"#183b2de6"}`;
+      if (location.isUnlocked) return `var(--achrow-complete)`;
       return "transparent";
     },
     setStyleOfRowBg() {

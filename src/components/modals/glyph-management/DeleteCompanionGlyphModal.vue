@@ -50,18 +50,22 @@ export default {
       // Yes, this actually deletes a companion glyph at random, but the player can only ever legitimately have one.
       // Passing information into modals seems to require a bunch of refactoring that's not worth it for this one case.
       const toDelete = player.reality.glyphs.inventory.filter(g => g.type === "companion")[0];
-      Glyphs.removeFromInventory(toDelete);
+      Glyphs.removeFromInventory(toDelete,true);
+      AudioManagement.playSound("challenge_fail")
     }
   },
 };
 </script>
 
 <template>
-  <div class="c-modal-message l-modal-content--centered">
+  <div 
+  class="c-modal-message l-modal-content--centered"
+  :style="{'--base':'#feaec9'}"
+  >
     <div class="c-modal-message__text">
       {{ message }}
     </div>
-    <div v-if="messageIndex < 3">
+    <div v-if="messageIndex < 3" class="l-modal-buttons">
       <PrimaryButton
         class="o-primary-btn--width-medium c-modal-message__okay-btn"
         @click="handleLeftButtonClick"
@@ -75,7 +79,7 @@ export default {
         {{ messageIndex >= 2 ? "Delete" : "Cancel" }}
       </PrimaryButton>
     </div>
-    <div v-else>
+    <div v-else class="l-modal-buttons">
       <PrimaryButton
         class="o-primary-btn--width-medium c-modal-message__okay-btn"
         @click="handleNoClick"

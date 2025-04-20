@@ -15,6 +15,7 @@ export function updateNormalAndInfinityChallenges(diff) {
       softReset(0, true, true);
       Modal.message.show(`Your ${format(values[0], 2, 2)} antimatter was annihilated
         by ${format(values[1], 2, 2)} matter.`, { closeEvent: GAME_EVENT.BIG_CRUNCH_AFTER }, 1);
+      AudioManagement.playSound("challenge_fail")
     }
   }
 
@@ -94,13 +95,14 @@ class NormalChallengeState extends GameMechanicState {
       Enslaved.quotes.ec6C10.show();
     }
     if (!Enslaved.isRunning) Tab.dimensions.antimatter.show();
+    AudioManagement.playSound("challenge_enter")
   }
 
   get isCompleted() {
     return (player.challenge.normal.completedBits & (1 << this.id)) !== 0;
   }
 
-  complete() {
+  complete(sound = false) {
     player.challenge.normal.completedBits |= 1 << this.id;
     // Since breaking infinity maxes even autobuyers that aren't unlocked,
     // it's possible to get r52 or r53 from completing a challenge
@@ -111,6 +113,7 @@ class NormalChallengeState extends GameMechanicState {
     // Completing a challenge unlocks an autobuyer even if not purchased with antimatter, but we still
     // need to clear the notification because otherwise it sticks there forever. Any other methods of
     // unlocking autobuyers (such as Existentially Prolong) should also go through this code path
+    if (sound) AudioManagement.playSound("challenge_complete")
     TabNotification.newAutobuyer.clearTrigger();
     GameCache.cheapestAntimatterAutobuyer.invalidate();
   }

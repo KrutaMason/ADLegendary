@@ -213,7 +213,7 @@ export function processManualReality(sacrifice, glyphID) {
   // Should be here so that the perk graphics update even when we're on the perk subtab, while also keeping its
   // relatively expensive operations off of the reality reset hot path for when realities are significantly faster
   PerkNetwork.updatePerkColor();
-  AudioManagement.playSound("reset_reality-create")
+  if (player.options.audio.reality) AudioManagement.playSound("reset_reality-create")
 }
 
 export function runRealityAnimation() {
@@ -279,7 +279,7 @@ export function getRealityProps(isReset, alreadyGotGlyph = false) {
 export function autoReality() {
   if (GlyphSelection.active || !isRealityAvailable()) return;
   beginProcessReality(getRealityProps(false, false));
-  AudioManagement.playSound("reset_reality-auto")
+  if (player.options.audio.reality) AudioManagement.playSound("reset_reality-auto")
 }
 
 function updateRealityRecords(realityProps) {
@@ -347,6 +347,7 @@ function giveRealityRewards(realityProps) {
       player.celestials.teresa.lastRepeatedMachines = player.celestials.teresa.lastRepeatedMachines
         .clampMin(machineRecord);
     }
+    AudioManagement.playSound(isHigher?"challenge_complete":"challenge_fail")
     Teresa.quotes.completeReality.show();
   }
 

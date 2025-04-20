@@ -64,7 +64,10 @@ export default {
 </script>
 
 <template>
-  <ModalWrapperOptions class="c-modal-options__large">
+  <ModalWrapperOptions 
+  class="c-modal-options__large"
+  :style="{'--base':'var(--color-reality)'}"
+  >
     <template #header>
       Modifying Single Glyph Appearance
     </template>

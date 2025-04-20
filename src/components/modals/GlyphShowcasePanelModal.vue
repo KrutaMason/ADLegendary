@@ -78,7 +78,9 @@ export default {
 </script>
 
 <template>
-  <ModalWrapper>
+  <ModalWrapper
+  :style="{'--base':'var(--color-reality)'}"
+  >
     <template #header>
       {{ name }}
     </template>

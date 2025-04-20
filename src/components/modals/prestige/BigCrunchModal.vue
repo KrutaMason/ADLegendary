@@ -71,5 +71,6 @@ export default {
     :alternate-condition="isFirstInfinity"
     :alternate-text="message"
     :confirm-option="isFirstInfinity ? undefined : 'bigCrunch'"
+    :style="{'--base':'var(--color-infinity)'}"
   />
 </template>

@@ -26,6 +26,7 @@ export default {
       isUnlocked: false,
       isMouseOver: false,
       isCancer: false,
+      hasMatureStuff: false,
       showUnlockState: false,
       realityUnlocked: false,
       garbleTimer: 0,
@@ -58,6 +59,7 @@ export default {
         "o-achievement--waiting": !this.isUnlocked && this.isPreRealityAchievement && !this.isDisabled,
         "o-achievement--blink": !this.isUnlocked && this.id === 78 && !this.isDisabled,
         "o-achievement--normal": !this.isCancer && !this.isObscured,
+        "o-achievement--normal-safe": (!this.isCancer && !this.isObscured) && !this.hasMatureStuff,
         "o-achievement--cancer": this.isCancer && !this.isObscured,
         "o-achievement--hidden": this.isObscured,
       };
@@ -115,6 +117,7 @@ export default {
       this.isDisabled = Pelle.disabledAchievements.includes(this.id) && Pelle.isDoomed;
       this.isUnlocked = this.achievement.isUnlocked && !this.isDisabled;
       this.isCancer = Theme.current().name === "S4" || player.secretUnlocks.cancerAchievements;
+      this.hasMatureStuff = player.options.mature;
       this.showUnlockState = player.options.showHintText.achievementUnlockStates;
       this.realityUnlocked = PlayerProgress.realityUnlocked();
 

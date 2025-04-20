@@ -41,9 +41,6 @@ export default {
       `Dark Matter ${DarkMatterDimension(this.tier).uniqueName}`:
       `${DarkMatterDimension(this.tier).shortDisplayName} Dark Matter Dimension`;
     },
-    ascensionText() {
-      return `(⯅${formatInt(this.ascension)})`;
-    },
     intervalClassObject() {
       return {
         "o-dark-matter-dimension-button": true,
@@ -165,7 +162,9 @@ export default {
     class="c-dark-matter-dimension-container"
   >
     <div class="o-dark-matter-dimension-amount">
-      {{ name }}<span v-if="hasAscended"> {{ ascensionText }}</span>: {{ format(amount, 2) }}
+      {{ name }}<span v-if="hasAscended">
+        (⯅<span v-if="hasAscended" :class="{'o-dark-matter-dimension-amount--fixed': isInaccessible(ascension) }">{{ formatInt(ascension) }}</span>)</span>: 
+      <span :class="{'o-dark-matter-dimension-amount--fixed': isInaccessible(amount) }">{{ format(amount, 2) }}</span>
     </div>
     <div>
       Average gain: {{ format(productionPerSecond, 2, 2) }}/s

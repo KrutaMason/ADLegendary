@@ -29,6 +29,10 @@ export default {
     hasProgress(id) {
       return this.progressEntries.some(entry => entry.id === id);
     },
+    realityTitle() {
+      return player.options.naming.celestial ? `The ${Enslaved.RealityName}`
+       : "The Nameless Ones' Reality"
+    },
     // Note: This calculation seems to behave extremely poorly if the goal has been raised more than 12 hints worth
     // of cost bumps and I'm not entirely sure why. There's probably a numerical issue I can't quite figure out, but
     // considering that much cost raising can't happen in practice I think I'm just going to leave it be.
@@ -92,9 +96,11 @@ export default {
 </script>
 
 <template>
-  <ModalWrapper>
+  <ModalWrapper
+  :style="{'--base':'var(--color-enslaved--base)'}"
+  >
     <template #header>
-      Cracks in The Nameless Ones' Reality
+      Cracks in {{ realityTitle }}
     </template>
     <div class="c-enslaved-hint-modal c-modal--short">
       <div>
@@ -104,6 +110,7 @@ export default {
       <div
         v-for="(entry, index) in shownEntries"
         :key="index"
+        class="o-descriptionBlock"
       >
         <div v-if="!entry[0]">
           <span v-if="entry[1].hasHint && !entry[1].hasProgress">

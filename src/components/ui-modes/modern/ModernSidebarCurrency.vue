@@ -137,7 +137,10 @@ export default {
   color: var(--color-text);
 }
 .c-sidebar-resource__name {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-family: cambria;
+  font-weight: bold;
+  font-style: normal;
 }
 .o-sidebar-currency--antimatter {
   color: black;
@@ -168,8 +171,7 @@ export default {
   color: var(--color-infinity);
 }
 .o-sidebar-currency--replicanti {
-  /* Taken from glyph-types.js */
-  color: #03a9f4;
+  color: var(--color-replicanti);
 }
 .o-sidebar-currency--eternity {
   color: var(--color-eternity);

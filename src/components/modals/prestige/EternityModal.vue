@@ -68,5 +68,6 @@ export default {
     :alternate-condition="exitingEC"
     :alternate-text="exitingEC ? eternityChallenge : undefined"
     confirm-option="eternity"
+    :style="{'--base':'var(--color-eternity)'}"
   />
 </template>

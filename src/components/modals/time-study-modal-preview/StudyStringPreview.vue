@@ -160,7 +160,7 @@ export default {
   height: 44.5rem;
   position: relative;
   justify-content: center;
-  border: var(--color-text) solid var(--var-border-width, 0.3rem);
+  border: var(--color-eternity) double var(--var-border-width, 0.4rem);
   border-radius: var(--var-border-radius, 0.3rem);
   margin: auto;
   padding: 0.5rem;

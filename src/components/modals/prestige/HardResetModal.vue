@@ -40,6 +40,7 @@ export default {
     :show-confirm="willHardReset"
     confirm-class="o-primary-btn--width-medium c-modal__confirm-btn c-modal-hard-reset-btn"
     @confirm="hardReset"
+    :style="{'--base':'var(--color-bad)'}"
   >
     <template #header>
       HARD RESET

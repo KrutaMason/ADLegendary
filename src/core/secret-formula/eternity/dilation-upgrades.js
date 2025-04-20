@@ -71,10 +71,10 @@ export const dilationUpgrades = {
     initialCost: 1e7,
     increment: 20,
     description: () => {
-      if (Pelle.isDoomed) return `Multiply the amount of Tachyon Particles gained by ${formatInt(1)}`;
-      if (Enslaved.isRunning) return `Multiply the amount of Tachyon Particles gained
+      if (Pelle.isDoomed) return `Multiply the amount of Tachyons gained by ${formatInt(1)}`;
+      if (Enslaved.isRunning) return `Multiply the amount of Tachyons gained
       by ${Math.pow(3, Enslaved.tachyonNerf).toFixed(2)}`;
-      return "Triple the amount of Tachyon Particles gained";
+      return "Triple the amount of Tachyons gained";
     },
     effect: bought => {
       if (Pelle.isDoomed) return DC.D1.pow(bought);
@@ -141,7 +141,7 @@ export const dilationUpgrades = {
   ttGenerator: {
     id: 10,
     cost: 1e15,
-    description: "Generate Time Theorems based on Tachyon Particles",
+    description: "Generate Time Theorems based on Tachyons",
     effect: () => Currency.tachyonParticles.value.div(20000),
     formatEffect: value => `${format(value, 2, 1)}/sec`
   },

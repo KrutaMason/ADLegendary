@@ -41,7 +41,12 @@ export default {
       required: false,
       default: true
     },
-    hasTypeEffect: {
+    replayVisible: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    autoStart: {
       type: Boolean,
       required: false,
       default: true
@@ -104,8 +109,9 @@ export default {
     :left-visible="!isQuoteStart && leftVisible"
     :right-visible="!isQuoteEnd && rightVisible"
     :close-visible="isQuoteEnd && closeVisible"
-    :skip-visible="totalLines>1 && skipVisible"
-    :has-type-effect="hasTypeEffect"
+    :skip-visible="totalLines > 1 && skipVisible"
+    :replay-visible="replayVisible"
+    :auto-start="autoStart"
     primary
     @close="close"
     @progress-in="progressIn"

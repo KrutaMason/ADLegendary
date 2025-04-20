@@ -202,8 +202,8 @@ export const secretAchievements = [
   },
   {
     id: 52,
-    name: "To be developed...",
-    description: "S52"
+    name: "Asymmetrical Face",
+    get description() { return `Switch the sidebar position ${formatInt(50)} times without closing the modal.`; }
   },
   {
     id: 53,
@@ -218,7 +218,7 @@ export const secretAchievements = [
   {
     id: 55,
     name: "I wish I had gotten 7 number Sevens",
-    description: "Start an Infinity Challenge inside an Eternity Challenge inside Time Dilation inside a Celestial Reality.",
+    description: "Start an Infinity Challenge inside an Eternity Challenge inside a Celestial Reality while dilated.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {

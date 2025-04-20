@@ -43,10 +43,6 @@ export default {
     emphasisedStart() {
       return Math.pow(this.generatedGalaxies / this.cap, 0.45);
     },
-    galaxyamountText() {
-      if (this.cap === Infinity) return formatInt(this.generatedGalaxies, 2)
-      return formatInt(this.generatedGalaxies, 2)+" / "+formatInt(this.cap, 2)
-    }
   },
   methods: {
     update() {
@@ -96,9 +92,10 @@ export default {
       <div v-if="isUnlocked">
         <div>
           You have a total of
-          <span class="c-galaxies-amount">{{ galaxyText }}</span>
+          <span class="c-galaxies-amount" :class="{'c-galaxies--fixed': isInaccessible(Math.max(galaxies, 0)) }">{{ galaxyText }}</span>
           Galaxies.
-          <span class="c-galaxies-amount c-small-text">+{{ formatInt(galaxiesPerSecond, 2, 1) }}/s</span>
+          <span class="c-galaxies-amount c-small-text" 
+          :class="{'c-galaxies--fixed': isInaccessible(galaxiesPerSecond) }">+{{ formatInt(galaxiesPerSecond, 2, 1) }}/s</span>
         </div>
         <div>
           <button
@@ -140,7 +137,8 @@ export default {
               v-else
               class="c-increase-cap-text c-medium-text"
             >
-            {{ galaxyamountText }}<br> 
+            <span :class="{'c-galaxies--fixed': isInaccessible(generatedGalaxies) }">{{ formatInt(generatedGalaxies) }}</span>
+            <span v-if="cap !== Infinity" :class="{'c-galaxies--fixed': isInaccessible(cap) }"> / {{ formatInt(cap) }}</span><br> 
             <div class="c-small-text">Galaxies generated</div>
             </div>
           </button>
@@ -329,5 +327,10 @@ export default {
   margin:0.2rem;
   padding:0.2rem;
   border-image: linear-gradient(90deg, transparent, white, transparent) 1;
+}
+
+.c-galaxies--fixed {
+  font-family: Typewriter;
+  font-weight: normal;
 }
 </style>

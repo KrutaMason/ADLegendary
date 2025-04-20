@@ -1,14 +1,17 @@
 /* #region eternity-tab */
 
-.c-eternity-tab__header {
-    font-size: 1.5rem;
+  .c-eternity-tab__header {
+  font-size: 1.8rem;
     margin: 1rem 0;
+    font-family: cambria;
+    font-weight: bold;
+    line-height: 1.1;
   }
   .l-eternity-upgrades-actual-grid {
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-eternity) 150%),var(--leg-base);
     border: 0.1rem solid var(--color-eternity);
-    box-shadow: 0 0 1.5rem black inset, 0 0 0 0.3rem var(--color-eternity) inset;
+    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-eternity) inset;
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-eternity-upgrades-actual-grid {
@@ -18,7 +21,10 @@
   .c-eternity-tab__eternity-points {
     color: var(--color-eternity);
   }
-  
+  .c-eternity-tab__eternity-points--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
+  }
   /* #region themes */
   
   /* #region t-dark t-s6 t-s10 */
@@ -153,74 +159,39 @@
     box-shadow: 0.1rem 0.1rem 0.1rem 0 #9e9e9e;
   }
   
-  .s-base--metro .o-eternity-upgrade--unavailable {
-    background-color: #9e9e9e;
-    border-color: black;
-  }
-  
-  .s-base--metro .o-eternity-upgrade--unavailable:hover {
-    background-color: #bdbdbd;
-  }
-  
-  .t-dark .o-eternity-upgrade--available,
-  .t-s6 .o-eternity-upgrade--available,
-  .t-s10 .o-eternity-upgrade--available {
-    background-color: black;
-  }
-  
   .t-dark .o-eternity-upgrade--available:hover,
   .t-s6 .o-eternity-upgrade--available:hover,
   .t-s10 .o-eternity-upgrade--available:hover {
     color: var(--color-text);
-    background-color: var(--color-eternity);
   }
   
   .t-dark .o-eternity-upgrade--unavailable {
-    background-color: #263238;
     border-color: #691fa5;
-  }
-  
-  .t-dark .o-eternity-upgrade--unavailable:hover {
-    background-color: #37474f;
   }
   
   .t-s6 .o-eternity-upgrade--unavailable,
   .t-s10 .o-eternity-upgrade--unavailable {
     color: grey;
-    background-color: black;
     border-color: #691fa5;
   }
-  
-  .t-s6 .o-eternity-upgrade--unavailable:hover,
-  .t-s10 .o-eternity-upgrade--unavailable:hover {
-    background-color: #222222;
-  }
-  
-  
+
   .t-s1 .o-eternity-upgrade--available {
-    background-color: black;
+    --bg-dark: #2c432d;
+    --border: #639565;
   }
   
   .t-s1 .o-eternity-upgrade--available:hover {
-    color: black;
-    background-color: #639565;
-    border-color: black;
+    --bg-dark: #639565;
   }
   
   .t-s1 .o-eternity-upgrade--bought {
-    color: black;
-    background-color: #639565;
-    border-color: black;
+    --bg-bright: #375538;
+    --bg-dark: #314b32;
+    --border: #639565;
   }
   
   .t-s1 .o-eternity-upgrade--unavailable {
-    color: black;
-    background-color: #4a4a4a;
     border-color: #639565;
-  }
-  
-  .t-s1 .o-eternity-upgrade--unavailable:hover {
-    background: #636363;
   }
   
   /* #endregion Eternity Upgrades */
@@ -249,7 +220,13 @@
     font-weight: bold;
     color: var(--color-text);
   }
-  
+
+  .o-eternity-milestone__goal--fixed {
+    font-size: 1.8rem;
+    font-family: Typewriter;
+    font-weight: normal;
+  } 
+
   .o-eternity-milestone__reward {
     width: 25rem;
     height: 8rem;
@@ -292,7 +269,6 @@
   
   .s-base--metro .o-eternity-milestone__reward--locked,
   .t-s1 .o-eternity-milestone__reward--locked {
-    background-color: #9e9e9e;
     border: none;
     box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
   }
@@ -301,7 +277,6 @@
   .t-s6 .o-eternity-milestone__reward--locked,
   .t-s10 .o-eternity-milestone__reward--locked {
     color: var(--color-eternity);
-    background-color: black;
     border-color: var(--color-eternity);
     animation: a-time-study 7s infinite;
   }
@@ -326,26 +301,20 @@
   .c-dilation-tab__tachyons {
     font-size: 3.5rem;
     color: black;
+    font-family: Cambria;
+    font-weight: bold;
   }
   
   .c-dilation-tab__dilated-time {
     font-size: 2.5rem;
     color: black;
+    font-family: Cambria;
+    font-weight: bold;
+    line-height: 1.2;
   }
-  
-  .c-dilation-tab__dilated-time-income {
-    font-size: 2.5rem;
-    color: black;
-  }
-  
-  .c-dilation-tab__galaxy-threshold {
-    font-size: 2.5rem;
-    color: black;
-  }
-  
-  .c-dilation-tab__galaxies {
-    font-size: 2.5rem;
-    color: black;
+  .c-dilation-tab__tachyons--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
   }
   
   .t-metro .c-dilation-tab__tachyons,
@@ -364,44 +333,20 @@
   
   .t-metro .c-dilation-tab__tachyons,
   .t-metro .c-dilation-tab__dilated-time,
-  .t-metro .c-dilation-tab__dilated-time-income,
-  .t-metro .c-dilation-tab__galaxy-threshold,
-  .t-metro .c-dilation-tab__galaxies,
   .t-s8 .c-dilation-tab__tachyons,
-  .t-s8 .c-dilation-tab__dilated-time,
-  .t-s8 .c-dilation-tab__dilated-time-income,
-  .t-s8 .c-dilation-tab__galaxy-threshold,
-  .t-s8 .c-dilation-tab__galaxies {
+  .t-s8 .c-dilation-tab__dilated-time {
     text-shadow: 0 0 0.1rem rgba(0, 0, 0, 50%), -0.1rem 0.1rem 0.1rem black;
   }
   
   .t-metro .c-dilation-tab__dilated-time,
-  .t-metro .c-dilation-tab__dilated-time-income,
-  .t-metro .c-dilation-tab__galaxy-threshold,
-  .t-metro .c-dilation-tab__galaxies,
   .s-base--dark .c-dilation-tab__dilated-time,
-  .s-base--dark .c-dilation-tab__dilated-time-income,
-  .s-base--dark .c-dilation-tab__galaxy-threshold,
-  .s-base--dark .c-dilation-tab__galaxies,
-  .t-s8 .c-dilation-tab__dilated-time,
-  .t-s8 .c-dilation-tab__dilated-time-income,
-  .t-s8 .c-dilation-tab__galaxy-threshold,
-  .t-s8 .c-dilation-tab__galaxies {
+  .t-s8 .c-dilation-tab__dilated-time {
     color: var(--color-dilation);
   }
   
   .t-dark .c-dilation-tab__dilated-time,
-  .t-dark .c-dilation-tab__dilated-time-income,
-  .t-dark .c-dilation-tab__galaxy-threshold,
-  .t-dark .c-dilation-tab__galaxies,
   .t-s6 .c-dilation-tab__dilated-time,
-  .t-s6 .c-dilation-tab__dilated-time-income,
-  .t-s6 .c-dilation-tab__galaxy-threshold,
-  .t-s6 .c-dilation-tab__galaxies,
-  .t-s10 .c-dilation-tab__dilated-time,
-  .t-s10 .c-dilation-tab__dilated-time-income,
-  .t-s10 .c-dilation-tab__galaxy-threshold,
-  .t-s10 .c-dilation-tab__galaxies {
+  .t-s10 .c-dilation-tab__dilated-time {
     text-shadow: 0 0 0.7rem var(--color-dilation);
   }
   
@@ -437,7 +382,7 @@
   .o-dilation-btn--unlocked {
     color: var(--color-dilation);
     border: 1px solid var(--color-dilation);
-    --stars: url(../images/prestige/p-dil-bg.png),url(../images/prestige/p-dil-bg-2.png);
+    --stars: url(../images/prestige/dilation-1.png),url(../images/prestige/dilation-2.png);
     background: var(--stars),linear-gradient(black,var(--color-dilation) var(--distance));
     --distance: 400%;
     box-shadow: 0 0 1rem inset, 0 0 2rem;
@@ -447,10 +392,13 @@
     cursor: pointer;
   }
   .t-hex .o-dilation-btn--unlocked {
-    --stars: url(../images/prestige/p-dil-bg-hex.png),url(../images/prestige/p-dil-bg-2-hex.png);
+    --stars: url(../images/prestige/dilation_hex-1.png),url(../images/prestige/dilation_hex-2.png);
+  }
+  .t-s4 .o-dilation-btn--unlocked {
+    --stars: url(../images/prestige/dilation_s4-1.png),url(../images/prestige/dilation_s4-2.png);
   }
   .t-s14 .o-dilation-btn--unlocked {
-    --stars: url(../images/prestige/p-dil-bg-1984.png),url(../images/prestige/p-dil-bg-2-1984.png);
+    --stars: url(../images/prestige/dilation_1984-1.png),url(../images/prestige/dilation_1984-2.png);
   }
   .o-dilation-btn--unlocked:hover {
     color: white;
@@ -461,7 +409,6 @@
   
   .t-dark .o-dilation-btn--unlocked {
     color: var(--color-dilation);
-    background-color: black;
   }
   
   .t-s4 .o-dilation-btn {
@@ -479,31 +426,16 @@
     box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
   }
   
-  .s-base--metro .o-dilation-btn--locked:hover {
-    background-color: #ef5350;
-  }
-  
-  .t-s1 .o-dilation-btn--locked:hover {
-    background-color: #d72621;
-  }
-  
   .t-s6 .o-dilation-btn--locked,
   .t-s10 .o-dilation-btn--locked {
     color: gray;
-    background-color: black;
   }
   
-  .t-dark .o-dilation-btn--locked {
-    color: black;
-    background-color: #23292a;
-  }
   
   .t-dark .o-dilation-btn--locked:hover,
   .t-s6 .o-dilation-btn--locked:hover,
   .t-s10 .o-dilation-btn--locked:hover {
-    color: black;
-    background-color: #b84b5f;
-    border-color: #b84b5f;
+    --border: #b84b5f;
   }
   
   @keyframes a-dilation-btn-glow {
@@ -562,7 +494,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-dilation) 200%),var(--leg-base);
     border: 0.1rem solid var(--color-dilation);
-    box-shadow: 0 0 1.5rem black inset, 0 0 0 0.3rem var(--color-dilation) inset;
+    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-dilation) inset;
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-dilation-upgrades-grid {

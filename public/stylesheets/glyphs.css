@@ -614,25 +614,44 @@
   top: var(--crate-position);
   width: var(--crate-size);
   height:var(--crate-size);
-  background: url(../images/glyphs-alchemy/crate_tooltip.png);
-  background-size: calc(var(--crate-size) * 3) calc(var(--crate-size) * 2);
-  background-position-x: 0;
-  background-position-y: 0;
+  background: url(../images/glyphs-alchemy/crate_circle.png);
+  background-size: calc(var(--crate-size) * 13) calc(var(--crate-size) * 5);
+  background-position: var(--crate-bgx) var(--crate-bgy);
+  --crate-bgx: calc(var(--crate-size) - var(--crate-size) * var(--crate-posx));
+  --crate-bgy: 0;
   border-radius:50%;
   z-index: -1;
 }
 .s-base--dark .c-glyph-component-hascrate:before{
   box-shadow: 0 0 .5rem black;
 }
-.c-glyph-component-hascrate-cursed:before{
-  background-position-x: calc(var(--crate-size) - var(--crate-size) * 2)
-}
-.c-glyph-component-hascrate-reality:before{
-  background-position-x: calc(var(--crate-size) - var(--crate-size) * 3)
+.c-glyph-component-hascrate__altered:before{
+  background: url(../images/glyphs-alchemy/background_glyphboost.png), url(../images/glyphs-alchemy/crate_circle.png);
+  background-blend-mode: hue, normal;
+  background-size: calc(var(--crate-size) * 2) calc(var(--crate-size) * 2), calc(var(--crate-size) * 13) calc(var(--crate-size) * 5);
+  background-position: 0 0, var(--crate-bgx) var(--crate-bgy);
+  animation: a-glyphcrate 10s linear infinite;
 }
 .t-amoled .c-glyph-component-hascrate:before,
 .t-amoled-metro .c-glyph-component-hascrate:before{
-  background-position-y: calc(var(--crate-size) - var(--crate-size) * 2)
+  --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 2)
+}
+.t-s1 .c-glyph-component-hascrate:before{
+  --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 3)
+}
+.t-s4 .c-glyph-component-hascrate:before{
+  --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 4)
+}
+.t-s7 .c-glyph-component-hascrate:before{
+  --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 5)
+}
+@keyframes a-glyphcrate {
+  0% {
+    background-position: calc(var(--crate-size) * 2) calc(var(--crate-size) * 2), var(--crate-bgx) var(--crate-bgy)
+  }
+  100% {
+    background-position: 0px 0px, var(--crate-bgx) var(--crate-bgy)
+  }
 }
 .l-glyph-tooltip__info {
   padding: .2rem 0;
@@ -659,7 +678,7 @@
   width: 100%;
   box-shadow: 0.1rem 0.1rem 0.3rem #00000088;
   border: var(--cover-border) 1px solid;
-  border-radius: 1rem;
+  border-radius: var(--var-border-radius, 1rem);
   position: relative;
   z-index: -1;
 }
@@ -674,7 +693,7 @@
   background: var(--cover);
   border: var(--cover-border) 1px solid;
   box-shadow: 0.1rem 0.1rem 0.3rem #00000088;
-  border-radius: 1rem;
+  border-radius: var(--var-border-radius, 1rem);
   margin-top: 1rem;
 }
 
@@ -682,11 +701,9 @@
 .c-glyph-tooltip__sacrifice > span:last-child {
   border-right: none
 }
-.l-glyph-tooltip__effects:last-child {
-  border-radius: 1rem;
-}
+
 .c-glyph-tooltip__effect:last-child  {
-  border-radius: 0 0 0.8rem 0.8rem;
+  border-radius: 0 0 var(--var-border-radius, .8rem) var(--var-border-radius, .8rem);
 }
 .l-modal-glyph-selection__row {
   display: flex;
@@ -719,30 +736,73 @@
 .l-modal-glyph-selection__glyph.l-modal-glyph-selection__glyph--selected:before  {
   background-position-x: -18rem;
 }
+.s-base--metro .l-modal-glyph-selection__glyph:before{
+  background-position-y: -6rem;  
+  }
+.t-dark .l-modal-glyph-selection__glyph:before,
+.t-legacy .l-modal-glyph-selection__glyph:before,
+.t-hex .l-modal-glyph-selection__glyph:before,
+.t-legendary .l-modal-glyph-selection__glyph:before,
+.s-base--dark .l-modal-glyph-selection__glyph:before{
+  background-position-y: -12rem;  
+}
+.t-dark-metro .l-modal-glyph-selection__glyph:before,
+.t-legendary-metro .l-modal-glyph-selection__glyph:before{
+  background-position-y: -18rem;  
+}
+.t-amoled .l-modal-glyph-selection__glyph:before{
+  background-position-y: -24rem;  
+}
+.t-amoled-metro .l-modal-glyph-selection__glyph:before{
+  background-position-y: -30rem;  
+}
+.t-s4 .l-modal-glyph-selection__glyph:before{
+  background-position-y: -36rem;  
+}
+.t-s7 .l-modal-glyph-selection__glyph:before{
+  background-position-y: -42rem;  
+}
+.t-s14 .l-modal-glyph-selection__glyph:before{
+  background-position-y: -48rem;  
+}
 .l-equipped-glyphs {
   display: flex;
   flex-direction: column;
   width: 20rem;
   align-content: center;
   align-items: center;
+  justify-content: flex-end;
   border: 0.2rem solid;
   border-image: var(--leg-border-reality) 3 round;
   background: url(../images/glyphs-alchemy/background-glyph_transparentdark.png),var(--leg-base);
   background-position: center;
   border-bottom: none;
 }
+
 .l-equipped-glyphs__slots {
   width: 18rem;
   height: 18rem;
   position: relative;
   margin-bottom: 1rem;
   box-shadow: 0 0 1rem black;
-  background: url(../images/glyphs-alchemy/crate_equip-table.png), var(--background);
-  --background:url(../images/glyphs-alchemy/background-equip-table.png);
-  background-position:center;
+  background: url(../images/glyphs-alchemy/crate_equip.png), var(--background);
+  --background: url(../images/glyphs-alchemy/background-equip-table.png);
+  background-position: 0 0, center;
   border-radius: 50%;
 }
 
+.s-base--dark .l-equipped-glyphs__slots{
+  background-position: -18rem 0, center;
+}
+
+.t-amoled .l-equipped-glyphs__slots, 
+.t-amoled-metro .l-equipped-glyphs__slots {
+  background-position: -36rem 0, center;
+}
+
+.t-s4 .l-equipped-glyphs__slots {
+  background-position: -36rem -18rem, center;
+}
 .l-equipped-glyphs__dropzone {
   width: 7rem;
   height: 7rem;
@@ -766,11 +826,15 @@
 }
 .l-equipped-glyphs__empty:before,.c-equipped-glyph:before{
   content: '';
-  position: absolute;display: block;
-  left: -1rem;top: -1rem;
-  width: 7rem;height: 7rem;
-  background: url(../images/glyphs-alchemy/crate_equip.png);
-  box-shadow: 0 0 1rem black;border-radius:50%;
+  position: absolute;
+  display: block;
+  left: -1rem;
+  top: -1rem;
+  width: 7rem;
+  height: 7rem;
+  background: url(../images/glyphs-alchemy/crate_circle.png);
+  box-shadow: 0 0 1rem black;
+  border-radius:50%;
   z-index: -1;
 }
 .t-hex .c-equipped-glyphs__empty{
@@ -790,9 +854,45 @@
 .l-glyph-set-preview:nth-child(4)>.c-equipped-glyphs__empty--dragover {background-position-x: -400px;}
 .l-glyph-set-preview:nth-child(5)>.c-equipped-glyphs__empty--dragover {background-position-x: -450px;}
 
-.l-equipped-glyphs__empty:before{background-position: -140px 0px;}
-.c-equipped-glyph:before{background-position: 0px 0px;}
-.c-equipped-glyphs__empty--dragover:before,.c-equipped-glyph:hover:before{background-position-x: -70px;box-shadow: 0 0 1rem white}
+.l-equipped-glyphs__empty:before {
+  background-position-x: -70rem;
+}
+
+.c-equipped-glyph:before {
+  background-position-x: -84rem;
+}
+
+.c-equipped-glyphs__empty--dragover:before,
+.c-equipped-glyph:hover:before {
+  background-position-x: -77rem;box-shadow: 0 0 1rem white
+}
+
+.t-amoled .l-equipped-glyphs__empty:before,
+.t-amoled .c-equipped-glyph:before,
+.t-amoled .c-equipped-glyphs__empty--dragover:before,
+.t-amoled-metro .l-equipped-glyphs__empty:before,
+.t-amoled-metro .c-equipped-glyph:before,
+.t-amoled-metro .c-equipped-glyphs__empty--dragover:before{
+  background-position-y: -7rem
+}
+
+.t-s1 .l-equipped-glyphs__empty:before,
+.t-s1 .c-equipped-glyph:before,
+.t-s1 .c-equipped-glyphs__empty--dragover:before{
+  background-position-y: -14rem
+}
+
+.t-s4 .l-equipped-glyphs__empty:before,
+.t-s4 .c-equipped-glyph:before,
+.t-s4 .c-equipped-glyphs__empty--dragover:before{
+  background-position-y: -21rem
+}
+
+.t-s7 .l-equipped-glyphs__empty:before,
+.t-s7 .c-equipped-glyph:before,
+.t-s7 .c-equipped-glyphs__empty--dragover:before{
+  background-position-y: -28rem
+}
 
 .c-equipped-glyphs__empty--dragover {
   box-shadow: 0 0 0.5rem 0.25rem var(--color-glyph-equipping);
@@ -904,7 +1004,6 @@
   font-size: 1rem;
   font-weight: bold;
   color: var(--color-reality-dark);
-  background-color: var(--color-background);
   border: var(--var-border-width, 0.1rem) solid var(--border);
   --border:var(--color-reality-dark);
   border-radius: var(--var-border-radius, 0.5rem);
@@ -1204,9 +1303,12 @@
 }
 
 .c-sacrificed-glyphs__header {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-family: cambria;
   font-weight: bold;
-  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem solid;
+  border-image: linear-gradient(90deg, transparent, var(--color-reality), transparent) 1 ;
 }
 
 .l-sacrificed-glyphs__type-symbol {
@@ -1229,7 +1331,10 @@
   font-weight: bold;
   font-family: cambria;
 }
-
+.c-sacrificed-glyphs__type-amount--fixed {
+  font-weight: normal;
+  font-family: Typewriter;
+}
 .c-sacrificed-glyphs__type-new-amount {
   font-style: italic;
   text-shadow: 0 0 0.5rem rgb(0, 180, 0);
@@ -1313,31 +1418,77 @@ background-position-x: -12rem;
 .c-glyph-inventory__protected-slot.l-glyph-inventory__slot:has(div):before {
 background-position-x: -18rem;
 }
-.t-s14 .l-glyph-inventory__slot:before{
+
+.s-base--metro .l-glyph-inventory__slot:before{
+background-position-y: -6rem;  
+}
+.t-dark .l-glyph-inventory__slot:before,
+.t-legacy .l-glyph-inventory__slot:before,
+.t-hex .l-glyph-inventory__slot:before,
+.t-legendary .l-glyph-inventory__slot:before,
+.s-base--dark .l-glyph-inventory__slot:before{
 background-position-y: -12rem;  
 }
+.t-dark-metro .l-glyph-inventory__slot:before,
+.t-legendary-metro .l-glyph-inventory__slot:before{
+background-position-y: -18rem;  
+}
+.t-amoled .l-glyph-inventory__slot:before{
+background-position-y: -24rem;  
+}
+.t-amoled-metro .l-glyph-inventory__slot:before{
+background-position-y: -30rem;  
+}
+.t-s4 .l-glyph-inventory__slot:before{
+background-position-y: -36rem;  
+}
+.t-s7 .l-glyph-inventory__slot:before{
+background-position-y: -42rem;  
+}
+.t-s14 .l-glyph-inventory__slot:before{
+background-position-y: -48rem;  
+}
+
 .c-glyph-inventory__slot, .c-glyph-inventory__protected-slot {
   background: url(../images/glyphs-alchemy/background_inventory.png);
 }
 .s-base--dark .l-glyph-inventory__slot{
-  background-position-y: -50px;
+  background-position-y: -5rem;
 }
-.c-glyph-inventory__slot {
-  background-color: gainsboro;
+.t-s14 .l-glyph-inventory__slot{
+  background-position-y: -10rem;
 }
-
-.s-base--dark .c-glyph-inventory__slot {
-  background-color: #333333;
+.t-s4 .l-glyph-inventory__slot{
+  background-position-y: -15rem;
 }
-.l-glyph-inventory__slot:has(div){border:none}
-.l-glyph-inventory__slot:has(div):before{left: -.5rem;top: -.5rem;}
-.c-glyph-inventory__slot:nth-child(4n+1) {background-position-x: -50px;}
-.c-glyph-inventory__slot:nth-child(4n+2) {background-position-x: -100px;}
-.c-glyph-inventory__slot:nth-child(4n+3) {background-position-x: -150px}
-.c-glyph-inventory__protected-slot {background-position-x: -200px;}
-.c-glyph-inventory__protected-slot:nth-child(4n+1) {background-position-x: -250px;}
-.c-glyph-inventory__protected-slot:nth-child(4n+2) {background-position-x: -300px;}
-.c-glyph-inventory__protected-slot:nth-child(4n+3) {background-position-x: -350px}
+.l-glyph-inventory__slot:has(div){
+  border:none
+}
+.l-glyph-inventory__slot:has(div):before{
+  left: -.5rem;
+  top: -.5rem;
+}
+.c-glyph-inventory__slot:nth-child(4n+1) {
+  background-position-x: -50px;
+}
+.c-glyph-inventory__slot:nth-child(4n+2) {
+  background-position-x: -100px;
+}
+.c-glyph-inventory__slot:nth-child(4n+3) {
+  background-position-x: -150px
+}
+.c-glyph-inventory__protected-slot {
+  background-position-x: -200px;
+}
+.c-glyph-inventory__protected-slot:nth-child(4n+1) {
+  background-position-x: -250px;
+}
+.c-glyph-inventory__protected-slot:nth-child(4n+2) {
+  background-position-x: -300px;
+}
+.c-glyph-inventory__protected-slot:nth-child(4n+3) {
+  background-position-x: -350px
+}
 
 .c-glyph-inventory-option {
   width: 19rem;

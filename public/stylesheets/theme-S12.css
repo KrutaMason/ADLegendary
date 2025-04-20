@@ -20,7 +20,7 @@ body.t-s12 {
     );
 
   height: 100%;
-  background: url("../images/loading.png") no-repeat;
+  background: url("../images/background/loading.png") no-repeat;
   background-attachment: fixed;
   background-color: #1bb9ee;
 
@@ -122,7 +122,7 @@ body.t-s12 {
   text-align: left;
   font-size: 1.3rem;
   color: black;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 0.1rem solid var(--s12-border-color);
   margin: 0;
   padding: 1rem;
@@ -163,6 +163,8 @@ body.t-s12 {
   padding-left: 1rem;
   font-family: "Segoe UI", Typewriter;
   border-bottom: none;
+  background: none;
+  border: none;
 }
 
 .c-credits-modal .c-modal__title {
@@ -290,6 +292,8 @@ body.t-s12 {
 .t-s12 .l-modal-buttons {
   align-self: flex-end;
   font-size: 1.2rem;
+  border: none;
+  margin: 0;
 }
 
 .t-s12 .c-modal__confirmation-toggle__tooltip {

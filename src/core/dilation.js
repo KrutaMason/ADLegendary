@@ -5,6 +5,7 @@ import { SpeedrunMilestones } from "./speedrun";
 
 export function animateAndDilate() {
   FullScreenAnimationHandler.display("a-dilate", 2);
+  //if (player.options.audio.eternity) AudioManagement.playSound("reset_wait");
   setTimeout(() => {
     startDilatedEternity();
     if (Pelle.isDoomed) PelleStrikes.dilation.trigger();
@@ -14,6 +15,7 @@ export function animateAndDilate() {
 // eslint-disable-next-line no-empty-function
 export function animateAndUndilate(callback) {
   FullScreenAnimationHandler.display("a-undilate", 2);
+  if (player.options.audio.eternity) AudioManagement.playSound("reset_wait");
   setTimeout(() => {
     eternity(false, false, { switchingDilation: true });
     if (callback) callback();
@@ -49,7 +51,7 @@ export function startDilatedEternity(auto) {
   }
   Achievement(136).unlock();
   eternity(false, auto, { switchingDilation: true });
-  AudioManagement.playSound(auto?"dilation_auto":"dilation_enter")
+  if (player.options.audio.eternity) AudioManagement.playSound(`reset_dilate-${auto?"auto":"enter"}`)
   player.dilation.active = true;
   if (Pelle.isDoomed) PelleStrikes.dilation.trigger();
   return true;

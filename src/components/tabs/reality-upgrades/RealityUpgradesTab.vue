@@ -15,11 +15,7 @@ export default {
     lockTooltip: () => `This will only function if you have not already failed the condition or
       unlocked the upgrade.`,
     categoryText: () => [
-      `Amplifier Rebuyables`,
-      `Cost: ${quantify("Reality Machine", 15, 2)}`,
-      `Cost: ${quantify("Reality Machine", 50, 2)}`,
-      `Cost: ${quantify("Reality Machine", 1500, 2)}`,
-      `Cost: ${quantify("Reality Machine", 100000, 2)}`]
+      `Amplifier Rebuyables`, 15, 50, 1500, 1e5]
   },
   methods: {
     id(row, column) {
@@ -62,7 +58,10 @@ export default {
       v-for="row in 5"
       :key="row"
     >
-    <div class="c-reality-upgrade-row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
+    <div v-if="row === 1"class="c-reality-upgrade-row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
+    <div v-else class="c-reality-upgrade-row-title">Row {{row}} - Cost: 
+     <span :class="{'c-reality-upgrade-row-title--fixed': isInaccessible(categoryText[row-1]) }">{{ format(categoryText[row-1],2) }}</span>
+      Reality Machines</div>
     <div class="l-reality-upgrade-grid__row">
       <RealityUpgradeButton
         v-for="column in 5"
@@ -89,7 +88,10 @@ export default {
   margin-bottom:1rem;
   font-family:cambria;
   font-weight: bold;
-  line-height: 1.1;
   font-size: 1.5rem;
+}
+.c-reality-upgrade-row-title--fixed{
+  font-family: Typewriter;
+  font-weight: normal;
 }
 </style>

@@ -24,6 +24,7 @@ export const AudioManagement = {
   playSound(file,volumescale=1,pitch=1){
     if (this.volume()>0&&document.getElementById("loading").style.display==="none"){
     var audio = new Audio(`audio/${file}.wav`)
+    //var audio = new Audio(`audio/${"doomtest"}.wav`)
     if (pitch !== 1){
       audio.preservesPitch=false;
       audio.mozPreservesPitch=false;
@@ -816,6 +817,7 @@ function laitelaRealityTick(realDiff) {
       completionText += ` You need to destabilize in faster than
         ${TimeSpan.fromSeconds(laitelaInfo.fastestCompletion).toStringShort()} to improve your multiplier.`;
     }
+    AudioManagement.playSound(Laitela.realityReward > oldInfo.realityReward?"challenge_complete":"challenge_fail")
     if (Laitela.isFullyDestabilized) SpeedrunMilestones(24).tryComplete();
     Modal.message.show(completionText, {}, 2);
   }
@@ -1103,15 +1105,15 @@ window.onload = function() {
     document.getElementById("loading").style.display = "none"
     //document.getElementById("loading").style.animation = "a-legendary-start 1s ease";
     //setTimeout(() =>{document.getElementById("loading").style.display = "none"},1000)
+    if (player.options.confirmations.disclaimerModal) {
+      window.disclaimerModalInterval = setTimeout(() => {
+        if (GameUI.initialized) {
+        Modal.disclaimer.show();
+        clearTimeout(window.disclaimerModalInterval);
+        }
+      }, 2000);
+    }
   }, 500);
-  if (player.options.confirmations.disclaimerModal) {
-    window.disclaimerModal = setInterval(() => {
-      if (GameUI.initialized) {
-      Modal.disclaimer.show();
-      clearInterval(window.disclaimerModal);
-      }
-    }, 2000);
-  }
   if (!supportedBrowser) {
     GameIntervals.stop();
     document.getElementById("loading").style.display = "none";

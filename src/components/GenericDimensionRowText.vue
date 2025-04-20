@@ -58,7 +58,7 @@ export default {
 <template>
   <div class="l-dimension-text-container">
     <div :class="adjustableTextClass()">
-      <span class="c-dim-row__large">
+      <span class="c-dim-row__large c-dim-row__title">
         {{ name }}
       </span>
       <span class="c-dim-row__small">
@@ -122,7 +122,7 @@ export default {
   text-shadow: 0.1rem 0.1rem 0.2rem var(--color-laitela--accent),-0.1rem 0.1rem 0.2rem var(--color-laitela--accent),0.1rem -0.1rem 0.2rem var(--color-laitela--accent),-0.1rem -0.1rem 0.2rem var(--color-laitela--accent);
 }
 .c-dim-row__title{
-  font-size:2rem;
+  font-size:1.9rem;
   font-family: cambria;
   font-weight:bold
 }

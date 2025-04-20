@@ -25,8 +25,6 @@ export default {
       petWithRemembrance: "",
       isRunning: false,
       memoryBoosts: "",
-      labelmode:false,
-      newname:false,
     };
   },
   computed: {
@@ -83,6 +81,13 @@ export default {
       return `Within ${this.labelmode?"Ra's Reality":"the "+Ra.RealityName}, Memory Chunks for Celestial Memories
         will be generated based on certain resource amounts.`;
     },
+    realityTitle() {
+      return player.options.naming.celestial ? `Ra's ${Ra.RealityName}`
+       : "Ra's Reality"
+    },
+    realityVerb() {
+      return player.options.naming.celestial ? "Enter" : "Start"
+    },
     isDoomed: () => Pelle.isDoomed,
   },
   methods: {
@@ -98,8 +103,6 @@ export default {
       this.petWithRemembrance = Ra.petWithRemembrance;
       this.isRunning = Ra.isRunning;
       this.memoryBoosts = Ra.memoryBoostResources;
-      this.labelmode = !player.options.naming.celestial
-      this.newname = Ra.RealityName
     },
     startRun() {
       if (this.isDoomed) return;
@@ -138,10 +141,13 @@ export default {
     <div class="l-mechanics-container">
       <div class="l-ra-button-mechanics-container">
     <div class="c-ra-run-button">
-        <h2 :class="{ 'o-pelle-disabled': isDoomed }">
+        <h2 
+        style="font-family: cambria;"
+        :class="{ 'o-pelle-disabled': isDoomed }"
+        >
           <span v-if="isRunning">You are in </span>
-          <span v-else>{{`${labelmode?"Start":"Enter"}`}} </span>
-          {{`${labelmode?"Ra's Reality":"Ra's "+newname}`}}.
+          <span v-else>{{ realityVerb }}</span>
+          {{ realityTitle }}.
         </h2>
         <div
           :class="runButtonClassObject"
@@ -165,7 +171,9 @@ export default {
         class="c-ra-remembrance-unlock"
       >
         <h2 :style="petStyle" class="c-ra-shop-title">
-          <span class="fas fa-sun"/> <span style="font-family: cambria;font-size: 2rem;line-height: 1.2;font-weight: bold;">Remembrance</span> <span class="fas fa-sun"/>
+          <span class="fas fa-sun"/> 
+          <span style="font-family: cambria;font-size: 2rem;line-height: 1.2;font-weight: bold;padding:0.5rem">Remembrance</span> 
+          <span class="fas fa-sun"/>
         </h2>
         <span :style="petStyle">
           Whichever Celestial has Remembrance will get {{ formatX(remembranceMult) }} Memory Chunk gain, while the other

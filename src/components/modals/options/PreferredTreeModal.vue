@@ -72,8 +72,11 @@ export default {
 </script>
 
 <template>
-  <ModalWrapperChoice @confirm="confirmPrefs">
-    <h2>Dimension Split Preference</h2>
+  <ModalWrapperChoice 
+  @confirm="confirmPrefs"
+  :style="{'--base':'var(--color-eternity)'}"
+  >
+    <h2 style="font-family:cambria" >Dimension Split Preference</h2>
     <div class="l-modal-split-preferences">
       <button
         v-for="(id, name) in dimensionOptions"
@@ -93,7 +96,7 @@ export default {
       </button>
     </div>
     <br>
-    <h2>Pace Split Preference</h2>
+    <h2 style="font-family:cambria" >Pace Split Preference</h2>
     <div class="l-modal-split-preferences">
       <button
         v-for="(id, name) in paceOptions"

@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="c-subtab-option-container">
+  <div class="c-subtab-option-container c-subtab-option-container--border">
     <PrimaryToggleButton
       v-model="autobuyersOn"
       on="Pause autobuyers"

@@ -51,7 +51,7 @@ export default {
 
 <template>
   <div class="l-time-dim-tab l-centered-vertical-tab">
-    <div class="c-subtab-option-container">
+    <div class="c-subtab-option-container c-subtab-option-container--border">
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         @click="maxAll"
@@ -69,13 +69,21 @@ export default {
     <div>
       <p>
         You have gained
-        <span class="c-time-dim-description__accent">{{ formatInt(totalUpgrades) }}</span> Tickspeed upgrades from
-        <span class="c-time-dim-description__accent">{{ format(timeShards, 2, 1) }}</span> Time Shards.
+        <span class="c-time-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(totalUpgrades) }"
+        >{{ formatInt(totalUpgrades) }}</span> Tickspeed upgrades from
+        <span class="c-time-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(timeShards) }"
+        >{{ format(timeShards, 2, 1) }}</span> Time Shards.
       </p>
       <p>
         Next Tickspeed upgrade at
-        <span class="c-time-dim-description__accent">{{ format(upgradeThreshold, 2, 1) }}</span>, increasing by
-        <span class="c-time-dim-description__accent">{{ formatX(multPerTickspeed, 2, 2) }}</span> per
+        <span class="c-time-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(upgradeThreshold) }"
+        >{{ format(upgradeThreshold, 2, 1) }}</span>, increasing by
+        <span class="c-time-dim-description__accent"
+        :class="{'c-dim-description__accent--fixed': isInaccessible(multPerTickspeed) }"
+        >{{ formatX(multPerTickspeed, 2, 2) }}</span> per
         Tickspeed upgrade gained.
       </p>
     </div>
@@ -83,9 +91,7 @@ export default {
       The amount each additional upgrade requires will start
       increasing above <b style="color:var(--color-eternity)">{{ formatInt(tickspeedSoftcap) }}</b> Tickspeed upgrades.
     </div>
-    <div>
-      You are getting {{ format(shardsPerSecond, 2, 0) }} {{ incomeType }} per second.
-    </div>
+    <div>You are getting {{ format(shardsPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
     <div class="l-dimensions-container">
       <TimeDimensionRow
         v-for="tier in 8"

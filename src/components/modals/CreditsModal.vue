@@ -33,6 +33,9 @@ export default {
 
 .c-credits-modal {
   margin: 0.5rem;
+  border: none;
+  background: none;
+  padding: 0;
 }
 
 .c-credits-modal__body {

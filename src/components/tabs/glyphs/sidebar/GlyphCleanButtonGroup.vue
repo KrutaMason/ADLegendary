@@ -50,21 +50,21 @@ export default {
       if (player.options.confirmations.autoClean) {
         Modal.glyphPurge.show({ harsh: false });
       } else {
-        Glyphs.autoClean(5);
+        Glyphs.autoClean(5,undefined,true);
       }
     },
     harshAutoClean() {
       if (player.options.confirmations.autoClean) {
         Modal.glyphPurge.show({ harsh: true });
       } else {
-        Glyphs.autoClean(1);
+        Glyphs.autoClean(1,undefined,true);
       }
     },
     deleteAllUnprotected() {
       if (player.options.confirmations.sacrificeAll) {
         Modal.deleteAllUnprotectedGlyphs.show();
       } else {
-        Glyphs.autoClean(0);
+        Glyphs.autoClean(0,undefined,true);
       }
     },
     deleteAllRejected() {

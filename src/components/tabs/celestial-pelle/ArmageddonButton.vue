@@ -76,7 +76,7 @@ export default {
   font-family: Typewriter;
   color: var(--color-text);
   text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
-  background: url(../../../../public/images/prestige/p-arma-bg.png),url(../../../../public/images/prestige/p-arma-bg-2.png),linear-gradient(black,var(--bg-dark) var(--distance));
+  background: url(../../../../public/images/prestige/armageddon-1.png),url(../../../../public/images/prestige/armageddon-2.png),linear-gradient(black,var(--bg-dark) var(--distance));
   --bg-dark:var(--color-pelle--base);
   color:var(--color-pelle--base);
   box-shadow: 0 0 1rem inset, 0 0 2rem;

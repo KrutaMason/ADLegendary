@@ -156,7 +156,7 @@ export const VUnlocks = mapGameDataToObject(
 
 export const V = {
   displayName: "V",
-  displayTitle: "Champion V",
+  displayTitle: "Star Dragon General V",
   fullName: "V, Celestial of Achievements",
   celestialOf: "Achievements",
   possessiveName: "V's",

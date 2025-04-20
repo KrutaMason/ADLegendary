@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      switchedSidebar: false,
       ending: false
     };
   },
@@ -47,6 +48,7 @@ export default {
   },
   methods: {
     update() {
+      this.switchedSidebar = player.options.sidebarSideSwitch && this.$viewModel.newUI
       this.ending = GameEnd.endState >= END_STATE_MARKERS.FADE_AWAY && !GameEnd.creditsClosed;
     }
   }
@@ -63,6 +65,7 @@ export default {
     <div
       id="notification-container"
       class="l-notification-container"
+      :class="{'l-notification-container--switched' : switchedSidebar}"
     />
     <HowToPlay :style="hideIfMatoFullscreen" />
     <TimeTheoremShop

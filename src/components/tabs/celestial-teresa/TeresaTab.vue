@@ -39,13 +39,11 @@ export default {
       raisedPerkShop: false,
       isRunning: false,
       canUnlockNextPour: false,
-      newname: undefined,
       chargeUnlocked: false,
       autoswitch:false,
       totalCharges: 0,
       chargesUsed: 0,
       disCharge: false,
-      labelmode:false,
     };
   },
   computed: {
@@ -123,6 +121,10 @@ export default {
         : `${quantify("Imaginary Machine", this.lastMachines.dividedBy(DC.E10000), 2)}`;
     },
     isDoomed: () => Pelle.isDoomed,
+    realityTitle() {
+      return player.options.naming.celestial ? `Enter Teresa's ${Teresa.RealityName}`
+       : "Start Teresa's Reality"
+    },
     disChargeClassObject() {
       return {
         "o-primary-btn--subtab-option": true,
@@ -163,13 +165,11 @@ export default {
       this.isRunning = Teresa.isRunning;
       this.canUnlockNextPour = TeresaUnlocks.all
         .filter(unlock => this.rm.plus(this.pouredAmount).gte(unlock.price) && !unlock.isUnlocked).length > 0;
-      this.newname = Teresa.RealityName,
       this.chargeUnlocked = Ra.unlocks.chargedInfinityUpgrades.canBeApplied && !Pelle.isDoomed;
       this.totalCharges = Ra.totalCharges;
       this.chargesUsed = Ra.totalCharges - Ra.chargesLeft;
       this.disCharge = player.celestials.ra.disCharge;
       this.autoswitch = player.options.automaticTabSwitching;
-      this.labelmode = !player.options.naming.celestial
     },
     clickHandler() {
     Tab.infinity.upgrades.show();
@@ -216,8 +216,11 @@ export default {
         class="l-teresa-mechanic-container"
       >
         <div class="c-teresa-run-button c-teresa-container">
-          <span :class="{ 'o-pelle-disabled': isDoomed }">
-            {{`${labelmode?"Start Teresa's Reality":"Enter Teresa's "+newname}.`}}
+          <span 
+          class="c-teresa-run-title"
+          :class="{ 'o-pelle-disabled': isDoomed }"
+          >
+            {{ realityTitle }}
           </span>
           <div
             :class="runButtonClassObject"
@@ -231,7 +234,7 @@ export default {
             This Reality can be repeated for a stronger reward based on the antimatter gained within it.
             <br><br>
             <span v-if="showRunReward">
-              Your record antimatter in {{`${labelmode?"Teresa's Reality":newname}`}} is {{ format(bestAM, 2) }},
+              Your record antimatter in {{ realityTitle }} is {{ format(bestAM, 2) }},
               achieved with {{ lastMachinesString }}.
               <br><br>
               Glyph Set used:
@@ -245,7 +248,7 @@ export default {
               />
             </span>
             <span v-else>
-              You have not completed {{`${labelmode?"Teresa's Reality":"the "+newname}`}} yet.
+              You have not completed {{ realityTitle }} yet.
             </span>
           </div>
         </div>
@@ -253,7 +256,7 @@ export default {
           v-if="showRunReward"
           class="c-teresa-unlock"
         >
-        {{`${labelmode?"Teresa's Reality":newname}`}} reward: <br> Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
+        {{ realityTitle }} reward: <br> Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
         </div>
         <div
           v-if="hasEPGen"
@@ -324,7 +327,9 @@ export default {
         v-if="hasPerkShop"
         class="c-teresa-shop c-teresa-container"
       >
-      <div class="c-shop-title c-teresa-shop-title">Ϟ <span style="font-family:cambria;font-size:2rem;line-height:1.2;font-weight:bold">Teresa's Perk shop</span> Ϟ</div>
+      <div class="c-shop-title c-teresa-shop-title">
+        Ϟ <span class="c-teresa-run-title" style="font-size: 2rem;">Teresa's Perk shop</span> Ϟ
+      </div>
         <span class="o-teresa-pp">
           You have {{ quantifyInt("Perk Point", perkPoints, 2, 0) }}.
         </span> <br>
@@ -391,5 +396,11 @@ export default {
     margin:0.5rem;
     border-image: linear-gradient(90deg,transparent,var(--color-teresa--base),transparent) 1;
     background: linear-gradient(90deg,transparent,#5151ec60,transparent);
+}
+.c-teresa-run-title {
+  font-family: cambria;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: bold;
 }
 </style>

@@ -46,6 +46,7 @@ export default {
   <ModalWrapperChoice
     option="replicantiGalaxy"
     @confirm="handleYesClick"
+    :style="{'--base':'var(--color-replicanti)'}"
   >
     <template #header>
       {{ topLabel }}

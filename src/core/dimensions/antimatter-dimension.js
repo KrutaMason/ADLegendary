@@ -11,7 +11,7 @@ export function antimatterDimensionCommonMultiplier() {
   multiplier = multiplier.times(ShopPurchase.dimPurchases.currentMult);
   multiplier = multiplier.times(ShopPurchase.allDimPurchases.currentMult);
   for (let i = 2; i <= 8; i++){
-    dimountmult = AntimatterDimension(i).isProducing ? dimountmult.times(1.25): dimountmult
+    dimountmult = AntimatterDimension(i).isProducing ? dimountmult.times(1.2): dimountmult
   }
   multiplier = multiplier.times(dimountmult);
   if (!EternityChallenge(9).isRunning) {

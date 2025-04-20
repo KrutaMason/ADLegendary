@@ -84,13 +84,13 @@ export default {
     </b>
     <b v-if="hasInstant">Autobuyers with "Instant" interval will trigger every game tick ({{ gameTickLength }}).</b>
     <div class="c-autoprestige-box-row">
-    <RealityAutobuyerBox class="c-reality-pos" style="--fade: var(--color-reality);"/>
-    <EternityAutobuyerBox class="c-eternity-pos" style="--fade: var(--color-eternity);"/>
     <BigCrunchAutobuyerBox class="c-infinity-pos" style="--fade: var(--color-infinity);"/>
+    <EternityAutobuyerBox class="c-eternity-pos" style="--fade: var(--color-eternity);"/>
+    <RealityAutobuyerBox class="c-reality-pos" style="--fade: var(--color-reality);"/>
     </div>
     <div class="c-autoprestige-box-row">
-    <GalaxyAutobuyerBox class="c-softreset-pos" style="--fade: var(--color-celestials);"/>
     <DimensionBoostAutobuyerBox class="c-softreset-pos" style="--fade: #00ee00;"/>
+    <GalaxyAutobuyerBox class="c-softreset-pos" style="--fade: var(--color-celestials);"/>
     </div>
     <TickspeedAutobuyerBox v-if="!hasContinuum"  style="--fade: var(--color-accent);"/>
     <div v-if="displayADAutobuyersIndividually" class="c-autoprestige-box-row" style="flex-wrap: wrap;">

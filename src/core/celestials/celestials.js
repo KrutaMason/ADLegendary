@@ -80,16 +80,17 @@ GameDatabase.celestials.descriptions = [
           disabledDims = "all Dimensions";
           break;
         case 1:
-          disabledDims = "2nd and higher Dimensions";
+          disabledDims = player.options.naming.dimensions ? "Polygons and higher Dimensions" : "2nd and higher Dimensions";
           break;
         case 2:
-          disabledDims = "3rd and higher Dimensions";
+          disabledDims = player.options.naming.dimensions ? "Polyhedrons and higher Dimensions" : "3rd and higher Dimensions";
           break;
         case 7:
-          disabledDims = "8th Dimensions";
+          disabledDims = player.options.naming.dimensions ? "Polyzettons" : "8th Dimensions";
           break;
         default:
-          disabledDims = `${highestActive + 1}th and higher Dimensions`;
+          disabledDims = player.options.naming.dimensions ? `${AntimatterDimension(Math.min(highestActive + 1,8)).uniqueName}
+           and higher Dimensions` : `${highestActive + 1}th and higher Dimensions`;
           break;
       }
       const disabledText = highestActive === 8

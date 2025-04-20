@@ -12,6 +12,7 @@ export default {
       treeLayout: 0,
       physicsEnabled: false,
       physicsOverride: false,
+      gridsEnabled: false,
     };
   },
   computed: {
@@ -26,6 +27,7 @@ export default {
   created() {
     this.treeLayout = player.options.perkLayout;
     this.physicsOverride = PerkLayouts[this.treeLayout].forcePhysics;
+    this.gridsEnabled = player.options.perkGridsEnabled
   },
   methods: {
     update() {
@@ -36,6 +38,12 @@ export default {
       if (this.physicsOverride !== undefined) return;
       player.options.perkPhysicsEnabled = !player.options.perkPhysicsEnabled;
       PerkNetwork.setPhysics(player.options.perkPhysicsEnabled);
+      AudioManagement.playSound(player.options.perkPhysicsEnabled?"click_light":"click_light-reverse")
+    },
+    toggleGrids() {
+      player.options.perkGridsEnabled = !player.options.perkGridsEnabled;
+      PerkNetwork.setGrids(player.options.perkGridsEnabled);
+      AudioManagement.playSound(player.options.perkGridsEnabled?"click_light":"click_light-reverse")
     },
     physicsClassObject() {
       return {
@@ -49,6 +57,7 @@ export default {
     straightenEdges() {
       PerkNetwork.setEdgeCurve(false);
       PerkNetwork.setEdgeCurve(true);
+      AudioManagement.playSound("perk_straight")
     },
     cycleLayout() {
       // Step forward once, but if this lands us on a locked layout, keep stepping until it doesn't
@@ -101,6 +110,12 @@ export default {
         @click="straightenEdges"
       >
         Straighten Edges
+      </PrimaryButton>
+      <PrimaryButton
+        class="o-primary-btn"
+        @click="toggleGrids"
+      >
+        Toggle Grids
       </PrimaryButton>
     </div>
   </div>
