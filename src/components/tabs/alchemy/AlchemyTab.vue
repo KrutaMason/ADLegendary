@@ -196,7 +196,7 @@ export default {
 
 <template>
   <div class="l-ra-alchemy-tab">
-    <div class="c-subtab-option-container c-subtab-option-container--border">
+    <div class="c-subtab-option-container">
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         @click="showAlchemyHowTo"

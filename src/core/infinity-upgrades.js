@@ -52,7 +52,7 @@ export class InfinityUpgradeState extends SetPurchasableMechanicState {
       this.charge();
       EventHub.dispatch(GAME_EVENT.INFINITY_UPGRADE_CHARGED);
       AudioManagement.playSound(player.celestials.ra.charged.size < 12 ? 
-        "purchase_charge" : "purchase_charge-max",undefined,[0.9,1.1])
+        "purchase_charge" : "purchase_harge-max",0.666,[0.9,1.1])
       return true;
     }
     return false;

@@ -48,7 +48,7 @@ export default {
       this.isSacrificing = GlyphSacrificeHandler.canSacrifice;
     },
     handleYesClick() {
-      Glyphs.deleteAllUnprotected(true);
+      Glyphs.deleteAllUnprotected();
     },
   },
 };
@@ -58,7 +58,6 @@ export default {
   <ModalWrapperChoice
     option="sacrificeAll"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       {{ topLabel }}

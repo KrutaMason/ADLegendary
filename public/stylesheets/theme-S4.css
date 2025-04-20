@@ -15,8 +15,7 @@
 html {
   color: black !important;
   background-attachment: fixed;
-  /*background: linear-gradient(45deg,#ff00ff, #880088,#ff00ff);*/
-  background-size: 5% 5%;
+  background-color: #ff00ff;
   background-position: center bottom;
   border: 0.1rem solid white !important;
 }
@@ -26,9 +25,8 @@ html {
 }
 
 body {
-  background: radial-gradient(transparent 80%,#ff00ff88 85%,#ff000088 95%),linear-gradient(transparent 25%, #0fff0f),url(../images/background/base-design.jpg) !important;
+  background: #0fff0f !important;
   border: 0.1rem solid white !important;
-  border-radius: 20%;
 }
 
 .o-achievement {

@@ -116,37 +116,10 @@ Many events in the game trigger full-screen animations or pop-up modals which re
 continue. Most of these animations and confirmations can be disabled on an individual basis through the options,
 although the ability to disable any given animation or confirmation will only appear after they have already shown up
 at least once.
-<br>
-<br>
-AD:Legendary introduces new naming conventions for various mechanics, most notably the Dimension names. Turning 
-them off by using the Naming Options button located in the Visuals tab, will make the affected mechanics 
-maintain the classic naming convention. This mod also introduces sound effects that are played from doing 
-various activities such as buying Dimensions or performing a Dimension boost. You will be notified of this 
-feature in the Mod Disclaimer in case you still have it enabled. The Audio Options in Gameplay tab allows you to 
-change the volume and disable specific kinds of sounds.
 `,
       isUnlocked: () => true,
       tags: ["UI", "update", "news", "theme", "notation", "comma", "exponent", "animation", "retry", "confirmation",
-        "offline", "hotkey", "classic", "modern", "naming", "sounds"],
-      tab: "options/visual"
-    },
-    {
-      name: "Mature Content",
-      info: () => `
-The mod changes the target group, making it now intended for Mature Audiences, therefore has content that 
-may not be suitable for younger Audiences. The visibility of Such Contents defaults to off, but can be enabled 
-in the Visuals tab. The Mod Disclaimer Pop-up informs you of this feature and allows you to choose before 
-playing the game. 
-<br>
-<br>
-This entry has a list of features that are affected by Mature Content.
-<br>
-- <b>The News Ticker</b>: There are some news messages that contain mature content.<br>
-- <b>Achievements</b>: Only 1 of the 144 achievements are affected.<br>
-- <b>(Celestial Quotes and Portraits)</b>: WIP.<br>
-`,
-      isUnlocked: () => true,
-      tags: ["mature", "sensitive"],
+        "offline", "hotkey", "classic", "modern"],
       tab: "options/visual"
     },
     {
@@ -607,7 +580,7 @@ applied depends on which Infinity Dimension you purchase. <!-- Sorry Garnet :/ -
 <br>
 <br>
 <b>Infinity Dimension Production:</b> Just like Antimatter Dimensions, each Infinity Dimension produces the
-previous lower Infinity Dimension.
+next highest Infinity Dimension.
 <br>
 <br>
 Every crunch, your produced Infinity Dimensions are reset to the amount you purchased. While the production

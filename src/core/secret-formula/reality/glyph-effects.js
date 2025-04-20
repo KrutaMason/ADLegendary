@@ -694,7 +694,9 @@ export const glyphEffects = {
     totalDesc: () => (
       (Enslaved.isRunning || Glyphs.active.countWhere(g => g?.type === "cursed"))
        ? "This luck doesn't help you." : "You have the luck of the sun."),
-    // Thanks Kaj
+    // The EP value for this is entirely encoded in rarity, but level needs to be present to
+    // make sure the proper parameter is being used. The actual glyph level shouldn't do anything.
+    // eslint-disable-next-line no-unused-vars
     effect: () => {return 5e5 / (AlchemyResource.multiversal.effectValue+1)},
     formatEffect: x => formatInt(x),
     combine: GlyphCombiner.multiplyDecimal,

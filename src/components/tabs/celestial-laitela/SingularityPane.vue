@@ -130,10 +130,8 @@ export default {
 <template>
   <div class="c-laitela-singularity-container">
     <div>
-      <h2 class="c-laitela-singularity__currency">
-        You have <span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(singularities) }">
-          {{ format(singularities, 2) }}</span>
-        {{ pluralize("Singularity", singularities) }}
+      <h2>
+        You have {{ quantify("Singularity", singularities, 2) }}
       </h2>
       <button
         :class="condenseClassObject()"
@@ -151,10 +149,8 @@ export default {
       </button>
     </div>
     <div v-if="singularities !== 0">
-      <div class="o-laitela-matter-amount c-laitela-singularity__currency"> You have 
-        <span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(darkEnergy) }"> {{ format(darkEnergy, 2, 4) }}</span> 
-        Dark Energy. (+<span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(darkEnergyGainPerSecond) }">
-        {{ format(darkEnergyGainPerSecond, 2, 4) }}</span>/s)
+      <div class="o-laitela-matter-amount">
+        You have {{ format(darkEnergy, 2, 4) }} Dark Energy. (+{{ format(darkEnergyGainPerSecond, 2, 4) }}/s)
       </div>
       <div v-if="unlockedBulkSingularity">
         <button
@@ -205,14 +201,5 @@ export default {
 <style scoped>
 .c-laitela-singularity__cap-control {
   margin: 0 0.3rem 1rem;
-}
-.c-laitela-singularity__currency {
-  font-weight: bold;
-  font-size: 1.8rem;
-  font-family: Cambria;
-}
-.c-laitela-singularity__currency--fixed {
-  font-weight: normal;
-  font-family: Typewriter;
 }
 </style>

@@ -23,13 +23,13 @@
     margin-right: 14.5rem;
 }
 .c-teresa-container{
-    width: 24.5rem;
+    width: 23.5rem;
     margin: 0.5rem;
     padding: 0.5rem;
     border: var(--var-border-width, 0.1rem) solid var(--color-teresa--base);
     border-radius: var(--var-border-radius, 0.5rem);
     text-shadow: var(--text-shadow);
-    box-shadow: 0 0 2rem var(--color-background) inset, 0 0 0 2px var(--color-teresa--base) inset;
+    box-shadow: 0 0 2rem black inset, 0 0 0 2px var(--color-teresa--base) inset;
     background: linear-gradient(#00000040,#5151ec60),var(--leg-base);
 }
 .s-base--dark .c-teresa-container{
@@ -79,7 +79,7 @@
     color: white;
     margin-top: 1rem;
     padding:0.5rem;
-    background: url(../images/upgrades/teresa.png), linear-gradient(#3c3cb1,#131342);
+    background: url(../images/upgrades/teresa.png), linear-gradient(#2d2dad,#0d0d3d);
     background-position: center;
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
     border: var(--var-border-width, 0.1rem) solid #8d8dff;
@@ -112,9 +112,9 @@
 
 .c-teresa-unlock-description--unlocked {
     color: #e9e9ff;
-    --bg-bright: #3c3cb1;
-    --bg-dark: #131342;
     --border: #8d8dff;
+    --bg-bright: #2d2dad;
+    --bg-dark: #0d0d3d;
 }
 
 .c-teresa-milestone-line {
@@ -176,9 +176,9 @@
 }
 
 .c-teresa-unlock {
-    width: 24.5rem;
+    width: 23.5rem;
     color: #e9e9ff;
-    background: url(../images/upgrades/teresa.png), linear-gradient(#3c3cb1,#131342);
+    background: url(../images/upgrades/teresa.png), linear-gradient(#2d2dad,#0d0d3d);
     background-position: center;
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
     border: var(--var-border-width, 0.1rem) solid #8d8dff;
@@ -210,10 +210,8 @@
     font-weight: bold;
     color: var(--color-teresa--base);
     text-shadow: 0.1rem 0.1rem 0.5rem;
-    box-shadow: 0 0 1rem var(--color-teresa--accent) inset, 0 0 0 0.3rem var(--color-teresa--base) inset;
     background-color: var(--color-teresa--accent);
-    border: 0.1rem solid var(--border);
-    --border: var(--color-teresa--base);
+    border: var(--var-border-width, 0.4rem) solid var(--color-teresa--base);
     border-radius: 50%;
     margin: 1.5rem auto;
     transition-duration: 0.2s;
@@ -253,17 +251,17 @@
 @keyframes a-teresa-run-button__icon--super-glow {
     0% {
         text-shadow: 0.1rem 0.1rem 0.3rem;
-        box-shadow: 0 0 0.3rem var(--color-teresa--base), 0 0 1rem var(--color-teresa--base) inset, 0 0 0 0.3rem var(--color-teresa--accent) inset;
+        box-shadow: 0 0 0.3rem var(--color-teresa--base);
     }
 
     50% {
         text-shadow: 0.1rem 0.1rem 0.9rem;
-        box-shadow: 0 0 1rem var(--color-teresa--base), 0 0 1rem var(--color-teresa--base) inset, 0 0 0 0.3rem var(--color-teresa--accent) inset;
+        box-shadow: 0 0 1rem var(--color-teresa--base);
     }
 
     100% {
         text-shadow: 0.1rem 0.1rem 0.3rem;
-        box-shadow: 0 0 0.3rem var(--color-teresa--base), 0 0 1rem var(--color-teresa--base) inset, 0 0 0 0.3rem var(--color-teresa--accent) inset;
+        box-shadow: 0 0 0.3rem var(--color-teresa--base);
     }
 }
 
@@ -316,7 +314,7 @@
 .c-teresa-shop, .c-teresa-charger {
     display: flex;
     flex-direction: column;
-    width: 50rem;
+    width: 48rem;
     justify-content: center;
     align-items: center;
     color: var(--color-text);
@@ -365,6 +363,7 @@
 
 .o-teresa-shop-button--capped {
     color: white;
+    background-color: var(--color-teresa--base);
     --bg-bright: #3c3cb1;
     --bg-dark: #131342;
     --border: #8d8dff;
@@ -457,15 +456,15 @@
 /* #region effarig tab */
 
 .c-effarig-relics {
-    font-size: 1.3rem;
-    padding-bottom: 2rem;
+    font-size: 1.5rem;
+    padding: 20px 0;
 }
 
 .c-effarig-shop-button {
     display: flex;
     flex-direction: column;
-    width: 20rem;
-    height: 8rem;
+    width: 23rem;
+    height:8rem;
     justify-content: center;
     align-items: center;
     font-family: Typewriter;
@@ -493,10 +492,9 @@
 .c-effarig-shop-button--bought {
     color: white;
     --bg-bright: #ad2d2d;
-    --bg-dark: #3d0d0d;
+    --bg-dark: #3d0d0d !important;
     --border: #ff5b5b;
     cursor: default;
-    pointer-events: none;
 }
 
 .c-effarig-shop-button--available {
@@ -702,67 +700,30 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-.l-effarig-relics-and-shop{
-    display: flex;
-    flex-direction: column;
-    border: 1.2rem solid;
-    width: 52rem;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border-image: url(../images/frames/base-retro.png) 12 round;
-    box-shadow: 0 0 1rem black inset;
-    background: linear-gradient(#00000040,#d1373760), var(--leg-base);
-}
 
 .l-effarig-relics,.l-effarig-shop{
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     color: var(--color-text);
-    text-shadow: var(--text-shadow);
+    width: 52rem;
     margin: 0.5rem;
-    padding: 0.6rem;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);;
+    border: var(--var-border-width, 0.1rem) solid var(--color-effarig--base);
     border-radius: var(--var-border-radius, 0.5rem);
-    background: linear-gradient(transparent,var(--base) 500%);
-    background-origin: border-box;
-    --base: var(--color-effarig--base)
+    text-shadow: var(--text-shadow);
+    box-shadow: 0 0 2rem black inset, 0 0 0 3px var(--color-effarig--base) inset;
+    background: linear-gradient(#00000040,#d1373760), var(--leg-base);
+    background-position: center;
 }
-
-.l-effarig-title{
-    display: inline-block;
-    width: 90%;
-    font-size: 2rem;
-    font-family: cambria;
-    font-weight: bold;
-    line-height: 1.1;
-    padding: 0.2rem 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-top: -0.6rem;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-    border-top: none;
-    border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
-    background-image: linear-gradient(90deg,color-mix(in srgb,var(--base) 10%,transparent),
-    color-mix(in srgb,var(--base) 35%,transparent),
-    color-mix(in srgb,var(--base) 10%,transparent));
-    background-origin: border-box;
-}
-
 .l-effarig-shop {
     height: 100%;
-}
-
-.l-effarig-shop--items__container {
-    height: 100%;
-    align-content: center
-}
-
-.l-effarig-shop--items {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    margin: .5rem;
+    padding: 0.5rem;
+    border: 1.2rem solid var(--color-effarig--base);
+    border-image: url(../images/frames/base-retro.png) 12 round;
+    box-shadow: 0 0 2rem black inset;
 }
-
 .l-effarig-run {
     display: inline-flex;
     flex-direction: column;
@@ -774,13 +735,12 @@
     padding: 1rem;
     text-shadow: var(--text-shadow);
     color: var(--color-text);
-    box-shadow: 0 0 2rem var(--color-background) inset, 0 0 0 3px var(--color-effarig--base) inset;
+    box-shadow: 0 0 2rem black inset, 0 0 0 3px var(--color-effarig--base) inset;
     background: linear-gradient(#00000040,#d1373760), var(--leg-base);
     background-position: center;
 }
-.s-base--dark .l-effarig-relics-and-shop,
-/*.s-base--dark .l-effarig-relics,
-.s-base--dark .l-effarig-shop,*/
+.s-base--dark .l-effarig-relics,
+.s-base--dark .l-effarig-shop,
 .s-base--dark .l-effarig-run{
     background: url(../images/upgrades/effarig.png),linear-gradient(#00000060,#d1373760), var(--leg-base);
     background-position: center;
@@ -1005,7 +965,7 @@
 .c-enslaved-run-button, .l-enslaved-shop-container, .l-enslaved-top-container {
     border: var(--var-border-width, 0.1rem) solid #cd945c;
     border-radius: var(--var-border-radius, 0.5rem);
-    box-shadow: 0 0 2rem var(--color-background) inset, 0 0 0 0.3rem #cd945c inset;
+    box-shadow: 0 0 2rem black inset, 0 0 0 0.3rem #cd945c inset;
     background: linear-gradient(#00000040,#d1893760), var(--leg-base);
     background-position: center;
     text-shadow: var(--text-shadow);
@@ -1017,14 +977,8 @@
     background-position: center;
 }
 .c-enslaved-run-button__title {
-    width: 100%;
-    font-size: 1.6rem;
+    font-size: larger;
     font-weight: bold;
-    font-family: cambria;
-    border-top: solid 1px;
-    border-bottom: solid 1px;
-    border-image: linear-gradient(90deg, transparent, var(--color-enslaved--base), transparent) 1;
-    background: linear-gradient(90deg, transparent, #cd945c60, transparent);
     margin-bottom: 0.5rem;
 }
 
@@ -1220,6 +1174,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 0.5rem;
+
     border-radius: var(--var-border-radius, 0.5rem);
     border: var(--var-border-width, 0.1rem) solid var(--color-v--base);
     box-shadow: 0 0 2rem black inset, 0 0 0 0.2rem var(--color-v--base) inset;
@@ -1252,7 +1207,7 @@
     border: var(--var-border-width, 0.3rem) solid;
     border-image: url(../images/frames/base-blob.png) 3;
     border-radius: var(--var-border-radius, 0.5rem);
-    background: url(../images/celestials/pelle-bar-empty.png);
+    background: linear-gradient(transparent,transparent),url(../images/celestials/pelle-bar-empty.png);
     color:white;
     box-shadow: 0 0 0.5rem 0.2rem #00000080;
     text-shadow: 0.1rem 0.1rem 0.1rem black,-0.1rem -0.1rem 0.1rem black,0.1rem -0.1rem 0.1rem black,-0.1rem 0.1rem 0.1rem black;
@@ -1299,6 +1254,7 @@
 }
 
 .o-v-milestone--unlocked {
+    background-color: var(--color-v--base);
     color: WHITE;
     --bg-bright: #433813;
     --bg-dark: #9e802e;
@@ -1533,10 +1489,7 @@
     border-top: 0.1rem solid;
     border-image: linear-gradient(90deg, transparent, currentcolor, transparent) 1;
 }
-.c-ra-pet-title--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
-}
+
 .l-ra-bar-container {
     display: flex;
     width: 100%;
@@ -1832,6 +1785,7 @@
     box-shadow: 0 0 1rem inset black, 0 0 0 0.2rem inset var(--border), 0 0 1rem 0.2rem inset var(--color-ra--base);
 }
 
+
 .c-ra-laitela-unlock {
     display: flex;
     flex-direction: column;
@@ -2080,7 +2034,7 @@
     color:#888888
 }
 .c-ra-pet-upgrade__tooltip__name {
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 1.2;
     font-family: cambria;
     padding-top: 0.3rem;
@@ -2235,40 +2189,33 @@
 /* #endregion ra tab */
 /* #region alchemy tab */
 .c-alchemy-resource-info {
+    display: flex;
+    flex-direction: column;
+    width: 65rem;
+    height: 12rem;
+    justify-content: center;
+    text-align: center;
     font-size: 1.2rem;
     border: 1.2rem solid;
     border-image: var(--leg-border) 12 round;
     background: var(--leg-base);
     box-shadow: 0 0 2rem #00000080 inset;
     margin-top: 0.5rem;
-    padding: 1rem;
+    padding: 0.25rem 1rem;
     color: var(--color-text);
-    --base: #69572f
+    --alchemy-text:#69572f
 }
 .s-base--dark .c-alchemy-resource-info {
     box-shadow: 0 0 2rem black inset;
     text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
-    --base: #d3c4a1
+    --alchemy-text:#d3c4a1
 }
-.c-alchemy-resource-info__inner {
-    width: 60rem;
-    height: 11rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-    border-radius: var(--var-border-radius, 0.5rem);
-    background: linear-gradient(transparent, var(--base) 500%);
-    background-origin: border-box;
+.c-alchemy-resource-info--locked {
+    color: var(--alchemy-text);
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: cambria;
 }
-
-.l-resource-component__container{
-    position: absolute;
-    top: -3rem;
-    left: -3rem;
-}
-
 .l-resource-component{
     display: inline-flex;
     position: relative;
@@ -2288,40 +2235,23 @@
 }
 .l-resource-component:before{
     content: '';
-    position: absolute;
-    display: block;
-    left: -1rem;
-    top: -1rem;
-    width: 7rem;
-    height: 7rem;
-    background: url(../images/glyphs-alchemy/crate_circle.png);
-    background-position-x: calc(7rem - 7rem * var(--crate-posx));
-    background-position-y: 0;
+    position: absolute;display: block;
+    left: -1rem;top: -1rem;
+    width: 7rem;height: 7rem;
+    background: url(../images/glyphs-alchemy/crate_tooltip.png);
     box-shadow: 0 0 1rem 0.3rem black;
     border-radius:50%;
 }
 .t-amoled .l-resource-component:before,
 .t-amoled-metro .l-resource-component:before{
-    background-position-y: -7rem;
-}
-.t-s4 .l-resource-component:before{
-    background-position-y: -21rem;
-}
-.t-s7 .l-resource-component:before{
-    background-position-y: -28rem;
+background-position-y: -7rem;
 }
 .c-alchemy-resource-info__title {
-    width: 30rem;
+    color: var(--alchemy-text);
     font-size: 1.5rem;
     font-weight: bold;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-    border-top: none;
-    border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
-    background-image: linear-gradient(90deg, 
-    color-mix(in srgb, var(--base) 10%, transparent), 
-    color-mix(in srgb, var(--base) 35%, transparent), 
-    color-mix(in srgb, var(--base) 10%, transparent));
-    background-origin: border-box;
+    border-bottom: 0.1rem solid;
+    border-image: linear-gradient(90deg,transparent,var(--color-text),transparent) 1;
 }
 
 .c-reality-glyph-creation {
@@ -2523,6 +2453,7 @@
     font-size: 2rem;
     line-height: 1.9rem;
     color: black;
+    background-color: white;
     border: 0.1rem solid black;
     border-radius: 50%;
     margin-top: -1.5rem;
@@ -2567,9 +2498,6 @@
 .t-amoled .o-alchemy-node:before,
 .t-amoled-metro .o-alchemy-node:before {
     background-position-y: -4rem;
-}
-.t-s4 .o-alchemy-node:before {
-    background-position-y: -8rem;
 }
 .o-alchemy-node-mask {
     width: 2.4rem;
@@ -2708,7 +2636,7 @@
     color: var(--color-laitela--accent);
     background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     border: var(--var-border-width, 0.1rem) solid #888888;
-    box-shadow: 0 0 1rem var(--color-background) inset,#888888 inset 0 0 0  0.3rem;
+    box-shadow: 0 0 1rem black inset,#888888 inset 0 0 0  0.3rem;
     border-radius: var(--var-border-radius, 0.5rem);
     margin-right: 1rem;
     padding: 2rem;
@@ -2733,7 +2661,7 @@
     background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid #888888;
-    box-shadow: 0 0 1rem var(--color-background) inset,0 0 0 0.3rem #888888 inset;
+    box-shadow: 0 0 1rem #000000 inset,0 0 0 0.3rem #888888 inset;
     border-radius: var(--var-border-radius, 0.5rem);
     margin: auto;
     margin-bottom: 1rem;
@@ -2757,10 +2685,7 @@
     background: linear-gradient(90deg, transparent, #88888844, transparent);
     margin: 0.2rem
 }
-.o-dark-matter-dimension-amount--fixed {
-    font-weight: normal;
-    font-family: Typewriter;
-}
+
 .c-dark-matter-dimension-buttons {
     display: flex;
     height: 6rem;
@@ -2778,7 +2703,7 @@
     --bg-dark: var(--leg-bg-dark);
     --bg-bright: var(--leg-bg-bright);
     --border: #999999;
-    box-shadow: 0 0 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
+    box-shadow:0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px;
     border: var(--var-border-width, 0.1rem) solid var(--border);
     border-radius: var(--var-border-radius, 0.5rem);
     margin-bottom: 1rem;
@@ -2885,7 +2810,7 @@
     background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: 0.1rem solid var(--border);
-    box-shadow: 0 0 1rem var(--color-background) inset, var(--border) inset 0px 0px 0px 3px;
+    box-shadow: 0 0 1rem #000000 inset, var(--border) inset 0px 0px 0px 3px;
     --border:#808080;
     border-radius: var(--var-border-radius, 0.5rem);
     margin: 1rem 0 0;
@@ -2931,7 +2856,7 @@
     z-index: 1;
     color: var(--color-laitela--accent);
     border: var(--var-border-width, 0.1rem) solid var(--border);
-    box-shadow: 0 0 1rem var(--color-background) inset, var(--border) inset 0px 0px 0px 3px;
+    box-shadow: 0 0 1rem #000000 inset, var(--border) inset 0px 0px 0px 3px;
     --border:#808080;
     border-radius: var(--var-border-radius, 0.5rem);
     margin: -0.7rem;
@@ -2980,7 +2905,7 @@
     background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid #888888;
-    box-shadow: 0 0 1rem var(--color-background) inset,#888888 inset 0px 0px 0px 3px;
+    box-shadow: 0 0 1rem #000000 inset,#888888 inset 0px 0px 0px 3px;
     border-radius: var(--var-border-radius, 0.5rem);
     margin-bottom: 1rem;
     padding: 1rem;
@@ -3077,7 +3002,9 @@
     overflow-x: hidden;
     overflow-y: scroll;
     height: 50rem;
-    border: 0.4rem double;
+    background: linear-gradient(transparent,transparent),linear-gradient(transparent,transparent);
+    border: 0.3rem solid;
+    border-image: var(--leg-border) 3;
     box-shadow: 0 0 2rem inset black;
     border-radius: var(--var-border-radius,0.5rem);
 }
@@ -3098,7 +3025,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 111rem;
-    height: 121rem;
+    height: 120rem;
     justify-content: space-evenly;
     padding-bottom: 2rem;
 }
@@ -3164,7 +3091,7 @@
     --bg-bright: #dddddd;
     border: var(--var-border-width, 0.1rem) solid #888888;
     border-radius: var(--var-border-radius, 0.5rem);
-    box-shadow: 0 0 1rem var(--color-background) inset,#888888 inset 0px 0px 0px 2px;
+    box-shadow: 0 0 1rem black inset,#888888 inset 0px 0px 0px 2px;
     margin: 0;
     padding: 0.6rem;
     transition-duration: 0.15s;
@@ -3270,7 +3197,7 @@
     color: var(--color-laitela--accent);
     background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     border: var(--var-border-width, 0.1rem) solid #888888;
-    box-shadow: 0 0 1rem var(--color-background) inset,#888888 inset 0 0 0 0.3rem;
+    box-shadow: 0 0 1rem black inset,#888888 inset 0 0 0 0.3rem;
     border-radius: var(--var-border-radius, 0.5rem);
     padding: 1rem;
 }

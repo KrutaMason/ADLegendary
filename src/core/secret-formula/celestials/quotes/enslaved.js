@@ -3,23 +3,16 @@ export const enslavedQuotes = {
     id: 0,
     lines: [
       { text: "A visitor? We have not had one... eons.",
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
+        //image: "nameless_background.png"
       }, {
         text: `We... had a name. It has been lost... to this place.`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_intro.png"
       }, {
-        text: `The others... will not let us rest. We do their work with time... \
-Place time... into places... that need it... Watch ourselves grow... pass and die.`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
+        text: `The others... will not let us rest. We do their work with time... 
+        Place time... into places... that need it... Watch ourselves grow... pass and die.`,
         //image: "nameless_intro.png"
       }, {
         text: `Perhaps you... will break these chains... we will wait.`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_chains.png"
       }
     ]
@@ -27,10 +20,8 @@ Place time... into places... that need it... Watch ourselves grow... pass and di
   unlockRun: {
     id: 1,
     lines: [
-      { text: `The others... used us. They will use... or destroy you. \
- our suffering... power will be yours...`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
+      { text: `The others... used us. They will use... or destroy you. 
+        End our suffering... power will be yours...`,
         //image: "nameless_reality.png"
       }
     ]
@@ -38,11 +29,9 @@ Place time... into places... that need it... Watch ourselves grow... pass and di
   startRun: {
     id: 2,
     lines: [
-      { text: `So little space... but no... prison... is perfect. \
-They squeezed... this Reality... too tightly. Cracks appeared. \
-Search... everywhere. We will help... where we can.`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
+      { text: `So little space... but no... prison... is perfect. 
+        They squeezed... this Reality... too tightly. Cracks appeared. 
+        Search... everywhere. We will help... where we can.`,
         //image: "nameless_inside.png"
       }
     ]
@@ -51,13 +40,9 @@ Search... everywhere. We will help... where we can.`,
     id: 3,
     lines: [
       { text: "... you need... to look harder... We think... we can help...",
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_inside.png"
       }, {
         text: "You have unlocked help from The Nameless Ones.",
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_help.png",
         showCelestialName: false,
       }
@@ -67,8 +52,6 @@ Search... everywhere. We will help... where we can.`,
     id: 4,
     lines: [
       { text: "... did not... underestimate you...",
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_v.png"
       }
     ]
@@ -77,23 +60,15 @@ Search... everywhere. We will help... where we can.`,
     id: 5,
     lines: [
       { text: "All... fragments... clones... freed.",
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_freedom.png"
       }, {
         text: `We have given... tools... of our imprisoning... Use them...`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_tesseract.png"
       }, {
         text: `Freedom from torture... is torture itself.`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_end.png"
       }, {
         text: `... Thank... You...`,
-        image: "placeholder_enslaved",
-        hasMatureContent: true,
         //image: "nameless_end.png",
         showCelestialName: false
       }

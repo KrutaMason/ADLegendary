@@ -221,7 +221,6 @@ export class EternityChallengeState extends GameMechanicState {
       if (this.id === 6 && this.completions === 5) EnslavedProgress.ec6.giveProgress();
       if (!auto && EnslavedProgress.challengeCombo.hasProgress) Tab.challenges.normal.show();
     }
-    if (!auto) AudioManagement.playSound("challenge_enter")
     startEternityChallenge();
     return true;
   }
@@ -277,7 +276,6 @@ export class EternityChallengeState extends GameMechanicState {
     `which has caused you to exit it.`,
     { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     EventHub.dispatch(GAME_EVENT.CHALLENGE_FAILED);
-    AudioManagement.playSound("challenge_fail")
   }
 
   tryFail(auto = false) {

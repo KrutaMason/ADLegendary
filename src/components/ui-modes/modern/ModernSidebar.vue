@@ -39,11 +39,10 @@ export default {
     :class="{'c-modern-sidebar-switched':this.sidebarSideSwitch}"
     :style="{'opacity':fade}"
   >
-    <ModernSidebarCurrency 
-    v-for="n in this.amount"
-    :key="n"
-    :id="n-1"
-    />
+    <ModernSidebarCurrency :id="0"/>
+    <ModernSidebarCurrency :id="1" v-if="this.amount>1"/>
+    <ModernSidebarCurrency :id="2" v-if="this.amount>2"/>
+    <ModernSidebarCurrency :id="3" v-if="this.amount>3"/>
     <template
       v-for="(tab, tabPosition) in tabs"
     >

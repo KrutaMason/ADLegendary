@@ -74,10 +74,7 @@ Vue.mixin({
     },
     pluralize,
     quantify,
-    quantifyInt,
-    isInaccessible(value) {
-      return isInaccessible(value);
-    },
+    quantifyInt
   }
 });
 

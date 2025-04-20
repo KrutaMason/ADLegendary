@@ -46,7 +46,7 @@ export default {
       this.isRefining = GlyphSacrificeHandler.isRefining;
     },
     handleYesClick() {
-      Glyphs.deleteAllRejected(true,true);
+      Glyphs.deleteAllRejected(true);
     },
   },
 };
@@ -56,7 +56,6 @@ export default {
   <ModalWrapperChoice
     option="sacrificeAll"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       {{ topLabel }}

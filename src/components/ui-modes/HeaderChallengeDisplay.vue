@@ -40,7 +40,7 @@ export default {
       return [
         celestialReality(Teresa, "Teresa's", "teresa", Teresa.RealityName),
         celestialReality(Effarig, "Effarig's", "effarig", Effarig.RealityName),
-        celestialReality(Enslaved, "The Nameless Ones'", "enslaved", Enslaved.RealityName),
+        celestialReality(Enslaved, "The Nameless Ones'","enslaved", Enslaved.RealityName),
         celestialReality(V, "V's", "v", V.RealityName),
         celestialReality(Ra, "Ra's", "ra", Ra.RealityName),
         celestialReality(Laitela, "Lai'tela's", "laitela", Laitela.RealityName),
@@ -69,7 +69,7 @@ export default {
           activityToken: () => player.challenge.infinity.current
         },
         {
-          name: token => `${NormalChallenge(token).config.name()} Challenge`,
+          name: token => `${NormalChallenge(token).config.name} Challenge`,
           newname: token => `${NormalChallenge(token).name}`,
           bracket: token => `(Ω${token})`,
           html: () => `<span class="c-challenge-text c-challenge-text--antimatter">`,
@@ -109,7 +109,6 @@ export default {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
-        const type = part.name(token).includes("Reality") ? this.celNaming : this.naming
         if (part.name(token).includes("Eternity Challenge")) {
           const currEC = player.challenge.eternity.current;
           const nextCompletion = EternityChallenge(currEC).completions + 1;
@@ -123,7 +122,7 @@ export default {
           }
           names.push(`${this.naming?part.name(token):part.newname(token)} ${completionText}`);
         } else {
-          names.push(type?part.name(token):part.newname(token));
+          names.push(this.naming?part.name(token):part.newname(token));
         }
       }
       return names;
@@ -132,7 +131,7 @@ export default {
       return this.infinityUnlocked || this.activeChallengeNames.length > 0;
     },
     isInFailableEC() {
-      return this.activeChallengeNames.some(str => str.match(this.naming ? /Eternity Challenge (4|12)/gu :  /Curtailed Abundance|Ephemerality/gu ));
+      return this.activeChallengeNames.some(str => str.match(this.naming ? /Eternity Challenge (4|12)/gu : EternityChallenge(4||8)._config.label));
     },
     challengeDisplay() {
       if (this.inPelle && this.activeChallengeNames.length > 0) {

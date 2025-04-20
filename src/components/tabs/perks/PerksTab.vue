@@ -147,7 +147,26 @@ export const PerkNetwork = {
     this.lastPerkNotation = notation;
 
     this.makeNetwork();
-    this.setGrids(player.options.perkGridsEnabled);
+    this.network.on("beforeDrawing", function (ctx) {
+    var width = ctx.canvas.clientWidth;
+    var height = ctx.canvas.clientHeight;
+    var spacing = 80;
+    var gridExtentFactor = 8;
+    ctx.strokeStyle = Theme.current().name === "S4"?"black":"#88888866";
+    ctx.lineWidth = 1
+  
+  // draw grid
+    ctx.beginPath();
+    for (var x = -width * gridExtentFactor; x <= width * gridExtentFactor; x += spacing) {
+      ctx.moveTo(Theme.current().name === "S4"?x-Math.random()*632:x, height * gridExtentFactor);
+      ctx.lineTo(x, -height * gridExtentFactor);
+    }
+    for (var y = -height * gridExtentFactor; y <= height * gridExtentFactor; y += spacing) {
+      ctx.moveTo(width * gridExtentFactor, Theme.current().name === "S4"?y-Math.random()*632:y);
+      ctx.lineTo(-width * gridExtentFactor, y);
+    }
+    ctx.stroke();
+    });
     this.network.on("click", params => {
       const id = params.nodes[0];
       if (!isFinite(id)) return;
@@ -202,12 +221,16 @@ export const PerkNetwork = {
       // As far as I am aware, vis.js doesn't support arbitrary CSS styling; nevertheless, we still want the original
       // description to be visible instead of being hidden by disable/lock text
       title: 
-        `<div class="vis-tooltip__inner" style="--base:${perkColors()[perk.config.family].primary()}">
-        <div class='vis-tooltip__title'>${perk.config.name}</div>
-        <span style='${isDisabled(perk) ? 'text-decoration: line-through;' : ''}'> ${perk.config.description}</span>
-        ${perk.config.automatorPoints && !isDisabled(perk)? `<div class="vis-tooltip__AP">+${formatInt(perk.config.automatorPoints)} AP</div>`: ""}
-        </div>`,
-        // <div class="vis-tooltip__id">(${perk.config.label})</div>
+        `<div class="vis-tooltip__id">(${perk.config.label})</div>
+         <div class='vis-tooltip__title'
+         style="--perk-color:${perkColors()[perk.config.family].primary()}">${perk.config.name}</div>
+        <div class="o-descriptionBlock" style='${isDisabled(perk) ? 'text-decoration: line-through;' : ''}'>
+          ${perk.config.description}
+          ${perk.config.automatorPoints && !isDisabled(perk)? 
+        `<br><div class="vis-tooltip__AP">
+        +${formatInt(perk.config.automatorPoints)} Automator Points from purchasing</div>`: ""}
+        </div>`
+        ,
         //         <div style="margin: -3.5rem 0 0;display: flex;justify-content: center;">
         //  <div class='l-perk-display ${perk.config.automatorPoints?"c-perk-display-diamond":""}' style="--bg-bright:${perkColorList[perk.config.family].primary[0]};--bg-dark:${perkColorList[perk.config.family].secondary[0]};"></div>
         //  </div>
@@ -243,7 +266,7 @@ export const PerkNetwork = {
         size: 18,
         font: {
           size: 0,
-          face: "cambria",
+          face: "cambria"
         },
         borderWidth: 2,
         shadow: true
@@ -278,30 +301,6 @@ export const PerkNetwork = {
     const newState = this.currentLayout.straightEdges === undefined ? state : !this.currentLayout.straightEdges;
     this.network.setOptions({ edges: { smooth: { enabled: newState }} });
   },
-  setGrids(state) {
-    if (state===true) this.network.on("beforeDrawing", function (ctx) {
-      var width = ctx.canvas.clientWidth;
-      var height = ctx.canvas.clientHeight;
-      var spacing = 80;
-      var gridExtentFactor = 8;
-      ctx.strokeStyle = Theme.current().name === "S4"?"black":"#88888888";
-      ctx.lineWidth = 2
-  
-    // draw grid
-      ctx.beginPath();
-      for (var x = -width * gridExtentFactor; x <= width * gridExtentFactor; x += spacing) {
-        ctx.moveTo(Theme.current().name === "S4"?x-Math.random()*632:x, height * gridExtentFactor);
-        ctx.lineTo(x, -height * gridExtentFactor);
-      }
-      for (var y = -height * gridExtentFactor; y <= height * gridExtentFactor; y += spacing) {
-        ctx.moveTo(width * gridExtentFactor, Theme.current().name === "S4"?y-Math.random()*632:y);
-        ctx.lineTo(-width * gridExtentFactor, y);
-      }
-      ctx.stroke();
-    });
-    else this.network.off("beforeDrawing");
-    this.network.redraw()
-  },
   moveToDefaultLayoutPositions(layoutIndex) {
     // Things go wonky if we don't turn these off before moving
     this.setPhysics(false);
@@ -329,9 +328,7 @@ export const PerkNetwork = {
     const center = centerOnStart
       ? PerkNetwork.network.body.nodes[GameDatabase.reality.perks.firstPerk.id]
       : (PerkLayouts[player.options.perkLayout].centerOffset ?? new Vector(0, 0));
-    const centAnimation = centerOnStart ? {duration: 250, easingFunction: "easeOutCubic"}
-    : false
-    this.network.moveTo({ position: { x: center.x, y: center.y }, scale: 0.4, offset: { x: 0, y: 0 }, animation: centAnimation});
+    this.network.moveTo({ position: { x: center.x, y: center.y }, scale: 0.4, offset: { x: 0, y: 0 } });
   },
   setLabelVisibility(areVisible) {
     const options = {
@@ -340,7 +337,7 @@ export const PerkNetwork = {
           size: areVisible ? 20 : 0,
           color: Theme.current().isDark() ? "#DDDDDD" : "#222222",
           strokeWidth: 2,
-          strokeColor: '#888888aa',
+      strokeColor: '#888888aa',
         }
       }
     };

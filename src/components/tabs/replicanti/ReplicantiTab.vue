@@ -57,7 +57,7 @@ export default {
         ReplicantiUpgrade.chance,
         value => `Replicate chance: ${formatPercents(value)}`,
         cost => `+${formatPercents(0.01)} Costs: ${format(cost)} IP`,
-        progress => `${progress*100}%`
+        progress => `${formatPercents(progress,2)}`
       );
     },
     replicantiIntervalSetup() {
@@ -83,7 +83,7 @@ export default {
         value => `Interval: ${formatInterval(value)}`,
         cost =>
           `➜ ${formatInterval(upgrade.nextValue)} Costs: ${format(cost)} IP`,
-        progress => `${progress*100}%`
+        progress => `${formatPercents(progress,2)}`
       );
     },
     maxGalaxySetup() {
@@ -102,37 +102,35 @@ export default {
           return description;
         },
         cost => `+${formatInt(1)} Costs: ${format(cost)} IP`,
-        progress => `${progress*100}%`
+        progress => `${formatPercents(progress,2)}`
       );
     },
     boostText() {
       const boostList = [];
       const start = `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent">`
-      boostList.push(`${this.startHtml(this.mult)}${formatX(this.mult, 2, 2)}</span>
+      boostList.push(`${start}${formatX(this.mult, 2, 2)}</span>
         <div>to all Infinity Dimensions</div></div>`);
       if (this.hasADMult||this.realityUnlocked) {
         boostList.push(`<div class="c-replicanti-effect-container" ${!this.hasADMult?'style="opacity:0.375"':""}>
-        <span class="c-replicanti-description__accent 
-        ${isInaccessible(this.multAD)?"c-replicanti-description__accent--fixed":""}">${this.hasADMult?formatX(this.multAD, 2, 2):"Locked"}</span>
+        <span class="c-replicanti-description__accent">${this.hasADMult?formatX(this.multAD, 2, 2):"Locked"}</span>
         <div>to all Antimatter Dimensions from Time Study 101</div></div>`);
       }
       if (this.hasTDMult||this.realityUnlocked) {
         boostList.push(`<div class="c-replicanti-effect-container" ${!this.hasTDMult?'style="opacity:0.375"':""}>
-        <span class="c-replicanti-description__accent
-        ${isInaccessible(this.multTD)?"c-replicanti-description__accent--fixed":""}">${this.hasTDMult?formatX(this.multTD, 2, 2):"Locked"}</span>
+        <span class="c-replicanti-description__accent">${this.hasTDMult?formatX(this.multTD, 2, 2):"Locked"}</span>
         <div>to all Time Dimensions from a Dilation Upgrade</div></div>`);
       }
       if (this.hasDTMult) {
         const additionalEffect = GlyphAlteration.isAdded("replication") ? "and Replicanti speed" : "";
-        boostList.push(`${this.startHtml(this.multDT)}${formatX(this.multDT, 2, 2)}</span>
+        boostList.push(`${start}${formatX(this.multDT, 2, 2)}</span>
         <div>to Dilated Time ${additionalEffect} from Glyphs</div></div>`);
       }
       if (this.hasTGPow) {
-        boostList.push(`${this.startHtml(this.TGPow)}+${formatPercents(this.TGPow,2)}</span>
+        boostList.push(`${start}+${formatPercents(this.TGPow,2)}</span>
         <div>to Tachyonic Galaxy strength from Glyph Alchemy</div></div>`);
       }
       if (this.hasIPMult) {
-        boostList.push(`${this.startHtml(this.multIP)}${formatX(this.multIP)}</span>
+        boostList.push(`${start}${formatX(this.multIP)}</span>
         <div>to Infinity Points from Glyph Alchemy</div></div>`);
       }
       return `${boostList.join("")}`;
@@ -200,10 +198,6 @@ export default {
       this.estimateToMax = this.calculateEstimate();
       this.realityUnlocked = PlayerProgress.realityUnlocked()
     },
-    startHtml(value){
-      if (isInaccessible(value)) return `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent c-replicanti-description__accent--fixed">`
-      else return `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent">`
-    },
     vacuumText() {
       return wordShift.wordCycle(PelleRifts.vacuum.name);
     },
@@ -256,9 +250,7 @@ export default {
       <div class="c-replicanti-table">
       <p class="c-replicanti-description">
         You have
-        <span class="c-replicanti-description__accent"
-        :class="{'c-replicanti-description__accent--fixed': isInaccessible(amount) }"
-        >{{ format(amount, 2, 0) }}</span>
+        <span class="c-replicanti-description__accent">{{ format(amount, 2, 0) }}</span>
         Replicanti, translated to
         </p>
         <div 
@@ -273,7 +265,6 @@ export default {
         <span
           v-tooltip="toMaxTooltip"
           class="max-accent"
-          :class="{'max-accent--fixed': isInaccessible(maxReplicanti) }"
         >{{ format(maxReplicanti, 2) }}</span>.
       </div>
       <ReplicantiBar />
@@ -310,11 +301,6 @@ export default {
   font-family: cambria;
   font-size:2rem;
   cursor: default;
-}
-
-.max-accent--fixed {
-  font-weight: normal;
-  font-family: typewriter;
 }
 
 .modified-cap {

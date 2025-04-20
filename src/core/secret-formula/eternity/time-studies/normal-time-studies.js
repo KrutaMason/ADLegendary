@@ -304,10 +304,12 @@ export const normalTimeStudies = [
     requirement: [111],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [121, 122],
-    description: "You gain more Eternity Points based on time spent this Eternity",
+    description: () =>(Perk.studyIdleEP.isBought
+      ?"You gain more Eternity Points based on time spent this Reality"
+      :"You gain more Eternity Points based on time spent this Eternity"),
     effect: () => {
       const perkEffect = TimeSpan.fromMinutes(Perk.studyIdleEP.effectOrDefault(0));
-      const totalSeconds = Time.thisEternity.plus(perkEffect).totalSeconds;
+      let totalSeconds = Perk.studyIdleEP.isBought?Time.thisReality.plus(perkEffect).totalSeconds:Time.thisEternity.totalSeconds;
       return Math.sqrt(1.39 * totalSeconds);
     },
     formatEffect: value => formatX(value, 1, 1)
@@ -383,10 +385,12 @@ export const normalTimeStudies = [
     requirement: [133],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [141, 142],
-    description: "Multiplier to Infinity Points, which increases over this Infinity",
+    description: () =>(Perk.studyIdleEP.isBought
+    ?"Multiplier to Infinity Points, which increases over this Reality"
+    :"Multiplier to Infinity Points, which increases over this Infinity"),
     effect: () => {
       const perkEffect = TimeSpan.fromMinutes(Perk.studyIdleEP.effectOrDefault(0));
-      const totalSeconds = Time.thisInfinity.plus(perkEffect).totalSeconds;
+      let totalSeconds = Perk.studyIdleEP.isBought?Time.thisReality.plus(perkEffect).totalSeconds:Time.thisInfinity.totalSeconds;
       return thisInfinityMult(totalSeconds);
     },
     formatEffect: value => formatX(value, 2, 1),

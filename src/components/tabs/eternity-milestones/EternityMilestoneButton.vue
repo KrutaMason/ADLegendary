@@ -57,10 +57,9 @@ export default {
     v-if="!config.invisible"
     class="l-eternity-milestone"
   >
-    <div class="o-eternity-milestone__goal">
-      <span :class="{'o-eternity-milestone__goal--fixed': isInaccessible(eternities) }">{{ formatInt(eternities) }}</span> 
-      {{ pluralize("Eternity", eternities) }}:
-    </div>
+    <span class="o-eternity-milestone__goal">
+      {{ quantifyInt("Eternity", eternities) }}:
+    </span>
     <button
       v-tooltip="activeCondition"
       :class="rewardClassObject"

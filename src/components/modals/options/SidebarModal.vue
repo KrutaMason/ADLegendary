@@ -21,7 +21,6 @@ export default {
     return {
       sidebarDisplayAmount: 1,
       sidebarWidth:12.8,
-      switchCount: 0,
       ids:[0,0,0,0],
       sidebarResource: ["","","",""],
       sidebarSideSwitch:false
@@ -56,7 +55,6 @@ export default {
     },
     sidebarSideSwitch(newValue) {
     player.options.sidebarSideSwitch = newValue;
-    if (++this.switchCount > 49) SecretAchievement(52).unlock();
     },
   },
   methods: {
@@ -80,7 +78,7 @@ export default {
     player.options.sidebarWidth = this.sidebarWidth;
     },
     sidebarLabel(n) {
-      return `#${n+1}: ${this.sidebarResource[n]}`;
+      return `Sidebar #${n+1}: ${this.sidebarResource[n]}`;
     },
   }
 };
@@ -91,29 +89,24 @@ export default {
     <template #header>
       Sidebar Options
     </template>
+
     <div class="c-modal-options__button-container">
       <PrimaryToggleButton
           v-model="sidebarSideSwitch"
           class="o-primary-btn--option l-options-grid__button"
           label="Sidebar on the Right:"
         />
-    <div 
-      class="o-primary-btn o-primary-btn--option o-primary-btn--slider" 
-      style="margin:0.5rem 0.8rem"
-    >
-      Sidebar Width: {{ sidebarWidth }}rem
-      <SliderComponent
-        class="o-primary-btn--slider__slider"
-        v-bind="sliderPropsWidth"
-        :value="sidebarWidth"
-        @input="adjustSliderWidth($event)"
-     />
-    </div>
-  <div
-  class="o-primary-btn o-primary-btn--option o-primary-btn--slider"
-  style="margin:0.5rem 0.8rem"
-  >
-    Display {{ quantify("Resource", sidebarDisplayAmount) }}
+  <div class="o-primary-btn o-primary-btn--option o-primary-btn--slider"  style="margin:0.5rem 0.8rem">
+    Sidebar Width: {{ sidebarWidth }}rem
+    <SliderComponent
+      class="o-primary-btn--slider__slider"
+      v-bind="sliderPropsWidth"
+      :value="sidebarWidth"
+      @input="adjustSliderWidth($event)"
+    />
+  </div>
+  <div class="o-primary-btn o-primary-btn--option o-primary-btn--slider" style="margin:0.5rem 0.8rem">
+    Display {{ sidebarDisplayAmount }} Resources
     <SliderComponent
       class="o-primary-btn--slider__slider"
       v-bind="sliderPropsAmount"
@@ -123,8 +116,8 @@ export default {
   </div>
     </div>
     <div class="c-modal-options__button-container c-modal-options__button-container-fixed">
-    <ExpandingControlBox
-          v-for="n in 4"
+  <ExpandingControlBox
+          v-for="n in sidebarDisplayAmount"
           :key="n"
           class="l-options-grid__button c-options-grid__notations"
           button-class="o-primary-btn o-primary-btn--option l-options-grid__notations-header o-primary-btn--option-nomargin"
@@ -132,7 +125,7 @@ export default {
           :label="sidebarLabel(n-1)"
         >
         <template #dropdown><SelectSidebarDropdown :id="n-1"/></template>
-    </ExpandingControlBox>
+  </ExpandingControlBox>
 </div>
   </ModalWrapperOptions>
 </template>

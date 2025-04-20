@@ -798,14 +798,12 @@ window.player = {
     audio:{
       volume:1,
       softreset: true,
-      infinity: true,
-      eternity: true,
-      reality: true,
       notify: true,
     },
     newUI: true,
     naming: {
       dimensions: true,
+      achievement: true,
       challenges: true,
       celestial: true,
     },
@@ -929,7 +927,6 @@ window.player = {
     lastOpenSubtab: Array.repeat(0, 11),
     perkLayout: 0,
     perkPhysicsEnabled: true,
-    perkGridsEnabled: true,
     automatorEvents: {
       newestFirst: false,
       timestampType: 0,

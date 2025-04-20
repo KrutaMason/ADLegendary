@@ -257,12 +257,14 @@ border-bottom: 0.1rem dashed gray;
 
 .c-automator-input-required {
   background: linear-gradient(white -50%,var(--color-blockmator-block-required) 75%);
+  background-color: var(--color-blockmator-block-required);
   box-shadow: 0 0 0 0.1rem var(--color-blockmator-block-required) inset,0 0 0.5rem 0.1rem black inset;
 }
 
 .c-automator-input-optional {
   color: var(--color-blockmator-light-text);
   background: linear-gradient(white -50%,var(--color-blockmator-block-optional) 75%);
+  background-color: var(--color-blockmator-block-optional);
   box-shadow: 0 0 0 0.1rem var(--color-blockmator-block-optional) inset,0 0 0.5rem 0.1rem black inset;
 }
 

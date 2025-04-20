@@ -21,7 +21,7 @@ export default {
       this.canReality = isRealityAvailable();
     },
     handleYesClick() {
-      if (player.options.audio.reality) AudioManagement.playSound("reset_reality-reset")
+      AudioManagement.playSound("reset_reality-reset")
       beginProcessReality(getRealityProps(true));
       EventHub.ui.offAll(this);
     }
@@ -33,7 +33,6 @@ export default {
   <ModalWrapperChoice
     option="resetReality"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       You are about to reset your {{ resetTerm }}

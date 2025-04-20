@@ -311,7 +311,7 @@ export const Glyphs = {
       this.updateMaxGlyphCount();
       EventHub.dispatch(GAME_EVENT.GLYPHS_EQUIPPED_CHANGED);
       EventHub.dispatch(GAME_EVENT.GLYPHS_CHANGED);
-      if (audio) AudioManagement.playSound("glyph_equip",undefined,1+(Glyphs.activeList.length-1)/25)
+      if(audio)AudioManagement.playSound("glyph_equip",undefined,1+(Glyphs.activeList.length-1)/25)
       this.validate();
     } else {
       // We can only replace effarig/reality glyph
@@ -456,7 +456,7 @@ export const Glyphs = {
   isMusicGlyph(glyph) {
     return glyph?.cosmetic === "music";
   },
-  removeFromInventory(glyph, audio=false) {
+  removeFromInventory(glyph) {
     // This can get called on a glyph not in inventory, during auto sacrifice.
     if (glyph.idx === null) return;
     this.validate();
@@ -464,7 +464,6 @@ export const Glyphs = {
     if (index < 0) return;
     this.inventory[glyph.idx] = null;
     player.reality.glyphs.inventory.splice(index, 1);
-    if (audio) AudioManagement.playSound("glyph_sacrifice",undefined,[0.95,1.05])
     EventHub.dispatch(GAME_EVENT.GLYPHS_CHANGED);
     this.validate();
   },
@@ -563,7 +562,7 @@ export const Glyphs = {
   // If deleteGlyphs === false, we are running this from the modal and are doing so purely to *count* the number of
   // removed glyphs. In this case, we copy the inventory and run the purge on the copy - we need to be able to remove
   // glyphs as we go, or else the purge logic will be wrong (eg. 7 identical glyphs will all be "worse than 5 others")
-  autoClean(threshold = 5, deleteGlyphs = true, audio = false) {
+  autoClean(threshold = 5, deleteGlyphs = true) {
     const isHarsh = threshold < 5;
     let toBeDeleted = 0;
     const inventoryCopy = deleteGlyphs ? undefined : this.fakePurgeInventory();
@@ -585,7 +584,6 @@ export const Glyphs = {
         toBeDeleted++;
       }
     }
-    if (audio&&toBeDeleted>0) AudioManagement.playSound("glyph_purge",undefined,[0.9,1.1])
     if (player.reality.autoCollapse && deleteGlyphs) this.collapseEmptySlots();
     return toBeDeleted;
   },
@@ -607,8 +605,8 @@ export const Glyphs = {
   harshAutoClean() {
     this.autoClean(1);
   },
-  deleteAllUnprotected(audio=false) {
-    this.autoClean(0,undefined,audio);
+  deleteAllUnprotected() {
+    this.autoClean(0);
   },
   deleteAllRejected(deleteGlyphs = true) {
     let toBeDeleted = 0;
@@ -618,7 +616,6 @@ export const Glyphs = {
         toBeDeleted++;
       }
     }
-    if (toBeDeleted>0) AudioManagement.playSound("glyph_purge",undefined,[0.9,1.1])
     if (player.reality.autoCollapse && deleteGlyphs) this.collapseEmptySlots();
     return toBeDeleted;
   },

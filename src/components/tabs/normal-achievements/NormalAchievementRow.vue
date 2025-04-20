@@ -44,9 +44,9 @@ export default {
       this.isHidden = this.isCompleted && player.options.hideCompletedAchievementRows;
     },
     getRowColor(location) {
-      if (location.isDisabled) return `var(--achrow-pelled)`;
-      if (location.isUnlocked) return `var(--achrow-complete)`;
-      if (!location.isUnlocked && (location.isPreReality&&PlayerProgress.realityUnlocked()) && !location.isDisabled) return "var(--achrow-waiting)";
+      if (location.isDisabled) return `#ed143d60`;
+      if (location.isUnlocked) return `${Theme.isDark?"#406b5c80":"#183b2de6"}`;
+      if (!location.isUnlocked && (location.isPreReality&&PlayerProgress.realityUnlocked()) && !location.isDisabled) return "#acac3960";
       return "transparent";
     },
     setStyleOfRowBg() {

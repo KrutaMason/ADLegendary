@@ -11,7 +11,7 @@ export const normalAchievements = [
   {
     id: 12,
     name: "100 antimatter is a lot",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
+    get description() { return `Buy a ${player.options.naming.dimensions ? 
       `an Antimatter ${AntimatterDimension(2).uniqueName}` : "a 2nd Antimatter Dimension"}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
@@ -116,7 +116,7 @@ export const normalAchievements = [
     name: "There's no point in doing that...",
     get description() {
       return `Buy a single ${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(1).uniqueName}` : "1st Antimatter Dimension"} when you have over ${format(DC.E150)} of them.`;
+      `an Antimatter ${AntimatterDimension(1).uniqueName}` : "1st Antimatter Dimension"} when you have over ${format(DC.E150)} of them.`;
     },
     checkRequirement: () => AntimatterDimension(1).amount.exponent >= 150,
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
@@ -173,7 +173,7 @@ export const normalAchievements = [
         ? `Be either online or offline for a period of over ${formatInt(6)} hours (real time).`
         : `Be either online or offline for a period of over ${formatInt(6)} hours.`;
     },
-    checkRequirement: () => (Date.now() - player.lastUpdate >= 21600000 || player.thisUpdate >= 21600000) || PlayerProgress.realityUnlocked(),
+    checkRequirement: () => Date.now() - player.lastUpdate >= 21600000 || player.thisUpdate >= 21600000,
     checkEvent: GAME_EVENT.GAME_TICK_BEFORE
   },
   {
@@ -346,7 +346,7 @@ export const normalAchievements = [
     name: "Many Deaths",
     get description() {
       return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the ${NormalChallenge(2).config.name()} Challenge`}
+      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the 2nd Antimatter Dimension Autobuyer Challenge`}
        in ${formatInt(3)} minutes or less.`;
     },
     checkRequirement: () => NormalChallenge(2).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
@@ -363,7 +363,7 @@ export const normalAchievements = [
     name: "Gift from the Gods",
     get description() {
       return `Complete ${player.options.naming.challenges?`
-        ${NormalChallenge(8).name} (C8)`:`the ${NormalChallenge(8).config.name()} Challenge`} 
+        ${NormalChallenge(8).name} (C8)`:`the 8th Antimatter Dimension Autobuyer Challenge`} 
         in ${formatInt(3)} minutes or less.`;
     },
     checkRequirement: () => NormalChallenge(8).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
@@ -379,7 +379,7 @@ export const normalAchievements = [
     id: 58,
     name: "This is fine.",
     get description() { return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(9).name} (C9)`:`the ${NormalChallenge(9).config.name} Challenge`}
+      ${player.options.naming.challenges?`${NormalChallenge(9).name} (C9)`:`the Tickspeed Autobuyer Challenge`}
        in ${formatInt(3)} minutes or less.`; },
     checkRequirement: () => NormalChallenge(9).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
@@ -458,7 +458,7 @@ export const normalAchievements = [
     name: "You did this again just for the achievement right?",
     get description() {
       return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(3).name} (C3)`:`the ${NormalChallenge(3).config.name()} Challenge`}
+      ${player.options.naming.challenges?`${NormalChallenge(3).name} (C3)`:`the 3rd Antimatter Dimension Autobuyer Challenge`}
        in ${formatInt(10)} seconds or less.`;
     },
     checkRequirement: () => NormalChallenge(3).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalSeconds <= 10,
@@ -472,7 +472,7 @@ export const normalAchievements = [
     name: "ERROR 909: Dimension not found",
     get description() { return `Get to Infinity with only a single ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}` : 
       "1st Antimatter Dimension"} without Dimension Boosts or Antimatter Galaxies, while in 
-      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the ${NormalChallenge(2).config.name()} Challenge`}.`;},
+      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the 2nd Antimatter Dimension Autobuyer Challenge`}.`;},
     checkRequirement: () =>
       NormalChallenge(2).isOnlyActiveChallenge &&
       AntimatterDimension(1).amount.eq(1) &&

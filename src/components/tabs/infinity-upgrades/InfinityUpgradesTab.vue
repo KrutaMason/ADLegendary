@@ -127,7 +127,7 @@ export default {
   <div class="l-infinity-upgrades-tab">
     <div
       v-if="chargeUnlocked"
-      class="c-subtab-option-container c-subtab-option-container--border"
+      class="c-subtab-option-container"
     >
       <PrimaryButton
         :class="disChargeClassObject"
@@ -201,7 +201,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 0 0 1rem var(--color-background) inset;
+  box-shadow: 0 0 1rem black inset;
   opacity: 0.7;
 }
 .t-s14 .c-infinity-upgrade-grid__column--background {

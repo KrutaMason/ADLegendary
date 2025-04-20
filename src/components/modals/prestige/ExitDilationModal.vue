@@ -51,7 +51,6 @@ export default {
   <ModalWrapperChoice
     option="dilation"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-dilation)'}"
   >
     <template #header>
       <span v-if="isDoomed">

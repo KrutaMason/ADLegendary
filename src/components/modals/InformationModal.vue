@@ -28,7 +28,9 @@ export default {
       <br>
       AD: Legendary is a modified version of the game, created by MrKrutaman. 
       It focuses on a complete overhaul of the game's graphics and visuals, 
-      along with small additional non-gameplay content. This mod is intended for mature audience.
+      along with small additional non-gameplay content.
+      <br><br>
+      This mod is intended for mature audience.
     </div>
     <div class="l-socials">
       <InformationModalButton
@@ -46,11 +48,6 @@ export default {
         icon="fa-solid fa-file-lines"
         show-modal="changelog"
       />
-      <InformationModalButton
-        name="Original Version"
-        icon="fa-solid fa-ice-cream"
-        link="https://ivark.github.io/AntimatterDimensions/"
-      />
     </div>
   </div>
 </template>
@@ -66,18 +63,11 @@ export default {
 
 .c-information-modal {
   margin: 0.5rem;
-  border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-  border-radius: var(--var-border-radius, 0.5rem);
-  padding: 0.6rem;
-  background: linear-gradient(transparent, var(--base) 500%);
-  background-origin: border-box;
-  --base: #49cc8f;
 }
 
 .c-info-body {
   text-align: center;
-  font-family: cambria;
-  font-weight: bold;
+  font-style: italic;
   font-size: 1.75rem;
   margin: 1rem;
   padding: 0.5rem;
@@ -94,7 +84,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 5rem;
+  font-size: 7.5rem;
 }
 
 .t-s12 .l-socials {

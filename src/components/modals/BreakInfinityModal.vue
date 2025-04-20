@@ -29,7 +29,6 @@ export default {
   <ModalWrapperChoice
     :show-cancel="false"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-infinity)'}"
   >
     <template #header>
       You are Breaking Infinity

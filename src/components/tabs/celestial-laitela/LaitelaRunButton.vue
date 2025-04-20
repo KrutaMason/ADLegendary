@@ -46,10 +46,6 @@ export default {
       this.newname = `${Laitela.RealityName} ${Laitela.LevelName[Laitela.difficultyTier]}`
       this.newnamenormal = `${Laitela.RealityName}`
     },
-    realityTitle() {
-      return player.options.naming.celestial ? `Enter the ${Laitela.RealityName} ${Laitela.LevelName[Laitela.difficultyTier]}`
-       : "Start Lai'tela's Reality"
-    },
     startRun() {
       if (this.isDoomed) return;
       Modal.celestials.show({ name: "Lai'tela's", number: 5, celestial: Laitela });
@@ -74,11 +70,8 @@ export default {
 
 <template>
   <button :class="classObject()">
-    <span 
-    style="font-family: cambria;font-size:1.8rem"
-    :class="{ 'o-pelle-disabled': isDoomed }"
-    >
-      <b>{{ realityTitle() }}</b>
+    <span :class="{ 'o-pelle-disabled': isDoomed }">
+      <b>{{`${labelmode?"Start Lai'tela's":"Enter the"}`}} {{`${labelmode?"Reality":newname}`}}</b>
     </span>
     <div
       :class="runButtonClassObject()"

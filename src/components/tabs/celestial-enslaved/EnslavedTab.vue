@@ -39,6 +39,7 @@ export default {
     canAutoRelease: false,
     hasNoCharge: true,
     hasReachedCurrentCap: false,
+    labelmode:false,
   }),
   computed: {
     storedRealEfficiencyDesc() {
@@ -54,9 +55,8 @@ export default {
       return Enslaved.storedTimeInsideEnslaved(this.storedBlackHole);
     },
     realityTitle() {
-      if (this.isRunning) return player.options.naming.celestial ? `You are inside the ${Enslaved.RealityName}` 
-      : "You are inside The Nameless Ones' Reality"
-      return player.options.naming.celestial ? `Enter the ${Enslaved.RealityName}` : "Start The Nameless Ones' Reality";
+      if (this.isRunning) return this.labelmode?"You are inside The Nameless Ones' Reality":"You are inside the "+Enslaved.RealityName;
+      return this.labelmode?"Start The Nameless Ones' Reality":"Enter the "+Enslaved.RealityName;
     },
     runButtonClassObject() {
       return {
@@ -145,6 +145,7 @@ export default {
       this.canAutoRelease = Enslaved.canRelease(true);
       this.hasNoCharge = player.celestials.enslaved.stored === 0;
       this.hasReachedCurrentCap = this.storedReal === this.storedRealCap;
+      this.labelmode = !player.options.naming.celestial
     },
     toggleStoreBlackHole() {
       Enslaved.toggleStoreBlackHole();
@@ -213,7 +214,6 @@ export default {
         v-model="autoRelease"
         class="o-primary-btn--subtab-option"
         label="Pulse Black Hole:"
-        onclick="AudioManagement.playSound('blackhole_pulse')"
       />
     </div>
     <div class="l-enslaved-celestial-tab--inner">

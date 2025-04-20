@@ -90,7 +90,7 @@ export const AD = {
   },
   discoveredDim: {
     name: "Discovered Dimensions bonus",
-    multValue: dim => Decimal.pow(1.2, dim ? 1 : MultiplierTabHelper.activeDimCount("AD")-1),
+    multValue: dim => Decimal.pow(1.25, dim ? 1 : MultiplierTabHelper.activeDimCount("AD")-1),
     isActive: () => AntimatterDimension(2).isProducing,
     icon: MultiplierTabIcons.DIMENSION("AD"),
   },

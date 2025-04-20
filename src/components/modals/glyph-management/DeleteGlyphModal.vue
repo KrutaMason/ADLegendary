@@ -35,17 +35,14 @@ export default {
     },
     handleYesClick() {
       this.confirmedDelete = true;
-      Glyphs.removeFromInventory(this.glyph,true);
+      Glyphs.removeFromInventory(this.glyph);
     },
   },
 };
 </script>
 
 <template>
-  <ModalWrapperChoice 
-  @confirm="handleYesClick"
-  :style="{'--base':'var(--color-reality)'}"
-  >
+  <ModalWrapperChoice @confirm="handleYesClick">
     <template #header>
       You are about to delete a Glyph
     </template>

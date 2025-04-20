@@ -29,7 +29,7 @@ export default {
     },
     imageDisplay() {
       return {
-        "background-image": `url(images/quotes/${this.image}.png)`,
+        "background-image": `url(images/quotes/${this.image})`,
         //"image-rendering": "pixelated"
 }},
   },
@@ -148,14 +148,13 @@ export default {
   bottom:8.5rem;
 }
 .c-modal-celestial-image-container {
-  width: 54rem;
-  height: 30rem;
+  width:54rem;
+  height:30rem;
   margin-bottom: 1rem;
   border: var(--var-border-width, 0.3rem) solid;
   border-image: var(--leg-border-render) 3 round;
   background-size: 54rem 30rem;
   background-position: center;
-  box-sizing: content-box;
 }
 .t-s9 .c-modal-celestial-image-container{
   background-image: none !important

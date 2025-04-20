@@ -133,7 +133,7 @@ export default {
       return num > 1e8 ? format(num, 2) : formatInt(num);
     },
     fillProgress() {
-      let normalFill = `${Math.max(((this.dimamount-this.previousrequirement.amount) / (this.requirement.amount-this.previousrequirement.amount)),0)*100}%`;
+      let normalFill = formatPercents(Math.max(((this.dimamount-this.previousrequirement.amount) / (this.requirement.amount-this.previousrequirement.amount)),0),2)
       if (NormalChallenge(8).isRunning||InfinityChallenge(7).isRunning||EternityChallenge(6).isRunning) return "0%"
       return normalFill
     }
@@ -143,7 +143,7 @@ export default {
 
 <template>
   <div class="reset-container galaxy">
-    <h4>{{ typeName }} (<span class="reset-container--fixed">{{ sumText }}</span>)</h4>
+    <h4>{{ typeName }} ({{ sumText }})</h4>
     <span>Requires: {{ formatInt(requirement.amount) }} {{ dimName }}</span>
     <span v-if="hasIncreasedScaling" v-html="costScalingText"/>
     <button

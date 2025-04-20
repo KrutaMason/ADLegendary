@@ -8,7 +8,7 @@ body {
   direction: rtl;
 }
 
-@keyframes a-glasses {
+/*@keyframes a-glasses {
   0% { filter: blur(0); }
   10% { filter: blur(3px); }
   20% { filter: blur(0); }
@@ -22,8 +22,7 @@ body {
   85% { filter: opacity(100%); }
   92.5% { filter: opacity(50%); }
   100% { filter: opacity(100%); }
-}
-
+}*/
 .l-v-hexagon{
   transform: skewY(-30deg) rotate(240deg);
 }

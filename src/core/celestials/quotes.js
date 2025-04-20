@@ -76,8 +76,7 @@ class QuoteLine {
   constructor(line, parent) {
     this._parent = parent;
     this._showCelestialName = line.showCelestialName ?? true;
-    this._hasMatureContent = line.hasMatureContent ?? false;
-    this._image = line.image ?? `placeholder_${this._parent._celestial}`;
+    this._image = line.image ?? `placeholder_${this._parent._celestial}.png`;
     this._celestialArray = line.background
       ? () => blendCel(line.background)
       : [[parent.celestial, 1]];
@@ -105,18 +104,14 @@ class QuoteLine {
   get showCelestialName() {
     return this._showCelestialName;
   }
-
-  get hasMatureContent() {
-    return this._hasMatureContent;
-  }  
-
+  
   get celestialName() {
     return Celestials[this._parent.celestial].fullName;
   }
 
   get image() {
-    return !player.options.mature && this._hasMatureContent 
-    ? `${this._image}_safe` : this._image;
+    return !player.options.mature && this._parent._celestial === "laitela" 
+    ? `placeholder_${this._parent._celestial}_safe.png` : this._image;
   }
 }
 

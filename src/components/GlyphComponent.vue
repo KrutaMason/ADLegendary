@@ -329,7 +329,6 @@ export default {
     },
     colorObj() {
       let overrideColor;
-      let doomedGlyphs = ["power","infinity","replication","time","dilation"]
       if (this.glyph.color) overrideColor = GlyphAppearanceHandler.getColorProps(this.glyph.color);
       if (this.glyph.cosmetic) {
         if (this.glyph.cosmetic === this.glyph.type) {
@@ -351,7 +350,7 @@ export default {
 
       return {
         border: overrideColor?.border ?? GlyphAppearanceHandler.getBorderColor(this.glyph.type),
-        symbol: (Pelle.isDoomed&&doomedGlyphs.includes(this.glyph.type)) ? overrideColor?.border ?? "#ed143d" : overrideColor?.border ?? symbolColor,
+        symbol: !player.celestials.pelle.doomed ? overrideColor?.border ?? symbolColor : overrideColor?.border ?? "crimson",
         bg: overrideColor?.bg ?? this.cosmeticConfig.currentColor.bg
       };
     },
@@ -410,35 +409,11 @@ export default {
       };
     },
     crateStyle(){
-      if (this.hasCrate < 0) return;
-      const fullDots = this.glyphEffects.length >= (this.glyph.type === "effarig" ? 7 : 4)
-      let posID = 1;
-      switch (this.glyph.type) {
-        case "effarig":
-          posID = fullDots ? 5 : 4;
-          break;
-        case "reality":
-          posID = fullDots ? 7 : 6;
-          break;
-        case "cursed":
-          posID = 8;
-          break;
-        case "companion":
-          posID = 9;
-          break;
-        case "helios":
-          posID = 10;
-          break;
-        default:
-          posID = fullDots ? 3 : 2;
+      if (this.hasCrate<0) return;
+      return {
+        "c-glyph-component-hascrate-cursed":this.isCursedGlyph,
+        "c-glyph-component-hascrate-reality":this.isRealityGlyph
       }
-      if (Pelle.isDoomed) return posID = 8
-      return posID
-    },
-    hasAlteredCrate(){
-      const blacklist = ["companion", "cursed","helios"];
-      if (this.hasCrate < 0 || blacklist.includes(this.glyph.type) || Pelle.isDoomed) return false;
-      if (player.reality.glyphs.sac[this.glyph.type] >= GlyphAlteration.boostingThreshold) return true
     },
     mouseEventHandlers() {
       const handlers = this.hasTooltip ? {
@@ -509,7 +484,7 @@ export default {
         if ((remainingEffects & 1) === 1) effectIDs.push(id);
         remainingEffects >>= 1;
       }
-      if (this.glyph.effects >> 27 === 1) effectIDs.pop(28)
+      if (this.glyph.effects >> 27 === 1)effectIDs.pop(28)
       return effectIDs;
     },
     isRealityGlyph() {
@@ -818,10 +793,8 @@ export default {
     weird seams/artifacts at the edges. This makes for a rather complex workaround
   -->
   <div
-    :style="[outerStyle, {'--crate-posx': crateStyle}]"
-    :class="['l-glyph-component', 
-    {'c-glyph-component--dragging': isDragging}, 
-    {'c-glyph-component-hascrate': hasCrate>=1}]"
+    :style="outerStyle"
+    :class="['l-glyph-component', {'c-glyph-component--dragging': isDragging}, {'c-glyph-component-hascrate': hasCrate>=1}, crateStyle]"
     :draggable="draggable"
     v-on="draggable ? { dragstart: dragStart, dragend: dragEnd, drag: drag } : {}"
   >

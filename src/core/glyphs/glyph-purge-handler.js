@@ -24,23 +24,23 @@ export const GlyphSacrificeHandler = {
         Modal.deleteCompanion.show();
         return true;
       case "cursed":
-        Glyphs.removeFromInventory(glyph,true);
+        Glyphs.removeFromInventory(glyph);
         return true;
       case "helios":
-        Glyphs.removeFromInventory(glyph,true);
+        Glyphs.removeFromInventory(glyph);
         return true;
     }
     return false;
   },
   // Removes a glyph, accounting for sacrifice unlock and alchemy state
-  removeGlyph(glyph, force = false, audio=false) {
+  removeGlyph(glyph, force = false) {
     if (this.handleSpecialGlyphTypes(glyph)) return;
-    if (!this.canSacrifice) this.deleteGlyph(glyph, force, audio);
-    else if (this.isRefining) this.attemptRefineGlyph(glyph, force, audio);
-    else this.sacrificeGlyph(glyph, force, audio);
+    if (!this.canSacrifice) this.deleteGlyph(glyph, force);
+    else if (this.isRefining) this.attemptRefineGlyph(glyph, force);
+    else this.sacrificeGlyph(glyph, force);
   },
-  deleteGlyph(glyph, force, audio=false) {
-    if (force || !player.options.confirmations.glyphSacrifice) Glyphs.removeFromInventory(glyph, audio);
+  deleteGlyph(glyph, force) {
+    if (force || !player.options.confirmations.glyphSacrifice) Glyphs.removeFromInventory(glyph);
     else Modal.glyphDelete.show({ idx: glyph.idx });
   },
   glyphSacrificeGain(glyph) {
@@ -52,7 +52,7 @@ export const GlyphSacrificeHandler = {
     return Math.pow(pre10kFactor * post10kFactor * glyph.strength *
       Teresa.runRewardMultiplier * Achievement(171).effectOrDefault(1), power);
   },
-  sacrificeGlyph(glyph, force = false, audio = false) {
+  sacrificeGlyph(glyph, force = false) {
     if (Pelle.isDoomed) return;
     // This also needs to be here because this method is called directly from drag-and-drop sacrificing
     if (this.handleSpecialGlyphTypes(glyph)) return;
@@ -64,7 +64,7 @@ export const GlyphSacrificeHandler = {
     }
     player.reality.glyphs.sac[glyph.type] += toGain;
     GameCache.logTotalGlyphSacrifice.invalidate();
-    Glyphs.removeFromInventory(glyph,audio);
+    Glyphs.removeFromInventory(glyph);
     EventHub.dispatch(GAME_EVENT.GLYPH_SACRIFICED, glyph);
   },
   glyphAlchemyResource(glyph) {
@@ -104,17 +104,17 @@ export const GlyphSacrificeHandler = {
   highestRefinementValue(glyph) {
     return this.glyphRawRefinementGain(glyph) / this.glyphRefinementEfficiency;
   },
-  attemptRefineGlyph(glyph, force, audio=false) {
+  attemptRefineGlyph(glyph, force) {
     if (glyph.type === "reality") return;
     if (glyph.type === "cursed") {
-      Glyphs.removeFromInventory(glyph, audio);
+      Glyphs.removeFromInventory(glyph);
       return;
     }
     const decoherence = AlchemyResource.decoherence.isUnlocked;
     if (!Ra.unlocks.unlockGlyphAlchemy.canBeApplied ||
         (this.glyphRefinementGain(glyph) === 0 && !decoherence) ||
         (decoherence && AlchemyResources.base.every(x => x.data.amount >= Ra.alchemyResourceCap))) {
-      this.sacrificeGlyph(glyph, force, audio);
+      this.sacrificeGlyph(glyph, force);
       return;
     }
 
@@ -132,7 +132,7 @@ export const GlyphSacrificeHandler = {
     });
 
   },
-  refineGlyph(glyph, audio = false) {
+  refineGlyph(glyph) {
     if (Pelle.isDoomed) return;
     const resource = this.glyphAlchemyResource(glyph);
     // This technically completely trashes the glyph for no rewards if not unlocked, but this will only happen ever
@@ -140,7 +140,7 @@ export const GlyphSacrificeHandler = {
     // Reality choices contain *only* locked glyph choices. That's a rare enough edge case that I think it's okay
     // to just delete it instead of complicating the program flow more than it already is by attempting sacrifice.
     if (!resource.isUnlocked) {
-      Glyphs.removeFromInventory(glyph, audio);
+      Glyphs.removeFromInventory(glyph);
       return;
     }
     const rawRefinementGain = this.glyphRawRefinementGain(glyph);
@@ -158,6 +158,6 @@ export const GlyphSacrificeHandler = {
     if (resource.isBaseResource) {
       resource.highestRefinementValue = this.highestRefinementValue(glyph);
     }
-    Glyphs.removeFromInventory(glyph, audio);
+    Glyphs.removeFromInventory(glyph);
   }
 };

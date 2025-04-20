@@ -130,7 +130,7 @@ export default {
 
 <template>
   <div class="l-achievements-tab">
-    <div class="c-subtab-option-container c-subtab-option-container--border">
+    <div class="c-subtab-option-container">
       <PrimaryToggleButton
         v-model="hideCompletedRows"
         class="o-primary-btn--subtab-option"

@@ -32,20 +32,11 @@ export default {
           challengeName: "a Celestial Reality",
           normalName: "Reality",
           hasHigherLayers: false,
-          exitFn: () => {
-            beginProcessReality(getRealityProps(true));
-            if (player.options.audio.reality) AudioManagement.playSound("reset_reality-enter")
-          }
+          exitFn: () => {AudioManagement.playSound("reset_reality-enter");beginProcessReality(getRealityProps(true))}
         });
-        else {
-          beginProcessReality(getRealityProps(true));
-          if (player.options.audio.reality) AudioManagement.playSound("reset_reality-exit");
-        };
+        else {AudioManagement.playSound("reset_reality-exit");beginProcessReality(getRealityProps(true))};
       } else if (confirms.resetReality) Modal.resetReality.show();
-      else {
-        beginProcessReality(getRealityProps(true));
-        if (player.options.audio.reality) AudioManagement.playSound("reset_reality-reset");
-      };
+      else {AudioManagement.playSound("reset_reality-reset");beginProcessReality(getRealityProps(true))};
     },
   }
 };

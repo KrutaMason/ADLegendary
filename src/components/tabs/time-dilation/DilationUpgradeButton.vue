@@ -170,6 +170,7 @@ export default {
 .o-dilation-upgrade--available {
   --color: transparent;
   color: var(--color-dilation);
+  border-color: var(--color-dilation);
   --border: var(--color-dilation);
   animation: a-dilation-btn-glow 10s infinite;
   cursor: pointer;
@@ -178,11 +179,13 @@ export default {
 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available {
   color: #64ddad;
   --border: #64ddad;
+  border-color: #64ddad;
 }
 
 .o-dilation-upgrade--pelle.o-dilation-upgrade--available {
   color: var(--color-pelle--secondary);
   --border:  var(--color-pelle--secondary);
+  border-color:  var(--color-pelle--secondary);
 }
 .t-hex .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available {
   color: #ddc764;
@@ -294,10 +297,19 @@ export default {
   box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
 }
 
+.s-base--metro .o-dilation-upgrade--unavailable:hover {
+  background-color: #ef5350;
+}
+
+.t-s1 .o-dilation-upgrade--unavailable:hover {
+  background-color: #d72621;
+}
+
 .t-dark .o-dilation-upgrade--available:hover,
 .t-s6 .o-dilation-upgrade--available:hover,
 .t-s10 .o-dilation-upgrade--available:hover {
   color: var(--color-dilation);
+  background-color: white;
 }
 
 .t-dark .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available:hover,
@@ -306,14 +318,26 @@ export default {
   color: #64ddad;
 }
 
+.t-dark .o-dilation-upgrade--bought,
+.t-dark .o-dilation-upgrade--capped {
+  background-color: var(--color-dilation);
+}
+
 .t-s6 .o-dilation-upgrade--unavailable,
 .t-s10 .o-dilation-upgrade--unavailable {
   color: gray;
+  background-color: black;
 }
+
+.t-dark .o-dilation-upgrade--unavailable {
+  background-color: #23292a;
+}
+
 .t-dark .o-dilation-upgrade--unavailable:hover,
 .t-s6 .o-dilation-upgrade--unavailable:hover,
 .t-s10 .o-dilation-upgrade--unavailable:hover {
-  --border: var(--color-bad);
+  background-color: var(--color-bad);
+  border-color: var(--color-bad);
 }
 
 .t-s4 .o-dilation-upgrade--available {

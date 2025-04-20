@@ -124,10 +124,10 @@ export const Pelle = {
   get displayName() {
     return Date.now() % 4000 > 500 ? "Pelle" : wordShift.randomCrossWords("Pelle");
   },
-  displayTitle: "Pelle, The Eternal",
+  displayTitle: "Pelle, the Eternal",
   celestialOf: "Antimatter",
   get fullName() {
-    return Date.now() % 4000 > 500 ? "Pelle, Celestial of Antimatter" : `${wordShift.randomCrossWords("Pelle")}, Celestial of ${wordShift.randomCrossWords("Antimatter")}`;
+    return Date.now() % 4000 > 500 ? "Pelle, Celestial of Antimatter" : ""+wordShift.randomCrossWords("Pelle") + ", Celestial of " + wordShift.randomCrossWords("Antimatter");
   },
   get isUnlocked() {
     return ImaginaryUpgrade(25).isBought;

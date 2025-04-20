@@ -335,10 +335,10 @@ export const perks = {
     name:"Languorous Leap",
     family: PERK_FAMILY.ETERNITY,
     get description() {
-      return `Idle path multipliers start as if you have spent ${formatInt(15)} minutes in this Infinity/Eternity. 
-      This effect gives an extra minute per Perk owned, up to a total of ${formatInt(60)} minutes.`;
+      return `Idle path multipliers are now based on time spent on Reality.
+      In addition, Idle path multipliers start as if you have spent ${formatInt(15)} minutes in this Reality.`;
     },
-    effect: () => Math.min(15 + player.reality.perks.size, 60),
+    effect: 15,
     layoutPosList: [80248, 79401, 81001, 79802, 78994, 56239],
   },
   studyECRequirement: {

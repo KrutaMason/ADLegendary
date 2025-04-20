@@ -139,7 +139,6 @@ export default {
     :option="confirmationToDisable"
     :show-confirm="canConfirm"
     @confirm="confirmModal(false)"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       You are about to Reality

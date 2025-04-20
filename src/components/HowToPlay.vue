@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <div :style="{'opacity':fade}">
+  <div  :style="{'opacity':fade}">
     <div
       :class="h2pClassObject"
       :style="topMargin"

@@ -52,7 +52,7 @@ body{
 .t-dark-metro{
     --leg-base:url(../images/background/base-dark.jpg);
     --leg-border:url(../images/frames/base-dark.png);
-    --leg-base-render:url(images/background/base-dark.jpg);
+    --leg-base-render:url(../images/background/base-dark.jpg);
     --leg-border-render:url(images/frames/base-dark.png);
     --leg-bg-dark:#2d3031;
     --leg-bg-bright:#40484d;
@@ -66,16 +66,12 @@ body{
     --leg-base-render:url(images/background/base-amoled.jpg);
     --leg-border-render:url(images/frames/base-amoled.png);
     --leg-border-reality-render:url(images/frames/upgrade-reality-amoled.png);
-    --leg-bg-dark:#181818;
-    --leg-bg-bright:#3d3d3d;
+    --leg-bg-dark:#141414;
+    --leg-bg-bright:#303030;
 }
 .t-s4{
     --leg-base:url(../images/background/base-design.jpg);
     --leg-base-render:url(images/background/base-design.jpg);
-    --leg-border:url(../images/frames/base-design.png);
-    --leg-border-render:url(images/frames/base-design.png);
-    --leg-border-reality:url(../images/frames/upgrade-reality-design.png);
-    --leg-border-reality-render:url(images/frames/upgrade-reality-design.png);   
 }
 .t-s5{
     --leg-base:url(../images/background/base-nicolas.jpg);

@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-  <div class="l-challenges-tab__header c-subtab-option-container--border">
+  <div class="l-challenges-tab__header">
     <div class="c-subtab-option-container">
       <PrimaryToggleButton
         v-model="retryChallenge"

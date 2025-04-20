@@ -55,7 +55,6 @@ export default {
       if (this.confirmFn) this.confirmFn();
       else {
         this.$emit("confirm");
-        AudioManagement.playSound("click_light")
         EventHub.dispatch(GAME_EVENT.CLOSE_MODAL);
       }
     },
@@ -63,12 +62,10 @@ export default {
       if (this.cancelFn) this.cancelFn();
       else {
         this.$emit("cancel");
-        AudioManagement.playSound("click_light-reverse")
         EventHub.dispatch(GAME_EVENT.CLOSE_MODAL);
       }
     },
     closeModal() {
-      AudioManagement.playSound("click_close")
       EventHub.dispatch(GAME_EVENT.CLOSE_MODAL);
     }
   }
@@ -124,6 +121,5 @@ export default {
 <style scoped>
 .c-modal__header {
   margin-bottom: 0.5rem;
-  margin-top: -0.6rem;
 }
 </style>

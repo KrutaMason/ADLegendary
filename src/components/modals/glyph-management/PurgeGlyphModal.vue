@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     handleYesClick() {
-      Glyphs.autoClean(this.threshold, true, true);
+      Glyphs.autoClean(this.threshold, true);
     },
   },
 };
@@ -55,7 +55,6 @@ export default {
   <ModalWrapperChoice
     option="autoClean"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       {{ topLabel }}

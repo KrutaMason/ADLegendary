@@ -127,11 +127,10 @@ export default {
   flex: 1 1 30rem;
   margin: 1rem 1rem 0;
   padding: 1rem;
-  border: 0.4rem double var(--color-accent);
-  box-shadow:0 0 2rem var(--color-background) inset;
+  border: 0.1rem solid var(--color-accent);
+  box-shadow:0 0 2rem black inset;
   border-radius: var(--var-border-radius, 1rem);
   background: linear-gradient(transparent, var(--color-accent) 500%);
-  background-origin: border-box;
 }
 
 .t-s12 .l-changelog-body {

@@ -37,9 +37,9 @@ export default {
     headerText() {
       const timeDisplay = TimeSpan.fromSeconds(this.seconds).toString();
       if (this.nothingHappened || !this.somethingHappened) {
-        return `While you were away for <br><span class="c-modal-away-progress__header--fixed">${timeDisplay}</span>... Nothing happened.`;
+        return `While you were away for <br>${timeDisplay}... Nothing happened.`;
       }
-      return `While you were away for <br><span class="c-modal-away-progress__header--fixed">${timeDisplay}</span>: `;
+      return `While you were away for <br>${timeDisplay}: `;
     },
   },
   mounted() {
@@ -75,11 +75,12 @@ export default {
 .c-modal-away-progress__resources div {
   min-width: 55rem;
   border-bottom: 0.1rem solid;
-  border-image: linear-gradient(90deg,transparent,var(--color-accent),transparent)1;
+  border-image: linear-gradient(90deg,transparent,var(--color-text),transparent)1;
   margin-bottom: 0.2rem;
   padding-bottom: 0.2rem;
   cursor: pointer;
 }
+
 .c-modal-away-progress__resources div:last-child {
   border: none;
 }

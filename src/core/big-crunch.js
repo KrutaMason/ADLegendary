@@ -3,7 +3,6 @@ import FullScreenAnimationHandler from "./full-screen-animation-handler";
 
 export function bigCrunchAnimation() {
   FullScreenAnimationHandler.display("a-implode", 2);
-  if (player.options.audio.infinity) AudioManagement.playSound("reset_implode")
 }
 
 function handleChallengeCompletion() {
@@ -17,7 +16,7 @@ function handleChallengeCompletion() {
   const inIC = InfinityChallenge.isRunning;
   if (inIC && !InfinityChallenge.current.isCompleted) TabNotification.ICUnlock.clearTrigger();
 
-  challenge.complete(true);
+  challenge.complete();
   challenge.updateChallengeTime();
   if (!player.options.retryChallenge) {
     player.challenge.normal.current = 0;
@@ -42,9 +41,10 @@ export function bigCrunchResetRequest(disableAnimation = false) {
   if (!disableAnimation && player.options.animations.bigCrunch && !FullScreenAnimationHandler.isDisplaying) {
     bigCrunchAnimation();
     setTimeout(bigCrunchReset, 1000);
+    AudioManagement.playSound("reset_implode")
   } else {
     bigCrunchReset();
-    if (player.options.audio.infinity) AudioManagement.playSound("reset_crunch")
+    AudioManagement.playSound("reset_crunch")
   }
 }
 

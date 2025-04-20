@@ -72,7 +72,7 @@ class AchievementState extends GameMechanicState {
       GameUI.notify.reality(["Achievement automatically unlocked",`${this.name}`]);
     } else {
       //if (this.id === 188){new Audio("audio/ending.wav").play()}
-      GameUI.notify.success(["Achievement unlocked",`${this.name}`],undefined,"notif_Achieve");
+      GameUI.notify.success(["Achievement unlocked",`${this.name}`],undefined,"achievement");
       SteamRuntime.activateAchievement(this.id);
     }
     if (player.speedrun.isActive && !player.speedrun.achievementTimes[this.id]) {

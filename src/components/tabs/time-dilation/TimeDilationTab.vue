@@ -133,9 +133,7 @@ export default {
   <div class="l-dilation-tab">
     <span>
       You have
-      <span class="c-dilation-tab__tachyons"
-      :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(tachyons) }"
-      >{{ format(tachyons, 2, 1) }}</span>
+      <span class="c-dilation-tab__tachyons">{{ format(tachyons, 2, 1) }}</span>
       {{ pluralize("Tachyon", tachyons) }}.
     </span>
     <div
@@ -146,27 +144,21 @@ export default {
     </div>
     <span>
       You have
-      <span class="c-dilation-tab__dilated-time"
-      :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(dilatedTime) }"
-      >{{ format(dilatedTime, 2, 1) }}</span>
+      <span class="c-dilation-tab__dilated-time">{{ format(dilatedTime, 2, 1) }}</span>
       Dilated Time.
-      <span class="c-dilation-tab__dilated-time"
-      :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(dilatedTimeIncome) }"
-      >{{ dilatedTimeGainText }}/s</span>
+      <span class="c-dilation-tab__dilated-time-income">{{ dilatedTimeGainText }}/s</span>
     </span>
     <span>
       Next
       <span v-if="tachyonGalaxyGain > 1">{{ formatInt(tachyonGalaxyGain) }}</span>
       {{ pluralize("Tachyonic Galaxy", tachyonGalaxyGain) }} at
       <span
-        class="c-dilation-tab__dilated-time"
-        :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(galaxyThreshold) }"
+        class="c-dilation-tab__galaxy-threshold"
         :ach-tooltip="galaxyTimeEstimate"
       >{{ format(galaxyThreshold, 2, 1) }}</span>
       Dilated Time, gained total of
       <span
-        class="c-dilation-tab__dilated-time"
-        :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(totalGalaxies) }"
+        class="c-dilation-tab__galaxies"
         :ach-tooltip="baseGalaxyText"
       >{{ formatInt(totalGalaxies) }}</span>
       {{ pluralize("Tachyonic Galaxy", totalGalaxies) }}
@@ -176,15 +168,12 @@ export default {
       <span
         v-tooltip="toMaxTooltip"
         class="max-accent"
-        :class="{'max-accent--fixed': isInaccessible(maxDT) }"
       >{{ format(maxDT, 2, 1) }}</span>.
     </span>
 
     <span v-if="hasConvText">
       The Infinity Power conversion rate has increased by
-      <span class="c-dilation-tab__dilated-time"
-      :class="{'c-dilation-tab__tachyons--fixed': isInaccessible(infConv) }"
-      >{{ formatX(infConv, 2, 2)}}</span>, thanks to the third {{riftName()}} milestone.
+      <span class="c-dilation-tab__galaxies">{{ formatX(infConv, 2, 2)}}</span>, thanks to the third {{riftName()}} milestone.
     </span>
     <div class="l-dilation-upgrades-grid">
       <div
@@ -222,16 +211,9 @@ export default {
 <style scoped>
 .max-accent {
   color: var(--color-dilation);
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   text-shadow: 0 0 0.2rem var(--color-reality-dark);
   cursor: default;
-  font-family: Cambria;
-  font-weight: bold;
-}
-
-.max-accent--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
 }
 
 .l-dilation-upgrades-grid {

@@ -73,7 +73,7 @@ export default {
 
 <template>
   <div class="c-stats-tab">
-    <div class="c-subtab-option-container c-subtab-option-container--border">
+    <div class="c-subtab-option-container">
       <button
         class="o-primary-btn o-primary-btn--subtab-option"
         @click="cycleButton()"

@@ -90,6 +90,9 @@ export default {
         .filter(effect =>
           GlyphEffects[effect.id].isGenerated === generatedTypes.includes(this.type));
     },
+    diacriticDisplay() {
+      return `${quantify("Diacritic",this.sortedEffects.length)}`
+    },
     rarityInfo() {
       return getRarity(this.strength);
     },
@@ -108,13 +111,11 @@ export default {
       else return false
     },
     descriptionStyle() {
-      const type = this.type === "cursed" ? this.textColor : GlyphAppearanceHandler.getBorderColor(this.type);
-      const color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
+      const color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "crimson";
       const cursedColor = GlyphAppearanceHandler.isLightBG ? "white" : "black";
       return {
         //color: this.type === "cursed" ? cursedColor : color,
         "border-bottom": !this.specialGlyph ? "solid 1px" : "none",
-        "text-shadow" : `0rem 0rem 0.5rem ${type}`,
         "border-image": !this.specialGlyph ? `linear-gradient(90deg,transparent,${"cursed" === this.type ? cursedColor : "reality" === this.type ? "currentcolor" : color},transparent) 1` : undefined,
         animation: this.type === "reality" ? "a-reality-glyph-name-cycle 10s infinite" : undefined
       };
@@ -137,7 +138,7 @@ export default {
       }
     },
     rarityDescriptionStyle() {
-      const color = player.celestials.pelle.doomed ? "#ed143d" : GlyphAppearanceHandler.getRarityColor(this.strength, this.type);
+      const color = player.celestials.pelle.doomed ? "crimson" : GlyphAppearanceHandler.getRarityColor(this.strength, this.type);
       const bg = this.baseColor === "white";
       return {
         color: color,
@@ -168,7 +169,7 @@ export default {
     rarityText() {
       if (!GlyphTypes[this.type].hasRarity) return "";
       const bg = this.baseColor === "white"?"#ffffff":"#000000";
-      const color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
+      const color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "crimson";
       const strength = Pelle.isDoomed ? Pelle.glyphStrength : this.strength;
       return `<div class="c-glyph-tooltip__stat-name">Quality</div>\n
         <div style="text-shadow: 0.1rem 0.1rem 0.3rem ${bg},-0.1rem -0.1rem 0.3rem ${bg};background:linear-gradient(90deg,transparent,${color}88,transparent);">${formatRarity(strengthToRarity(strength))}</div>`;
@@ -220,7 +221,7 @@ export default {
       const isCursed = this.type === "cursed";
       const isReality = this.type === "reality";
       const bg = this.baseColor === "white";
-      let color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
+      let color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "crimson";
       if (isCursed) color = this.textColor;
       if (this.type === "companion" || this.type === "helios") color = GlyphAppearanceHandler.getBorderColor(this.type);
       return {
@@ -278,6 +279,7 @@ export default {
     },
     removeGlyph() {
       GlyphSacrificeHandler.removeGlyph(Glyphs.findById(this.id), false);
+      if(!player.options.confirmations.glyphSacrifice)AudioManagement.playSound("glyph_sacrifice",undefined,[0.95,1.05])
     },
     getFontColor() {
       return Theme.current().isDark() ? "#cccccc" : "black";
@@ -353,10 +355,7 @@ export default {
       </span>
     </div>
     <div class="l-glyph-tooltip__effects">
-      <div v-if='!specialGlyph' class="c-glyph-tooltip__effect c-glyph-tooltip__effect-start">
-         <span :class="{'c-glyph-tooltip__effect-start--fixed': isInaccessible(this.sortedEffects.length) }">{{formatInt(this.sortedEffects.length)}}</span>
-         {{pluralize("Diacritic", this.sortedEffects.length)}}
-      </div>
+      <div v-if='!specialGlyph' class="c-glyph-tooltip__effect c-glyph-tooltip__effect-start" v-html="diacriticDisplay"/>
       <GlyphTooltipEffect
         v-for="e in sortedEffects"
         :key="e.id + changeWatcher"
@@ -382,15 +381,11 @@ export default {
 <style scoped>
 .c-glyph-tooltip__effect-start{
   background:linear-gradient(90deg,var(--cover-border),transparent,var(--cover-border));
-  border-radius: var(--var-border-radius, .8rem) var(--var-border-radius, .8rem) 0 0;
+  border-radius: .8rem .8rem 0 0;
   padding: 0 0.5rem;
   font-weight: bold;
   font-family:Cambria;
   font-size:1.3rem
-}
-.c-glyph-tooltip__effect-start--fixed{
-  font-weight: normal;
-  font-family: Typewriter;
 }
 .c-glyph-tooltip__sacrifice {
   width: 100%;
@@ -400,7 +395,7 @@ export default {
   font-weight: normal;
   display: flex;
   background: var(--cover);
-  border-radius: var(--var-border-radius, 1rem);
+  border-radius: 1rem;
   border: var(--cover-border) 1px solid;
   box-shadow: 0.1rem 0.1rem 0.3rem #00000088;
 }

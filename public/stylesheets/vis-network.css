@@ -666,11 +666,11 @@ input.vis-configuration.vis-config-range:focus::-ms-fill-upper {
 div.vis-tooltip {
     position: absolute;
     visibility: hidden;
-    padding: 0.6rem;
+    padding: 5px;
     font-family: typewriter;
     font-size: 12px;
     color: var(--color-text);
-    background: /*linear-gradient(to top,transparent,var(--color-reality) 500%),*/var(--leg-base);
+    background: linear-gradient(transparent 25%,var(--color-reality) 200%),var(--leg-base);
     background-position: center;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -681,24 +681,11 @@ div.vis-tooltip {
     pointer-events: none;
     z-index: 5;
     width: 300px;
+    text-align: center;
 }
 .s-base--dark div.vis-tooltip {
     box-shadow: 0px 0px 1rem black inset, 3px 3px 10px rgba(0,0,0,0.5);
 }
-
-.vis-tooltip__inner{
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-    border-radius: var(--var-border-radius, 0.5rem);
-    padding: 0.6rem;
-    background: linear-gradient(transparent,var(--base) 500%);
-    background-origin: border-box;
-    --base: var(--color-accent);
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-}
-
 .vis-tooltip__id{
     font-style:italic;
     opacity:0.5;
@@ -706,29 +693,25 @@ div.vis-tooltip {
     top:0;
     position:absolute
 }
-
 .vis-tooltip__title{
-    font-size: 1.8rem;
     font-weight:bold;
-    font-family: cambria;
+    font-size:20px;
     line-height:1.2;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
-    border-top: none;
-    border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
-    background-image: linear-gradient(90deg,color-mix(in srgb,var(--base) 10%,transparent),
-    color-mix(in srgb,var(--base) 35%,transparent),
-    color-mix(in srgb,var(--base) 10%,transparent));
-    background-origin: border-box;
-    padding: 0.2rem 1rem;
-    margin-bottom: 0.5rem;
-    margin-top: -0.6rem;
-    position: relative;
+    border-bottom: 0.1rem solid;
+    border-top: 0.1rem solid;
+    border-image: linear-gradient(90deg,transparent,var(--perk-color),transparent) 1;
+    background: linear-gradient(90deg,transparent,color-mix(in srgb,var(--perk-color) 35%,transparent),transparent);
+    margin: 0.5rem 0;
+    padding: 0.2rem 0;
+    position:relative;
+    z-index:1;
+    font-family:cambria;
 }
 .vis-tooltip__AP{
-    padding: 0 1rem;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);;
-    border-bottom: none;
-    border-radius: var(--var-border-radius,1rem) var(--var-border-radius,1rem) 0 0;
-    margin-bottom: -0.6rem;
-    margin-top: 0.5rem;
+    font-style:italic;
+    font-size: 11px;
+    border-top: 0.1rem solid;
+    border-image: linear-gradient(90deg,transparent,#888888,transparent) 1;
+    padding-top:0.5rem;
+    margin-top:0.5rem
 }

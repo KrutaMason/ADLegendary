@@ -125,7 +125,6 @@ export default {
         v-model="isAutoReleasing"
         class="o-primary-btn--buy-max c-primary-btn--black-hole-header"
         label="Pulse:"
-        onclick="AudioManagement.playSound('blackhole_pulse')"
       />
     </span>
   </span>

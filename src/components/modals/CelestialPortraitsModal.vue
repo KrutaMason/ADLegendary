@@ -28,7 +28,7 @@ name: "CelestialPortraitsModal",
     },
     hasAdultDesigns: () => "laitela",
     color() {
-      return this.name === "laitela" ? `var(--color-laitela--accent)` : `var(--color-${this.name}--base)`;
+      return this.name === "laitela" ? `white` : `var(--color-${this.name}--base)`;
     },
     imageUrl() {
       if (!this.hasMatureContent && this.name === this.hasAdultDesigns) return `images/celestials/portrait_${this.name}_safe.png`
@@ -45,24 +45,22 @@ name: "CelestialPortraitsModal",
 </script>
 
 <template>
-  <ModalWrapper
-  :style="{'--base':color}"
-  >
-    <template #header>
-      <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" /> 
-       Portrait of {{ portraitName }} 
-      <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" />
-    </template>
-      <div
-      class="o-celportrait--display" 
-      :style="{'--scoped-cel-color':color}"
-      >
-      <img
-      class="o-celportrait--image" 
-      :src="imageUrl"
-      />
-    </div>
-  </ModalWrapper>
+    <ModalWrapper>
+      <template #header>
+        <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" /> 
+         Portrait of {{ portraitName }} 
+        <span v-html="symbol" style="font-family: Typewriter; font-weight: normal" />
+      </template>
+        <div
+        class="o-celportrait--display" 
+        :style="{'--scoped-cel-color':color}"
+        >
+        <img
+        class="o-celportrait--image" 
+        :src="imageUrl"
+        />
+      </div>
+    </ModalWrapper>
 </template>
 
 <style scoped>
@@ -75,7 +73,6 @@ name: "CelestialPortraitsModal",
   justify-content: center;
   align-items: center;
   border-radius: var(--var-border-radius,1rem);
-  border: 0.1px solid black;
   width: 65vh;
   height: 65vh;
   max-width: 1024px;

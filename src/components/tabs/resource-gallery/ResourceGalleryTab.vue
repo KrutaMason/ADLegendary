@@ -56,20 +56,14 @@ export default {
     width:37.5%;
     min-width: 30rem;
     height:60rem;
-    border: 1.2rem solid;
-    border-right: none;
-    border-image: var(--leg-border-render) 12 round;
+    border: var(--var-border-width,0.3rem) solid;
+    border-image: var(--leg-border-render) 3;
     box-shadow: var(--box-shadow);
     background: url(../../../../public/images/upgrades/bought.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
-    background-position: center;
+  background-position: center;
     overflow: auto;
     padding: 0.5rem;
-    margin: 0.5rem 0 0.5rem 0.5rem
-}
-.s-base--metro .l-resource_gallery-container{
-    border: 0.3rem solid;
-    border-right: none;
-    border-image: var(--leg-border-render) 3 round;
+    margin:0.5rem
 }
 .l-resource_buttons-container{
     display:flex;

@@ -63,9 +63,7 @@ export default {
 </script>
 
 <template>
-  <ModalWrapper
-  :style="{'--base':'var(--color-pelle--base)'}"
-  >
+  <ModalWrapper>
     <template #header>
       List of disabled and nerfed effects in Doomed
     </template>

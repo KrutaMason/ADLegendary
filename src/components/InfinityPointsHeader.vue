@@ -22,9 +22,7 @@ export default {
     class="c-infinity-tab__header"
   >
     You have
-    <span class="c-infinity-tab__infinity-points"
-    :class="{'c-infinity-tab__infinity-points--fixed': isInaccessible(infinityPoints) }"
-    >{{ format(infinityPoints, 2) }}</span>
+    <span class="c-infinity-tab__infinity-points">{{ format(infinityPoints, 2) }}</span>
     {{ pluralize("Infinity Point", infinityPoints) }}.
   </div>
 </template>

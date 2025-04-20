@@ -40,12 +40,7 @@ export default {
       required: false,
       default: false
     },
-    replayVisible: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
-    autoStart: {
+    hasTypeEffect: {
       type: Boolean,
       required: false,
       default: true
@@ -58,9 +53,7 @@ export default {
       celestials: [],
       celestialName: "",
       image: undefined,
-      soundsReady:false,
-      progress: 0,
-      delay: 0,
+      rolled:0,
     };
   },
   computed: {
@@ -68,30 +61,24 @@ export default {
       return this.quote.line(this.currentLine);
     },
     noTalkies() {
-      return [" ",",",".","!",":",";","?"]
+      return [" ",".","!",":",";","?"]
     },
     Ends() {
       return [".","!","?"]
     },
     talk() {
-      //if ((this.progress-2) % 2 > 0) return;
-      if (!this.noTalkies.includes(this.line.line.charAt(this.progress))&&this.soundsReady) AudioManagement.speakQuote(this.line._parent.celestial)
+      if (!this.noTalkies.includes(this.line.line.charAt(this.rolled))
+      &&this.rolled<this.line.line.length) AudioManagement.speakQuote(this.line._parent.celestial)
+      //`quote_${this.line._parent.celestial}`
     },
-    putDelay(){
-      if (this.delay > 0) return;
-      switch (this.line.line.charAt(this.progress)) {
-        case ".":
-        case "?":
-        case "!":
-        this.delay += 16
-          break;
-        case ",":
-        case ":":
-        case ";":
-        this.delay += 8
-          break;
-      }
-      return this.delay
+    pauseSystem(){
+      let speed = 1
+      if (this.line.line.slice(Math.floor(this.rolled),this.line.line.length).startsWith("<br>")) return speed=4
+      if (this.line.line.slice(Math.floor(this.rolled)-1,this.line.line.length).startsWith("$")) return speed=2
+      if (this.line.line.slice(Math.floor(this.rolled)-1,this.line.line.length).startsWith(",")||
+      this.line.line.slice(Math.floor(this.rolled)-1,this.line.line.length).startsWith(";")) return speed=1/2
+      if (this.Ends.includes(this.line.line.charAt(Math.floor(this.rolled)-1))) return speed=1/8
+      return speed
     },
     leftClass() {
       return {
@@ -111,13 +98,13 @@ export default {
     },
   },
   created() {
-    if (!this.autoStart) this.progress = this.line.line.length
-    this.message = this.line.line.slice(0,this.progress)
-    this.soundsReady = true
     const oldRate = player.options.updateRate;
+    if (this.hasTypeEffect) {
     player.options.updateRate = 33;
     GameOptions.refreshUpdateRate();
     player.options.updateRate = oldRate;
+    }
+    else this.rolled=this.line.line.length+1
   },
   destroyed() {
     GameOptions.refreshUpdateRate();
@@ -125,19 +112,20 @@ export default {
   methods: {
     update() {
       const line = this.line;
-      this.delay = this.progress < line.line.length ? Math.max(this.delay - 1 , 0) : 0;
-      if (this.delay <= 0 && this.progress < line.line.length) {
-        this.talk;
-        this.putDelay;
-        if (line.line.slice(this.progress,line.line.length).startsWith("<br>")) this.progress += 4
-        else this.progress += 1
-      }
       this.celestialSymbols = line.celestialSymbols;
-      this.message = line.line.slice(0,this.progress)
+      this.message = this.hasTypeEffect ? line.line.slice(0,this.rolled):  line.line;
       this.celestials = line.celestials;
       this.celestialName = line.celestialName;
-      this.image = line.image;
+      this.image = line.image
+      this.updateTyping()
     },
+    
+    updateTyping() {
+      if (this.hasTypeEffect&&this.rolled<this.line.line.length){
+      this.rolled += this.pauseSystem
+      this.talk
+    }
+    }
   },
 };
 </script>
@@ -159,15 +147,17 @@ export default {
     <i
       v-if="leftVisible"
       :class="leftClass"
-      @click="$emit('progress-in', 'left');progress=0"
+      @click="$emit('progress-in', 'left');rolled=0"
     />
+
     <span class="l-modal-celestial-quote__text"
       v-html="this.message"
     />
+
     <i
       v-if="rightVisible"
       :class="rightClass"
-      @click="$emit('progress-in', 'right');progress=0"
+      @click="$emit('progress-in', 'right');rolled=0"
     />
     <i
       v-if="closeVisible"
@@ -178,11 +168,6 @@ export default {
       v-if="skipVisible"
       class="c-modal-celestial-quote__skip fa-solid fa-forward"
       @click="emitClose"
-    />
-    <i
-      v-if="replayVisible && progress >= line.line.length"
-      class="c-modal-celestial-quote__replay fa-solid fa-play"
-      @click="progress=0"
     />
   </CelestialQuoteBackground>
 </template>
@@ -235,14 +220,6 @@ export default {
   font-size: 150%;
   cursor: pointer;
 }
-.c-modal-celestial-quote__replay {
-  position: absolute;
-  top: -38rem;
-  right: calc(100% - 3.5rem);
-  font-size: 150%;
-  cursor: pointer;
-}
-
 .l-modal-celestial-quote__text {
   display: flex;
   flex-direction: column;

@@ -17,6 +17,7 @@ export default {
       challengesUnlocked: false,
       celestiaLUnlocked: false,
       dimensions: true,
+      achievement: true,
       challenges: true,
       celestial: true,
     };
@@ -24,6 +25,9 @@ export default {
   watch: {
     dimensions(newValue) {
       player.options.naming.dimensions = newValue;
+    },
+    achievement(newValue) {
+      player.options.naming.achievement = newValue;
     },
     challenges(newValue) {
       player.options.naming.challenges = newValue;
@@ -41,6 +45,7 @@ export default {
 
     const options = player.options.naming;
     this.dimensions = options.dimensions;
+    this.achievement = options.achievement;
     this.challenges = options.challenges;
     this.celestial = options.celestial;
     },
@@ -53,13 +58,18 @@ export default {
     <template #header>
       Naming Options
     </template>
-    This mod introduces new naming conventions for various mechanics. <br>
+    This mod introduces new names to various mechanics. <br>
     Turning them off will make them display their former names.
     <div class="c-modal-options__button-container">
         <ModalOptionsToggleButton
           v-model="dimensions"
           class="o-primary-btn o-primary-btn--option-wide"
           text="Unique Dimension Names:"
+        />
+        <ModalOptionsToggleButton
+          v-model="achievement"
+          class="o-primary-btn o-primary-btn--option-wide"
+          text="Achievements:"
         />
         <ModalOptionsToggleButton
           v-if="challengesUnlocked"

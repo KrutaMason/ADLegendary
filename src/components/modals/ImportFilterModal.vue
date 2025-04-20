@@ -97,7 +97,6 @@ export default {
   <ModalWrapperChoice
     :show-cancel="!inputIsValid"
     :show-confirm="false"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       Import Glyph filter settings

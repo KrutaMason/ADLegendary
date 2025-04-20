@@ -245,11 +245,4 @@ export default {
   text-decoration: line-through;
   animation: none;
 }
-
-.s-base--dark .c-modal-away-progress__disabled b,
-.s-base--dark .c-modal-away-progress__disabled {
-  color: #c0c0c0;
-  text-shadow: 0 0 0.3rem #c0c0c0;
-}
-
 </style>

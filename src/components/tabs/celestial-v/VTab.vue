@@ -4,6 +4,7 @@ import GlyphSetPreview from "@/components/GlyphSetPreview";
 import PrimaryButton from "@/components/PrimaryButton";
 import { V_REDUCTION_MODE } from "@/core/secret-formula";
 import VUnlockRequirement from "./VUnlockRequirement";
+import { AudioManagement } from "../../../game";
 
 export default {
   name: "VTab",
@@ -27,6 +28,8 @@ export default {
       isRunning: false,
       hasAlchemy: false,
       empty:false,
+      labelmode:false,
+      newname:undefined,
     };
   },
   computed: {
@@ -91,13 +94,6 @@ export default {
     runDescription() {
       return GameDatabase.celestials.descriptions[3].effects().replace(/^\w/u, c => c.toUpperCase());
     },
-    realityTitle() {
-      return player.options.naming.celestial ? `V's ${V.RealityName}`
-       : "V's Reality"
-    },
-    realityVerb() {
-      return player.options.naming.celestial ? "Enter" : "Start"
-    },
     isDoomed: () => Pelle.isDoomed,
   },
   methods: {
@@ -113,6 +109,8 @@ export default {
       this.wantsFlipped = player.celestials.v.wantsFlipped;
       this.isRunning = V.isRunning;
       this.hasAlchemy = Ra.unlocks.unlockGlyphAlchemy.canBeApplied;
+      this.labelmode = !player.options.naming.celestial
+      this.newname = V.RealityName;
     },
     unlockCelestial() {
       if (V.canUnlockCelestial) V.unlockCelestial();
@@ -291,8 +289,8 @@ export default {
               :class="{ 'o-pelle-disabled': isDoomed }"
             >
               <span v-if="isRunning">You are in <br></span>
-              <span v-else>{{ realityVerb }}</span>
-              {{ realityTitle }}
+              <span v-else>{{`${labelmode?"Start":"Enter"}`}}</span>
+              V's {{`${labelmode?"Reality":newname}`}}.
             </b>
             <br>
             <div :style="{ 'font-size': hasAlchemy ? '1.05rem' : '1.2rem'}">
@@ -309,7 +307,7 @@ export default {
         </li>
       </div>
       <div class="c-v-info-text">
-        V-Achievements can only be completed within {{ realityTitle }}, but are permanent and do not reset upon leaving
+        V-Achievements can only be completed within V's Reality, but are permanent and do not reset upon leaving
         and re-entering the Reality.
       </div>
       <div class="c-v-info-text">
@@ -351,10 +349,7 @@ export default {
 
 <style scoped>
 .o-v-start-text {
-  font-size: 1.8rem;
-  line-height: 1.1;
-  font-family: cambria;
-  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .l-placeholder-invisible {

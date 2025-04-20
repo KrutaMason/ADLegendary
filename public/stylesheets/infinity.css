@@ -1,22 +1,14 @@
 /* #region infinity-tab */
 
-  .c-infinity-tab__header {
-    font-size: 1.8rem;
+.c-infinity-tab__header {
+    font-size: 1.5rem;
     margin: 1rem 0;
-    font-family: cambria;
-    font-weight: bold;
-    line-height: 1.1;
   }
-
+  
   .c-infinity-tab__infinity-points {
     color: var(--color-infinity);
   }
-
-  .c-infinity-tab__infinity-points--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
-  }
-
+  
   /* #region themes */
   
   /* #region t-dark t-s6 t-s10 */
@@ -57,7 +49,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-infinity) 150%),var(--leg-base);
     border: 0.1rem solid var(--color-infinity);
-    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset;
+    box-shadow: 0 0 1.5rem black inset, 0 0 0 0.3rem var(--color-infinity) inset;
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-infinity-upgrades-tab__grid {
@@ -139,18 +131,18 @@
   
   .o-infinity-upgrade-btn--available:hover {
     color: white;
-    --bg-dark: #a53b98;
+    background-color: #a53b98;
     --bg-dark: var(--color-infinity);
     --border: white
   }
   .t-dark .o-infinity-upgrade-btn--available:hover,
   .t-s6 .o-infinity-upgrade-btn--available:hover,
   .t-s10 .o-infinity-upgrade-btn--available:hover {
-    --bg-dark: #6200ea;
+    background-color: #6200ea;
   }
   
   .s-base--metro .o-infinity-upgrade-btn--available:hover {
-    --bg-dark: #9c27b0;
+    background-color: #9c27b0;
   }
   
   /* #endregion o-infinity-upgrade-btn--available */
@@ -241,13 +233,38 @@
     cursor: default;
   }
   
+  
+  .t-dark .o-infinity-upgrade-btn--unavailable:hover {
+    background-color: #37474f;
+  }
+  
+  .s-base--metro .o-infinity-upgrade-btn--unavailable {
+    background-color: #9e9e9e;
+    border-color: #616161;
+  }
+  
   .s-base--metro .o-infinity-upgrade-btn--unavailable:hover {
     color: var(--color-text-inverted);
+    background-color: #bdbdbd;
+  }
+  
+  .t-s1 .o-infinity-upgrade-btn--unavailable {
+    background-color: #9a921d;
+    border-color: black;
+  }
+  
+  .t-s1 .o-infinity-upgrade-btn--unavailable:hover {
+    background-color: #c5ba26;
   }
   
   .t-s6 .o-infinity-upgrade-btn--unavailable,
   .t-s10 .o-infinity-upgrade-btn--unavailable {
     --border: grey;
+  }
+  
+  .t-s6 .o-infinity-upgrade-btn--unavailable:hover,
+  .t-s10 .o-infinity-upgrade-btn--unavailable:hover {
+    background-color: #222222;
   }
   
   /* #endregion o-infinity-upgrade-btn--unavailable */
@@ -390,6 +407,12 @@
     --bg-dark: #474747;
     --border: #ff0000;
   }
+  .t-dark .o-infinity-upgrade-btn--charged,
+  .t-s6 .o-infinity-upgrade-btn--charged,
+  .t-s10 .o-infinity-upgrade-btn--charged {
+    background-color: var(--color-teresa--base);
+  }
+  
   
   /* #endregion o-infinity-upgrade-btn */
   
@@ -407,9 +430,7 @@
   
   .l-break-infinity-tab__break-btn {
     margin-top: 2rem;
-    font-size: 1.5rem;
-    font-family: cambria;
-    font-weight: bold;
+    font-size: 1.2rem;
   }
   
   .o-infinity-upgrade-btn--feel-eternity {
@@ -433,7 +454,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-infinity) 150%),var(--leg-base);
     border: 0.1rem solid var(--color-infinity);
-    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset;
+    box-shadow: 0 0 1.5rem black inset, 0 0 0 0.3rem var(--color-infinity) inset;
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-break-infinity-upgrade-grid {
@@ -482,13 +503,7 @@
     font-weight: bold;
     font-family: cambria;
   }
-
-  .c-replicanti-description__accent--fixed{
-    font-size: 2rem;
-    font-weight: normal;
-    font-family: typewriter;
-  }
-
+  
   .s-base--metro .c-replicanti-description__accent,
   .t-s6 .c-replicanti-description__accent,
   .t-s10 .c-replicanti-description__accent {
@@ -527,12 +542,12 @@
     margin: 0.3rem;
   }
   .c-replicanti-table{
-    width: 80rem;
+    width:80rem;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
     border: 1px solid var(--color-replicanti);
     border-radius: var(--var-border-radius,0.5rem);
-    box-shadow: 0 0 1rem var(--color-background) inset,0 0 0 0.2rem var(--color-replicanti) inset;
+    box-shadow: 0 0 1rem black inset,0 0 0 0.2rem var(--color-replicanti) inset;
     text-shadow: var(--text-shadow);
     background: linear-gradient(transparent,#2196f330), var(--leg-base);
     background-position: center;

@@ -42,6 +42,11 @@ input.t-amoled {
   border-color: white;
 }
 
+.t-amoled .o-primary-btn--disabled {
+  background-color: #333333;
+}
+
+
 .t-amoled .ttshop-background {
   border-color: var(--color-text);
 }

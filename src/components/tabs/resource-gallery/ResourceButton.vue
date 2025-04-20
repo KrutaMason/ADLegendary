@@ -56,23 +56,23 @@ export default {
 </template>
 <style scoped>
 .l-resource-button{
-  width:6rem;
-  height:6rem;
-  border-radius: var(--var-border-radius,.5rem);
-  margin:0.3rem;
-  font-size:3rem;
-  user-select: none;
-  font-family: typewriter;
-  cursor: pointer;
-  transition-duration:0.05s;
-  position:relative;
-  line-height:1
+    width:6rem;
+    height:6rem;
+    border-radius: var(--var-border-radius,.5rem);
+    margin:0.3rem;
+    font-size:3rem;
+    user-select: none;
+    font-family: typewriter;
+    cursor: pointer;
+    transition-duration:0.05s;
+    position:relative;
+    line-height:1
 }
 .l-resource-button-small{
-  width:4rem;
-  height:4rem;
-  font-size:2rem;
-  border-radius: var(--var-border-radius,.5rem);
+    width:4rem;
+    height:4rem;
+    font-size:2rem;
+    border-radius: var(--var-border-radius,.5rem);
 }
 .l-resource-button__symbol:first-child{
   position: absolute;
@@ -95,24 +95,24 @@ export default {
   right: unset;
 }
 .c-resource-button{
-  color:#aaaaaa;
-  background:url(../../../../public/images/glyphs-alchemy/glyph-pattern.png),
-  linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent),
-  linear-gradient(var(--bg) -35%,black 200%);
-  background-position: center;
-  border: 0.1rem solid var(--border);
-  box-shadow: 0 0 0.3rem 0.2rem #00000066,0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem black;
-  --bg:#666666;
-  --border:gray
+    color:#aaaaaa;
+    background:url(../../../../public/images/glyphs-alchemy/glyph-pattern.png),
+    linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent),
+    linear-gradient(var(--bg) -35%,black 200%);
+    background-position: center;
+    border: 0.1rem solid var(--border);
+    box-shadow: 0 0 0.3rem 0.2rem #00000066,0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset;
+    text-shadow: 0.1rem 0.1rem 0.3rem black;
+    --bg:#666666;
+    --border:gray
 }
 .s-base--metro .c-resource-button{
   background:url(../../../../public/images/glyphs-alchemy/glyph-pattern.png),linear-gradient(var(--bg) -35%,black 175%);
-  background-position: center;
+    background-position: center;
 }
 .c-resource-button:hover{
-  box-shadow: 0 0 0.3rem 0.2rem var(--border),0 0 0.5rem black inset, 0 0 0 0.3rem var(--border) inset;
-  border-color: var(--color-text);
+    box-shadow: 0 0 0.3rem 0.2rem var(--border),0 0 0.5rem black inset, 0 0 0 0.3rem var(--border) inset;
+    border-color: var(--color-text);
 }
 .o-resource--selected{
   box-shadow:0 0 0.5rem 0.2rem var(--border),0 0 0.5rem white inset, 0 0 0 0.3rem var(--border) inset,0 0 0 0.4rem var(--color-text) inset;

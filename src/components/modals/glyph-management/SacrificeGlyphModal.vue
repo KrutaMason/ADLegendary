@@ -48,7 +48,7 @@ export default {
     },
     handleYesClick() {
       this.confirmedSacrifice = true;
-      GlyphSacrificeHandler.sacrificeGlyph(this.glyph, true, true);
+      GlyphSacrificeHandler.sacrificeGlyph(this.glyph, true);
     },
   },
 };
@@ -58,7 +58,6 @@ export default {
   <ModalWrapperChoice
     option="glyphSacrifice"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       You are about to sacrifice a Glyph

@@ -9,111 +9,6 @@ export const changelog = [
    * }
    */
   {
-    date: [2025, 4, 20],
-    name: "Celestial Legs (The left one)",
-    info: `
-<b>New things:</b><br>
-<ul>
-<li>All Celestials now have artworks, but can only be found in quotes at the moment.</li>
-<li>Celestial quote lines can now be replayed using the button in the top left corner of the quote boxes.</li>
-<li>Polished a secret theme.</li>
-<li>Made more visual improvements. The "Visual changes" category explains this more precisely.</li>
-<li>Added more sound effects. The "Sound changes and additions" category explains this more precisely.</li>
-<li>The link to this mod may have a thumbnail.</li>
-<li>Added a new H2P entry about the mature contents in the mod.</li>
-<li>Added a new nicolas cage.</li>
-</ul>
-<br><b>Visual changes:</b><br>
-<ul>
-<li>Added red overlays on the prestige buttons for failable Eternity Challenges</li>
-<li>Added inner borders for:</li>
-<ul>
-<li>Modals</li>
-<li>Subtab's small buttons (only if they are at the very top)</li>
-<li>Resource Gallery information</li>
-<li>Perk Tooltips</li>
-<li>Relic Shard information and Effarig's Glyph shop</li>
-<li>Alchemy Resource information</li>
-</ul>
-<li>Maxed out Replicanti Upgrades now display the background colors corresponding to themes where the replicanti's color scheme is different.</li>
-<li>Time dilation tab now also uses the Cambria font.</li>
-<li>Improved various textures from the Glyphs tab.</li>
-<li>Circular Glyph crates now have more variety based on amount of diacritics, types and theme.</li>
-<li>Changed the Glyph Sacrifice Bonus backgrounds.</li>
-<li>The Perk Tree now has an animated background.</li>
-<li>Changed the disabled Perk textures.</li>
-<li>Polished the bordered tabs in the classic UI.</li>
-<li>Changed some achievement arts.</li>
-<li>Improved the scrollbar visuals.</li>
-</ul>
-<br><b>Sound changes and additions:</b><br>
-<ul>
-<li>Polished the sounds for opening and closing stuff.</li>
-<li>Changed the achievement pop-up sound.</li>
-<li>Added a sound for entering and failing a challenge.</li>
-<li>Applied challenge sounds to Normal, Infinity Challenges and Celestial Realities.</li>
-<li>Improved Glyph sacrifice sound and works for all glyph sacrifice events</li>
-<li>Added a sound for glyph purges.</li>
-<li>Added a sound for straightening the perk's edges.</li>
-<li>Changed the starting and ending Black Hole sounds.</li>
-<li>Replaced the charging, uncharging and discharging the Black Hole template sounds with proper ones.</li>
-<li>Appiled charging/uncharging sounds to storing real time.</li>
-<li>Added a sound for Black hole pulse.</li>
-</ul>
-<br><b>Additional changes and information:</b><br>
-<ul>
-<li>Removed the sum of Challenge record times in the Challenges tabs.</li>
-<li>Revamped the Challenge Records Subtab's visuals instead. (NOT DONE!)</li>
-<li>The automatic prestige box orders are reversed horizontally.</li>
-<li>Achievement 35 is automatically obtained after you make your first reality.</li>
-<li>Centering the Tree on the START Perk now plays a transition.</li>
-<li>Added an option to toggle grids in the Perk tree.</li>
-<li>Improved the Celestial titles in the celestial subtabs.</li>
-<li>Purchased Dimensions Quantity will now display the symbol of Cel6 if you have Continuum enabled.</li>
-<li>Doomed colors on glyphs now only affect the basic Glyphs.</li>
-<li>Moved the Resource Gallery subtab position to be behind the 2 speedrun subtabs.</li>
-<li>Changed texts in some entries in the Resource Gallery tab.</li>
-<li>Notification pop-ups are now on the left side of the UI if you have the sidebar on the right side.</li>
-<li>Added more options for sounds.</li>
-<li>Removed the achievement option in the Naming Options modal.</li>
-<li>Added a link to the vanilla version of this game in the About The Game modal.</li>
-<li>The Customization entry in How To Play now includes the details of naming conventions and sound effects.</li>
-<li>Added a "newer show again" button in the mod disclaimer modal.</li>
-<li>Changed the Balance entries in the initial release patches to be more precise.</li>
-<li>Changed a lot of image filenames for a better naming convention.</li>
-</ul>
-<br><b>Balance Changes:</b><br>
-<ul>
-<li>Nerfed the discovered Dimensions Bonus effect (×1.25 => ×1.2).</li>
-<li>Nerfed the first 2 Break Infinity upgrades (log10(AM)^1.5 => log10(AM)^1).</li>
-<li>Changed the IDL Perk's effect formula (Time spent on this Reality => Time spent on this Infinity/Eternity; 
-15 minutes => 15 min + 1 min extra per Perk owned up to a total of 60 minutes).</li>
-</ul>
-<br><b>Bugfixes:</b><br>
-<ul>
-<li>Fixed a bug where the Mod Disclaimer modal kept showing up even after you closed it.</li>
-<li>Fixed some bold texts not being bold.</li>
-<li>Fixed a bug where normal challenge names in challenge header looked weird with new dimension naming turned on but new challenge naming off.</li>
-<li>Fixed EM1000 failing to work when you set the Infinity Autobuyer to 5 seconds.</li>
-<li>Fixed a bug where EC12 timer isn't shown while having the new naming system turned on.</li>
-<li>Fixed a bug where where some Dilation Upgrades still contained "tachyon particles" instead of "tachyons".</li>
-<li>Fixed a bug where there is a random pause during the typing animation in Celestial quotes.</li>
-<li>Fixed the exit challenge modal showing that you're about to restart a celestial reality instead of exiting it.</li>
-<li>Fixed a bug where the Reality glyph sacrifice bonus's colors were twitching.</li>
-<li>Fixed a bug where things referring to normal challenges and celestial realities aren't affected by the new naming convention.</li>
-<li>Fixed a bug where charging all 12 Infinity upgrades doesn't play the sound needed.</li>
-<li>Fixed a bug where the single glyph customizer box still has the border color of reality while doomed.</li>
-<li>Fixed a bug where cursed glyphs don't have their fancy borders while doomed.</li>
-<li>Fixed some tpyos with achievement descriptions.</li>
-<li>Fixed a bug where a secret theme lacked an animation.</li>
-<li>Fixed some tpoys in Resource Gallery.</li>
-<li>Fixed a bug where the base background failed to render in Dark theme.</li>
-<li>Fixed a bug where the Blob and Bar notation couldn't be displayed in Cambria font.</li>
-<li>Fixed a bug where the Replicanti and various transparent bars failed to display nor work in some Notations.</li>
-</ul>
-`
-},
-{
     date: [2024, 12, 18],
     name: "Feedbacks And Fixes",
     info: `
@@ -123,18 +18,18 @@ If there was something you suggested but this update was missing, it should be i
 <b><i>This update has been concluded. Thank you for your feedbacks!</i></b>
 <br>
 <br>
-<b>December 25th, 2024. Happy Holidays and Merry Christmas!:</b><br>
+<b>December 25th, 2024. Happy Holidays and Merry Christmas!</b><br>
 <ul>
 <li>Added the sum of Challenge record times into the Challenges tabs.</li>
 <li>Added a new entry to the Resource Gallery Tab.</li>
 </ul>
-<br><b>December 24th, 2024:</b><br>
+<br><b>December 24th, 2024</b><br>
 <ul>
 <li>The disclaimer modal now opens every time you open the game.</li>
 <li>Added a toggle to the above, which can be found in the confirmations button.</li>
 <li>Mature content option is now off by default.</li>
 </ul>
-<br><b>December 23rd, 2024:</b><br>
+<br><b>December 23rd, 2024</b><br>
 <ul>
 <li>Applied sounds to various purchases and upgrades.</li>
 <li>Applied Unique Dimension names to Singularity milestones.</li>
@@ -143,7 +38,7 @@ If there was something you suggested but this update was missing, it should be i
 <li>Fixed a bug in the text in the Antimatter Galaxy button which still had the effects of 
 Achievement 111 and 143, despite being disabled in Doomed Reality.</li>
 </ul>
-<br><b>December 22nd, 2024:</b><br>
+<br><b>December 22nd, 2024</b><br>
 <ul>
 <li>Revamped this changelog.</li>
 <li>Applied sounds to Antimatter Dimension purchases.</li>
@@ -286,14 +181,11 @@ Note: This mod is in early access and lacks non-gameplay content which will be a
 <ul>
 <li>Antimatter Dimensions now have a multiplier based on the amount of unlocked Antimatter dimensions 
 (×1.25 for every non-first dimension unlocked)</li>
-<li>Changed the infinity upgrade order to be more fitting with the theme of the effects.</li>
-<li>Buffed the first 2 Break Infinity upgrades (log10(AM)^0.5 => log10(AM)^1.5).</li>
-<li>Buffed the "AD boost based on Infinity" Break Infinity upgrade (pLog10(Total Infinites)×10 => pLog10(Total Infinites)×100).</li>
-<li>Buffed the "AD boost based on Achievements" Break Infinity upgrade ((Achievement count - 30)^4 / 40 => (Achievement count - 30)^4 / 10).</li>
-<li>Buffed the "AD boost based on slowest Challenge" Break Infinity upgrade (50 / minutes => 500 / minutes; Cap: ×3e4 => ×3e5).</li>
-<li>5x EP's starting cost cost is cheaper ( 500 => 100 ).</li>
-<li>Improved IDL perk's effect to include that the effect is now based on time spent on this Reality.</li>
-<li>Reduced final singularity milestone even further (2.5e45 => 1e45).</li>
+<li>Changed the infinity upgrade order.</li>
+<li>Buffed BI upgrades.</li>
+<li>5x EP's starting cost cost is cheaper ( 500 => 100 )</li>
+<li>Improved IDL perk's effect.</li>
+<li>Reduced final singularity milestone even further (2.5e45 => 1e45)</li>
 </ul>
 <br><b>Bugfixes:</b><br>
 <ul>

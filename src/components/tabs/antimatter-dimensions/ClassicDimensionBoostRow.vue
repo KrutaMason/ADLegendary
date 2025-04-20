@@ -74,8 +74,8 @@ export default {
 <template>
   <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
     <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
-      Dimension Boost (<span class="l-dim-row__prestige-text--fixed">{{ boostCountText }}</span>):
-      requires <span :class="{'l-dim-row__prestige-text--fixed': isInaccessible(requirement.amount) }">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
+      Dimension Boost ({{ boostCountText }}):
+      requires {{ formatInt(requirement.amount) }} {{ dimName }}
     </div>
     <PrimaryButton
       :enabled="isBuyable"

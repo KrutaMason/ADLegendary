@@ -54,7 +54,7 @@ export default {
     },
     handleYesClick() {
       this.confirmedRefine = true;
-      GlyphSacrificeHandler.refineGlyph(this.glyph, true);
+      GlyphSacrificeHandler.refineGlyph(this.glyph);
     },
   },
 };
@@ -64,7 +64,6 @@ export default {
   <ModalWrapperChoice
     option="glyphRefine"
     @confirm="handleYesClick"
-    :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
       You are about to refine a Glyph

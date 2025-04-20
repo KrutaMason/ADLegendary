@@ -26,6 +26,8 @@ export default {
       vIsFlipped: false,
       relicShardRarityAlwaysMax: false,
       curseness:0,
+      labelmode:false,
+      newname:undefined,
     };
   },
   computed: {
@@ -41,10 +43,6 @@ export default {
       EffarigUnlock.reality
     ],
     symbol: () => GLYPH_SYMBOLS.effarig,
-    realityTitle() {
-      return player.options.naming.celestial ? `Enter Effarig's ${Effarig.RealityName}`
-       : "Enter Effarig's Reality"
-    },
     runButtonOuterClass() {
       return {
         "l-effarig-run-button": true,
@@ -88,6 +86,8 @@ export default {
       this.vIsFlipped = V.isFlipped;
       this.relicShardRarityAlwaysMax = Ra.unlocks.extraGlyphChoicesAndRelicShardRarityAlwaysMax.canBeApplied;
       this.curseness = Glyphs.allGlyphs.filter(g => g !== null && g.type === "cursed").length
+      this.labelmode = !player.options.naming.celestial,
+      this.newname = Effarig.RealityName
     },
     startRun() {
       if (this.isDoomed) return;
@@ -104,14 +104,11 @@ export default {
   <div class="l-teresa-celestial-tab">
     <CelestialQuoteHistory celestial="effarig" />
     <div class="l-effarig-shop-and-run">
-      <div class="l-effarig-relics-and-shop">
+      <div style="display:flex;flex-direction: column;">
         <div class="l-effarig-relics">
-        <div class="l-effarig-title"> 
-          You have <span :class="{'l-effarig-title--fixed': isInaccessible(relicShards) }">
-            {{ format(relicShards, 2, 0) }}
-          </span> {{ pluralize("Relic Shard", relicShards) }}
-        </div>
         <div class="c-effarig-relics">
+          You have {{ quantify("Relic Shard", relicShards, 2, 0) }}.
+          <br>
           <span v-if="relicShardRarityAlwaysMax">
             The quality of new Glyphs is being increased by +{{ formatPercents(shardRarityBoost, 2) }}.
           </span>
@@ -144,33 +141,28 @@ export default {
           <br>
           increases Relic Shards gained.
         </div>
+        <br>
       </div>
       <div class="l-effarig-shop">
-        <div class="l-effarig-title">
-          <span class="c-effarig-shop--symbol">Ϙ</span>
-          Effarig's Glyph shop
-          <span class="c-effarig-shop--symbol">Ϙ</span>
-        </div>
-        <br>
-        <div class="l-effarig-shop--items__container">
-          <div class="l-effarig-shop--items">
-          <EffarigUnlockButton
+        <br v-if="!runUnlocked"><div class="c-effarig-tab__reward-label c-shop-title"> Ϙ  <span style="font-family:cambria;font-size:2rem;line-height:1.2;font-weight:bold">Effarig's Glyph shop</span>  Ϙ </div><br>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+        <EffarigUnlockButton
           v-for="(unlock, i) in shopUnlocks"
           :key="i"
           :unlock="unlock"
-          />
-          <EffarigUnlockButton
+        />
+        <EffarigUnlockButton
           :unlock="runUnlock"
-          />
-          <button
-            v-if="vIsFlipped"
-            class="c-effarig-shop-button c-effarig-shop-button--available"
-            @click="createCursedGlyph"
-          >
+        />
+        <button
+          v-if="vIsFlipped"
+          class="c-effarig-shop-button c-effarig-shop-button--available"
+          style="width: 47rem;margin: 0.5rem 1rem;"
+          @click="createCursedGlyph"
+        >
           Get a Cursed Glyph... <br>
           ( {{ curseness }} / 5 )
-          </button>
-          </div>
+        </button>
         </div>
       </div>
       </div>
@@ -178,9 +170,9 @@ export default {
         v-if="runUnlocked"
         class="l-effarig-run"
       >
-        <div class="c-effarig-run-description c-effarig-run-description__title">
+        <div class="c-effarig-run-description">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            {{ realityTitle }}
+            {{`${labelmode?"Start Effarig's Reality":"Enter Effarig's "+newname}.`}}
           </span>
         </div>
         <div
@@ -210,24 +202,5 @@ export default {
 <style scoped>
 .c-effarig-relic-description {
   width: 46rem;
-}
-
-.c-effarig-shop--symbol {
-  font-family: Typewriter;
-  margin: 0 1rem;
-}
-.l-effarig-title--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
-}
-.c-effarig-run-description__title{
-  width: 100%;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: cambria;
-  border-top: solid 1px;
-  border-bottom: solid 1px;
-  border-image: linear-gradient(90deg, transparent, var(--color-effarig--base), transparent) 1;
-  background: linear-gradient(90deg, transparent, #d1373760, transparent);
 }
 </style>

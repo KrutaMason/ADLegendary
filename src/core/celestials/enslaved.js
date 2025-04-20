@@ -53,7 +53,6 @@ export const Enslaved = {
   toggleStoreReal() {
     if (!this.canModifyRealTimeStorage && !this.isStoredRealTimeCapped) return;
     player.celestials.enslaved.isStoringReal = !player.celestials.enslaved.isStoringReal;
-    AudioManagement.playSound(`blackhole_${player.celestials.enslaved.isStoringReal ? "charge" : "uncharge"}`);
     player.celestials.enslaved.isStoring = false;
   },
   toggleAutoStoreReal() {
@@ -175,6 +174,7 @@ export const Enslaved = {
     return player.celestials.enslaved.run;
   },
   completeRun() {
+    if (!player.celestials.enslaved.completed)new Audio("audio/soundtrack/nameless-end.mp3").play()
     player.celestials.enslaved.completed = true;
     this.quotes.completeReality.show();
   },

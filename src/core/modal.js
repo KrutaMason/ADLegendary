@@ -85,7 +85,7 @@ import UndoGlyphModal from "@/components/modals/UndoGlyphModal";
 import UpgradeMechanicLockModal from "@/components/modals/UpgradeMechanicLockModal";
 
 import S12GamesModal from "@/components/modals/secret-themes/S12GamesModal";
-//import S12BackgroundModal from "@/components/modals/secret-themes/S12BackgroundModal";
+import { AudioManagement } from "../game";
 
 let nextModalID = 0;
 export class Modal {
@@ -283,7 +283,6 @@ Modal.breakInfinity = new Modal(BreakInfinityModal, 1, GAME_EVENT.ETERNITY_RESET
 Modal.respecIAP = new Modal(RespecIAPModal);
 
 Modal.s12Games = new Modal(S12GamesModal);
-//Modal.s12Background = new Modal(S12BackgroundModal);
 
 function getSaveInfo(save) {
   const resources = {
