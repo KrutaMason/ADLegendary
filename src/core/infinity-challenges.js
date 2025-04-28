@@ -70,7 +70,7 @@ class InfinityChallengeState extends GameMechanicState {
 
   complete(sound = false) {
     player.challenge.infinity.completedBits |= 1 << this.id;
-    if (sound) AudioManagement.playSound("challenge_complete")
+    if (sound&&!player.options.retryChallenge) AudioManagement.playSound("challenge_complete")
     EventHub.dispatch(GAME_EVENT.INFINITY_CHALLENGE_COMPLETED);
   }
 

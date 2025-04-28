@@ -88,8 +88,13 @@ body{
     --leg-base-render:url(images/background/base-stars.jpg) fixed;
     --leg-border-render:url(images/frames/base-stars.png);
 }
+.t-s7{
+    --leg-base:url(../images/background/base-s7.jpg);
+    --leg-base-render:url(images/background/base-s7.jpg);
+}  
 .t-s8{
     --leg-base:linear-gradient(#ffffff80,#ffffff80);
+    --leg-base-render:linear-gradient(#ffffff80,#ffffff80);
 }
 .t-s11{
     --leg-base:url(../images/background/base-blob.jpg);

@@ -23,7 +23,7 @@ export const AudioManagement = {
   },
   playSound(file,volumescale=1,pitch=1){
     if (this.volume()>0&&document.getElementById("loading").style.display==="none"){
-    var audio = new Audio(`audio/${file}.wav`)
+    var audio = new Audio(`audio/${Theme.current().name === "S7"?"secret_s7-click":file}.wav`)
     //var audio = new Audio(`audio/${"doomtest"}.wav`)
     if (pitch !== 1){
       audio.preservesPitch=false;

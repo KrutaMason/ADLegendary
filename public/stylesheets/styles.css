@@ -5025,7 +5025,9 @@ properly on certain themes. */
   color-mix(in srgb,var(--base) 10%,transparent));
   background-origin: border-box;
 }
-
+.c-modal-options .c-modal__title {
+  width: 25rem;
+}
 .c-modal__close-btn {
   position: absolute;
   top: 0.5rem;
