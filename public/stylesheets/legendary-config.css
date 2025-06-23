@@ -1,9 +1,9 @@
 body{
     --leg-base:url(../images/background/base-light.jpg);
-    --leg-border:url(../images/frames/base.png);
+    --leg-border:url(../images/frames/base-light.png);
     --leg-border-reality:url(../images/frames/upgrade-reality.png);
     --leg-base-render:url(images/background/base-light.jpg);
-    --leg-border-render:url(images/frames/base.png);
+    --leg-border-render:url(images/frames/base-light.png);
     --leg-border-reality-render:url(images/frames/upgrade-reality.png);
     --leg-bg-dark:#444444;
     --leg-bg-bright:#666666;
@@ -13,6 +13,8 @@ body{
 .s-base--dark{
     --leg-base:url(../images/background/base.jpg);
     --leg-base-render:url(images/background/base.jpg);
+    --leg-border:url(../images/frames/base.png);
+    --leg-border-render:url(images/frames/base.png);
     --leg-bg-dark: #252525;
     --leg-bg-bright: #444444;
     --leg-shading:linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent);
