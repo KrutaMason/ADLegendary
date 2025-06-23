@@ -3284,7 +3284,7 @@
     --bg-dark: #353535;
     --bg-bright: #666666;
     --border: #999999;
-    box-shadow: 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px;
+    box-shadow: 0 0 1rem var(--color-background) inset,var(--border) inset 0px 0px 0px 2px;
     border: var(--var-border-width, 0.1rem) solid var(--border);
     border-radius: var(--var-border-radius, 0.5rem);
     padding: 0.5rem;
@@ -3340,7 +3340,7 @@
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid var(--border);
     text-shadow: var(--text-shadow);
-    box-shadow: 0 0 1rem black inset, var(--border) inset 0 0 0 0.2rem;
+    box-shadow: 0 0 1rem var(--color-background) inset, var(--border) inset 0 0 0 0.2rem;
     --bg-dark: #ffffff;
     --bg-bright: #dddddd;
     --border:#888888;

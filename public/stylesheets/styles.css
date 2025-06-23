@@ -1766,12 +1766,13 @@ br {
   --bg-bright:#f4f4f4;
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
-  box-shadow: 0 0 0.7rem #000000 inset,var(--border) inset 0 0 0 0.15rem;
+  box-shadow: 0 0 0.7rem var(--shadow-color) inset,var(--border) inset 0 0 0 0.15rem;
   text-shadow: var(--text-shadow);
   padding: 0.3rem 1rem;
   transition-duration: 0.2s;
   cursor: pointer;
   --border:var(--color-good-dark);
+  --shadow-color: var(--color-background);
   background-position: center;
   --bg:url(../images/upgrades/button-light.png);
 }
@@ -1979,7 +1980,8 @@ br {
   --bg-bright: #503816;
   --bg-dark: #8b6227;
   --border: #ffae3f;
-  color: white
+  color: white;
+  --shadow-color: #000000;
 }
 .o-primary-btn--infcapped:hover,
 .s-base--dark .o-primary-btn--infcapped:hover{
@@ -2104,6 +2106,7 @@ br {
   --bg-bright: #003c58;
   --bg-dark: #006391;
   --border: #2196f3;
+  --shadow-color: #000000;
   color: white
 }
 .o-primary-btn--replicanti-capped:hover,

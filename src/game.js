@@ -1102,9 +1102,9 @@ window.onload = function() {
   ui.view.initialized = supportedBrowser;
   setTimeout(() => {
     ElectronRuntime.updateZoom();
-    document.getElementById("loading").style.display = "none"
-    //document.getElementById("loading").style.animation = "a-legendary-start 1s ease";
-    //setTimeout(() =>{document.getElementById("loading").style.display = "none"},1000)
+    //document.getElementById("loading").style.display = "none"
+    document.getElementById("loading").style.animation = "a-legendary-start 1s ease";
+    setTimeout(() =>{document.getElementById("loading").style.display = "none"},1000)
     if (player.options.confirmations.disclaimerModal) {
       window.disclaimerModalInterval = setTimeout(() => {
         if (GameUI.initialized) {
