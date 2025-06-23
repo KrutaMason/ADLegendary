@@ -718,7 +718,7 @@ backdrop-filter: blur(1rem);
   --bg-bright: #003c58;
   --bg-dark: #006391;
   --border: #2196f3;
-  color: white;
+  color: white
 }
 .o-primary-btn--replicanti-capped:hover,
 .s-base--dark .o-primary-btn--replicanti-capped:hover{ 
