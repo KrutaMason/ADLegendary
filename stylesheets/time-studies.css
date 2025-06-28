@@ -1,0 +1,1191 @@
+/* #region TT shop */
+
+.time-theorem-buttons {
+  display: flex;
+  width: 65.5rem;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  align-items: flex-end;
+  font-family: Typewriter, serif;
+  color: var(--color-text);
+  pointer-events: all;
+}
+
+.l-tt-buy-button {
+  width: 19.5rem;
+  z-index: 1;
+  margin: 0.3rem;
+}
+
+.c-tt-buy-button {
+  font-family: Typewriter, serif;
+  font-size: 1.35rem;
+  border: 0.1rem solid var(--border);
+  --border:#682e97;
+  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--border) inset,0 0 1rem black inset);
+  border-radius: var(--var-border-radius, 4px);
+  transition-duration: 0.2s;
+  background-position: center;
+  --bg-image: url(../images/time-studies/ts-time.png);
+}
+
+.c-tt-buy-button--unlocked {
+  color: #3aacd6;
+  --bg-bright: #0f0b16;
+  --bg-dark:#11242b;
+  cursor: pointer;
+}
+
+.c-tt-buy-button--unlocked:hover {
+  color: #ffffff;
+  --border:#3aacd6;
+  --bg-dark: #2f86a5;
+}
+
+.c-tt-buy-button--locked {
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset);
+  --border:#888888;
+  color: #bbbbbb;
+  --bg-bright: #353535;
+  --bg-dark:#555555;
+}
+
+.c-tt-buy-button--locked:hover {
+  color: white;
+  --bg-dark: #652f2f;
+}
+
+.timetheorems {
+  flex: 1 0 auto;
+  text-align: center;
+  font-size: 15px;
+}
+
+.ttbuttons-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  transition: all 0.25s ease-out;
+}
+
+.ttbuttons-top-row {
+  align-items: center;
+}
+
+.o-tt-top-row-button {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-height: 3rem;
+  align-self: stretch;
+  font-size: 1.2rem;
+  margin: 0.3rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.o-tt-autobuyer-button {
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 2.5rem;
+  min-width: 8rem;
+  align-self: stretch;
+  font-size: 1rem !important;
+  margin: 0.3rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.l-tt-save-load-btn__wrapper {
+  position: relative;
+  margin: 0.3rem;
+}
+
+.l-tt-save-load-btn {
+  min-width: 2rem;
+}
+
+.l-tt-save-load-btn__menu {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  padding: 0.5rem 0;
+  transform: translate(-50%, -100%);
+}
+
+.c-tt-save-load-btn__menu {
+  text-align: left;
+  font-family: Typewriter;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  background: black;
+  border-radius: var(--var-border-radius, 0.5rem);
+}
+
+.l-tt-save-load-btn__menu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-color: black transparent transparent;
+  border-style: solid;
+  border-width: var(--var-border-width, 0.5rem);
+  margin-left: -0.5rem;
+}
+
+.l-tt-save-load-btn__menu-rename {
+  margin: 0.3rem 0.5rem 0.5rem 0.7rem;
+}
+
+.c-tt-save-load-btn__menu-rename {
+  text-align: left;
+  font-family: Typewriter;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--var-border-radius, 0.3rem);
+  padding: 0.2rem;
+}
+
+.c-tt-autobuyer-toggle {
+  color: initial;
+}
+
+.l-tt-buy-max-vbox {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttshop-background {
+  z-index: 1;
+  background: linear-gradient(transparent,var(--color-eternity) 300%),var(--leg-base);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
+  border: var(--var-border-width, 0.2rem) solid;
+  border-image: var(--leg-border) 3;
+  border-bottom: none;
+  border-top-left-radius: var(--var-border-radius, 7px);
+  border-top-right-radius: var(--var-border-radius, 7px);
+}
+
+.t-s6 .ttshop-background,
+.t-s10 .ttshop-background {
+  border: 0.1rem solid #3aacd6;
+}
+
+.ttshop-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 70rem;
+  max-width: 90rem;
+  padding: 0 0.5rem;
+  transition: all 0.25s ease-out;
+}
+
+.ttshop-minimize-btn {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.1rem;
+  color: var(--color-text);
+  margin-left: -0.2rem;
+  cursor: pointer;
+}
+
+.t-s6 .ttshop-minimize-btn,
+.t-s10 .ttshop-minimize-btn,
+.s-base--metro .ttshop-minimize-btn {
+  margin-left: -0.1rem;
+}
+
+.t-s6 .ttshop-minimize-btn,
+.t-s10 .ttshop-minimize-btn {
+  color: #3aacd6;
+}
+
+.c-ttshop__save-load-text {
+  font-size: 10px;
+}
+
+/* #endregion TT shop */
+
+.l-dim-path-priority {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+}
+
+.o-time-study-selection-btn {
+  width: 20rem;
+  height: 6rem;
+  position: relative;
+  font-family: Cambria;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: var(--bg-image), linear-gradient(var(--bg-bright), var(--bg-dark));
+  background-position: center;
+  border: 0.1rem solid var(--border);
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--text--shadow);
+  border-radius: var(--var-border-radius, 0.4rem);
+  margin: 1rem;
+  transition-duration: 0.2s;
+}
+
+.l-time-studies-tab {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
+
+.l-time-studies-tab__tree {
+  margin-top: 1.5rem;
+  margin-bottom: 12.5rem;
+}
+
+.l-time-study-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.l-time-study-options > * {
+  margin: 0.2rem;
+}
+
+.l-time-study-tree {
+  position: relative;
+}
+
+.l-time-study {
+  position: absolute;
+  z-index: 1;
+}
+
+.l-time-study-connection {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c-pelle-useless {
+  width: 18rem;
+  height: 10rem;
+  font-family: Typewriter, serif;
+  font-size: 1rem;
+  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+  --bg-image: url(../images/upgrades/pelle.png);
+  background-position: center;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+  border: 0.1rem solid var(--border);
+  border-radius: var(--var-border-radius, 0.4rem);
+  transition-duration: 0.2s;
+  text-decoration: line-through;
+}
+
+.c-pelle-useless-available:hover {
+  --bg-dark: #ac1339;
+}
+.c-pelle-useless--unavailable {
+  color: gray;
+  --bg-dark: #211c1c;
+  --bg-bright: #2f282c;
+  --border: #7f4a57;
+  animation: none;
+}
+
+.c-pelle-useless--unavailable:hover {
+  cursor: default;
+}
+
+.c-pelle-useless--bought {
+  --bg-bright: #341213;
+  --bg-dark: #741a28;
+  color: #f089a3;
+  --border: #bb3c5c;
+}
+/* #region o-time-study */
+
+.o-time-study {
+  width: 18rem;height: 10rem;
+  font-family: Typewriter, serif;
+  font-size: 1rem;
+  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+  background-position: center;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+  border: 0.1rem solid var(--border);
+  border-radius: var(--var-border-radius, 0.4rem);
+  transition-duration: 0.2s;
+}
+
+.o-time-study--available {
+  --bg-dark: #0c0b0f;
+  --bg-bright: #2b2f3b;
+  box-shadow: inset 0 0 1rem 0;
+  cursor: pointer;
+  --bg-image: url(../images/time-studies/ts-available.png);
+}
+.c-pelle-useless-available {
+  animation: a-time-study 7s infinite;
+  --bg-dark: #0e0707;
+  --bg-bright: #35061c;
+  color: #ac1339;
+  --border: #ac1339;
+  cursor: pointer;
+}
+.o-time-study--available:hover {
+  color: white;
+  animation: none;
+}
+.o-time-study--unavailable {
+  color: #bbbbbb;
+  --border: #909090;
+  --bg-image: url(../images/time-studies/ts-normal.png);
+}
+.s-base--dark .o-time-study--unavailable {
+  color: #888888;
+  --border: #505050;
+}
+
+.o-time-study--bought {
+  color: #c9f2ff;
+  --border: #46ceff;
+}
+
+@keyframes a-study-purchase {
+  0% {
+      box-shadow: var(--box-shadow),white 0 0 0.5rem 0rem
+  }
+
+  100% {
+      box-shadow: var(--box-shadow),#ffffff00 0 0 1rem 1rem,var(--border) inset 0px 0px 0px 2px
+  }
+}
+.t-metro .o-time-study--unavailable,
+.t-inverted-metro .o-time-study--unavailable,
+.t-s1 .o-time-study--unavailable,
+.t-s8 .o-time-study--unavailable {
+  box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+}
+
+.s-base--metro .o-time-study--unavailable,
+.t-s1 .o-time-study--unavailable {
+  border: none;
+}
+
+@keyframes a-time-study {
+  0% { box-shadow: inset 0 0 0.3rem 0; }
+  50% { box-shadow: inset 0 0 2rem 0; }
+  100% { box-shadow: inset 0 0 0.3rem 0; }
+}
+
+.o-time-study--small {
+  width: 12rem;
+  font-size: 0.85rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.o-time-study-normal--available {
+  --border: #46ceff;
+  color: #46ceff;
+}
+.o-time-study-normal--available:hover {
+  --bg-dark: #2894bb;
+}
+.t-hex .o-time-study-normal--available {
+  --border: #56ff46;
+  color: #46ff56;
+}
+.t-hex .o-time-study-normal--available:hover {
+  --bg-dark: #39bb28;
+}
+.o-time-study-antimatter-dim--available {
+  color: #22aa48;
+  --border: #22aa48;
+}
+
+.o-time-study-antimatter-dim--available:hover {
+  --bg-dark: #198036;
+}
+
+.o-time-study-infinity-dim--available {
+  color: #b67f33;
+  --border: #b67f33;
+}
+
+.o-time-study-infinity-dim--available:hover {
+  --bg-dark: #8b6227;
+}
+
+.o-time-study-time-dim--available {
+  color: #b241e3;
+  --border: #b241e3;
+}
+
+.o-time-study-time-dim--available:hover {
+  --bg-dark: #631485;
+}
+
+.o-time-study-active--available {
+  color: #ff0000;
+  --border: #ff0000;
+}
+
+.o-time-study-active--available:hover {
+  --bg-dark: #ac0000;
+}
+
+.o-time-study-passive--available {
+  color: #8358d8;
+  --border: #8358d8;
+}
+
+.o-time-study-passive--available:hover {
+  --bg-dark: #713fd8;
+}
+
+.o-time-study-idle--available {
+  color: #0080ff;
+  --border: #0080ff;
+}
+
+.o-time-study-idle--available:hover {
+  --bg-dark: #006bd6;
+}
+
+.o-time-study-light--available {
+  color: white;
+  --border: black;
+}
+
+.o-time-study-light--available:hover {
+  color: white;
+  --bg-dark: #999999;
+}
+
+.o-time-study-dark--available {
+  --bg-bright: #ffffff;
+  --bg-dark: #aaaaaa;
+  --border: white;
+  color: black;
+}
+
+.o-time-study-dark--available:hover {
+  color: white;
+  --bg-dark: #0c0b0f;
+}
+
+.o-time-study-eternity-challenge--available {
+  color: white;
+  --bg-image: url(../images/time-studies/ts-time.png);
+  --bg-bright: #63568f;
+  --bg-dark: #8f9ebc;
+  --border:#745DC7
+}
+
+.o-time-study-eternity-challenge--available:hover {
+  --bg-dark: #5f94ff;
+}
+
+.o-time-study-eternity-challenge--complete {
+  box-shadow: inset 0px 0px 15px #083a11,#138626 inset 0px 0px 0px 2px;
+  --border: #138626;
+}
+
+.sh-text .o-time-study-eternity-challenge--complete,
+.sh-none .o-time-study-eternity-challenge--complete {
+  box-shadow: inset 0px 0px 15px #083a11;
+}
+
+.o-time-study-dilation--available {
+  color: #64dd17;
+  --border: #64dd17;
+  animation: a-time-study-dilation 10s infinite;
+}
+
+.o-time-study-dilation--available:hover {
+  --bg-dark: #64dd17;
+  animation: a-time-study-dilation 10s infinite;
+}
+
+.o-time-study-reality--available {
+  color: black;
+  --bg-dark: #80ff86;
+  --bg-bright: #bdffc0;
+  --border: var(--color-reality);
+}
+
+.o-time-study-reality--available:hover {
+  --bg-bright: hsl(224, 15%, 20%);
+  --bg-dark: var(--color-reality);
+}
+
+.o-time-study-triad--available {
+  color: var(--color-v--base);
+  --border:var(--color-v--base);
+  animation: a-time-study 1.5s infinite;
+}
+
+.o-time-study-triad--available:hover {
+  --bg-dark: hsl(45, 55%, 22%);
+}
+
+@keyframes a-time-study-dilation {
+  0% {
+      box-shadow: inset 0.5rem 0 2rem
+  }
+
+  25% {
+      box-shadow: inset 0 0.5rem 2rem
+  }
+
+  50% {
+      box-shadow: inset -0.5rem 0 2rem
+  }
+
+  75% {
+      box-shadow: inset 0 -0.5rem 2rem
+  }
+
+  100% {
+      box-shadow: inset 0.5rem 0 2rem
+  }
+}
+
+.o-time-study-normal--unavailable {
+  --bg-dark: var(--leg-bg-dark);
+  --bg-bright: var(--leg-bg-bright);
+  background-color: #9e9e9e;
+}
+.t-dark .o-time-study--unavailable:hover,
+.t-s6 .o-time-study--unavailable:hover,
+.t-s10 .o-time-study--unavailable:hover {
+  --border: var(--color-bad);
+}
+
+.o-time-study-antimatter-dim--unavailable {
+  background-color: #94a89a;
+  --bg-bright: #617968;
+  --bg-dark: #242d26;
+}
+.s-base--dark .o-time-study-antimatter-dim--unavailable {
+  --bg-bright: #404f44;
+  --bg-dark: #171c18;
+}
+
+.o-time-study-infinity-dim--unavailable {
+  background-color: #a8a094;
+  --bg-bright: #696056;
+  --bg-dark: #413a34;
+}
+.s-base--dark .o-time-study-infinity-dim--unavailable {
+  --bg-bright: #544d45;
+  --bg-dark: #2a2622;
+}
+
+.o-time-study-time-dim--unavailable {
+  background-color: #a294a8;
+  --bg-bright: #68586f;
+  --bg-dark: #312a33;
+}
+.s-base--dark .o-time-study-time-dim--unavailable {
+  --bg-bright: #423946;
+  --bg-dark: #1b171c;
+}
+
+.o-time-study-active--unavailable {
+  background-color: #a89494;
+  --bg-bright: #675454;
+  --bg-dark: #312828;
+}
+.s-base--dark .o-time-study-active--unavailable {
+  --bg-bright: #4f4040;
+  --bg-dark: #1c1717;
+}
+
+.o-time-study-passive--unavailable {
+  background-color: #9b94a8;
+  --bg-bright: #5f586b;
+  --bg-dark: #242329;
+}
+.s-base--dark .o-time-study-passive--unavailable {
+  --bg-bright: #3e3946;
+  --bg-dark: #161519;
+}
+
+.o-time-study-idle--unavailable {
+  background-color: #949ea8;
+  --bg-bright: #4e565f;
+  --bg-dark: #23282b;
+}
+.s-base--dark .o-time-study-idle--unavailable {
+  --bg-bright: #2e3338;
+  --bg-dark: #101214;
+}
+
+.o-time-study-dark--unavailable {
+  background-color: #858585;
+  --bg-bright: #474747;
+  --bg-dark: #1c1c1c;
+}
+.s-base--dark .o-time-study-dark--unavailable {
+  --bg-bright: #282828;
+  --bg-dark: #141414;
+}
+
+.o-time-study-light--unavailable {
+  background-color: #b8b8b8;
+  --bg-bright: #888888;
+  --bg-dark: #444444;
+  color: #cccccc;
+}
+.s-base--dark .o-time-study-light--unavailable {
+  --bg-bright: #666666;
+  --bg-dark: #333333;
+  color: #bbbbbb;
+}
+
+.o-time-study-eternity-challenge--unavailable {
+  background-color: #9e9e9e;
+  --bg-bright: #444157;
+  --bg-dark: #383e4b;
+  --bg-image: url(../images/time-studies/ts-time.png);
+}
+.s-base--dark .o-time-study-eternity-challenge--unavailable {
+  --bg-bright: #17161d;
+  --bg-dark: #363c49;
+}
+
+.o-time-study-dilation--unavailable {
+  background-color: #9ca894;
+  --bg-bright: #636d59;
+  --bg-dark: #242920;
+}
+.s-base--dark .o-time-study-dilation--unavailable {
+  --bg-bright: #33382e;
+  --bg-dark: #121410;
+}
+
+.o-time-study-reality--unavailable {
+  background-color: #94a895;
+  --bg-bright: #506350;
+  --bg-dark: #222b22;
+}
+.s-base--dark .o-time-study-reality--unavailable {
+  --bg-bright: #222a22;
+  --bg-dark: #0b0e0b;
+}
+
+.o-time-study-triad--unavailable {
+  background-color: #a8a494;
+  --bg-bright: #454238;
+  --bg-dark: #696455;
+}
+.s-base--dark .o-time-study-triad--unavailable {
+  --bg-bright: #1c1b17;
+  --bg-dark: #3e3b32;
+}
+.o-time-study--unavailable:hover {
+  color: #ffffff;
+  --border: #757575;
+  --bg-dark: var(--leg-bg-hover);
+}
+.o-time-study-normal--bought {
+  --bg-bright: #423961;
+  --bg-dark: #485b85;
+  background-color: #745DC9;
+  --bg-image: url(../images/time-studies/ts-normal.png);
+}
+.t-hex .o-time-study-normal--bought {
+  color: #c9ffc9;
+  --border: #5cff46;
+  --bg-bright: #526139;
+  --bg-dark: #488555;
+  background-color: #5dc95d;
+}
+.o-time-study-antimatter-dim--bought {
+  --bg-bright: #198036;
+  --bg-dark: #0d401b;
+  --border: #6ae28c;
+  color: white;
+  background-color: #22aa48;
+  --bg-image: url(../images/time-studies/ts-antimatter.png);
+}
+
+.o-time-study-infinity-dim--bought {
+  --bg-bright: #8b6227;
+  --bg-dark: #503816;
+  --border: #d8ae74;
+  color: white;
+  background-color: #b67f33;
+  --bg-image: url(../images/time-studies/ts-infinity.png);
+}
+
+.o-time-study-time-dim--bought {
+  --bg-bright: #631485;
+  --bg-dark: #320a43;
+  --border: #b168cf;
+  color: white;
+  background-color: #b241e3;
+  --bg-image: url(../images/time-studies/ts-time.png);
+}
+
+.o-time-study-active--bought {
+  --bg-bright: #ac0000;
+  --bg-dark: #4e0000;
+  --border: #ffd700;
+  color: white;
+  background-color: #e60000;
+  --bg-image: url(../images/time-studies/ts-active.png);
+}
+
+.o-time-study-passive--bought {
+  --bg-image: url(../images/time-studies/ts-passive.png);
+  --bg-bright: #713fd8;
+  --bg-dark: #371874;
+  --border: #ffffff;
+  color: white;
+  background-color: #5e33b6;
+}
+
+.o-time-study-idle--bought {
+  --bg-image: url(../images/time-studies/ts-idle.png);
+  --bg-bright: #006bd6;
+  --bg-dark: #003569;
+  --border: #f09579;
+  color: white;
+  background-color: #0080ff;
+}
+
+.o-time-study-dark--bought {
+  --bg-image: url(../images/time-studies/ts-dark.png);
+  --bg-bright: #111111;
+  --bg-dark: #444444;
+  --border: #87daf8;
+  color: #ffffff;
+  background-color: black;
+}
+
+.o-time-study-light--bought {
+  --bg-image: url(../images/time-studies/ts-light.png);
+  --bg-bright: #999999;
+  --bg-dark: #686868;
+  --border: #59b6d7;
+  color: #ffffff;
+  background-color: white;
+}
+
+.o-time-study-eternity-challenge--bought {
+  --bg-bright: #490066;
+  --bg-dark: #1c3668;
+  color: white;
+  background-color: #490066;
+  --bg-image: url(../images/time-studies/ts-time.png);
+}
+
+.o-time-study-eternity-challenge--running {
+  --bg-bright: #3c0053;
+  --bg-dark: #152a50;
+  --border: cyan;
+  color: cyan;
+  --bg-image: url(../images/time-studies/ts-challengerun.png);
+  animation: a-eternity-challenge-running 6s infinite,a-eternity-challenge-running-pattern 3s infinite linear;
+}
+
+@keyframes a-eternity-challenge-running {
+  0% {
+      box-shadow: inset 1rem 0 3rem #490066
+  }
+
+  25% {
+      box-shadow: inset 0 0.5rem 3rem var(--border)
+  }
+
+  50% {
+      box-shadow: inset -1rem 0 3rem #490066
+  }
+
+  75% {
+      box-shadow: inset 0 -0.5rem 3rem var(--border)
+  }
+
+  100% {
+      box-shadow: inset 1rem 0 3rem #490066
+  }
+}
+@keyframes a-eternity-challenge-running-pattern {
+  0% {
+      background-position: 0 0, 0 0;
+  }
+  100% {
+      background-position: 5rem 5rem, 0 0;
+  }
+}
+@keyframes a-eternity-challenge-running-pattern-button {
+  0% {
+      background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+      background-position: 0 0, 5rem 5rem, 0 0;
+  }
+}
+.o-time-study-dilation--bought {
+  --bg-image: url(../images/time-studies/ts-dilation.png);
+  color: #dfffab;
+  --bg-bright: #477e09;
+  --bg-dark: #2c4603;
+  --border: #9dff00;
+  background-color: #64dd17;
+}
+
+.o-time-study-reality--bought {
+  --bg-image: url(../images/time-studies/ts-reality.png);
+  color: #d6ffd8;
+  --bg-dark: #141f14;
+  --bg-bright: #305030;
+  --border: #bdffc0;
+  background-color: var(--color-reality);
+}
+
+.o-time-study-dilation-glow.o-time-study-dilation--bought:before {
+  content: '';
+  position: absolute;
+  display: block;
+  left: -0.1rem;
+  top: -0.1rem;
+  width: 18rem;
+  height: 10rem;
+  box-shadow: 0 0 1.5rem .5rem,inset 0 0 1rem;
+  border-radius: 1rem;
+  color: var(--color-dilation);
+  z-index: -1;
+  animation: a-dilation-unlock 7.5s infinite
+}
+
+@keyframes a-dilation-unlock {
+  0% {
+      box-shadow: 0 0 1.5rem .5rem, inset 0 0 1rem;
+      opacity: 1
+  }
+
+  50% {
+      left: -6.1rem;
+      top: -1.1rem;
+      width: 30rem;
+      height: 12rem;
+      box-shadow: 0 0 3rem 1rem,inset 0 0 3rem 2rem;
+      opacity: 0
+  }
+
+  62.5% {
+      left: -0.1rem;
+      top: -0.1rem;
+      width: 18rem;
+      height: 10rem;
+      box-shadow: 0 0 0rem ,inset 0 0 0rem;
+      opacity: 0
+  }
+}
+
+.o-pseudo-time-study.o-time-study-dilation--bought:before {
+  display: none;
+  animation: none
+}
+
+.o-pseudo-time-study.o-time-study-reality--bought::after {
+  display: none;
+  animation: none
+}
+
+/*.o-time-study-reality--bought::after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: -6.1rem;
+  top: -10.1rem;
+  width: 30rem;
+  height: 30rem;
+  background-image: url(../images/EldenRing.png);
+  background-size: contain;
+  z-index: -1;
+  animation: a-reality-unlock 120s infinite linear
+}*/
+
+@keyframes a-reality-unlock {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.o-time-study-triad--bought {
+  --bg-image: url(../images/time-studies/ts-triad.png);
+  color: white;
+  --bg-bright: #433813;
+  --bg-dark: #9e802e;
+  --border: #c9bb6b;
+  background-color: var(--color-v--base);
+}
+
+/*.t-dark .o-time-study-antimatter-dim--bought,
+.t-s6 .o-time-study-antimatter-dim--bought,
+.t-s10 .o-time-study-antimatter-dim--bought {
+  border-color: #198036;
+}
+
+.t-dark .o-time-study-infinity-dim--bought,
+.t-s6 .o-time-study-infinity-dim--bought,
+.t-s10 .o-time-study-infinity-dim--bought {
+  border-color: #8b6227;
+}
+
+.t-dark .o-time-study-time-dim--bought,
+.t-s6 .o-time-study-time-dim--bought,
+.t-s10 .o-time-study-time-dim--bought {
+  border-color: #951ec8;
+}
+
+.t-dark .o-time-study-active--bought,
+.t-s6 .o-time-study-active--bought,
+.t-s10 .o-time-study-active--bought {
+  border-color: #cc0000;
+}
+
+.t-dark .o-time-study-passive--bought,
+.t-s6 .o-time-study-passive--bought,
+.t-s10 .o-time-study-passive--bought {
+  border-color: #4b288f;
+}
+
+.t-dark .o-time-study-idle--bought,
+.t-s6 .o-time-study-idle--bought,
+.t-s10 .o-time-study-idle--bought {
+  border-color: #0066cc;
+}*/
+
+.o-time-study--secret {
+  opacity: 0;
+  transition: opacity 1s;
+  transition-delay: 1s;
+  cursor: pointer;
+  --bg-bright: #341213;
+  --bg-dark: #741a28;
+  color: gold;
+  --border: gold;
+  --bg-image: url(../images/time-studies/ts-secret.png);
+}
+
+.o-time-study--secret-unlocked {
+  opacity: 1;
+  transition: opacity 1s;
+  transition-delay: 0s;
+  cursor: pointer;
+  --bg-bright: #341213;
+  --bg-dark: #741a28;
+  color: gold;
+  --border: gold;
+  --bg-image: url(../images/time-studies/ts-secret.png);
+}
+
+.o-time-study--enslaved {
+  opacity: 0.02;
+  --bg-bright: #95674b;
+  --bg-dark: #5b361f;
+  color: var(--color-enslaved--base);
+  --border: var(--color-enslaved--base);
+  --bg-image: url(../images/time-studies/ts-normal.png);
+  transition: all 1s;
+  animation: a-time-study 0.5s infinite;
+  cursor: pointer;
+}
+
+.o-time-study--enslaved-unlocked {
+  opacity: 1;
+  animation: a-time-study 2s infinite;
+  cursor: default;
+}
+.t-s14 .o-time-study-normal--available,
+.t-s14 .o-time-study-antimatter-dim--available,
+.t-s14 .o-time-study-infinity-dim--available,
+.t-s14 .o-time-study-time-dim--available,
+.t-s14 .o-time-study-active--available,
+.t-s14 .o-time-study-passive--available,
+.t-s14 .o-time-study-idle--available,
+.t-s14 .o-time-study-dark--available,
+.t-s14 .o-time-study-light--available,
+.t-s14 .o-time-study-dilation--available,
+.t-s14 .o-time-study-reality--available,
+.t-s14 .o-time-study-triad--available{
+  border-color: red;
+    color: red;
+  --bg-dark: #0f0b0b;
+  --bg-bright: #3b2b2b;
+}
+.t-s14 .o-time-study-normal--available:hover,
+.t-s14 .o-time-study-antimatter-dim--available:hover,
+.t-s14 .o-time-study-infinity-dim--available:hover,
+.t-s14 .o-time-study-time-dim--available:hover,
+.t-s14 .o-time-study-active--available:hover,
+.t-s14 .o-time-study-passive--available:hover,
+.t-s14 .o-time-study-idle--available:hover,
+.t-s14 .o-time-study-dark--available:hover,
+.t-s14 .o-time-study-light--available:hover,
+.t-s14 .o-time-study-dilation--available:hover,
+.t-s14 .o-time-study-reality--available:hover,
+.t-s14 .o-time-study-triad--available:hover{
+  --bg-dark: #bb2828;
+}
+.t-s14 .o-time-study-normal--bought{
+  --bg-bright: #444444;
+  --bg-dark: #777777;
+  --border:red;
+  color:white
+}
+.t-s14 .o-time-study-antimatter-dim--bought,
+.t-s14 .o-time-study-infinity-dim--bought,
+.t-s14 .o-time-study-time-dim--bought,
+.t-s14 .o-time-study-active--bought,
+.t-s14 .o-time-study-passive--bought,
+.t-s14 .o-time-study-idle--bought,
+.t-s14 .o-time-study-dark--bought,
+.t-s14 .o-time-study-light--bought,
+.t-s14 .o-time-study-dilation--bought,
+.t-s14 .o-time-study-reality--bought,
+.t-s14 .o-time-study-triad--bought {
+  --bg-bright: #660000;
+  --bg-dark: #bb0000;
+  --border:gray;
+  color:white
+}
+/* #endregion o-time-study */
+
+.o-time-study-connection {
+  stroke: #444444;
+  /* This one should be px, because it rem svg behaves weirdly under scale */
+  stroke-width: 16px;
+  transition: stroke 0.3s;
+}
+
+.o-time-study-connection--antimatter-dim {
+  stroke: #37533f;
+}
+
+.o-time-study-connection--infinity-dim {
+  stroke: #534737;
+}
+
+.o-time-study-connection--time-dim {
+  stroke: #4a3753;
+}
+
+.o-time-study-connection--active {
+  stroke: #533737;
+}
+
+.o-time-study-connection--passive {
+  stroke: #403753;
+}
+
+.o-time-study-connection--idle {
+  stroke: #374553;
+}
+
+.o-time-study-connection--eternity-challenge {
+  stroke: #4b3753;
+}
+
+.o-time-study-connection--dilation {
+  stroke: #759362;
+}
+
+.o-time-study-connection--bought {
+  stroke: black;
+  stroke-dasharray: 10px 4px;
+  stroke-width: 4px;
+  stroke-linecap: butt;
+  animation: a-ts-connection 2s infinite linear
+}
+.o-time-study-connection-base{
+  stroke-dasharray: none;
+  stroke-width: 16px;
+  stroke-opacity: 1;
+}
+.o-time-study-connection-base.o-time-study-connection--bought {
+  stroke-opacity: 0.5;
+}
+.s-base--dark .o-time-study-connection-base.o-time-study-connection--bought {
+  stroke-opacity: 0.4;
+}
+@keyframes a-ts-connection {
+  0% {
+      stroke-dashoffset: 0;
+  }
+
+  100% {
+      stroke-dashoffset: -28;
+  }
+}
+.s-base--dark  .o-time-study-connection--bought {
+  stroke: #318bac;
+}
+.t-hex  .o-time-study-connection--bought {
+  stroke: #22631c;
+}
+.o-time-study-connection--bought.o-time-study-connection--antimatter-dim {
+  stroke: #22aa48;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--infinity-dim {
+  stroke: #b67f33;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--time-dim {
+  stroke: #b241e3;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--active {
+  stroke: #ff0100;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--passive {
+  stroke: #5e33b6;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--idle {
+  stroke: #0080ff;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--eternity-challenge {
+  stroke: #7300a0;
+}
+
+.o-time-study-connection--bought.o-time-study-connection--dilation {
+  stroke: #64dd17;
+}
+.t-s14 .o-time-study-connection {
+  stroke: #440000;
+}
+.t-s14 .o-time-study-connection--bought {
+  stroke: #660000;
+}
+.o-time-study-connection--secret {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.o-time-study-connection--secret-unlocked {
+  opacity: 1;
+  transition: opacity 1s;
+  transition-delay: 1s;
+}
