@@ -172,7 +172,7 @@ export default {
   background-color: var(--color-automator-controls-inactive);
   background-image: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
   border: 0.1rem solid var(--color-automator-controls-border);
-  box-shadow: 0 0 0.5rem #000000 inset, 0 0 0 0.2rem var(--color-automator-controls-border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem #000000 inset, 0 0 0 0.2rem var(--color-automator-controls-border) inset);
   border-radius: var(--var-border-radius, 0.5rem);
   font-size: 1.2rem;
   color: var(--color-automator-docs-font);

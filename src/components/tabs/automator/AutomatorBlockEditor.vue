@@ -228,7 +228,7 @@ export const BlockAutomator = {
   tab-size: 1.5rem;
   width: 100%;
   background: var(--leg-base);
-  box-shadow: 0 0 2.5rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 2.5rem #00000080 inset);
   background-position: center;
   box-sizing: content-box;
 }

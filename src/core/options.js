@@ -24,6 +24,12 @@ export class GameOptions {
     GameStorage.save();
   }
 
+  static toggleShadows() {
+    player.options.extraShadows = (player.options.extraShadows + 1) % Object.keys(SHADOWS_SETTING).length
+    document.body.classList.remove(Array.from(document.body.classList).filter((x) => x.startsWith("sh-")));
+    document.body.classList.add(`sh-${SHADOWS_SETTING_CLASS[player.options.extraShadows]}`)
+  }
+
   static cloudSave() {
     Cloud.saveCheck(true);
   }

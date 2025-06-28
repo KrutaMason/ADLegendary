@@ -11,7 +11,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-eternity) 150%),var(--leg-base);
     border: 0.1rem solid var(--color-eternity);
-    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-eternity) inset;
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-eternity) inset);
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-eternity-upgrades-actual-grid {
@@ -57,8 +57,8 @@
     font-size: 1rem;
     background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
     border: 0.1rem solid var(--border);
-    text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
-    box-shadow: 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
     border-radius: var(--var-border-radius, 0.4rem);
     transition-duration: 0.2s;
     cursor: pointer;
@@ -235,8 +235,8 @@
     color: black;
     background: url(../images/time-studies/ts-time.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     background-position: center;
-    box-shadow: 0 0 1rem inset black,var(--border) inset 0px 0px 0px 2px;
-    text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+    box-shadow: var(--var-box-shadow, 0 0 1rem inset black,var(--border) inset 0px 0px 0px 2px);
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
     border: 0.1rem solid var(--border);
     border-radius: var(--var-border-radius, 0.4rem);
     transition-duration: 0.2s;
@@ -363,12 +363,12 @@
     border-radius: var(--var-border-radius, 0.4rem);
     padding: 1rem;
     transition-duration: 0.2s;
-    text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   }
   
   .o-dilation-btn--locked {
     color: #aaaaaa;
-    box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
+    box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
     background: url(../images/time-studies/ts-dilation.png),linear-gradient(var(--bg-bright),var(--bg-dark));
     --border: #505050;
     --bg-bright: #33382e;
@@ -494,7 +494,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-dilation) 200%),var(--leg-base);
     border: 0.1rem solid var(--color-dilation);
-    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-dilation) inset;
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-dilation) inset);
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-dilation-upgrades-grid {

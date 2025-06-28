@@ -370,7 +370,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
 .o-fill-bar--red {
   background: url(../../../../public/images/upgrades/ec-red.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
   animation: a-possible 2s linear infinite;
-  box-shadow: 0 0 .5rem #ffffff inset, 0 0 1rem red inset;
+  box-shadow: var(--var-box-shadow, 0 0 .5rem #ffffff inset, 0 0 1rem red inset);
 }
 .o-prestige-button:hover>.o-fill-container>.o-fill-bar--dilated{
   background: linear-gradient(transparent -100%,white 300%);

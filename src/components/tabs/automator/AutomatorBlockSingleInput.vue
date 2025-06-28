@@ -378,7 +378,7 @@ export default {
 .c-automator-constant-block {
   background: linear-gradient(white -50%,var(--color-blockmator-block-command) 75%);
   color: var(--color-blockmator-editor-background);
-  box-shadow: 0 0 0 0.1rem var(--color-blockmator-block-command) inset,0 0 0.5rem 0.1rem black inset;
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-blockmator-block-command) inset,0 0 0.5rem 0.1rem black inset);
 }
 
 .c-automator-text-input-container {
@@ -401,7 +401,7 @@ export default {
 .l-error-textbox {
   background: linear-gradient(white -50%,var(--color-automator-error-background) 75%);
   background-color: var(--color-automator-error-background);
-  box-shadow: 0 0 0 0.1rem var(--color-automator-error-background) inset,0 0 0.5rem 0.1rem black inset;
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-automator-error-background) inset,0 0 0.5rem 0.1rem black inset);
   color: yellow;
 }
 

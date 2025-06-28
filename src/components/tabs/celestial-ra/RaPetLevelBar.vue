@@ -162,7 +162,7 @@ export default {
 </template>
 <style scoped>
 .c-ra-exp-bar-inner-text{
-  text-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black, 0.1rem -0.1rem 0.1rem black, -0.1rem 0.1rem 0.1rem black;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black, 0.1rem -0.1rem 0.1rem black, -0.1rem 0.1rem 0.1rem black);
   color:white;
   font-style: italic;
   position: relative;

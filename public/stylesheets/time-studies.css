@@ -24,8 +24,8 @@
   border: 0.1rem solid var(--border);
   --border:#682e97;
   background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
-  box-shadow: 0 0 1rem var(--border) inset,0 0 1rem black inset;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--border) inset,0 0 1rem black inset);
   border-radius: var(--var-border-radius, 4px);
   transition-duration: 0.2s;
   background-position: center;
@@ -46,7 +46,7 @@
 }
 
 .c-tt-buy-button--locked {
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset);
   --border:#888888;
   color: #bbbbbb;
   --bg-bright: #353535;
@@ -163,8 +163,8 @@
 
 .ttshop-background {
   z-index: 1;
-  background: linear-gradient(transparent,transparent),var(--leg-base);
-  box-shadow: var(--box-shadow);
+  background: linear-gradient(transparent,var(--color-eternity) 300%),var(--leg-base);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border) 3;
   border-bottom: none;
@@ -231,7 +231,7 @@
   background: var(--bg-image), linear-gradient(var(--bg-bright), var(--bg-dark));
   background-position: center;
   border: 0.1rem solid var(--border);
-  box-shadow: 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px);
   text-shadow: var(--text--shadow);
   border-radius: var(--var-border-radius, 0.4rem);
   margin: 1rem;
@@ -282,8 +282,8 @@
   background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
   --bg-image: url(../images/upgrades/pelle.png);
   background-position: center;
-  box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
-  text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
@@ -319,8 +319,8 @@
   font-size: 1rem;
   background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
   background-position: center;
-  box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
-  text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
@@ -338,6 +338,7 @@
   --bg-dark: #0e0707;
   --bg-bright: #35061c;
   color: #ac1339;
+  --border: #ac1339;
   cursor: pointer;
 }
 .o-time-study--available:hover {
@@ -497,6 +498,11 @@
 .o-time-study-eternity-challenge--complete {
   box-shadow: inset 0px 0px 15px #083a11,#138626 inset 0px 0px 0px 2px;
   --border: #138626;
+}
+
+.sh-text .o-time-study-eternity-challenge--complete,
+.sh-none .o-time-study-eternity-challenge--complete {
+  box-shadow: inset 0px 0px 15px #083a11;
 }
 
 .o-time-study-dilation--available {

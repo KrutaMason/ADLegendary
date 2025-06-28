@@ -80,7 +80,7 @@ SOFTWARE.
 .c-ad-slider__bg {
   background-color: #cccccc;
   border-radius: var(--var-border-radius, 1.5rem);
-  box-shadow: 0 0 0.5rem 0.1rem #00000088;
+  box-shadow: 0.1rem 0.1rem 0.25rem 0.1rem #00000088;
 }
 
 .l-ad-slider__bg::after {

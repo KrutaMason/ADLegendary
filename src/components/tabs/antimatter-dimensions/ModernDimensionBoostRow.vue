@@ -115,7 +115,7 @@ export default {
   opacity:1
 }
 .o-fill-bar--dimboost {
-  box-shadow: 0 0 1rem #ffffff44 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #ffffff44 inset);
   background: linear-gradient(transparent -25%,#00ee0044 200%);
   transition-duration:0.1s
 }

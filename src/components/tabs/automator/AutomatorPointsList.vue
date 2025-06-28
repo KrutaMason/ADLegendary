@@ -127,7 +127,7 @@ export default {
   border-image: var(--leg-border) 3;
   border-radius: var(--var-border-radius, 0.5rem);
   background-image: var(--leg-base);
-  box-shadow: 0 0 2rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 2rem #00000080 inset);
   padding: 1rem;
 }
 
@@ -155,7 +155,7 @@ export default {
   border-image: var(--leg-border) 3;
   border-radius: var(--var-border-radius, 0.5rem);
   background-image: var(--leg-base);
-  box-shadow: 0 0 2rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 2rem #00000080 inset);
   padding: 1rem;
 }
 

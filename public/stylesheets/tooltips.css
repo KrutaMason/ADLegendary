@@ -12,7 +12,7 @@
   line-height: 1.2;
   color: white;
   background: linear-gradient(#0d0d0d,var(--color-accent) 300%);
-  box-shadow: 0 0 1rem black inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset);
   border-radius: var(--var-border-radius, 0.3rem);
   padding: 0.5rem 1rem 0.4rem;
   -webkit-user-select: none;
@@ -21,7 +21,7 @@
 
 .s-base--dark .general-tooltip .tooltip-inner {
   border: 0.1rem solid #dddddd;
-  box-shadow: 0 0 0.5rem black ,0 0 1rem black inset, 0 0 0 0.2rem #dddddd inset;
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem black ,0 0 1rem black inset, 0 0 0 0.2rem #dddddd inset);
 }
 
 .tooltip-inner.automator-tooltip {

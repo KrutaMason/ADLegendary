@@ -24,6 +24,7 @@ export default {
       theme: "",
       notation: "",
       sidebarResource: "",
+      shadows: 0,
       headerTextColored: true,
       prestigePosition: true,
       adbuyersSubtab: true,
@@ -42,6 +43,20 @@ export default {
     UILabel() {
       return `UI: ${this.$viewModel.newUI ? "Modern" : "Classic"}`;
     },
+    shadowsStr() {
+      switch (this.shadows) {
+        case SHADOWS_SETTING.FULL:
+          return "Full";
+        case SHADOWS_SETTING.BOX:
+          return "Boxes only";
+        case SHADOWS_SETTING.TEXT:
+          return "Texts only";
+        case SHADOWS_SETTING.NONE:
+          return "None";
+        default:
+          throw new Error("Unrecognized extra shadow setting");
+      }
+    }
   },
   watch: {
     headerTextColored(newValue) {
@@ -61,12 +76,16 @@ export default {
     update() {
       const options = player.options;
       this.theme = Theme.currentName();
+      this.shadows = options.extraShadows;
       this.notation = options.notation;
       this.headerTextColored = options.headerTextColored;
       this.prestigePosition = options.prestigePosition;
       this.adbuyersSubtab = options.adbuyersSubtab;
       this.canPosition = PlayerProgress.hasBroken;
       this.mature = options.mature;
+    },
+    cycleShadow() {
+      player.options.extraShadows = (player.options.extraShadows + 1) % Object.keys(SHADOWS_SETTING).length;
     },
   }
 };
@@ -181,6 +200,12 @@ export default {
           class="o-primary-btn--option l-options-grid__button"
           label="Mature Content:"
         />
+        <OptionsButton
+          class="o-primary-btn--option"
+          onclick="GameOptions.toggleShadows()"
+        >
+          Extra Shadows: {{ shadowsStr }}
+        </OptionsButton>
       </div>
     </div>
     <br>

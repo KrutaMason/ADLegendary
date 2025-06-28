@@ -39,7 +39,7 @@ body.t-s11 {
 
 .t-s11 .c-modal {
   border-color: #e1ae18;
-  box-shadow: 0 0 1.5rem 0 black;
+  box-shadow: var(--var-box-shadow, 0 0 1.5rem 0 black);
 }
 
 .t-s11 .c-modal__confirmation-toggle__checkbox {

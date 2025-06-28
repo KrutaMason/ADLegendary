@@ -100,7 +100,7 @@ export default {
   border-radius: var(--var-border-radius, 1rem);
   transform: translate(-50%, -50%);
   box-shadow:0 0 2rem black inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
   background: url(../../../../public/images/glyphs-alchemy/background-glyph_transparentdark.png),
   linear-gradient(transparent,black 75%),var(--leg-base-render);
   background-position: center;
@@ -130,11 +130,17 @@ export default {
   border-radius: var(--var-border-radius, 1rem);
   box-shadow: 0 0 0 0.1rem inset,0 0 1rem black inset,0 0 0 0.4rem inset,0 0 1.5rem 0.1rem, 0 0 1.5rem 0.2rem inset;
 }
-
+.c-modal-celestial-quote__shadow,
+.sh-none .c-modal-celestial-quote__shadow {
+  box-shadow: 0 0 0 0.1rem inset,0 0 1.5rem 0.1rem, 0 0 1.5rem 0.2rem inset;
+}
 .s-base--metro .c-modal-celestial-quote__shadow {
   box-shadow: 0 0 0 0.1rem inset,0 0 1rem black inset,0 0 0 0.4rem inset,0 0 1rem 0.2rem, 0 0 1.5rem 0.1rem inset
 }
-
+.s-base--metro .sh-text .c-modal-celestial-quote__shadow,
+.s-base--metro .sh-none .c-modal-celestial-quote__shadow {
+  box-shadow: 0 0 0 0.1rem inset,0 0 1rem 0.2rem, 0 0 1.5rem 0.1rem inset
+}
 .c-modal-celestial-quote__image {
   flex-direction: column;
   bottom: 4rem;

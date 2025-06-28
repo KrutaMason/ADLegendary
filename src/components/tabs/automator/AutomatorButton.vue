@@ -15,7 +15,7 @@ export default {
 .c-automator__button {
   width: 3.3rem;
   border: var(--var-border-width, 0.2rem) solid var(--color-automator-controls-border);
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-blockmator-block-background);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-blockmator-block-background));
   background-image: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
   border-radius: var(--var-border-radius, 0.3rem);
   margin: 0.4rem;

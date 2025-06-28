@@ -38,6 +38,7 @@ export const Theme = function Theme(name, config) {
     document.body.classList.add(this.cssClass());
     if (this.isMetro) document.body.classList.add("s-base--metro");
     if (this.isDark()) document.body.classList.add("s-base--dark");
+    document.body.classList.add(`sh-${SHADOWS_SETTING_CLASS[player.options.extraShadows]}`)
 
     if (this.isAnimated && player.options.animations.background) {
       document.getElementById("background-animations").style.display = "block";

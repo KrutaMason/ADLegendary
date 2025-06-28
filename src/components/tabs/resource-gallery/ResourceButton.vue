@@ -101,8 +101,8 @@ export default {
   linear-gradient(var(--bg) -35%,black 200%);
   background-position: center;
   border: 0.1rem solid var(--border);
-  box-shadow: 0 0 0.3rem 0.2rem #00000066,0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0 0 0.3rem 0.2rem #00000066,0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black);
   --bg:#666666;
   --border:gray
 }
@@ -115,7 +115,7 @@ export default {
   border-color: var(--color-text);
 }
 .o-resource--selected{
-  box-shadow:0 0 0.5rem 0.2rem var(--border),0 0 0.5rem white inset, 0 0 0 0.3rem var(--border) inset,0 0 0 0.4rem var(--color-text) inset;
+  box-shadow: 0 0 0.5rem 0.2rem var(--border),0 0 0.5rem white inset, 0 0 0 0.3rem var(--border) inset,0 0 0 0.4rem var(--color-text) inset;
   text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem var(--border);
   border-color: var(--color-text);
 }

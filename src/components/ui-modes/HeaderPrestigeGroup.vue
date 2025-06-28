@@ -40,7 +40,7 @@ export default {
   height: 14rem;
   width: 100%;
   color: var(--color-text);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
 }
 
 .l-game-header__eternity {

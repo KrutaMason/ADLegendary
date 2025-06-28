@@ -259,7 +259,6 @@
   border-top: solid 1px;
   border-image: linear-gradient(90deg,transparent,var(--border),transparent) 1;
   background: linear-gradient(90deg, transparent, color-mix(in srgb,var(--color) 25%,transparent) ,transparent);
-  text-shadow: var(--text-shadow);
   --bg-dark: transparent;
 }
 .c-dimension-row:nth-child(even):not(.c-antimatter-prestige-row) {
@@ -270,7 +269,7 @@
 }
 .s-base--dark .c-dimension-row:not(.c-antimatter-prestige-row){
   background: var(--img),linear-gradient(90deg, transparent, color-mix(in srgb,var(--color) 15%,transparent) ,transparent);
-  box-shadow: inset 0px 0px 25px #000000;
+  box-shadow: var(--var-box-shadow, inset 0px 0px 25px #000000);
   background-position: center;
 }
 .s-base--dark .c-dimension-row:nth-child(even):not(.c-antimatter-prestige-row){

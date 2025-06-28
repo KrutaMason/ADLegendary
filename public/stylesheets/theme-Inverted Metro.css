@@ -35,7 +35,7 @@ body.t-inverted-metro {
 .t-inverted-metro .c-tt-buy-button--locked {
   background: #9e9e9e;
   border: none;
-  box-shadow: 1px 1px 1px 0 #000000;
+  box-shadow: var(--var-box-shadow, 1px 1px 1px 0 #000000);
 }
 
 .t-inverted-metro .c-tt-buy-button--locked:hover {

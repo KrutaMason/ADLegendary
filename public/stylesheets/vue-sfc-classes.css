@@ -47,7 +47,7 @@
   font-weight: bold;
   -webkit-user-select: none;
   user-select: none;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
 }
 
 .c-news-line a {

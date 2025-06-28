@@ -230,7 +230,7 @@ export default {
   --border: var(--color-laitela--base);
   color: var(--color-laitela--accent);
   background: var(--color-laitela--base);
-  box-shadow: 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--accent);
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--accent));
   background-image: url(../../../../public/images/upgrades/button-continuum.png);
   border: 0.1rem solid var(--color-laitela--accent);
   background-position-y: center;
@@ -238,15 +238,15 @@ export default {
 }
 .t-metro .o-continuum,
 .t-inverted-metro .o-continuum {
-  box-shadow: 0.1rem 0.1rem 0.1rem 0 #9e9e9e, var(--border) inset 0px 0px 0px 1px;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.1rem 0 #9e9e9e, var(--border) inset 0px 0px 0px 1px);
 }
 .t-dark-metro .o-continuum {
-  box-shadow: 0.1rem 0.1rem 0.1rem 0 black, var(--border) inset 0px 0px 0px 1px;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.1rem 0 black, var(--border) inset 0px 0px 0px 1px);
 }
 .o-continuum:hover {
   color: var(--color-laitela--base);
   background: var(--color-laitela--accent);
-  box-shadow: 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--base);
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--base));
   background-position-y: center;
   background-image: url(../../../../public/images/upgrades/button-continuum.png);
 }

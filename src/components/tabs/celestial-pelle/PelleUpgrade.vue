@@ -174,14 +174,14 @@ export default {
   font-family: Typewriter;
   font-size: 0.95rem;
   color: var(--color-pelle--secondary);
-  text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
   --bg-dark:#002020;
   --bg-bright:#001111;
   border: 0.1rem solid var(--border);
   --border:var(--color-pelle--secondary);
   border-radius: var(--var-border-radius, 0.5rem);
-  box-shadow: var(--box-shadow),inset 0 0 1rem 0.1rem;
+  box-shadow: var(--var-box-shadow, var(--box-shadow),inset 0 0 1rem 0.1rem);
   margin: 0.6rem 0.55rem;
   padding: 1rem;
   cursor: pointer;
@@ -225,7 +225,7 @@ export default {
   color: #aaaaaa;
   --bg-dark: var(--leg-bg-dark) !important;
   --bg-bright: var(--leg-bg-bright) !important;
-  box-shadow: var(--box-shadow),var(--border) inset 0px 0px 0px 2px;
+  box-shadow: var(--var-box-shadow, var(--box-shadow),var(--border) inset 0px 0px 0px 2px);
   cursor: default;
 }
 .c-pelle-upgrade--unavailable:hover {
@@ -242,7 +242,7 @@ export default {
   --border:var(--color-pelle--secondary) !important;
   --bg-bright: #148585;
   --bg-dark: #0a3b43 !important;
-  box-shadow: var(--box-shadow),var(--border) inset 0px 0px 0px 2px;
+  box-shadow: var(--var-box-shadow, var(--box-shadow),var(--border) inset 0px 0px 0px 2px);
   cursor: default;
 }
 
@@ -251,7 +251,7 @@ export default {
 .c-pelle-upgrade--unavailable:hover,
 .c-pelle-upgrade--faded:hover,
 .c-pelle-upgrade--bought:hover {
-  box-shadow: var(--box-shadow),0.1rem 0.1rem 0.5rem var(--color-pelle--secondary),var(--border) inset 0px 0px 0px 2px;
+  box-shadow: var(--var-box-shadow, var(--box-shadow),0.1rem 0.1rem 0.5rem var(--color-pelle--secondary),var(--border) inset 0px 0px 0px 2px);
   transition-duration: 0.3s;
 }
 

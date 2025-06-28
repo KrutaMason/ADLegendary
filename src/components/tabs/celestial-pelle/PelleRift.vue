@@ -140,7 +140,7 @@ export default {
   border-radius: var(--var-border-radius, 0.5rem);
   background: linear-gradient(90deg, var(--color-pelle--base) -200%,#ffffff40 25% 75%,var(--color-pelle--base) 300%);;
   /* transparent crimson */
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset, 
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset), 
   inset 0 0 1rem 0.1rem #ed143d73, 0 0 1rem 0.1rem #ed143d73;
   margin-top: 1.2rem;
 }

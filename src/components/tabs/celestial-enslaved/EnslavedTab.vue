@@ -363,7 +363,7 @@ export default {
   --bg-bright: #4b4643;
   --bg-dark: #3f3227;
   --border: rgb(123 103 85);
-  box-shadow: 0 0 1rem black inset,0 0 0 0.2rem var(--border) inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset,0 0 0 0.2rem var(--border) inset);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
 }
 </style>

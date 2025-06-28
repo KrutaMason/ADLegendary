@@ -152,7 +152,7 @@ export default {
   font-size: 1.5rem;
   color: var(--color-pelle--base);
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: 0 0 2rem black inset ,0 0 0 0.3rem var(--color-pelle--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 2rem black inset ,0 0 0 0.3rem var(--color-pelle--base) inset);
   background: linear-gradient(#00000040,#ed143d60), var(--leg-base);
   border-radius: var(--var-border-radius, 0.5rem);
 }
@@ -188,7 +188,7 @@ export default {
   background-position: center;
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
   border-radius: 50%;
-  box-shadow: 0 0 1rem black inset,0 0 0 0.3rem inset var(--color-pelle--base),0 0 1rem #9b0101 inset,0 0 1.5rem #9b0101;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset,0 0 0 0.3rem inset var(--color-pelle--base),0 0 1rem #9b0101 inset,0 0 1.5rem #9b0101);
   margin: auto;
   margin-top: 3rem;
   transition-duration: 0.4s;

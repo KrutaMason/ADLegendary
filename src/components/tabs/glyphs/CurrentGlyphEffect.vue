@@ -99,7 +99,7 @@ export default {
   border-bottom: 1px solid ;
   border-image: linear-gradient(90deg,#80808040,#808080a0,#80808040) 1;
   background: linear-gradient(90deg,transparent,var(--bg),transparent);
-  text-shadow: 0.05rem 0.05rem 0.1rem #000000aa;
+  text-shadow: var(--var-text-shadow, 0.05rem 0.05rem 0.1rem #000000aa);
 }
 .Current-glyph_effect:last-child{
   border-bottom: none;

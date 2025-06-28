@@ -113,7 +113,11 @@ export default {
   font-size: 1.2rem;
   margin-right: 1rem;
   font-style: italic;
-  text-shadow: 0.1rem 0.1rem 0.2rem var(--border),-0.1rem 0.1rem 0.2rem var(--color-text-inverted),0.1rem -0.1rem 0.2rem var(--color-text-inverted),-0.1rem -0.1rem 0.2rem var(--border);
+  text-shadow: var(--var-text-shadow, 
+  0.1rem 0.1rem 0.2rem var(--border),
+  -0.1rem 0.1rem 0.2rem var(--color-text-inverted),
+  0.1rem -0.1rem 0.2rem var(--color-text-inverted),
+  -0.1rem -0.1rem 0.2rem var(--border));
 }
 .c-dim-row--unstable .c-dim-row__large,
 .c-dim-row--unstable .c-dim-row__small {

@@ -356,7 +356,7 @@ export default {
   color: var(--color-text);
   font-family: Cambria;
   font-weight: bold;
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-pelle--base),-0.1rem -0.1rem 0.3rem var(--color-pelle--base);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-pelle--base),-0.1rem -0.1rem 0.3rem var(--color-pelle--base));
 
   /* This keeps the percentage from blocking the hover area */
   pointer-events: none;
@@ -416,7 +416,7 @@ export default {
   --bg-dark:#330910;
   background-color: var(--color-base);
   border: 0.1rem solid var(--color-pelle--base);
-  box-shadow: 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset);
 }
 
 .s-base--dark .c-pelle-milestone-tooltip {
@@ -428,7 +428,7 @@ export default {
   --bg-bright:#741224;
   --bg-dark:var(--color-pelle--base);
   background-color: var(--color-pelle--base);
-  box-shadow: 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset,0 0 0 0.1rem black;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset,0 0 0 0.1rem black);
 }
 
 .s-base--dark .c-pelle-milestone-tooltip--unlocked {

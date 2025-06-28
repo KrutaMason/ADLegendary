@@ -44,14 +44,14 @@ export default {
 <style scoped>
 .c-automator-visuals-select-small{
   --bg: linear-gradient(var(--color-automator-controls-inactive), var(--color-automator-controls-inactive));
-    background: var(--leg-shading), var(--bg);
-    border: 0.1rem solid var(--color-automator-controls-border);
-    border-radius: 0;
-    border-bottom: 0;
-    box-shadow: 0 0 0.5rem #000000 inset, 0 0 0 0.1rem var(--color-automator-controls-border) inset;
-    text-shadow: none;
-    color: var(--color-automator-docs-font) !important;
-    transition: none;
+  background: var(--leg-shading), var(--bg);
+  border: 0.1rem solid var(--color-automator-controls-border);
+  border-radius: 0;
+  border-bottom: 0;
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem #000000 inset, 0 0 0 0.1rem var(--color-automator-controls-border) inset);
+  text-shadow: none;
+  color: var(--color-automator-docs-font) !important;
+  transition: none;
 }
 .c-automator-visuals-select-small:hover{
   --bg: linear-gradient(var(--color-automator-controls-inactive), var(--color-automator-active-line-outline));

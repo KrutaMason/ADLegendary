@@ -370,8 +370,10 @@ export default {
         height: `calc(${this.size} - ${this.isRealityGlyph&&this.animationenabled?0.4:0.2}rem)`,
         position: "absolute",
         "background-color": "rgba(0, 0, 0, 0)",
-        "box-shadow": `0 0 ${this.isRealityGlyph&&this.animationenabled?"0.5rem":"1rem"} 
-        ${this.bgColor === "black"?"black":"#00000080"} inset ,0 0 0 0.2rem ${this.borderColor} inset`,
+        "box-shadow": ` ${(player.options.extraShadows===0||player.options.extraShadows===1)?` 
+        0 0 ${this.isRealityGlyph&&this.animationenabled?"0.5rem":"1rem"} 
+        ${this.bgColor === "black"?"black":"#00000080"} inset ,0 0 0 0.2rem ${this.borderColor} inset`:`
+        0 0 ${this.glowBlur} calc(${this.glowSpread} + 0.1rem) ${this.borderColor}88 inset`}`,
         "border-radius": this.circular ? "50%" : "15%",
       };
     },
@@ -399,7 +401,8 @@ export default {
         color:this.isRealityGlyph&&this.animationenabled?(this.bgColor==="white"?"black":"white"):color,
         "text-shadow": this.symbolBlur ? (this.isRealityGlyph&&this.animationenabled?`0 0 0.3rem 
         ${(this.bgColor==="white"?"black":"white")},0 0 0.3em ${color},0 0 0.3em ${color},0 0 0.3em ${color}`:
-        `0.1rem 0.2rem 0.3rem ${this.isCursedGlyph?"black":this.bgColor}, -0.04em 0.04em 0.08em ${color}`) : undefined,
+        `${(player.options.extraShadows===0||player.options.extraShadows===2)?
+        `0.1rem 0.2rem 0.3rem ${this.isCursedGlyph?"black":this.bgColor},`:``} -0.04em 0.04em 0.08em ${color}`) : undefined,
         "border-radius": this.circular ? "50%" : "15%",
         "padding-bottom": this.bottomPadding,
         "background-image": `url(images/glyphs-alchemy/glyph-${this.bgColor === `black`?`pattern`:`pattern-light`}.png),
@@ -901,7 +904,7 @@ export default {
   z-index: 5;
   color: white;
   line-height: 1.1;
-  text-shadow: 1px 1px black,-1px 1px black,1px -1px black,-1px -1px black;
+  text-shadow: var(--var-text-shadow, 1px 1px black,-1px 1px black,1px -1px black,-1px -1px black);
   background: linear-gradient(#aa9675,yellow);
   border: solid #caba9b 1px;
   border-top: none;
@@ -915,7 +918,7 @@ export default {
   z-index: 5;
   color: white;
   line-height: 1.1;
-  text-shadow: 1px 1px black,-1px 1px black,1px -1px black,-1px -1px black;
+  text-shadow: var(--var-text-shadow, 1px 1px black,-1px 1px black,1px -1px black,-1px -1px black);
   background: linear-gradient(#aa8175,orange);
   border: solid #d36d29 1px;
   border-top: none;

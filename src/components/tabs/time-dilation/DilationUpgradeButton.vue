@@ -160,8 +160,8 @@ export default {
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
   border: 0.1rem solid var(--border);
-  box-shadow: 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px;
-  text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
   --bg-dark: #0c0b0f;
   --bg-bright: #2b2f3b;
   background-position: center;
@@ -291,7 +291,7 @@ export default {
 
 .s-base--metro .o-dilation-upgrade--unavailable,
 .t-s1 .o-dilation-upgrade--unavailable {
-  box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.1rem 0 black);
 }
 
 .t-dark .o-dilation-upgrade--available:hover,

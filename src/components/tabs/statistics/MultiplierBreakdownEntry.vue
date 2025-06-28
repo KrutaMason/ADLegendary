@@ -195,14 +195,14 @@ export default {
         height: `${100 * barSize(percents)}%`,
         width: "100%",
         "transition-duration": this.isRecent(this.lastLayoutChange) ? undefined : "0.2s",
-        border: percents === 0 ? "" : "0.1rem solid transparent",
+        border: percents === 0 ? "" : "0.1rem solid #00000088",
         color: iconObj?.textColor ?? "black",
         background: isNerf
           ? `url(images/visuals/mult-breakdown-bar.png),repeating-linear-gradient(-45deg, #ff000040 0rem 0.4rem, ${iconObj?.color} 0.4rem 0.8rem)`
           : `url(images/visuals/mult-breakdown-bar.png),linear-gradient(${iconObj?.color},${iconObj?.color})`,
         animation:this.mouseoverIndex !== index?"25s a-mult-bar linear infinite":undefined,
         "text-shadow":`0.1rem 0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"}, -0.1rem -0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"}`,
-        "box-shadow": `inset 0 0 0.5rem 0 black, inset 0 0 0 0.1rem ${iconObj?.color}`
+        "box-shadow": `var(--var-box-shadow, inset 0 0 0.5rem 0 black, inset 0 0 0 0.1rem ${iconObj?.color})`
       };
     },
     singleEntryClass(index) {
@@ -475,8 +475,7 @@ export default {
   font-weight: normal;
   background: linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
   background-position: center;
-  box-shadow: 0rem -1rem 2rem #00000080 inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-text-inverted);
+  box-shadow: var(--var-box-shadow, 0rem -1rem 2rem #00000080 inset);
   
   -webkit-tap-highlight-color: transparent;
 }
@@ -488,7 +487,7 @@ export default {
 .c-stacked-bars {
   border: var(--var-border-width, 0.3rem) solid;
   border-image: var(--leg-border-render) 3;
-  box-shadow: 0 0 1rem black inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset);
   position: relative;
   width: 5rem;
   background: url(../../../../public/images/visuals/mult-breakdown-bar-empty.png);

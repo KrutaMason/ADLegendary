@@ -378,10 +378,10 @@ export default {
 }
 .l-v-milestones-grid__row_unlock .o-v-milestone--unlocked{
   color: var(--color-v--base);
-    --bg-bright: #000000;
-    --bg-dark: #5a4919;
-    --border: #c9bb6b;
-    box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset, 0 0 1rem var(--border);
+  --bg-bright: #000000;
+  --bg-dark: #5a4919;
+  --border: #c9bb6b;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset, 0 0 1rem var(--border));
 }
 .l-v-milestones-grid__row_unlock .o-v-milestone--unlocked:hover{
     --bg-dark: #af8d2f;

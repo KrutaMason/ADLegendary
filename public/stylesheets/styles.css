@@ -15,14 +15,14 @@ html {
   background-image: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%),
   linear-gradient(gray,gray);
   border: 0.2rem solid transparent;
-  box-shadow: 0 0 0 0.1rem gray inset, 0 0 1rem #000000aa inset, 0 0 0 0.3rem gray inset;
+  box-shadow: var(--var-box-shadow,0 0 0 0.1rem gray inset, 0 0 1rem #000000aa inset, 0 0 0 0.3rem gray inset);
   border-radius: var(--var-border-radius, 0.5rem);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-image: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%),
   linear-gradient(#aaaaaa,#aaaaaa);
-  box-shadow: 0 0 0 0.1rem #aaaaaa inset, 0 0 1rem #000000aa inset, 0 0 0 0.3rem #aaaaaa inset;
+  box-shadow: var(--var-box-shadow,0 0 0 0.1rem #aaaaaa inset, 0 0 1rem #000000aa inset, 0 0 0 0.3rem #aaaaaa inset);
 }
 
 ::-webkit-scrollbar-corner {
@@ -469,6 +469,20 @@ html {
   --box-shadow: 0px 0px 1rem #000000 inset, 0px 0px 1rem #000000;
   --text-shadow: 0.1rem 0.1rem 0.3rem #000000,-0.1rem -0.1rem 0.3rem #000000;
 }
+
+:root .sh-box {
+  --var-text-shadow: none;
+}
+
+:root .sh-text {
+  --var-box-shadow: none;
+}
+
+:root .sh-none {
+  --var-box-shadow: none;
+  --var-text-shadow: none;
+}
+
 /* end css vars */
 
 body {
@@ -670,8 +684,8 @@ button:focus {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--color-text);
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted);
-  box-shadow: var(--box-shadow);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted));
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   background: linear-gradient(var(--deg),var(--fade) -200%,transparent),var(--leg-base);
   border: var(--var-border-width, 0.1rem) solid var(--color-accent);
   border-radius: var(--var-border-radius, 0.4rem);
@@ -691,12 +705,12 @@ button:focus {
 .o-tab-btn:hover {
   color: white;
   background: linear-gradient(var(--deg),var(--fade),transparent 125%),var(--leg-base);
-  box-shadow: 0 0 1rem white inset,inset 0px 0px 0px 3px var(--fade);
-  text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0 0 1rem white inset,inset 0px 0px 0px 3px var(--fade));
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.3rem black);
 }
 .o-tab-btn--active,.o-subtab-btn--active{
   background: linear-gradient(var(--deg),var(--fade),transparent 125%),var(--leg-base);
-  box-shadow: var(--box-shadow), inset 0px 0px 0px 2px var(--fade);
+  box-shadow: var(--var-box-shadow, var(--box-shadow), inset 0px 0px 0px 2px var(--fade));
   color: var(--color-text) !important;
 }
 .s-base--metro .o-tab-btn--active,
@@ -831,7 +845,7 @@ button:focus {
   animation: a-pbtn-real 35s infinite linear;
   --animation: a-pbtn-real 35s infinite linear;
   box-shadow: 0 0 .75rem inset, 0 0 2rem;
-  text-shadow: -0.1rem -0.1rem 0.3rem var(--color-text-inverted),0.1rem 0.1rem 0.3rem var(--color-text-inverted);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem var(--color-text-inverted),0.1rem 0.1rem 0.3rem var(--color-text-inverted));
   --distance:400%;
   position: relative;
 }
@@ -861,12 +875,15 @@ button:focus {
   width: calc(100% - 1rem);
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
+  font-family: Cambria;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 1.1;
   border: var(--var-border-width, 0.2rem) solid;
-  box-shadow: 0 0 1rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #00000080 inset);
   border-image:var(--leg-border-reality) 3;
   background-image: linear-gradient(transparent,transparent),var(--leg-base);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   border-radius: var(--var-border-radius, 0.5rem);
   padding: 1rem;
 }
@@ -898,12 +915,12 @@ button:focus {
   --bg-dark:var(--color-celestials);
 }
 .c-reality-button--locked{
-  animation:none;
+  --animation:none;
   color: #bbbbbb;
   --bg-dark:var(--color-bad);
   background: url(../images/upgrades/bought.png),linear-gradient(var(--bg-bright),var(--bg-dark));
-  box-shadow: 0px 0px 1rem #000000 inset,#909090 inset 0px 0px 0px 2px;
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,#909090 inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
   border-color: #909090;
   --bg-bright: #506350;
   --bg-dark: #222b22;
@@ -913,8 +930,8 @@ button:focus {
 .s-base--dark .c-reality-button--locked,
 .s-base--dark .c-reality-button--special.c-reality-button--locked{
   color: grey;
-  box-shadow: 0px 0px 1rem #000000 inset,#505050 inset 0px 0px 0px 2px;
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,#505050 inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
   border-color: #505050;
   --bg-bright: #222a22;
   --bg-dark: #0b0e0b;
@@ -944,16 +961,16 @@ button:focus {
 }
 
 .c-reset-reality-button {
-  font-family: Typewriter;
-  font-size: 1.2rem;
+  font-family: Cambria;
+  font-size: 1.4rem;
   font-weight: bold;
   color: var(--color-bad);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   background: url(../images/upgrades/button-light.png),linear-gradient(var(--color-background),var(--fade) 200%);
   background-position: center;
   --fade:var(--color-bad);
   border: var(--var-border-width, 0.1rem) solid var(--color-bad);
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-bad) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-bad) inset);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
   cursor: pointer;
@@ -974,7 +991,7 @@ button:focus {
   --fade:var(--color-celestials);
   color: var(--color-celestials);
   border-color: var(--color-celestials);
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-celestials) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-celestials) inset);
 }
 
 .c-reset-reality-button-celestial:hover,
@@ -996,7 +1013,7 @@ button:focus {
     border: var(--var-border-width, 0.1rem) solid var(--border);
     --border:rgb(160, 118, 82);
   border-radius: var(--var-border-radius, 0.5rem);
-  box-shadow: 0 0 .5rem .1rem black inset,0 0 2rem inset rgba(244, 164, 96, 50%);
+  box-shadow: var(--var-box-shadow, 0 0 .5rem .1rem black inset,0 0 2rem inset rgba(244, 164, 96, 50%));
   margin-right: 0.5rem;
   transition-duration: 0.2s;
 }
@@ -1054,7 +1071,7 @@ button:focus {
   line-height: 1.2;
   color: #ffffff;
   background: linear-gradient(#0d0d0d,var(--color-accent) 300%);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   border-radius: var(--var-border-radius, 0.3rem);
   margin-bottom: 0.5rem;
   padding: 0.7rem;
@@ -1638,7 +1655,7 @@ br {
 
 .o-fill-bar--infinity{
   background: linear-gradient(transparent -100%,var(--color-infinity) 300%);
-  box-shadow: 0 0 1rem var(--color-text) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-text) inset);
 }
 
 .o-fill-bar--replicanti{
@@ -1647,12 +1664,12 @@ br {
 
 .o-fill-bar--eternity{
   background: linear-gradient(transparent -100%,var(--color-eternity) 250%);
-  box-shadow: 0 0 1rem var(--color-text) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-text) inset);
 }
 
 .o-fill-bar--reality{
   background: linear-gradient(transparent -100%,var(--color-reality) 500%);
-  box-shadow: 0 0 1rem var(--color-text) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-text) inset);
 }
 /* #endregion fillbars */
 
@@ -1680,7 +1697,7 @@ br {
   color: var(--color-text);
   background: url(../images/upgrades/reality-bought.png),linear-gradient(transparent,var(--fade) 300%),var(--leg-base);
   --fade:var(--color-reality);
-  box-shadow: 0 0 1rem 0.2rem var(--color-background) inset, 0 0 0 0.4rem var(--fade) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem 0.2rem var(--color-background) inset, 0 0 0 0.4rem var(--fade) inset);
   background-position: center;
   border: var(--var-border-width, 0.1rem) solid var(--color-text);
   border-radius: var(--var-border-radius, 0.5rem);
@@ -1742,7 +1759,7 @@ br {
 
 .c-game-tab {
   padding-bottom: 2rem;
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
 }
 
 .c-wide-canvas-element {
@@ -1766,8 +1783,8 @@ br {
   --bg-bright:#f4f4f4;
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
-  box-shadow: 0 0 0.7rem var(--shadow-color) inset,var(--border) inset 0 0 0 0.15rem;
-  text-shadow: var(--text-shadow);
+  box-shadow: var(--var-box-shadow,0 0 0.7rem var(--shadow-color) inset,var(--border) inset 0 0 0 0.15rem);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   padding: 0.3rem 1rem;
   transition-duration: 0.2s;
   cursor: pointer;
@@ -2215,7 +2232,7 @@ br {
 /* #region t-dark */
 
 .t-dark .o-primary-btn {
-  box-shadow: 0 0 0.7rem 0.2rem #111111, 0px 0px .7rem #000000 inset,var(--border) inset 0 0 0 0.15rem;
+  box-shadow: var(--var-box-shadow,0 0 0.7rem 0.2rem #111111, 0px 0px .7rem #000000 inset,var(--border) inset 0 0 0 0.15rem);
 }
 
 /* #endregion t-dark */
@@ -2388,7 +2405,7 @@ br {
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
   box-shadow: 0 0 1rem inset, 0 0 2rem;
-  text-shadow: -0.1rem -0.1rem 0.3rem var(--color-text-inverted),0.1rem 0.1rem 0.3rem var(--color-text-inverted);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem var(--color-text-inverted),0.1rem 0.1rem 0.3rem var(--color-text-inverted));
   cursor: pointer;
   --distance:400%;
   position: relative;
@@ -2518,7 +2535,7 @@ br {
   color: var(--color-dilation);
   border-color: var(--color-dilation);
   --bg-dark: var(--color-dilation);
-  text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
 }
 .t-hex .o-eternity-button--dilation {
   --stars:url(../images/prestige/dilation_hex-1.png),url(../images/prestige/dilation_hex-2.png);
@@ -2686,7 +2703,7 @@ br {
   --bg-bright:#111117;
   --bg-dark:#2ebce6;
   --stars:url(../images/prestige/tesseract-1.png),url(../images/prestige/tesseract-2.png);
-  text-shadow: -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black;
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
   border: 0.1rem solid;
   margin-bottom: 1.2rem;
   padding: 1rem;
@@ -3089,7 +3106,7 @@ br {
 }
 
 .c-infinity-dim-tab__tesseract-button {
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   font-family: Typewriter, serif;
   color: #2ebce6;
   width: 40rem;
@@ -3123,7 +3140,7 @@ br {
   --bg-dark:var(--leg-bg-dark);
   --border: #bfdde8;
   border: var(--var-border-width, 0.1rem) solid var(--border);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--border) inset);
   background-position: center;
   animation: none;
   cursor: default;
@@ -3308,10 +3325,9 @@ br {
   flex-direction: column;
   background: linear-gradient(transparent,transparent),var(--leg-base);
   border: var(--var-border-width,0.3rem) solid;
-  border-radius: var(--var-border-radius,1rem);
   border-image: var(--leg-border) 3;
   padding: 1rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
 }
 
 .l-options-grid__row {
@@ -3516,7 +3532,7 @@ br {
   border: var(--var-border-width, 0.3rem) solid;
   border-image: var(--leg-border-reality) 3;
   background: linear-gradient(transparent,var(--color-reality) 600%),var(--leg-base);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 0.5rem;
   padding: 0.2rem;
@@ -3563,7 +3579,7 @@ br {
   color: var(--color-text);
   background: var(--leg-base);
   border: var(--var-border-width, 0.1rem) solid var(--color-text);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem gray inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem gray inset);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 0.2rem;
   padding: 0.2rem;
@@ -3574,7 +3590,7 @@ br {
   background: url(../images/upgrades/reality-locked.png),linear-gradient( #305045,#13201c);
   background-position: center;
   border-color: #78978d;
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem #78978d inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem #78978d inset);
 }
 
 /* #endregion Speedrun Stats */
@@ -3658,8 +3674,7 @@ br {
   color: var(--color-text);
   background: var(--bg-image),linear-gradient(transparent,var(--bg-dark) 125%),var(--leg-base);
   background-position: center;
-  text-shadow: var(--text-shadow);
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--border) inset);
   border: 0.1rem solid var(--border);
   --border: black;
   border-radius: var(--var-border-radius, 0.8rem);
@@ -3669,7 +3684,7 @@ br {
   pointer-events: none;
 }
 .s-base--dark .o-achievement__tooltip {
-  text-shadow: 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.3rem black;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black, -0.1rem -0.1rem 0.3rem black);
   background: var(--bg-image),linear-gradient(transparent,var(--bg-dark)),var(--leg-base);
   background-position: center;
 }
@@ -3787,7 +3802,7 @@ br {
 .o-achievement__tooltip__description {
   font-size: 1.2rem;
   background-color: #ffffff66;
-  box-shadow: 0.1rem 0.1rem 0.3rem #00000088;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.3rem #00000088);
   padding: 0.3rem 0.5rem;
   border-radius: var(--var-border-radius, 1rem);
 }
@@ -3966,7 +3981,7 @@ br {
   margin-top: 1rem;
   border: var(--var-border-width,0.3rem) solid;
   background: linear-gradient(transparent, #ffd70020),var(--leg-base);
-  box-shadow: 0 0 3rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 3rem #00000080 inset);
   border-image: var(--leg-border) 3;
   padding: 1.2rem;
 }
@@ -4081,14 +4096,13 @@ br {
   background: linear-gradient(transparent 25%,var(--fade) 300%),var(--leg-base);
   border-radius: var(--var-border-radius, 0.5rem);
   box-sizing: border-box;
-  box-shadow: 0 0 1.5rem white inset, 0 0 0 0.2rem var(--fade) inset;
-  text-shadow: var(--text-shadow);
+  box-shadow: var(--var-box-shadow, 0 0 1.5rem white inset, 0 0 0 0.2rem var(--fade) inset);
   padding: 0.5rem 0.4rem;
   transition: all 0.2s, visibility 0s;
   background-position: center;
 }
 .s-base--dark .c-challenge-box{
-  box-shadow: 0 0 1.5rem black inset, 0 0 0 0.2rem var(--fade) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1.5rem black inset, 0 0 0 0.2rem var(--fade) inset);
   background: var(--bg-image),linear-gradient(transparent 25%,var(--fade) 300%),var(--leg-base);
   background-position: center;
 }
@@ -4183,8 +4197,8 @@ br {
   font-size: 1.5rem;
   line-height: 0;
   border: var(--var-border-width, 0.1rem) solid var(--border);
-  text-shadow: 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
-  --border:#127a20;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
+  --border: #127a20;
   background: linear-gradient(#ffffff88 -100%, transparent 49%, #00000044 50%, transparent), var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
   --bg:url(../images/upgrades/button-light.png);
   background-position: center;
@@ -4384,7 +4398,7 @@ br {
   border-radius: var(--var-border-radius, 0.4rem);
   box-sizing: border-box;
   padding: 0.5rem;
-  box-shadow:0.1rem 0.1rem 0.3rem black, 0 0 0.5rem var(--color-background) inset, 0 0 0 0.2rem inset var(--border)
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.3rem black, 0 0 0.5rem var(--color-background) inset, 0 0 0 0.2rem inset var(--border))
 }
 .s-base--metro .o-autobuyer-input{
   box-shadow: 0.1rem 0.1rem 0.1rem 0 #00000088;
@@ -4444,10 +4458,10 @@ br {
   font-weight: bold;
   --base: var(--color-gh-purple);
   color: white;
-  text-shadow: 0.1rem 0.1rem 0.3rem black;
-  box-shadow:0 0 0.5rem inset black, 0 0 0 0.1rem var(--base) inset;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black);
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem inset black, 0 0 0 0.1rem var(--base) inset);
   background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent),linear-gradient(var(--base) -100%, black 300%);
-  border: var(--var-border-width, 0.2rem) solid #383232;
+  border: 0.1rem solid #383232;
   border-top-right-radius: var(--var-border-radius, 0.3rem);
   border-bottom-left-radius: var(--var-border-radius, 1rem);
   transition-duration: 0.2s;
@@ -4541,10 +4555,9 @@ br {
   --bg: url(../images/upgrades/button-dark.png);
   --lighting:linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
   background-position: center;
-  text-shadow: var(--text-shadow);
   border: 0.1rem solid var(--border);
   --border:#ed85df;
-  box-shadow: 0 0 .5rem var(--border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 .5rem var(--border) inset);
   border-radius: var(--var-border-radius, 0.4rem);
   margin-bottom: -0.1rem;
   transition-duration: 0.2s;
@@ -4559,7 +4572,7 @@ br {
 
 .o-autobuyer-btn--unavailable {
   background: var(--lighting),var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
-  box-shadow: 0 0 1rem #000000 inset, var(--border) 0 0 0 0.2rem inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #000000 inset, var(--border) 0 0 0 0.2rem inset);
   background-position: center;
   color:#bbbbbb;
   --bg-dark: var(--leg-bg-dark);
@@ -4726,12 +4739,12 @@ br {
   --fade:transparent;
   border: 0.1rem solid var(--border);
   --border:#383232;
-  box-shadow: 0px 0px 2rem var(--color-background) inset,var(--border) inset 0px 0px 0px 0.2rem;
+  box-shadow: var(--var-box-shadow, 0px 0px 2rem var(--color-background) inset,var(--border) inset 0px 0px 0px 0.2rem);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 0.5rem;
   padding: 1rem 2rem;
   --width:25%;
-  text-shadow: -0.1rem -0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted));
   background-position: center;
 }
 .c-autobuyer-box-continuum{
@@ -4763,7 +4776,7 @@ properly on certain themes. */
 
 .s-base--metro .c-autobuyer-box-row {
   --border: black;
-  box-shadow: 0px 0px 1rem #00000080 inset
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #00000080 inset)
 }
 
 .t-dark .c-autobuyer-box-row {
@@ -4830,7 +4843,7 @@ properly on certain themes. */
   border: 0.1rem solid var(--border);
   background: linear-gradient(transparent,var(--fade) 800%),linear-gradient(#ffffff88,#ffffff88);
   --border:#383232;
-  box-shadow: 0.1rem 0.1rem 1rem #00000088;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 1rem #00000088);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 0.25rem;
   padding: 1rem 0.6rem;
@@ -4975,8 +4988,8 @@ properly on certain themes. */
   font-family: Typewriter, serif;
   font-size: 1.4rem;
   color: var(--color-text);
-  box-shadow: 0 0 1rem black inset, 0.5rem 0.5rem 2rem #00000088;
-  text-shadow: var(--text-shadow);
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0.5rem 0.5rem 2rem #00000088);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   background: linear-gradient(transparent,transparent),var(--leg-base);
   border: var(--var-border-width, 1.2rem) solid;
   border-image: var(--leg-border) 12 round;
@@ -4989,7 +5002,7 @@ properly on certain themes. */
   border-image: var(--leg-border) 3 round;
 }
 .s-base--dark .c-modal {
-  box-shadow: 0 0 2rem black inset, 0.5rem 0.5rem 2rem black;
+  box-shadow: --var-box-shadow, 0 0 2rem black inset, 0.5rem 0.5rem 2rem black;
 }
 .t-amoled .c-modal,
 .t-amoled-metro .c-modal {
@@ -5071,7 +5084,7 @@ properly on certain themes. */
   --base: var(--color-gh-purple);
   background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent),linear-gradient(var(--base) -100%, black 300%);
   border: var(--var-border-width, 0.1rem) solid var(--base);
-  box-shadow: 0 0 0.5rem black inset, 0 0 0 0.2rem var(--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem black inset, 0 0 0 0.2rem var(--base) inset);
   border-radius: var(--var-border-radius, 0.3rem);
   transition-duration: 0.2s;
   -webkit-user-select: none;
@@ -5108,7 +5121,7 @@ properly on certain themes. */
   color: var(--color-text);
   background: linear-gradient(transparent,var(--base) 400%),var(--leg-base);
   border: var(--var-border-width, 0.1rem) solid var(--base);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--base) inset);
   border-radius: var(--var-border-radius, 0.8rem);
   margin-left: 0;
   padding: 0.4rem;
@@ -5524,8 +5537,8 @@ kbd {
   font-size: 1.3rem;
   font-style: italic;
   color: var(--color-text);
-  box-shadow: 0.2rem 0.2rem 1rem black, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--border) inset;
-  text-shadow: var(--text-shadow);
+  box-shadow: var(--var-box-shadow, 0.2rem 0.2rem 1rem black, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--border) inset);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   background: linear-gradient(90deg,var(--fade) -100%, transparent 150%),var(--leg-base);
   border: 0.1rem solid var(--border);
   border-bottom-left-radius: var(--var-border-radius, 1rem);
@@ -5533,7 +5546,6 @@ kbd {
   padding: 0.8rem 1.5rem;
   cursor: pointer;
   text-align: right;
-  font-weight: bold;
 }
 
 .l-notification-container--switched > .o-notification {
@@ -5919,7 +5931,7 @@ kbd {
 
 .o-h2p-tab-button:hover,
 .o-h2p-tab-button--selected {
-  box-shadow: inset 0 0 0.8rem var(--color-text);
+  box-shadow: var(--var-box-shadow, inset 0 0 0.8rem var(--color-text));
 }
 
 .s-base--dark .o-h2p-tab-button {
@@ -5949,7 +5961,7 @@ kbd {
 .c-hide-modal-all-subtab-container {
   border: 0.1rem solid var(--base-color);
   background: linear-gradient(transparent -50%, var(--base-color) 200%);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--base-color) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--base-color) inset);
   border-radius: var(--var-border-radius, 0.8rem);
   padding: 0.2rem;
   cursor: pointer;
@@ -5963,12 +5975,12 @@ kbd {
   justify-content: center;
   align-items: center;
   font: 1rem Typewriter, serif;
-  text-shadow:var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   color: var(--color-text);
   background: linear-gradient(transparent,var(--border) 300%),var(--color-text-inverted);
   border: 0.1rem solid var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
-  box-shadow: 0 0 0.5rem black inset, 0 0 0 0.1rem var(--border) inset;
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem black inset, 0 0 0 0.1rem var(--border) inset);
   margin: 0.2rem;
   padding: 0.3rem 1rem;
   transition-duration: 0.2s;
@@ -6099,10 +6111,9 @@ kbd {
 }
 
 .l-pelle-panel-container {
-  text-shadow: var(--text-shadow);
   width: 98rem;
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: 0 0 2rem black inset ,0 0 0 0.3rem var(--color-pelle--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 2rem black inset ,0 0 0 0.3rem var(--color-pelle--base) inset);
   background: linear-gradient(transparent,#ed143d60), var(--leg-base);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: .5rem;
@@ -6151,7 +6162,14 @@ kbd {
   text-shadow: 0.1rem 0.1rem 0.1rem var(--color-text-inverted),-0.1rem 0.1rem 0.1rem var(--color-text-inverted),0.1rem -0.1rem 0.1rem var(--color-text-inverted),-0.1rem -0.1rem 0.1rem var(--color-text-inverted)
   ,0.2rem 0.2rem 0.3rem var(--shadow), 0.2rem -0.2rem 0.3rem var(--shadow), -0.2rem 0.2rem 0.3rem var(--shadow), -0.2rem -0.2rem 0.3rem var(--shadow);
 }
-.s-base--dark .c-challenge-text {
+.sh-box .c-challenge-text,
+.sh-none .c-challenge-text {
+  text-shadow: none;
+  color: var(--shadow);
+  font-weight: bold;
+}
+.s-base--dark.sh-full .c-challenge-text,
+.s-base--dark.sh-text .c-challenge-text {
   font-weight: normal;
 }
 .c-challenge-text--antimatter {
@@ -6165,6 +6183,10 @@ kbd {
 }
 .c-challenge-text--dilation {
   --shadow: var(--color-dilation);
+}
+.sh-box .c-challenge-text--dilation, 
+.sh-none .c-challenge-text--dilation {
+  text-shadow: 0.1rem 0.1rem black;
 }
 .c-challenge-text--reality {
   --shadow: var(--color-celestials);

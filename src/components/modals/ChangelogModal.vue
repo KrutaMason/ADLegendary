@@ -194,7 +194,7 @@ export default {
 
 .o-changelog-tab-button:hover,
 .o-changelog-tab-button--selected {
-  box-shadow: inset 0 0 0.8rem var(--color-text);
+  box-shadow: var(--var-box-shadow, inset 0 0 0.8rem var(--color-text));
 }
 
 .s-base--dark .o-changelog-tab-button {

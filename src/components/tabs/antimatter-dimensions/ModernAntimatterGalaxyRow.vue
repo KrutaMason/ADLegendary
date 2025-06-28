@@ -171,7 +171,7 @@ export default {
 }
 .o-fill-bar--galaxy {
   background: linear-gradient(transparent -25%,var(--color-celestials) 300%);
-  box-shadow: 0 0 1rem #ffffff44 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #ffffff44 inset);
   transition-duration:0.1s
 }
 </style>

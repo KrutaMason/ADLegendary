@@ -166,7 +166,7 @@ export default {
 <style scoped>
 .c-galgen-panel-container{
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--secondary);
-  box-shadow: 0 0 2rem black inset, 0 0 0 0.3rem var(--color-pelle--secondary) inset;
+  box-shadow: var(--var-box-shadow, 0 0 2rem black inset, 0 0 0 0.3rem var(--color-pelle--secondary) inset);
   background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(#000000, var(--color-pelle--secondary) 200%);
 }
 .c-galgen-panel-container .l-pelle-content-container{
@@ -241,7 +241,7 @@ export default {
   font-family: Typewriter;
   font-size: 1.1rem;
   color: white;
-  text-shadow: 0 0 0.5rem black,0 0 0.5rem black,0 0 0.5rem black;
+  text-shadow: var(--var-text-shadow, 0 0 0.5rem black,0 0 0.5rem black,0 0 0.5rem black);
   background: url(../../../../public/images/background/galgen-bar.jpg);
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
   border-radius: var(--var-border-radius, 0.5rem);
@@ -310,7 +310,7 @@ export default {
   font-family: cambria;
   font-weight: bold;
   line-height: 1.1;
-  text-shadow: 0.2rem 0.2rem 0.2rem var(--color-pelle--base),-0.2rem -0.2rem 0.2rem var(--color-pelle--base);
+  text-shadow: var(--var-text-shadow, 0.2rem 0.2rem 0.2rem var(--color-pelle--base),-0.2rem -0.2rem 0.2rem var(--color-pelle--base));
 }
 
 .c-medium-text {

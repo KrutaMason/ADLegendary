@@ -34,7 +34,8 @@ export default {
           : "normal",
         "text-shadow": this.progress >= 1
           ? "none"
-          : "0.1rem 0.1rem 0.1rem black,-0.1rem -0.1rem 0.1rem black,0.1rem -0.1rem 0.1rem black,-0.1rem 0.1rem 0.1rem black",
+          : `var(--var-text-shadow, 0.1rem 0.1rem 0.1rem black,-0.1rem -0.1rem 0.1rem black,
+          0.1rem -0.1rem 0.1rem black,-0.1rem 0.1rem 0.1rem black)`,
         "color": this.progress >= 1
           ? "black"
           : "white",
@@ -93,7 +94,7 @@ export default {
   color:var(--color);
   background:radial-gradient(var(--color-background) 40%,var(--color));
   border:0.1rem solid var(--color);
-  box-shadow: 0 0 .5rem var(--color-background) inset, 0 0 0 0.15rem var(--color) inset;
+  box-shadow: var(--var-box-shadow, 0 0 .5rem var(--color-background) inset, 0 0 0 0.15rem var(--color) inset);
   margin:0 1rem 0 0;
   transition:0.15s
 }
@@ -102,7 +103,7 @@ transform:scale(1.25)
 }
 .c-v-unlock-resource-available{
   color:white;
-  box-shadow: 0.2rem 0.2rem .75rem 0.1rem black,0 0 .5rem black inset, 0 0 0 0.2rem var(--color) inset;
+  box-shadow: 0.2rem 0.2rem .75rem 0.1rem black,var(--var-box-shadow, 0 0 .5rem black inset, 0 0 0 0.2rem var(--color) inset);
   text-shadow:0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black;
   background:radial-gradient(at top, white -25%,var(--color), black);
 }

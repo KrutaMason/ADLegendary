@@ -185,12 +185,13 @@ export default {
 </template>
 <style scoped>
 .c-infinity-dim-tesseract__accent{
-  color:var(--color-text);
+  color: var(--color-text);
   font-weight:normal;
   font-size:0rem;
   transition: 0.15s;
-  text-shadow: 0.1rem 0.1rem 0.3rem #2ebce6,0.1rem 0.1rem 0.1rem #2ebce6;
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem #2ebce6, 0.1rem 0.1rem 0.1rem #2ebce6);
 }
+
 .c-infinity-dim-tesseract__glow{
   font-size:unset
 }

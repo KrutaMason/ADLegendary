@@ -98,8 +98,8 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: var(--color-base);
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-text-inverted),-0.1rem -0.1rem 0.3rem var(--color-text-inverted);
-  box-shadow: var(--box-shadow);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted),-0.1rem -0.1rem 0.3rem var(--color-text-inverted));
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   background: linear-gradient(-90deg, transparent,var(--color-accent) 400%),var(--leg-base-render);
   border-right: 0.1rem solid var(--color-accent);
   border-bottom: 0.1rem solid var(--color-accent);
@@ -114,7 +114,7 @@ export default {
   border-left: 0.1rem solid var(--color-accent)
 }
 .c-sidebar-resource-default {
-  box-shadow: var(--box-shadow), 0 0 0 0.3rem var(--color-accent) inset;
+  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.3rem var(--color-accent) inset;
 }
 .c-sidebar-resource:last-child {
   border-bottom-right-radius: var(--var-border-radius, 0.5rem);

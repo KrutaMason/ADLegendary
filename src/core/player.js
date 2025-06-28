@@ -794,6 +794,7 @@ window.player = {
     hotkeys: true,
     themeClassic: "Normal",
     themeModern: "Normal",
+    extraShadows: SHADOWS_SETTING.FULL,
     updateRate: 33,
     audio:{
       volume:1,

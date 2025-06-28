@@ -6,7 +6,7 @@ body.t-dark-metro {
 
 
 .t-dark-metro .c-tt-buy-button--locked {
-  box-shadow: 1px 1px 1px 0 #000000;
+  box-shadow: var(--var-box-shadow, 1px 1px 1px 0 #000000);
 }
 
 .t-dark-metro .c-tt-buy-button--locked:hover {

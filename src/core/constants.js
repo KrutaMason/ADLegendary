@@ -301,6 +301,7 @@ window.GLYPH_BG_SETTING = {
   LIGHT: 1,
   DARK: 2,
 };
+
 window.AutomatorVisuals = {
   COLOR:{
       DEFAULT:0,
@@ -313,7 +314,17 @@ window.AutomatorVisuals = {
       MAGENTA:7,
       GRAY:8,
   },
-  COLOR_LABELS: ["Default Green", "Red", "Blue", "Yellow", "Purple","Cyan", "Orange", "Magenta","Gray"],
+  COLOR_LABELS: [
+    "Default Green",
+    "Red",
+    "Blue",
+    "Yellow",
+    "Purple",
+    "Cyan",
+    "Orange",
+    "Magenta",
+    "Gray"
+  ],
   GRAD:{
       UPDOWN:0,
       DOWNUP:1,
@@ -324,8 +335,18 @@ window.AutomatorVisuals = {
       RADIAL:6,
       RADIALVERSE:7,
   },
-  GRAD_LABELS: ["Top ➜ Bottom", "Bottom ➜ Top", "Left ➜ Right", "Right ➜ Left","Vertical","Horizontal","Radial","Reverse Radial"],
+  GRAD_LABELS: [
+    "Top ➜ Bottom",
+    "Bottom ➜ Top",
+    "Left ➜ Right",
+    "Right ➜ Left",
+    "Vertical",
+    "Horizontal",
+    "Radial",
+    "Reverse Radial"
+  ],
 };
+
 window.GLYPH_TYPES = [
   "power",
   "infinity",
@@ -533,3 +554,17 @@ window.SPEEDRUN_SEED_STATE = {
   RANDOM: 2,
   PLAYER: 3,
 };
+
+window.SHADOWS_SETTING = {
+  FULL: 0,
+  BOX: 1,
+  TEXT: 2,
+  NONE: 3,
+};
+
+window.SHADOWS_SETTING_CLASS = [
+  "full",
+  "box",
+  "text",
+  "none",
+];

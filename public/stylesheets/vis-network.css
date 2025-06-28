@@ -677,13 +677,13 @@ div.vis-tooltip {
     border-radius: 3px;
     border: 3px solid;
     border-image: var(--leg-border-reality) 3 round;
-    box-shadow: 0px 0px 1rem var(--color-background) inset, 3px 3px 10px rgba(0,0,0,0.5);
+    box-shadow: var(--var-box-shadow, 0px 0px 1rem var(--color-background) inset, 3px 3px 10px rgba(0,0,0,0.5));
     pointer-events: none;
     z-index: 5;
     width: 300px;
 }
 .s-base--dark div.vis-tooltip {
-    box-shadow: 0px 0px 1rem black inset, 3px 3px 10px rgba(0,0,0,0.5);
+    box-shadow: var(--var-box-shadow, 0px 0px 1rem black inset, 3px 3px 10px rgba(0,0,0,0.5));
 }
 
 .vis-tooltip__inner{

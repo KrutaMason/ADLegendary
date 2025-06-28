@@ -131,27 +131,26 @@ export default {
   font-family: Typewriter;
   font-size: 1rem;
   color: var(--color-text);
-  background: linear-gradient(transparent,transparent),var(--leg-base-render);
+  background: var(--leg-base-render);
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border-render) 3;
-  border-radius: var(--var-border-radius, 0.5rem) var(--var-border-radius, 0.5rem) 0 0;
   cursor: pointer;
-  box-shadow: 0rem -.5rem 1.5rem #00000080 inset;
-  text-shadow: 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted);
+  box-shadow: var(--var-box-shadow, 0rem -.5rem 1.5rem #00000080 inset);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted));
   position: relative;
   top: 0.5rem;
   transition-duration: 0.15s;
 }
 .c-multiplier-subtab-btn:hover {
   top: 0rem;
-  box-shadow: 0rem 1rem 2rem -1rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0rem 1rem 2rem -1rem #00000080 inset);
   background: linear-gradient(var(--color-accent) -50%,transparent),var(--leg-base-render);
 }
 .c-multiplier-subtab-btn--active {
   top: 0rem;
   z-index: 1;
   font-weight: bold;
-  box-shadow: 0rem 1rem 2rem -1rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0rem 1rem 2rem -1rem #00000080 inset);
   background: linear-gradient(var(--color-accent) -100%,transparent),var(--leg-base-render);
   border-bottom: none;
   padding-bottom: 0.2rem;

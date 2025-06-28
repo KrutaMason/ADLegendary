@@ -53,7 +53,7 @@ export default {
   background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(black,var(--color-pelle--base)300%);
   background-position: center;
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset);
   border-radius: var(--var-border-radius, 0.5rem);
 }
 

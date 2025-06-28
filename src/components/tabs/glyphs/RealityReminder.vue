@@ -120,7 +120,8 @@ export default {
     </span>
     <span v-else>
       <i :class="dropDownIconClass" />
-      You have {{ quantifyInt("thing", suggestions.length) }}
+      You have <span :class="{'c-reality-reminder--fixed': isInaccessible(suggestions.lengt) }">{{ formatInt(suggestions.length) }}</span> 
+      {{ pluralize("thing", suggestions.length) }}
       you may want to do before Reality. {{ clickText }}
       <div
         v-if="isExpanded"
@@ -141,9 +142,13 @@ export default {
 <style scoped>
 .l-suggestions {
   font-size: 1rem;
+  font-family: Typewriter;
 }
 
 .c-reality-reminder-pointer {
   cursor: pointer;
+}
+.c-reality-reminder--fixed{
+  font-family: Typewriter;
 }
 </style>

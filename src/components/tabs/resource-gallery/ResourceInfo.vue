@@ -65,7 +65,7 @@ export default {
   color:var(--color-text);
   border: 1.2rem solid;
   border-image: var(--leg-border-render) 12 round;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
   background: url(../../../../public/images/upgrades/bought.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
   background-position: center;
   padding: .5rem;
@@ -103,7 +103,7 @@ export default {
 }
 .c-resource_info-description{
   background:linear-gradient(transparent,var(--color-accent) 500%),linear-gradient(#ffffff80,#ffffff80);
-  box-shadow: 0.1rem 0.1rem 0.5rem black;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.5rem black);
   border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);;
   border-radius: var(--var-border-radius, 1rem);
   --base: var(--color-accent);

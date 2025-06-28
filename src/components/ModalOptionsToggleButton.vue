@@ -19,8 +19,12 @@ export default {
   },
   computed: {
     styleObject() {
+      if (this.value) return {
+        "--bg-dark": "var(--color-good)",
+      }
       return {
-        "--bg-dark": this.value ? "var(--color-good)" : "var(--color-gh-purple)",
+        "--bg-dark": "var(--color-gh-purple)",
+        "--border": "var(--color-gh-purple)",
       };
     },
   }

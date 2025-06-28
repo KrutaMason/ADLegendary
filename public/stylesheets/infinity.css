@@ -57,7 +57,7 @@
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-infinity) 150%),var(--leg-base);
     border: 0.1rem solid var(--color-infinity);
-    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset;
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset);
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-infinity-upgrades-tab__grid {
@@ -109,8 +109,8 @@
     --bg-bright: #120c05;
     --bg-dark: #2b1b0a;
     border: 0.1rem solid var(--border);
-    text-shadow: -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black;
-    box-shadow: 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
     border-radius: var(--var-border-radius, 0.4rem);
     transition-duration: 0.2s;
     cursor: pointer;
@@ -532,11 +532,11 @@
     margin: 0.5rem;
     border: 1px solid var(--color-replicanti);
     border-radius: var(--var-border-radius,0.5rem);
-    box-shadow: 0 0 1rem var(--color-background) inset,0 0 0 0.2rem var(--color-replicanti) inset;
-    text-shadow: var(--text-shadow);
+    box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,0 0 0 0.2rem var(--color-replicanti) inset);
+    text-shadow: var(--var-text-shadow, var(--text-shadow));
     background: linear-gradient(transparent,#2196f330), var(--leg-base);
     background-position: center;
-    text-shadow: var(--text-shadow);
+    text-shadow: var(--var-text-shadow, var(--text-shadow));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -584,7 +584,7 @@
     width:95%;
     margin: 1rem;
     border: solid 0.1rem var(--color-replicanti);
-    box-shadow: 0 0 1.5rem #000000aa inset, 0 0 0 0.2rem var(--color-replicanti) inset;
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.2rem var(--color-replicanti) inset);
     background: linear-gradient(color-mix(in srgb, var(--color-background) 35%, transparent), var(--color-replicanti) 300%),var(--leg-base);
     border-radius: var(--var-border-radius, 1rem);
     color: white;
@@ -601,7 +601,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    box-shadow: 0 0 1rem #00000088 inset;
+    box-shadow: var(--var-box-shadow, 0 0 1rem #00000088 inset);
     background: url(../images/celestials/v-bar-overlay.png), linear-gradient(var(--color-replicanti),var(--color-replicanti));
     background-size: unset 100%, unset unset;
     animation: a-vbar 20s infinite linear;

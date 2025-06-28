@@ -135,10 +135,10 @@ export default {
   height: 8rem;
   font-size: 1.2rem;
   border: var(--var-border-width, 0.2rem) solid;
-  box-shadow: 0 0 1rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #00000080 inset);
   border-image:var(--leg-border-reality-render) 3;
   background-image: var(--leg-base-render);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   border-radius: var(--var-border-radius, 0.5rem);
   padding: 0.5rem;
   margin-top: 1rem;

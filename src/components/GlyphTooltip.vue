@@ -114,7 +114,7 @@ export default {
       return {
         //color: this.type === "cursed" ? cursedColor : color,
         "border-bottom": !this.specialGlyph ? "solid 1px" : "none",
-        "text-shadow" : `0rem 0rem 0.5rem ${type}`,
+        "text-shadow" : `var(--var-text-shadow, 0rem 0rem 0.5rem ${type})`,
         "border-image": !this.specialGlyph ? `linear-gradient(90deg,transparent,${"cursed" === this.type ? cursedColor : "reality" === this.type ? "currentcolor" : color},transparent) 1` : undefined,
         animation: this.type === "reality" ? "a-reality-glyph-name-cycle 10s infinite" : undefined
       };
@@ -171,7 +171,8 @@ export default {
       const color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
       const strength = Pelle.isDoomed ? Pelle.glyphStrength : this.strength;
       return `<div class="c-glyph-tooltip__stat-name">Quality</div>\n
-        <div style="text-shadow: 0.1rem 0.1rem 0.3rem ${bg},-0.1rem -0.1rem 0.3rem ${bg};background:linear-gradient(90deg,transparent,${color}88,transparent);">${formatRarity(strengthToRarity(strength))}</div>`;
+        <div style="var(--var-text-shadow, text-shadow: 0.1rem 0.1rem 0.3rem ${bg},-0.1rem -0.1rem 0.3rem ${bg})
+        ;background:linear-gradient(90deg,transparent,${color}88,transparent);">${formatRarity(strengthToRarity(strength))}</div>`;
     },
     levelText() {
       if (this.type === "companion" || this.type === "helios") return "";
@@ -402,7 +403,7 @@ export default {
   background: var(--cover);
   border-radius: var(--var-border-radius, 1rem);
   border: var(--cover-border) 1px solid;
-  box-shadow: 0.1rem 0.1rem 0.3rem #00000088;
+  box-shadow: var(--var-box-shadow, 0.1rem 0.1rem 0.3rem #00000088);
 }
 .pelle-current-glyph-effects{
   color:#ed143d;

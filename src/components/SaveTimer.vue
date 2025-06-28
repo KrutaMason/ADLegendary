@@ -60,7 +60,7 @@ export default {
   border-top: 0.1rem solid;
   border-right: 0.1rem solid;
   border-image: var(--leg-border-render) 3;
-  box-shadow: 0 0 1rem black;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black);
   padding: 0 0.5rem;
   pointer-events: auto;
   -webkit-user-select: none;

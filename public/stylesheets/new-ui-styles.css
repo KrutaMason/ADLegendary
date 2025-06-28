@@ -102,7 +102,7 @@ body.t-s12 {
   height: 100%;
   background: /*var(--gate),*/linear-gradient(-90deg, transparent,var(--color-accent) 600%),var(--leg-base);
   --gate:url(../images/background/sidebar-gate-base.png);
-  box-shadow: inset 0 0 1rem black;
+  box-shadow: var(--var-box-shadow, inset 0 0 1rem black);
   background-position: center;
 }
 .t-legendary .c-modern-sidebar {
@@ -204,7 +204,7 @@ body.t-s12 {
 }
 .o-tab-btn--active,.o-subtab-btn--active{
   background: linear-gradient(var(--deg),var(--fade) -50%,transparent 125%),var(--leg-base);
-  box-shadow: var(--box-shadow), inset 0px 0px 0px 3px var(--fade);
+  box-shadow: var(--var-box-shadow, var(--box-shadow), inset 0px 0px 0px 3px var(--fade));
 }
 .o-tab-btn--subtabs:hover::after {
   border-left-width: 2.2rem;
@@ -335,14 +335,13 @@ body.t-s12 {
   text-shadow: 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted);
   color: var(--color-text);
   background: linear-gradient(transparent,var(--fade) 300%),var(--leg-base);
-  box-shadow: var(--box-shadow);
   border: 0.1rem solid var(--color-accent);
   --fade: var(--color-accent);
   border-radius: var(--var-border-radius, 0.4rem);
   margin-left: -7.7rem;
   transition-duration: 0.2s;
   pointer-events: none;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--var-box-shadow, var(--box-shadow));
 }
 
 .o-subtab__tooltip::after {
@@ -475,7 +474,7 @@ body.t-s12 {
   float: left;
   width: 20%;
   height: 100%;
-  box-shadow: 0 0 1rem #ffffff44 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #ffffff44 inset);
   background: linear-gradient(transparent,#00ee00aa);
 }
 
@@ -483,7 +482,7 @@ body.t-s12 {
   float: left;
   width: 40%;
   height: 100%;
-  box-shadow: 0 0 1rem #ffffff44 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #ffffff44 inset);
   background: linear-gradient(transparent,#00ee0044);
 }
 
@@ -898,7 +897,7 @@ backdrop-filter: blur(1rem);
 }
 .s-base--dark .c-dimension-row{
   background: var(--img),linear-gradient(90deg, transparent, color-mix(in srgb,var(--color) 15%,transparent) ,transparent);
-  box-shadow: inset 0px 0px 25px #000000;
+  box-shadow: var(--var-box-shadow, inset 0px 0px 25px #000000);
   background-position: center;
 }
 .s-base--dark .c-dimension-row:nth-child(even){

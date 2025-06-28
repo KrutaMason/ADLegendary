@@ -138,7 +138,7 @@ export default {
   border: var(--var-border-width, 0.3rem) solid;
   border-image:url(../../../../public/images/frames/automation.png) 3;
   border-top:none;
-  box-shadow: 0 0 1rem #00000080 inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem #00000080 inset);
 }
 .c-automator-split-pane {
   width: 100%;

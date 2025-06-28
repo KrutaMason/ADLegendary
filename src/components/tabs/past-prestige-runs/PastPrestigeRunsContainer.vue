@@ -321,13 +321,13 @@ export default {
 .c-past-runs-prestige {
   text-align: center;
   background: linear-gradient(transparent,var(--color) 500%),var(--leg-base-render);
-  text-shadow: var(--text-shadow);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
   min-width:25rem;
   padding:0.5rem 1rem;
   margin:0.5rem;
   border:var(--var-border-width,0.1rem) solid var(--color);
   border-radius: var(--var-border-radius,0.5rem);
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color) inset
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.3rem var(--color) inset)
 }
 .c-past-runs-prestige__infinity {
 --color:var(--color-infinity)
