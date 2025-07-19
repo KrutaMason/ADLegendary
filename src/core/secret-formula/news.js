@@ -3561,6 +3561,10 @@ export const news = [
     text: "Is this a jojo reference?",
   },
   {
+    id: "p2",
+    text: 'Die Zahlen gehen hoooch'
+  },
+  {
     id: "m1",
     text:`Why are you asking me about what genders celestials have? 
     You brainmaggots don't know that celestials are genderless in canon. 

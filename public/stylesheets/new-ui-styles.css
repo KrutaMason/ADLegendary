@@ -884,7 +884,6 @@ backdrop-filter: blur(1rem);
   border-top: solid 1px;
   border-image: linear-gradient(90deg,transparent,var(--border),transparent) 1;
   background: linear-gradient(90deg, transparent, color-mix(in srgb,var(--color) 25%,transparent) ,transparent);
-  text-shadow: var(--text-shadow);
   margin: 0;
   padding: 0.5rem 0 0.5rem 1rem;
   --bg-dark: transparent;

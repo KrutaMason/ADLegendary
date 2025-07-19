@@ -40,7 +40,7 @@ export const normalAchievements = [
     id: 16,
     name: "We couldn't afford 9",
     get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(6).uniqueName}` : "a 6th Antimatter Dimension"}${Enslaved.isRunning ? `(they never amount to anything)` : "."}`; },
+      `an Antimatter ${AntimatterDimension(6).uniqueName}` : "a 6th Antimatter Dimension"}${Enslaved.isRunning ? ` (they never amount to anything)` : "."}`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
@@ -54,7 +54,7 @@ export const normalAchievements = [
     id: 18,
     name: "90 degrees to infinity",
     get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(8).uniqueName}` : "an 8th Antimatter Dimension"}${Enslaved.isRunning ? `(don't get used to it)` : "."}`; },
+      `an Antimatter ${AntimatterDimension(8).uniqueName}` : "an 8th Antimatter Dimension"}${Enslaved.isRunning ? ` (don't get used to it)` : "."}`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
