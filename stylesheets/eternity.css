@@ -1,0 +1,504 @@
+/* #region eternity-tab */
+
+  .c-eternity-tab__header {
+  font-size: 1.8rem;
+    margin: 1rem 0;
+    font-family: cambria;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+  .l-eternity-upgrades-actual-grid {
+    padding: 1rem;
+    background: linear-gradient(transparent,var(--color-eternity) 150%),var(--leg-base);
+    border: 0.1rem solid var(--color-eternity);
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-eternity) inset);
+    border-radius: var(--var-border-radius,0.5rem);
+  }
+  .s-base--dark .l-eternity-upgrades-actual-grid {
+    background: url(../images/time-studies/ts-time.png),linear-gradient(#00000080,var(--color-eternity) 450%),var(--leg-base);
+    background-position: center;
+  }
+  .c-eternity-tab__eternity-points {
+    color: var(--color-eternity);
+  }
+  .c-eternity-tab__eternity-points--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
+  }
+  /* #region themes */
+  
+  /* #region t-dark t-s6 t-s10 */
+  
+  .t-dark .c-eternity-tab__eternity-points,
+  .t-s6 .c-eternity-tab__eternity-points,
+  .t-s10 .c-eternity-tab__eternity-points {
+    text-shadow: 0 0 0.7rem;
+  }
+  
+  /* #endregion t-dark t-s6 t-s10 */
+  
+  /* #region t-s1 */
+  
+  .t-s1 .c-eternity-tab__eternity-points {
+    text-shadow: 0.1rem 0.1rem 0 black;
+  }
+  
+  /* #endregion t-s1 */
+  
+  /* #endregion themes */
+  
+  /* #endregion eternity-tab */
+  
+  /* #region Eternity Upgrades */
+  .o-eternity-upgrade {
+    width: 20rem;
+    height: 10rem;
+    font-family: Typewriter, serif;
+    font-size: 1rem;
+    background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
+    border: 0.1rem solid var(--border);
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
+    border-radius: var(--var-border-radius, 0.4rem);
+    transition-duration: 0.2s;
+    cursor: pointer;
+    background-position: center;
+    --bg:url(../images/upgrades/bought.png)
+  }
+  
+  .o-eternity-upgrade--useless {
+    --bg: url(../images/upgrades/pelle.png);
+    --bg-bright: #341213;
+    --bg-dark: #741a28;
+    color: #f089a3;
+    --border: #bb3c5c;
+    cursor: default;
+  }
+  
+  .o-eternity-upgrade--available {
+    --border: #b241e3;
+    color: var(--color-eternity);
+    --bg-dark: #370c49;
+    --bg-bright: #15061b;
+    box-shadow: inset 0 0 1rem 0;
+    --bg:url(../images/time-studies/ts-available.png);
+  }
+  .s-base--metro .o-eternity-upgrade--available {
+    --border: #8d41e3;
+    color: #8d41e3;
+    --bg-dark: #2b0c49;
+    --bg-bright: #11061b;
+  } 
+  .t-hex .o-eternity-upgrade--available {
+    --border: #41dee3;
+    color: #41dee3;
+    --bg-dark: #0c4549;
+    --bg-bright: #061a1b;
+  }
+  .t-s14 .o-eternity-upgrade--available {
+    --border: #e34141;
+    color: #e34141;
+    --bg-dark: #490c0c;
+    --bg-bright: #1b0606;
+  } 
+  .o-eternity-upgrade--available:hover {
+    color: white;
+    --bg-dark: #8a20b8;
+  }
+  .s-base--metro .o-eternity-upgrade--available:hover {
+    --bg-dark: #6720b8;
+  } 
+  .t-hex .o-eternity-upgrade--available:hover {
+    --bg-dark: #20b3b8;
+  }
+  .t-s14 .o-eternity-upgrade--available:hover {
+    --bg-dark: #b82020;
+  } 
+  .o-eternity-upgrade--unavailable {
+    color: #bbbbbb;
+    --bg-dark: var(--leg-bg-dark);
+    --bg-bright: var(--leg-bg-bright);
+    --border: hsl(282, 10%, 45%);
+    cursor: default;
+  }
+  .t-hex .o-eternity-upgrade--unavailable {
+    --border: hsl(185, 10%, 45%);
+  }
+  .t-s14 .o-eternity-upgrade--unavailable {
+    --border: hsl(0, 10%, 45%);
+  }
+  .o-eternity-upgrade--unavailable:hover {
+    color:white;
+    --bg-dark: var(--leg-bg-hover);
+  }
+  
+  .o-eternity-upgrade--bought {
+    color:white;
+    --bg-bright: #631485;
+    --bg-dark: #320a43;
+    --border: #b168cf;
+    cursor: default;
+    --bg:url(../images/time-studies/ts-time.png);
+  }
+  .s-base--metro .o-eternity-upgrade--bought {
+    --bg-bright: #491485;
+    --bg-dark: #200a43;
+    --border: #9861e0;
+  }
+  .t-hex .o-eternity-upgrade--bought {
+    --bg-bright: #148585;
+    --bg-dark: #0a4143;
+    --border: #61d1e0;
+  }
+  .t-s14 .o-eternity-upgrade--bought {
+    --bg-bright: #851414;
+    --bg-dark: #430a0a;
+    --border: #e06161;
+  } 
+  .t-metro .o-eternity-upgrade--available {
+    box-shadow: 0.1rem 0.1rem 0.1rem 0 #9e9e9e;
+  }
+  
+  .t-dark .o-eternity-upgrade--available:hover,
+  .t-s6 .o-eternity-upgrade--available:hover,
+  .t-s10 .o-eternity-upgrade--available:hover {
+    color: var(--color-text);
+  }
+  
+  .t-dark .o-eternity-upgrade--unavailable {
+    border-color: #691fa5;
+  }
+  
+  .t-s6 .o-eternity-upgrade--unavailable,
+  .t-s10 .o-eternity-upgrade--unavailable {
+    color: grey;
+    border-color: #691fa5;
+  }
+
+  .t-s1 .o-eternity-upgrade--available {
+    --bg-dark: #2c432d;
+    --border: #639565;
+  }
+  
+  .t-s1 .o-eternity-upgrade--available:hover {
+    --bg-dark: #639565;
+  }
+  
+  .t-s1 .o-eternity-upgrade--bought {
+    --bg-bright: #375538;
+    --bg-dark: #314b32;
+    --border: #639565;
+  }
+  
+  .t-s1 .o-eternity-upgrade--unavailable {
+    border-color: #639565;
+  }
+  
+  /* #endregion Eternity Upgrades */
+  
+  /* #region Eternity Milestones */
+  
+  .l-eternity-milestone-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .l-eternity-milestone-grid__row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .l-eternity-milestone-grid__cell {
+    margin: 0.5rem 0.8rem;
+  }
+  
+  .o-eternity-milestone__goal {
+    text-align: left;
+    font-size: 2rem;
+    font-family: cambria;
+    font-weight: bold;
+    color: var(--color-text);
+  }
+
+  .o-eternity-milestone__goal--fixed {
+    font-size: 1.8rem;
+    font-family: Typewriter;
+    font-weight: normal;
+  } 
+
+  .o-eternity-milestone__reward {
+    width: 25rem;
+    height: 8rem;
+    font-family: Typewriter, serif;
+    font-size: 1.2rem;
+    color: black;
+    background: url(../images/time-studies/ts-time.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background-position: center;
+    box-shadow: var(--var-box-shadow, 0 0 1rem inset black,var(--border) inset 0px 0px 0px 2px);
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    border: 0.1rem solid var(--border);
+    border-radius: var(--var-border-radius, 0.4rem);
+    transition-duration: 0.2s;
+  }
+  
+  .o-eternity-milestone__reward--locked {
+    --bg-bright:#423946;
+    --bg-dark:#1b171c;
+    color: gray;
+    --border: #505050;
+  }
+  .t-hex .o-eternity-milestone__reward--locked {
+    --bg-bright:#394546;
+    --bg-dark:#171c1c;
+  }
+  .o-eternity-milestone__reward--reached {
+    --bg-bright:#631485;
+    --bg-dark:#946851;
+    --border:#d290ee;
+    color: white;
+  }
+  .t-hex .o-eternity-milestone__reward--reached {
+    --bg-bright:#14857f;
+    --bg-dark:#859451;
+    --border:#90e8ee;
+  }
+  .o-eternity-milestone__reward--small-font {
+    font-size: 1.1rem;
+  }
+  
+  .s-base--metro .o-eternity-milestone__reward--locked,
+  .t-s1 .o-eternity-milestone__reward--locked {
+    border: none;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+  }
+  
+  .t-dark .o-eternity-milestone__reward--locked,
+  .t-s6 .o-eternity-milestone__reward--locked,
+  .t-s10 .o-eternity-milestone__reward--locked {
+    color: var(--color-eternity);
+    border-color: var(--color-eternity);
+    animation: a-time-study 7s infinite;
+  }
+  
+  .l-eternity-milestone {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* #endregion Eternity Milestones */
+
+/* #region Dilation */
+
+.l-dilation-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* #region c-dilation-tab */
+  
+  .c-dilation-tab__tachyons {
+    font-size: 3.5rem;
+    color: black;
+    font-family: Cambria;
+    font-weight: bold;
+  }
+  
+  .c-dilation-tab__dilated-time {
+    font-size: 2.5rem;
+    color: black;
+    font-family: Cambria;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  .c-dilation-tab__tachyons--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
+  }
+  
+  .t-metro .c-dilation-tab__tachyons,
+  .s-base--dark .c-dilation-tab__tachyons,
+  .t-s8 .c-dilation-tab__tachyons {
+    color: #64ddad;
+  }
+  .t-hex .c-dilation-tab__tachyons{
+    color: #ddb764;
+  }
+  .t-dark .c-dilation-tab__tachyons,
+  .t-s6 .c-dilation-tab__tachyons,
+  .t-s10 .c-dilation-tab__tachyons {
+    text-shadow: 0 0 0.7rem #64ddad;
+  }
+  
+  .t-metro .c-dilation-tab__tachyons,
+  .t-metro .c-dilation-tab__dilated-time,
+  .t-s8 .c-dilation-tab__tachyons,
+  .t-s8 .c-dilation-tab__dilated-time {
+    text-shadow: 0 0 0.1rem rgba(0, 0, 0, 50%), -0.1rem 0.1rem 0.1rem black;
+  }
+  
+  .t-metro .c-dilation-tab__dilated-time,
+  .s-base--dark .c-dilation-tab__dilated-time,
+  .t-s8 .c-dilation-tab__dilated-time {
+    color: var(--color-dilation);
+  }
+  
+  .t-dark .c-dilation-tab__dilated-time,
+  .t-s6 .c-dilation-tab__dilated-time,
+  .t-s10 .c-dilation-tab__dilated-time {
+    text-shadow: 0 0 0.7rem var(--color-dilation);
+  }
+  
+  /* #endregion c-dilation-tab */
+  
+  /* #region o-dilation-btn */
+  
+  .o-dilation-btn {
+    width: 30rem;
+    height: 9rem;
+    font-family: Typewriter, serif;
+    font-size: 1.12rem;
+    border: var(--var-border-width, 0.1rem) solid var(--border);
+    border-radius: var(--var-border-radius, 0.4rem);
+    padding: 1rem;
+    transition-duration: 0.2s;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+  }
+  
+  .o-dilation-btn--locked {
+    color: #aaaaaa;
+    box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
+    background: url(../images/time-studies/ts-dilation.png),linear-gradient(var(--bg-bright),var(--bg-dark));
+    --border: #505050;
+    --bg-bright: #33382e;
+    --bg-dark: #121410;
+    background-position: center;
+  }
+  .t-hex .o-dilation-btn--locked {
+    --bg-bright: #38332e;
+    --bg-dark: #141210;
+  }
+  .o-dilation-btn--unlocked {
+    color: var(--color-dilation);
+    border: 1px solid var(--color-dilation);
+    --stars: url(../images/prestige/dilation-1.png),url(../images/prestige/dilation-2.png);
+    background: var(--stars),linear-gradient(black,var(--color-dilation) var(--distance));
+    --distance: 400%;
+    box-shadow: 0 0 1rem inset, 0 0 2rem;
+    animation: a-dilation-btn-glow 10s infinite, a-pbtn-ete 50s infinite linear;
+    --animation: a-dilation-btn-glow 10s infinite, a-pbtn-ete 50s infinite linear;
+    --color: var(--color-dilation);
+    cursor: pointer;
+  }
+  .t-hex .o-dilation-btn--unlocked {
+    --stars: url(../images/prestige/dilation_hex-1.png),url(../images/prestige/dilation_hex-2.png);
+  }
+  .t-s4 .o-dilation-btn--unlocked {
+    --stars: url(../images/prestige/dilation_s4-1.png),url(../images/prestige/dilation_s4-2.png);
+  }
+  .t-s14 .o-dilation-btn--unlocked {
+    --stars: url(../images/prestige/dilation_1984-1.png),url(../images/prestige/dilation_1984-2.png);
+  }
+  .o-dilation-btn--unlocked:hover {
+    color: white;
+    border-color: white;
+    --distance: 150%;
+    --color:var(--color-text);
+  }
+  
+  .t-dark .o-dilation-btn--unlocked {
+    color: var(--color-dilation);
+  }
+  
+  .t-s4 .o-dilation-btn {
+    animation: a-dilation-btn-glow--cancer 10s infinite, a-pbtn-ete 5s infinite linear;
+    --animation: a-dilation-btn-glow--cancer 10s infinite, a-pbtn-ete 5s infinite linear;
+  }
+  
+  .o-dilation-btn--locked:hover {
+    color: white;
+    --bg-dark: var(--leg-bg-hover);
+  }
+  
+  .s-base--metro .o-dilation-btn--locked,
+  .t-s1 .o-dilation-btn--locked {
+    box-shadow: 0.1rem 0.1rem 0.1rem 0 black;
+  }
+  
+  .t-s6 .o-dilation-btn--locked,
+  .t-s10 .o-dilation-btn--locked {
+    color: gray;
+  }
+  
+  
+  .t-dark .o-dilation-btn--locked:hover,
+  .t-s6 .o-dilation-btn--locked:hover,
+  .t-s10 .o-dilation-btn--locked:hover {
+    --border: #b84b5f;
+  }
+  
+  @keyframes a-dilation-btn-glow {
+    0% { box-shadow: inset 0.5rem  0       2rem, 0 0 2rem var(--color); }
+    25% { box-shadow: inset 0       0.5rem  2rem, 0 0 2rem var(--color); }
+    50% { box-shadow: inset -0.5rem 0       2rem, 0 0 2rem var(--color); }
+    75% { box-shadow: inset 0       -0.5rem 2rem, 0 0 2rem var(--color); }
+    100% { box-shadow: inset 0.5rem  0       2rem, 0 0 2rem var(--color); }
+  }
+  
+  @keyframes a-dilation-btn-glow--cancer {
+    0% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    10% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    20% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    22% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    25% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    29% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    39% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    44% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    53% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    57% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    63% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    69% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    71% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    74% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    75% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    84% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    88% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    92% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    93% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+    95% { box-shadow: inset -0.5px  0.5rem 2rem, 0 0 2rem var(--color); }
+    100% { box-shadow: inset  0.5px -0.5rem 2rem, 0 0 2rem var(--color); }
+  }
+  
+  /* #endregion o-dilation-btn */
+
+
+  .c-tachyon-particle-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .o-tachyon-particle {
+    fill: black;
+  }
+  
+  .s-base--dark .o-tachyon-particle {
+    fill: white;
+  }
+  .l-dilation-upgrades-grid {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(transparent,var(--color-dilation) 200%),var(--leg-base);
+    border: 0.1rem solid var(--color-dilation);
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-dilation) inset);
+    border-radius: var(--var-border-radius,0.5rem);
+  }
+  .s-base--dark .l-dilation-upgrades-grid {
+    background: url(../images/time-studies/ts-dilation.png),linear-gradient(#00000080,var(--color-dilation) 700%),var(--leg-base);
+    background-position: center;
+  }
+  /* #endregion Dilation */

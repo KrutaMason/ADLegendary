@@ -1,0 +1,41 @@
+body {
+    color: gray;
+    background: black;
+}
+.t-s13 #container,
+.t-s13 #page,
+.t-s13 .l-notification-container,
+.t-s13 .c-modal,
+.t-s13 .time-theorem-buttons,
+.t-s13 .c-modern-sidebar,
+.t-s13 .c-glyph-tooltip {
+  filter: saturate(10%) brightness(75%);
+}
+.flashlight {
+    display: block !important;
+    position: absolute;
+    width: 200vw;
+    height: 200vh;
+    left: 50%;
+    top: 50%;
+    z-index: 9;
+    transform: translateX(-50%) translateY(-50%);
+    background-image: radial-gradient(circle at center, transparent, transparent 4%, #00000040 5%,transparent 7%, #000000fa 10%);
+    pointer-events: none;
+}
+.flashlight.off {
+    background: #000000fa;
+}
+.flashlight > img {
+    opacity:.1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    animation: a-s13 600s linear infinite;
+}
+@keyframes a-s13 {
+    0%{opacity: 0;}
+    50%{opacity: .1;}
+    100%{opacity: 0;}
+}

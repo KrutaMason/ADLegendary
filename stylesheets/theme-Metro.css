@@ -1,0 +1,11 @@
+.t-metro .c-tt-buy-button--locked {
+  box-shadow: var(--var-box-shadow, 1px 1px 1px 0 #000000);
+}
+
+.t-metro .c-tt-buy-button--locked:hover {
+  --bg-darl: #ef5350;
+}
+
+.o-tachyon-particle {
+  fill: black !important;
+}
