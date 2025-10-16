@@ -1,0 +1,14 @@
+body.t-dark-metro {
+  color: #757575;
+  background-image: url("../images/background/dark-bg.png");
+  background-position: center;
+}
+
+
+.t-dark-metro .c-tt-buy-button--locked {
+  box-shadow: var(--var-box-shadow, 1px 1px 1px 0 #000000);
+}
+
+.t-dark-metro .c-tt-buy-button--locked:hover {
+  --bg-dark: #e53935;
+}

@@ -1,0 +1,122 @@
+body{
+    --leg-base:url(../images/background/base-light.jpg);
+    --leg-border:url(../images/frames/base-light.png);
+    --leg-border-reality:url(../images/frames/upgrade-reality.png);
+    --leg-base-render:url(images/background/base-light.jpg);
+    --leg-border-render:url(images/frames/base-light.png);
+    --leg-border-reality-render:url(images/frames/upgrade-reality.png);
+    --leg-bg-dark:#444444;
+    --leg-bg-bright:#666666;
+    --leg-bg-hover:#611f2b;
+    --leg-shading:linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
+}
+.s-base--dark{
+    --leg-base:url(../images/background/base.jpg);
+    --leg-base-render:url(images/background/base.jpg);
+    --leg-border:url(../images/frames/base.png);
+    --leg-border-render:url(images/frames/base.png);
+    --leg-bg-dark: #252525;
+    --leg-bg-bright: #444444;
+    --leg-shading:linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent);
+}
+.s-base--metro{
+    --leg-shading:linear-gradient(transparent,transparent);
+}
+.t-legendary,
+.t-legendary-metro{
+    --leg-base:url(../images/background/base-leg.jpg);
+    --leg-border:url(../images/frames/base-legendary.png);
+    --leg-base-render:url(images/background/base-leg.jpg);
+    --leg-border-render:url(images/frames/base-legendary.png);
+    --leg-bg-dark: #1d221f;
+    --leg-bg-bright: #37413d;
+}
+.t-legacy{
+    --leg-base:url(../images/background/base-retro.jpg);
+    --leg-border:url(../images/frames/base-retro.png);
+    --leg-base-render:url(images/background/base-retro.jpg);
+    --leg-border-render:url(images/frames/base-retro.png);
+}
+.t-hex{
+    --leg-border-reality:url(../images/frames/upgrade-reality-hex.png);
+    --leg-border-reality-render:url(images/frames/upgrade-reality-hex.png);
+}
+.t-metro{
+    --leg-base:url(../images/background/base-metro.jpg);
+    --leg-base-render:url(images/background/base-metro.jpg);
+    --leg-bg-hover:#652f2f;
+}
+.t-blood{
+    --leg-base:url(../images/background/base-blood.jpg);
+    --leg-base-render:url(images/background/base-blood.jpg);
+}
+.t-dark,
+.t-dark-metro{
+    --leg-base:url(../images/background/base-dark.jpg);
+    --leg-border:url(../images/frames/base-dark.png);
+    --leg-base-render:url(images/background/base-dark.jpg);
+    --leg-border-render:url(images/frames/base-dark.png);
+    --leg-bg-dark:#2d3031;
+    --leg-bg-bright:#40484d;
+    --leg-bg-hover:#b84b5f;
+}
+.t-amoled,
+.t-amoled-metro{
+    --leg-base:url(../images/background/base-amoled.jpg);
+    --leg-border:url(../images/frames/base-amoled.png);
+    --leg-border-reality:url(../images/frames/upgrade-reality-amoled.png);
+    --leg-base-render:url(images/background/base-amoled.jpg);
+    --leg-border-render:url(images/frames/base-amoled.png);
+    --leg-border-reality-render:url(images/frames/upgrade-reality-amoled.png);
+    --leg-bg-dark:#181818;
+    --leg-bg-bright:#3d3d3d;
+}
+.t-s4{
+    --leg-base:url(../images/background/base-design.jpg);
+    --leg-base-render:url(images/background/base-design.jpg);
+    --leg-border:url(../images/frames/base-design.png);
+    --leg-border-render:url(images/frames/base-design.png);
+    --leg-border-reality:url(../images/frames/upgrade-reality-design.png);
+    --leg-border-reality-render:url(images/frames/upgrade-reality-design.png);   
+}
+.t-s5{
+    --leg-base:url(../images/background/base-nicolas.jpg);
+    --leg-base-render:url(images/background/base-nicolas.jpg);
+}
+.t-s6,
+.t-s10{
+    --leg-base:url(../images/background/base-stars.jpg) fixed;
+    --leg-border:url(../images/frames/base-stars.png);
+    --leg-base-render:url(images/background/base-stars.jpg) fixed;
+    --leg-border-render:url(images/frames/base-stars.png);
+}
+.t-s7{
+    --leg-base:url(../images/background/base-s7.jpg);
+    --leg-base-render:url(images/background/base-s7.jpg);
+}  
+.t-s8{
+    --leg-base:linear-gradient(#ffffff80,#ffffff80);
+    --leg-base-render:linear-gradient(#ffffff80,#ffffff80);
+}
+.t-s11{
+    --leg-base:url(../images/background/base-blob.jpg);
+    --leg-border:url(../images/frames/base-blob.png);
+    --leg-base-render:url(images/background/base-blob.jpg);
+    --leg-border-render:url(images/frames/base-blob.png);
+}
+.t-s13{
+    --leg-base:black;
+}
+.t-s14{
+    --leg-base:url(../images/background/base-1984.jpg);
+    --leg-border-reality:url(../images/frames/base-retro.png);
+    --leg-border:url(../images/frames/base-retro.png);
+    --leg-base-render:url(images/background/base-1984.jpg);
+    --leg-border-reality-render:url(images/frames/base-retro.png);
+    --leg-border-render:url(images/frames/base-retro.png);
+}
+.t-s15{
+    --leg-border:url(../images/frames/s15.png);
+    --leg-border-render:url(images/frames/s15.png);
+    --leg-base:linear-gradient(#00000080,#00000080);
+}

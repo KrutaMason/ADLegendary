@@ -1,0 +1,613 @@
+/* #region infinity-tab */
+
+  .c-infinity-tab__header {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+    font-family: cambria;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+
+  .c-infinity-tab__infinity-points {
+    color: var(--color-infinity);
+  }
+
+  .c-infinity-tab__infinity-points--fixed {
+    font-family: Typewriter;
+    font-weight: normal;
+  }
+
+  /* #region themes */
+  
+  /* #region t-dark t-s6 t-s10 */
+  
+  .t-dark .c-infinity-tab__infinity-points,
+  .t-s6 .c-infinity-tab__infinity-points,
+  .t-s10 .c-infinity-tab__infinity-points {
+    color: white;
+    text-shadow: 0 0 0.7rem;
+  }
+  
+  /* #endregion t-dark t-s6 t-s10 */
+  
+  /* #region t-s1 */
+  
+  .t-s1 .c-infinity-tab__infinity-points {
+    text-shadow: 0.1rem 0.1rem 0 black;
+  }
+  
+  /* #endregion t-s1 */
+  
+  /* #endregion themes */
+  
+  /* #endregion infinity-tab */
+  
+  /* #region Infinity Upgrades */
+  
+  /* #region l-infinity-upgrades-tab */
+  
+  .l-infinity-upgrades-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .l-infinity-upgrades-tab__grid {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(transparent,var(--color-infinity) 150%),var(--leg-base);
+    border: 0.1rem solid var(--color-infinity);
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset);
+    border-radius: var(--var-border-radius,0.5rem);
+  }
+  .s-base--dark .l-infinity-upgrades-tab__grid {
+    background: url(../images/time-studies/ts-infinity.png),linear-gradient(#00000080,var(--color-infinity) 300%),var(--leg-base);
+    background-position: center;
+  }
+  .l-infinity-upgrades-tab__mult-btn {
+    margin: 0.5rem 0.8rem;
+  }
+  
+  /* #endregion l-infinity-upgrades-tab */
+  
+  /* #region l-infinity-upgrade-grid */
+  
+  .l-infinity-upgrade-grid {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .l-infinity-upgrade-grid__cell {
+    margin: 0.5rem 0.8rem;
+  }
+  
+  /* #endregion l-infinity-upgrade-grid */
+  
+  .l-infinity-upgrades-bottom-row {
+    display: flex;
+    margin-top: 1rem;
+    /*padding: 1rem;
+    background: linear-gradient(#ffffff80,var(--color-infinity) 150%),var(--leg-base);
+    border: 0.1rem solid var(--color-infinity);
+    border-top: none;
+    box-shadow: 0 0 1.5rem black inset, 0 0 0 0.3rem var(--color-infinity) inset;
+    border-radius: 0 0 var(--var-border-radius,0.5rem) var(--var-border-radius,0.5rem);*/
+  }
+  /*.s-base--dark .l-infinity-upgrades-bottom-row {
+    background: url(../images/time-studies/ts-infinity.png),linear-gradient(#00000080,var(--color-infinity) 300%),var(--leg-base);
+    background-position: center;
+  }*/
+  /* #region o-infinity-upgrade-btn */
+  
+  .o-infinity-upgrade-btn {
+    width: 20rem;
+    height: 10rem;
+    font-family: Typewriter, serif;
+    font-size: 1rem;
+    color: white;
+    background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
+    --bg-bright: #120c05;
+    --bg-dark: #2b1b0a;
+    border: 0.1rem solid var(--border);
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
+    border-radius: var(--var-border-radius, 0.4rem);
+    transition-duration: 0.2s;
+    cursor: pointer;
+    background-position: center;
+    --bg:url(../images/upgrades/bought.png);
+    z-index: 1;
+  }
+  
+  /*.t-s6 .o-infinity-upgrade-btn,
+  .t-s10 .o-infinity-upgrade-btn {
+    box-shadow: 0 0 0.7rem 0.2rem #111111;
+  }*/
+  
+  .o-infinity-upgrade-btn:hover {
+    color: white;
+  }
+  
+  /* #region o-infinity-upgrade-btn--available */
+  
+  .o-infinity-upgrade-btn--available {
+    border: 0.1rem solid;
+    box-shadow: 0 0 1rem inset;
+    color:var(--color-infinity);
+    --bg:url(../images/time-studies/ts-available.png);
+  }
+  
+  .o-infinity-upgrade-btn--available:hover {
+    color: white;
+    --bg-dark: #a53b98;
+    --bg-dark: var(--color-infinity);
+    --border: white
+  }
+  .t-dark .o-infinity-upgrade-btn--available:hover,
+  .t-s6 .o-infinity-upgrade-btn--available:hover,
+  .t-s10 .o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #6200ea;
+  }
+  
+  .s-base--metro .o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #9c27b0;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--available */
+  
+  .o-infinity-upgrade-btn--color-1.o-infinity-upgrade-btn--available {
+    --bg-dark: #452241;
+    color:#d07cc6;
+  }
+  .o-infinity-upgrade-btn--color-1.o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #a53b98;
+    color: white;
+  }
+  /* #region o-infinity-upgrade-btn--color-2 */
+  
+  .o-infinity-upgrade-btn--color-2.o-infinity-upgrade-btn--available {
+    --bg-dark: #450e00;
+    color:#ff3300;
+  }
+  .o-infinity-upgrade-btn--color-2.o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #931e00;
+    color: white;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--color-2 */
+  
+  /* #region o-infinity-upgrade-btn--color-3 */
+  
+  .o-infinity-upgrade-btn--color-3.o-infinity-upgrade-btn--available {
+    --bg-dark: #474d05;
+    color:#c6d50d;
+  }
+  .o-infinity-upgrade-btn--color-3.o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #858f0b;
+    color: white;
+  }
+  /* #endregion o-infinity-upgrade-btn--color-3 */
+  
+  /* #region o-infinity-upgrade-btn--color-4 */
+  
+  .o-infinity-upgrade-btn--color-4.o-infinity-upgrade-btn--available {
+    --bg-dark: #054d3c;
+    color:#0cfec5;
+  }
+  .o-infinity-upgrade-btn--color-4.o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #0ea380;
+    color: white;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--color-4 */
+  
+  /* #region o-infinity-upgrade-btn--multiplier */
+  
+  .o-infinity-upgrade-btn--multiplier.c-pelle-useless--available {
+    filter: grayscale(25%);
+  }
+  
+  .o-infinity-upgrade-btn--multiplier.o-infinity-upgrade-btn--available {
+    --bg-dark: #411a11;
+    color: #ff623f;
+  }
+  .o-infinity-upgrade-btn--multiplier.o-infinity-upgrade-btn--available:hover {
+    --bg-dark: #813e21;
+    --border:white;
+    color:white
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--multiplier */
+  
+  /* #region o-infinity-upgrade-btn--unavailable */
+  
+  .o-infinity-upgrade-btn--unavailable {
+    color: #cccccc;
+    --bg-dark: var(--leg-bg-dark);
+    --bg-bright: var(--leg-bg-bright);
+    --border: #a99170;
+  }
+  .s-base--dark .o-infinity-upgrade-btn--unavailable {
+    color: #aaaaaa;
+    --border: #705d43;
+  }
+  .o-infinity-upgrade-btn--unclickable {
+    cursor: auto;
+  }
+  
+  .o-infinity-upgrade-btn--unavailable:hover {
+    color: white;
+    --bg-dark: var(--leg-bg-hover);
+    cursor: default;
+  }
+  
+  .s-base--metro .o-infinity-upgrade-btn--unavailable:hover {
+    color: var(--color-text-inverted);
+  }
+  
+  .t-s6 .o-infinity-upgrade-btn--unavailable,
+  .t-s10 .o-infinity-upgrade-btn--unavailable {
+    --border: grey;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--unavailable */
+  
+  /* #region o-infinity-upgrade-btn--bought */
+  
+  .o-infinity-upgrade-btn--bought {
+    color: white;
+    --bg-bright: #503816;
+    --bg-dark: #8b6227;
+    --border: #ffae3f;
+    cursor: default;
+    --bg:url(../images/time-studies/ts-infinity.png);
+  }
+  .t-hex .o-infinity-upgrade-btn--bought {
+    color: white;
+    --bg-bright: #4e1650;
+    --bg-dark: #8b2783;
+    --border: #ff7bed;
+  }
+  .s-base--metro .o-infinity-upgrade-btn--bought {
+    --bg-bright: #5a3600;
+    --bg-dark: #a56300;
+    --border: #ff9800;
+  }
+  .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--multiplier {
+    color: white;
+    --bg-bright: #502b16;
+    --bg-dark: #8b4527;
+    --border: #ff623f;
+    cursor: default;
+  }
+  .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-1 {
+    --bg-dark: #81467a;
+    --bg-bright: #52294e;
+    --border: #d07cc6;
+    --bg:url(../images/upgrades/infinity-1.png);
+  }
+  .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-2 {
+    --bg-dark: #892424;
+    --bg-bright: #520b0b;
+    --border: #ff564a;
+    --bg:url(../images/upgrades/infinity-2.png);
+  }
+  .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-3 {
+    --bg-dark: #858f0b;
+    --bg-bright: #373b04;
+    --border: #c6d50d;
+    --bg:url(../images/upgrades/infinity-3.png);
+  }
+  .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-4 {
+    --bg-dark: #407165;
+    --bg-bright: #103a2f;
+    --border: #0cfec5;
+    --bg:url(../images/upgrades/infinity-4.png);
+  }
+  .t-s14 .o-infinity-upgrade-btn--bought,
+  .t-s14 .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--multiplier,
+  .t-s14 .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-1,
+  .t-s14 .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-2,
+  .t-s14 .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-3,
+  .t-s14 .o-infinity-upgrade-btn--bought.o-infinity-upgrade-btn--color-4 {
+    --bg-bright: #501616;
+    --bg-dark: #8b2727;
+    --border: #ff7b7b;
+  }
+  .o-infinity-upgrade-btn--useless {
+    --bg: url(../images/upgrades/pelle.png);
+    --bg-bright: #341213;
+    --bg-dark: #741a28;
+    color: #f089a3;
+    --border: #bb3c5c;
+    cursor: default;
+  }
+  .c-infinity-upgrade-grid__column--background--color-1{
+    --column-color:#a53b98
+  }
+  .c-infinity-upgrade-grid__column--background--color-2{
+    --column-color:#b53c1e
+  }
+  .c-infinity-upgrade-grid__column--background--color-3{
+    --column-color:#a8b31d
+  }
+  .c-infinity-upgrade-grid__column--background--color-4{
+    --column-color:#448f7d
+  }
+  .t-s14 .c-infinity-upgrade-grid__column--background--color-4,
+  .t-s14 .c-infinity-upgrade-grid__column--background--color-3,
+  .t-s14 .c-infinity-upgrade-grid__column--background--color-2,
+  .t-s14 .c-infinity-upgrade-grid__column--background--color-1{
+    --column-color:#660000
+  }
+  .o-infinity-upgrade-btn--useless:hover {
+    color: black;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn--bought */
+  
+  .o-infinity-upgrade-btn--chargeable {
+    color: var(--color-teresa--base);
+    --border:#8b8bff !important;
+    --bg-dark: #000055 !important;
+    --bg-bright: black !important;
+    --glow: #5151ec;
+    animation: a-charged-infinity-upgrade-glow 2s infinite;
+    cursor: pointer;
+    --bg:url(../images/time-studies/ts-reality.png);
+  }
+  
+  
+  .t-s14 .o-infinity-upgrade-btn--chargeable:hover {
+    color: #ea8585 !important;
+    --bg-dark: #550000 !important;
+    --bg-bright: black !important;
+    --border:#ff8b8b !important;
+    --glow: red;
+  }
+  @keyframes a-charged-infinity-upgrade-glow {
+    0% { box-shadow: inset 0 0 2rem 0 var(--glow); }
+    13% { box-shadow: inset 0 0 2rem 0.15rem var(--glow); }
+    25% { box-shadow: inset 0 0 2rem 0.4rem var(--glow); }
+    38% { box-shadow: inset 0 0 2rem 0.65rem var(--glow); }
+    50% { box-shadow: inset 0 0 2rem 0.8rem var(--glow); }
+    63% { box-shadow: inset 0 0 2rem 0.65rem var(--glow); }
+    75% { box-shadow: inset 0 0 2rem 0.4rem var(--glow); }
+    88% { box-shadow: inset 0 0 2rem 0.15rem var(--glow); }
+    100% { box-shadow: inset 0 0 2rem 0 var(--glow); }
+  }
+  
+  .o-infinity-upgrade-btn--charged {
+    color: white;
+    --bg-bright: #2d2dad;
+    --bg-dark: #0d0d3d;
+    --border: #8d8dff;
+    cursor: default;
+    --bg:url(../images/time-studies/ts-reality.png);
+  }
+  .t-s14 .o-infinity-upgrade-btn--charged {
+    --bg-bright: #6d6d6d;
+    --bg-dark: #474747;
+    --border: #ff0000;
+  }
+  
+  /* #endregion o-infinity-upgrade-btn */
+  
+  /* #endregion Infinity Upgrades */
+  
+/* #region Break Infinity */
+
+/* #region l-break-infinity-tab */
+
+.l-break-infinity-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .l-break-infinity-tab__break-btn {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-family: cambria;
+    font-weight: bold;
+  }
+  
+  .o-infinity-upgrade-btn--feel-eternity {
+    --bg-dark: #370c49 !important;
+    --bg-bright: #15061b !important;
+    color:var(--color-eternity) !important;
+    animation: a-time-study 1.5s infinite;
+  }
+  
+  .l-break-infinity-tab__grid {
+    margin-top: 1rem;
+  }
+  
+  /* #endregion l-break-infinity-tab */
+  
+  /* #region l-break-infinity-upgrade-grid */
+  
+  .l-break-infinity-upgrade-grid {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: linear-gradient(transparent,var(--color-infinity) 150%),var(--leg-base);
+    border: 0.1rem solid var(--color-infinity);
+    box-shadow: 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-infinity) inset;
+    border-radius: var(--var-border-radius,0.5rem);
+  }
+  .s-base--dark .l-break-infinity-upgrade-grid {
+    background: url(../images/time-studies/ts-infinity.png),linear-gradient(#00000080,var(--color-infinity) 450%),var(--leg-base);
+    background-position: center;
+  } 
+  .l-break-infinity-upgrade-grid__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .l-break-infinity-upgrade-grid__cell {
+    margin: 0.5rem 0.8rem;
+  }
+  
+  /* #endregion l-break-infinity-upgrade-grid */
+  
+  /* #endregion Break Infinity */
+
+/* #region Replicanti */
+
+.l-replicanti-tab {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text);
+  
+    /* To prevent button jitter */
+    width: 100%;
+    align-items: center;
+  }
+  
+  /* #region c-replicanti-description */
+  
+  .c-replicanti-description {
+    font-size: 1.5rem;
+  }
+  .c-replicanti-description-max{
+    border-bottom: solid 1px;
+    background: linear-gradient(90deg,transparent,color-mix(in srgb, var(--color-replicanti) 30%, transparent),transparent);
+    border-image: linear-gradient(90deg, transparent,var(--color-replicanti),transparent) 1;
+    width:100%
+  }
+  .c-replicanti-description__accent {
+    font-size: 2.3rem;
+    color: var(--color-replicanti);
+    font-weight: bold;
+    font-family: cambria;
+  }
+
+  .c-replicanti-description__accent--fixed{
+    font-size: 2rem;
+    font-weight: normal;
+    font-family: typewriter;
+  }
+
+  .s-base--metro .c-replicanti-description__accent,
+  .t-s6 .c-replicanti-description__accent,
+  .t-s10 .c-replicanti-description__accent {
+    color: #03a9f4;
+  }
+  
+  .t-s11 .c-replicanti-description__accent {
+    color: #fbc21b;
+    text-shadow: 0 0 0.7rem #fbc21b;
+  }
+  
+  .t-metro .c-replicanti-description__accent,
+  .t-s8 .c-replicanti-description__accent {
+    text-shadow: 0 0 0.1rem rgba(0, 0, 0, 50%), -0.1rem 0.1rem 0.1rem black;
+  }
+  
+  .t-dark .c-replicanti-description__accent,
+  .t-s6 .c-replicanti-description__accent,
+  .t-s10 .c-replicanti-description__accent {
+    text-shadow: 0 0 0.7rem #03a9f4;
+  }
+  
+  /* #endregion c-replicanti-description */
+  
+  .l-replicanti-upgrade-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .l-replicanti-seperator{
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: solid 1px;
+    border-image: linear-gradient(90deg, transparent,var(--color-replicanti),transparent) 1;    
+  }
+  .l-replicanti-upgrade-button {
+    margin: 0.3rem;
+  }
+  .c-replicanti-table{
+    width: 80rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: 1px solid var(--color-replicanti);
+    border-radius: var(--var-border-radius,0.5rem);
+    box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,0 0 0 0.2rem var(--color-replicanti) inset);
+    text-shadow: var(--var-text-shadow, var(--text-shadow));
+    background: linear-gradient(transparent,#2196f330), var(--leg-base);
+    background-position: center;
+    text-shadow: var(--var-text-shadow, var(--text-shadow));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .s-base--dark .c-replicanti-table{
+    background: url(../images/upgrades/button-replicanti.png),linear-gradient(#00000040,color-mix(in srgb, var(--color-replicanti) 20%, transparent)), var(--leg-base);
+    background-position: center;
+  }
+  .l-replicanti-effects-list{
+    width:95%;
+    display:flex;
+    flex-direction: column;
+  }
+  .c-replicanti-effect-container{
+    display: flex;
+    width:100%;
+    border-top: solid 1px;
+    background: linear-gradient(90deg,transparent,color-mix(in srgb, var(--color-replicanti) 30%, transparent) 25rem,transparent);
+    border-image: linear-gradient(90deg, transparent,var(--color-replicanti) 25rem,transparent) 1;
+  }
+  .c-replicanti-effect-container:nth-child(odd){
+    background: linear-gradient(90deg,transparent,color-mix(in srgb, var(--color-replicanti) 20%, transparent) 25rem,transparent);
+  }
+  .c-replicanti-effect-container:last-child{
+    border-bottom: solid 1px;
+  }
+  .c-replicanti-effect-container > .c-replicanti-description__accent{
+    text-align: left;
+    font-size: 1.8rem;
+    width:25rem;
+    border-right: solid 1px var(--color-replicanti);
+    padding: 0 .5rem;
+  }
+  .c-replicanti-effect-container > div{
+    width: calc(100% - 25rem);
+    text-align: right;
+    margin: auto;
+    padding: 0 .5rem;
+  }
+
+  .c-replicanti-bar{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    width:95%;
+    margin: 1rem;
+    border: solid 0.1rem var(--color-replicanti);
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.2rem var(--color-replicanti) inset);
+    background: linear-gradient(color-mix(in srgb, var(--color-background) 35%, transparent), var(--color-replicanti) 300%),var(--leg-base);
+    border-radius: var(--var-border-radius, 1rem);
+    color: white;
+    text-shadow: -0.1rem -0.1rem 0.2rem black,
+    -0.1rem 0.1rem 0.2rem black,
+    0.1rem -0.1rem 0.2rem black,
+    0.1rem 0.1rem 0.2rem black;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+  .c-replicanti-bar-fill{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: var(--var-box-shadow, 0 0 1rem #00000088 inset);
+    background: url(../images/celestials/v-bar-overlay.png), linear-gradient(var(--color-replicanti),var(--color-replicanti));
+    background-size: unset 100%, unset unset;
+    animation: a-vbar 20s infinite linear;
+  }
+
+  .s-base--dark .c-replicanti-bar-fill{
+    background: url(../images/celestials/v-bar-overlay.png), linear-gradient(var(--color-replicanti) -50%,black 200%);
+  }
+  /* #endregion Replicanti */

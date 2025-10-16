@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Antimatter Dimensions: Legendary</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="Antimatter Dimensions: Legendary" content="A mod that makes game about huge numbers and watching them go up look sexy." >
+  <meta property="og:title" content="Antimatter Dimensions: Legendary" />
+  <meta property="og:description" content="Experience Antimatter Dimensions with better visuals." />
+  <meta property="og:image" content="https://krutamason.github.io/ADLegendary/images/background/loading.png" />
+  <meta property="og:url" content="https://krutamason.github.io/ADLegendary" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="stylesheets/fontawesome/css/all.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/codemirror/codemirror.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/codemirror/show-hint.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/codemirror/lint.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/codemirror/panda-syntax.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/codemirror/liquibyte.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/vue-sfc-classes.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/ad-slider-component.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/glyphs.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/legendary-config.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/styles.css?3">
+  <link rel="stylesheet" type="text/css" href="stylesheets/infinity.css?3">
+  <link rel="stylesheet" type="text/css" href="stylesheets/eternity.css?3">
+  <link rel="stylesheet" type="text/css" href="stylesheets/reality.css?3">
+  <link rel="stylesheet" type="text/css" href="stylesheets/celestials.css?3">
+  <link rel="stylesheet" type="text/css" href="stylesheets/automator.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/time-studies.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/tooltips.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/vis-network.css">
+<script defer src="js/chunk-vendors.js"></script><script defer src="js/app.js"></script></head>
+
+<body>
+  <div id="browser-warning">
+    Your browser is not supported.
+    <br>
+    Please update to a newer browser.
+  </div>
+  <div id="loading"></div>
+  <div id="ui"></div>
+  <div id="flashlight" class="flashlight" style="display: none;">
+    <img src="images/visuals/face.png">
+  </div>
+  <div id="background-animations">
+    <div class="videocontainer videocontainer--background">
+      <video autoplay muted loop id="stars">
+        <source src="videos/stars-bg.webm" type="video/webm">
+      </video>
+    </div>
+    <div id="snow" style="display: none;"></div>
+  </div>
+  <div class="videocontainer">
+    <video preload muted id="realityanimbg" style="opacity: 0; display: none;">
+      <source src="videos/realityanimbg.webm" type="video/webm">
+    </video>
+    <video preload muted id="doomanimbg" style="opacity: 0; display: none;">
+      <source src="videos/realityanimbg.webm" type="video/webm">
+    </video>
+  </div>
+  <div id="performance-stats" class="c-performance-stats" style="display: none;"></div>
+</body>
+<script>
+  // We use an IE only document variable to check here to force it to show the browser warning.
+  // For some reason, IE really does *not* want to cooperate, even when you have a file as a <script> that you load
+  // in the body.
+  // Other browsers will be checked whenever window.onload is ran.
+  if (document.documentMode) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("browser-warning").style.display = "flex";
+  }
+</script>
+</html>
