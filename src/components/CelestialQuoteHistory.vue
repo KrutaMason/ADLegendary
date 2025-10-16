@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <div v-if="isShown">
+  <div v-if="isShown" class="c-subtab-option-container--border c-subtab-option-container--border--celestial">
     <div 
       class="c-celestial-title--header"
       :style="{
@@ -98,14 +98,15 @@ export default {
 .c-celestial-title--header{
   font-family: cambria;
   font-weight:bold;
-  font-size:2rem;
-  line-height: 1.1;
+  font-size: 2rem;
+  line-height: 1;
   background: linear-gradient(90deg,transparent,color-mix(in srgb,var(--scoped-cel-color) 40%,transparent),transparent);
   border-top:0.1rem solid;
   border-bottom:0.1rem solid;
   border-image: linear-gradient(90deg,transparent,var(--scoped-cel-color),transparent) 1;
   padding:0.2rem 15rem;
   margin-bottom: 0.5rem;
+  margin-top: -0.3rem;
   color:var(--color-text)
 }
 .c-celestial-title--header-small{
@@ -129,7 +130,7 @@ export default {
   border: var(--var-border-width, 0.1rem) solid var(--scoped-cel-color);
   box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--scoped-cel-color) inset, 0 0 0.5rem black);
   border-radius: var(--var-border-radius, 0.5rem);
-  margin: 0 0.5rem 1.5rem;
+  margin: 0 0.5rem 0.5rem;
   padding: 0.5rem;
   transition: 0.2s;
   transition-property: color, background-color;

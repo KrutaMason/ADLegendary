@@ -150,7 +150,6 @@ export const secretAchievements = [
   {
     id: 41,
     name: "That dimension doesn’t exist",
-    description: "Try to purchase the 9th dimension.",
     get description() { return `Try to purchase the ${player.options.naming.dimensions ? `Polyyotton` : "9th dimension"}.`},
   },
   {
@@ -223,8 +222,8 @@ export const secretAchievements = [
   },
   {
     id: 56,
-    name: "To be developed...",
-    description: "S56"
+    name: "A Succulent Corporate Meal",
+    get description() { return `${Pelle.isDoomed ? `Try to redeem` : "Redeem"} the free coupon to McDonalds™️.`; }
   },
   {
     id: 57,
@@ -234,7 +233,7 @@ export const secretAchievements = [
   {
     id: 58,
     name: "Mythical (Unobtainable)",
-    description: "Earn every other secret achievements.",
+    description: "Have every other secret achievements.",
     checkRequirement: () => SecretAchievements.all.countWhere(a => a.isUnlocked) >= 39,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },

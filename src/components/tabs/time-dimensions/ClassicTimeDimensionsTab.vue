@@ -66,7 +66,7 @@ export default {
         Toggle all autobuyers
       </PrimaryButton>
     </div>
-    <div>
+    <div class="c-game-background__eternity">
       <p>
         You have gained
         <span class="c-time-dim-description__accent"
@@ -113,3 +113,12 @@ export default {
     </div>
   </div>
 </template>
+<style scoped>
+.c-game-background__eternity {
+  border-top: 0.1rem solid;
+  border-bottom: 0.1rem solid;
+  background: linear-gradient(90deg, transparent,
+  color-mix(in srgb, var(--color-eternity) 30%, transparent), transparent);
+  border-image: linear-gradient(90deg, transparent, var(--color-eternity), transparent) 1;
+}
+</style>

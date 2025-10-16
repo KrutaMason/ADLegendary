@@ -127,7 +127,7 @@ export default {
   <div class="l-infinity-upgrades-tab">
     <div
       v-if="chargeUnlocked"
-      class="c-subtab-option-container c-subtab-option-container--border"
+      class="c-subtab-option-container c-subtab-option-container--border c-subtab-option-container--border--infinity"
     >
       <PrimaryButton
         :class="disChargeClassObject"

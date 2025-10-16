@@ -2357,21 +2357,46 @@ br {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding-bottom: 0.8rem;
+  /*padding-bottom: 0.8rem;*/
 }
 
 .c-subtab-option-container--border {
   padding: 0.2rem 0.5rem;
   margin-top: -0.8rem;
   margin-bottom: 0.8rem;
-  border: 0.4rem double var(--color-accent);
+  --base: var(--color-accent);
+  border: 0.4rem double var(--base);
   border-top: none;
   border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
   background-image: linear-gradient(90deg, 
-  color-mix(in srgb, var(--color-accent) 10%, transparent), 
-  color-mix(in srgb, var(--color-accent) 35%, transparent), 
-  color-mix(in srgb, var(--color-accent) 10%, transparent));
+  color-mix(in srgb, var(--base) 10%, transparent), 
+  color-mix(in srgb, var(--base) 35%, transparent), 
+  color-mix(in srgb, var(--base) 10%, transparent));
   background-origin: border-box;
+}
+
+.c-subtab-option-container--border--infinity{
+  --base: var(--color-infinity);
+}
+
+.c-subtab-option-container--border--eternity{
+  --base: var(--color-eternity);
+}
+
+.c-subtab-option-container--border--reality{
+  --base: var(--color-reality);
+}
+
+.c-subtab-option-container--border--celestial{
+  --base: var(--color-celestials);
+  background-image: linear-gradient(90deg, 
+  color-mix(in srgb, var(--base) 25%, transparent), 
+  transparent 25% 75%, 
+  color-mix(in srgb, var(--base) 25%, transparent));
+}
+
+.c-subtab-option-container--border--doomed{
+  --base: var(--color-pelle--base);
 }
 /* #endregion c-subtab-option-container */
 
@@ -4031,7 +4056,7 @@ br {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0;
+  /*margin: 0.5rem 0;*/
 }
 
 .o-challenges-tab__header-toggle {

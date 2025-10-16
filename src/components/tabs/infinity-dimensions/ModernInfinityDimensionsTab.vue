@@ -105,7 +105,7 @@ export default {
       </PrimaryButton>
     </div>
     <div>
-      <p>
+      <p class="c-game-background__infinity">
         You have
         <span 
         class="c-infinity-dim-description__accent"
@@ -185,6 +185,13 @@ export default {
   </div>
 </template>
 <style scoped>
+.c-game-background__infinity {
+  border-top: 0.1rem solid;
+  border-bottom: 0.1rem solid;
+  background: linear-gradient(90deg, transparent,
+  color-mix(in srgb, var(--color-infinity) 30%, transparent), transparent);
+  border-image: linear-gradient(90deg, transparent, var(--color-infinity), transparent) 1;
+}
 .c-infinity-dim-tesseract__accent{
   color:var(--color-text);
   font-weight:normal;

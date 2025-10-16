@@ -36,7 +36,12 @@ export default {
     },
     topMargin() {
       return this.$viewModel.news ? "" : "margin-top: 3.9rem";
-    }
+    },
+    headerClassObject() {
+      return {
+        [`information-header--${Tabs.current.config.UIClassOther}`]: Tabs.current.config.UIClassOther
+      };
+    },
   },
   methods: {
     update() {
@@ -80,6 +85,7 @@ export default {
       >
         <HeaderPrestigeGroup />
         <div class="information-header"
+          :class="headerClassObject"
           :style="{'opacity':fade}">
           <HeaderChallengeDisplay />
           <HeaderChallengeEffects />

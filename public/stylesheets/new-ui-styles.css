@@ -586,13 +586,35 @@ body.t-s12 {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--color-text);
-  border-bottom: 0.1rem solid var(--color-accent);
-  background: linear-gradient(transparent, var(--color-accent) 400%);
+  --base: var(--color-accent);
+  border-bottom: 0.1rem solid var(--base);
+  background: linear-gradient(transparent, var(--base) 400%);
   padding-top: 1rem;
   margin-bottom: 0.5rem;
   padding-bottom: 0.6rem;
   text-shadow: var(--text-shadow);
 }
+
+.information-header--infinity{
+  --base: var(--color-infinity);
+}
+
+.information-header--eternity{
+  --base: var(--color-eternity);
+}
+
+.information-header--reality{
+  --base: var(--color-reality);
+}
+
+.information-header--celestial{
+  --base: var(--color-celestials);
+}
+
+.information-header--doomed{
+  --base: var(--color-pelle--base);
+}
+
 .t-s8 .information-header,
 .t-s8 .c-prestige-info-blocks {
 background:#ffffff40;
@@ -762,14 +784,39 @@ backdrop-filter: blur(1rem);
 .c-subtab-option-container--border {
   padding: 0.2rem 0.5rem;
   margin-top: -0.5rem;
-  border: 0.4rem double var(--color-accent);
+  --base: var(--color-accent);
+  border: 0.4rem double var(--base);
   border-top: none;
   border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
   background-image: linear-gradient(90deg, 
-  color-mix(in srgb, var(--color-accent) 10%, transparent), 
-  color-mix(in srgb, var(--color-accent) 35%, transparent), 
-  color-mix(in srgb, var(--color-accent) 10%, transparent));
+  color-mix(in srgb, var(--base) 10%, transparent), 
+  color-mix(in srgb, var(--base) 35%, transparent), 
+  color-mix(in srgb, var(--base) 10%, transparent));
   background-origin: border-box;
+}
+
+.c-subtab-option-container--border--infinity{
+  --base: var(--color-infinity);
+}
+
+.c-subtab-option-container--border--eternity{
+  --base: var(--color-eternity);
+}
+
+.c-subtab-option-container--border--reality{
+  --base: var(--color-reality);
+}
+
+.c-subtab-option-container--border--celestial{
+  --base: var(--color-celestials);
+  background-image: linear-gradient(90deg, 
+  color-mix(in srgb, var(--base) 25%, transparent), 
+  transparent 25% 75%, 
+  color-mix(in srgb, var(--base) 25%, transparent));
+}
+
+.c-subtab-option-container--border--doomed{
+  --base: var(--color-pelle--base);
 }
 
 .c-laitela-automation-toggle {

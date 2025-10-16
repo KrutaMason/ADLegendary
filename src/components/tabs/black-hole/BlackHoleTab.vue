@@ -46,7 +46,7 @@ export default {
     disabledImage() {
       if (this.isDoomed) return "images/visuals/black_hole_disabled_doomed.png"
       return "images/visuals/black_hole_disabled_enslaved.png"
-    }
+    },
   },
   mounted() {
     this.startAnimation();
@@ -184,7 +184,7 @@ export default {
       Unlocking the Black Hole also gives {{ formatInt(10) }} Automator Points.
     </div>
     <template v-else>
-      <div class="c-subtab-option-container c-subtab-option-container--border">
+      <div class="c-subtab-option-container c-subtab-option-container--border c-subtab-option-container--border--reality">
         <button
           class="o-primary-btn o-primary-btn--subtab-option"
           @click="togglePause"

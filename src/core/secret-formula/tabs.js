@@ -257,6 +257,7 @@ export const tabs = [
     name: "Infinity",
     hideAt: 2.2,
     UIClass: "o-tab-btn--infinity",
+    UIClassOther: "infinity",
     before: "InfinityPointsHeader",
     id: 6,
     condition: () => PlayerProgress.infinityUnlocked(),
@@ -305,6 +306,7 @@ export const tabs = [
     name: "Eternity",
     hideAt: 1.8,
     UIClass: "o-tab-btn--eternity",
+    UIClassOther: "eternity",
     condition: () =>
       PlayerProgress.realityUnlocked() ||
       PlayerProgress.eternityUnlocked(),
@@ -352,6 +354,7 @@ export const tabs = [
     get name() { return Pelle.isDoomed ? "Armageddon" : "Reality"},
     hideAt: 2.3,
     get UIClass() { return Pelle.isDoomed ? "o-tab-btn--armageddon" : "o-tab-btn--reality"},
+    get UIClassOther() { return Pelle.isDoomed ? "doomed" : "reality"},
     condition: () => PlayerProgress.realityUnlocked() || TimeStudy.reality.isBought,
     id: 8,
     hidable: true,
@@ -414,6 +417,7 @@ export const tabs = [
     name: "Celestials",
     hideAt: 2.4,
     UIClass: "o-tab-btn--celestial",
+    UIClassOther: "celestial",
     condition: () => Teresa.isUnlocked,
     id: 9,
     hidable: true,

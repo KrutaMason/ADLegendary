@@ -75,9 +75,9 @@ export const normalAchievements = [
   },
   {
     id: 23,
-    name: "The 9th Dimension is a lie",
+    get name() {return `The ${player.options.naming.dimensions ? `Polyyotton` : "9th Dimension"} is a lie`},
     get description() { return `Have exactly ${formatInt(99)} ${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(8).uniqueName}s` : "8th Antimatter Dimensions"}`; },
+      `Antimatter ${AntimatterDimension(8).uniqueName}s` : "8th Antimatter Dimensions"}.`; },
     checkRequirement: () => AntimatterDimension(8).amount.eq(99),
     get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}s` 
       : "8th Antimatter Dimensions"} are ${formatPercents(0.1)} stronger.`; },

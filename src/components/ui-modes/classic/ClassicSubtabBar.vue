@@ -13,6 +13,11 @@ export default {
   },
   computed: {
     tab: () => Tabs.current,
+    classObject() {
+      return {
+        [`c-subtab-button-container--${this.tab.config.UIClassOther}`]: this.tab.config.UIClassOther
+      };
+    },
     subtabs() {
       return this.tab.subtabs;
     }
@@ -28,6 +33,7 @@ export default {
 <template>
   <div
     v-if="isVisible"
+    :class="classObject"
     class="c-subtab-button-container"
   >
     <ClassicSubtabButton

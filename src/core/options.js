@@ -63,6 +63,7 @@ const secretImports = [
   "857876556a230da15fe1bb6f410ca8dbc9274de47c1a847c2281a7103dd2c274",
   "be88e62eb68758cd7381104977c0d3d5d81e19c72a848f0d79d1963c1e39221f",
   "c784c9c0a82b5f3c13884842fa6e6a8f5aed994ef401e6476c30b1adfe439b22",
+  "9535cd84cd00478f0b77999b16f0989970bdc112df2d85a6587805adb2cf49fa",
 ];
 
 function secretImportIndex(data) {
@@ -91,6 +92,15 @@ export function tryImportSecret(data) {
     case 3:
       if (player.records.fullGameCompletions > 0 || DEV) Speedrun.unlock();
       else GameUI.notify.error(["Speedrunning","Complete the game at least once first!"], 15000,"click_wrong");
+      return true;
+    case 4:
+      if (Achievement(156).isUnlocked) {
+        Modal.message.show(SecretAchievement(56).isUnlocked||Pelle.isDoomed ? 
+        `Failed to redeem: The free coupon is expired or has already been redeemed.` 
+        : `Succesfully Redeemed: Enjoy your free meal!`)
+        SecretAchievement(56).unlock();
+      }
+      else Modal.message.show(`Failed to redeem: The free coupon is not yet redeemable.`);
       return true;
     default:
       return false;

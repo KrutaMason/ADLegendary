@@ -136,7 +136,7 @@ export default {
 
 <template>
   <div class="l-time-studies-tab">
-    <div class="c-subtab-option-container c-subtab-option-container--border">
+    <div class="c-subtab-option-container c-subtab-option-container--border c-subtab-option-container--border--eternity">
       <PrimaryButton
         class="o-primary-btn--subtab-option"
         @click="exportStudyTree"

@@ -99,7 +99,10 @@ export const shortcuts = [
     name: "Eternity",
     keys: ["e"],
     type: "bindRepeatableHotkey",
-    function: () => eternityResetRequest(),
+    function: () => {
+      if (!Player.canEternity&&!EternityMilestone.autoUnlockID.isReached) InfinityDimensions.unlockNext()
+      else eternityResetRequest()
+    },
     visible: () => PlayerProgress.eternityUnlocked() || Player.canEternity
   }, {
     name: "Toggle Time Study respec",

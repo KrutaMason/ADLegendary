@@ -246,13 +246,36 @@
   background-position-x: -432px;
   width: 23.1rem;
 }
+
 .c-subtab-button-container{
-  background: linear-gradient(transparent, var(--color-accent) 400%);
-  border-bottom: var(--var-border-width, 0.1rem) solid var(--color-accent);
+  --base: var(--color-accent);
+  background: linear-gradient(transparent, var(--base) 400%);
+  border-bottom: var(--var-border-width, 0.1rem) solid var(--base);
   width: 100%;
   margin-bottom: 0.8rem;
   padding-bottom: 0.3rem;
 }
+
+.c-subtab-button-container--infinity{
+  --base: var(--color-infinity);
+}
+
+.c-subtab-button-container--eternity{
+  --base: var(--color-eternity);
+}
+
+.c-subtab-button-container--reality{
+  --base: var(--color-reality);
+}
+
+.c-subtab-button-container--celestial{
+  --base: var(--color-celestials);
+}
+
+.c-subtab-button-container--doomed{
+  --base: var(--color-pelle--base);
+}
+
 .c-dimension-row:not(.c-antimatter-prestige-row) {
   color: var(--color-text);
   border-radius: var(--var-border-radius, 0.5rem);
