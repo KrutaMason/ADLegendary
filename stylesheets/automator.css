@@ -1,0 +1,366 @@
+:root, 
+.c-automator-theme-light, 
+.s-base--dark .c-automator-theme-light {
+  --color-automator-controls-background: #d3d3d3;
+  --color-automator-controls-active: #0ba00e;
+  --color-automator-controls-inactive: #eeeeee;
+  --color-automator-controls-border: #767676;
+  --color-automator-active-line-background: #d8caeb;
+  --color-automator-active-line-outline: #7a49ff;
+  --color-automator-event-background: #9afa9a;
+  --color-automator-event-outline: #094e09;
+  --color-automator-error-background: #ac0617;
+  --color-automator-error-outline: #440108;
+  --color-automator-docs-font: black;
+  --color-blockmator-light-text: #dddddd;
+  --color-blockmator-block-border: #cfcfcf;
+  --color-blockmator-block-background: #f5f5f5;
+  --color-blockmator-block-command: #401090;
+  --color-blockmator-block-required: #50aaaa;
+  --color-blockmator-block-optional: #684700;
+  --color-blockmator-editor-background: white;
+
+  --color-automator-background-base: white;
+  --color-automator-background-distance: 625%;
+  --color-automator-background-scanline: #ffffff;
+  --color-automator-background-shadow: 0 0 2.5rem white inset;
+  --color-automator-controls-shadow: white;
+}
+
+:root .s-base--dark, 
+.c-automator-theme-dark, 
+.s-base--dark .c-automator-theme-dark {
+  --color-automator-controls-background: #262626;
+  --color-automator-controls-active: #007c00;
+  --color-automator-controls-inactive: #273757;
+  --color-automator-controls-border: #929292;
+  --color-automator-active-line-background: #2b065c;
+  --color-automator-active-line-outline: #4400ff;
+  --color-automator-event-background: #004b00;
+  --color-automator-docs-font: white;
+  --color-blockmator-light-text: white;
+  --color-blockmator-block-border: #353535;
+  --color-blockmator-block-background: #000115;
+  --color-blockmator-block-command: #a142ff;
+  --color-blockmator-block-required: #005050;
+  --color-blockmator-block-optional: #684700;
+  --color-blockmator-editor-background: black;
+
+  --color-automator-background-base: black;
+  --color-automator-background-distance: 500%;
+  --color-automator-background-scanline:#00000080;
+  --color-automator-background-shadow: 0 0 2.5rem black inset;
+  --color-automator-controls-shadow: black;
+}
+
+.c-automator-animated {
+  --animation: a-automator-background linear infinite 1s
+}
+
+@keyframes a-automator-background {
+  0% {
+    background-position: center 0%, center center;
+  }
+  100% {
+    background-position: center var(--color-automator-scanline-size), center center;
+  }
+}
+
+.l-automator-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.l-automator-pane__content {
+  flex: 1 1 auto;
+}
+
+.s-base--metro .l-automator-pane__content::-webkit-scrollbar-thumb {
+  border-radius: 0;
+}
+
+.c-automator__controls {
+  background: linear-gradient(transparent, var(--color-automator-controls-background)), var(--leg-base);
+  border-bottom: 0.3rem solid var(--color-automator-active-line-outline);
+  box-shadow: var(--var-box-shadow, 0 0 1rem color-mix(in srgb, var(--color-background) 25%, transparent) inset);
+}
+
+.l-automator__controls {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+}
+
+.l-automator-button-row {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  align-items: center;
+}
+
+.l-automator-button-row:first-child {
+  border-bottom: 0.1rem dashed gray;
+}
+
+.l-automator__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+}
+
+.c-automator-editor__active-line {
+  background: var(--color-automator-active-line-background);
+  outline: 0.1rem solid var(--color-automator-active-line-outline);
+}
+
+.c-automator-editor__active-line-gutter {
+  font-weight: bold;
+  background: var(--color-automator-active-line-background);
+  outline: 0.1rem solid var(--color-automator-active-line-outline);
+  filter: brightness(200%);
+}
+
+.c-automator-editor__event-line {
+  background: var(--color-automator-event-background);
+  outline: 0.1rem solid var(--color-automator-event-outline);
+}
+
+.c-automator-editor__event-line-gutter {
+  font-weight: bold;
+  background: var(--color-automator-event-background);
+  outline: 0.1rem solid var(--color-automator-event-outline);
+  filter: brightness(200%);
+}
+
+.c-automator-editor__error-line {
+  background: var(--color-automator-error-background);
+  outline: 0.1rem solid var(--color-automator-error-outline);
+}
+
+.c-automator-editor__error-line-gutter {
+  font-weight: bold;
+  background: var(--color-automator-error-background);
+  outline: 0.1rem solid var(--color-automator-error-outline);
+  filter: brightness(200%);
+}
+
+.c-automator-editor {
+  text-align: left;
+  font-family: Typewriter, serif;
+  font-size: 1.4rem;
+  border-bottom: 0.15rem solid var(--color-automator-controls-background);
+  --color-automator-scanline-size: 6rem;
+  --color-automator-scanline-opacity: 50%;
+}
+
+.l-automator-editor {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.l-automator-editor__codemirror-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.CodeMirror-hint {
+  font-family: Typewriter, serif;
+  font-size: 1rem;
+}
+
+.s-base--metro .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+  border-radius: 0;
+}
+
+.cm-s-liquibyte.CodeMirror,
+.cm-s-panda-syntax.CodeMirror {
+
+  /* required for expanding into pane */
+  flex: 1 1 auto;
+  font-family: Typewriter, serif;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+.c-automator-docs {
+  --color-automator-scanline-opacity: 50%;
+  --color-automator-scanline-size: 6rem;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  font-size: 1.4rem;
+  color: var(--color-automator-docs-font);
+	background: linear-gradient(to bottom, transparent 50%, 
+  color-mix(in srgb, var(--color-automator-background-base) var(--color-automator-scanline-opacity),
+  transparent) 51%), var(--color-automator-background-gradient);
+	background-size: 100% var(--color-automator-scanline-size), 100% 100%;
+  border-right: 0.15rem solid var(--color-automator-controls-background);
+  border-bottom: 0.15rem solid var(--color-automator-controls-background);
+  padding: 1rem;
+	animation: var(--animation, none);
+  text-shadow: none;
+  box-shadow: var(--var-box-shadow, var(--color-automator-background-shadow));
+}
+
+.c-automator-docs--header {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(90deg ,transparent, 
+  color-mix(in srgb, var(--color-automator-background-accent), transparent 50%), transparent);
+  border-top: 0.1rem dashed var(--color-automator-background-accent);
+  border-bottom: 0.1rem dashed var(--color-automator-background-accent);
+  font-weight: bold;
+  font-style: italic;
+  font-family: var(--var-secondary-font);
+  text-shadow: 0.1rem 0.1rem var(--color-automator-background-accent);
+}
+.c-automator-docs--header > div {
+  padding: 0.5rem 0.5rem;
+}
+
+.c-automator-theme-background {
+  --color-automator-background-base: transparent;
+	background: var(--color-automator-background-gradient), var(--leg-base);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
+  box-shadow: var(--var-box-shadow, 0 0 2.5rem var(--color-automator-controls-shadow) inset);
+	background-size: unset;
+  background-position: center;
+  animation:none
+}
+
+.c-automator-docs-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.c-automator-docs-page__link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.c-automator-docs-page__indented {
+  margin-left: 2rem;
+}
+
+.c-automator-docs--button {
+  width: 2.8rem;
+  height: 2.2rem;
+  border-width: 0.1rem;
+  border-radius: var(--var-border-radius, 0.3rem);
+  background-image: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%),linear-gradient(var(--bg),black 300%);
+  --bg:white;
+  margin: 0.1rem;
+  cursor: pointer;
+}
+
+.s-base--metro .c-automator-docs--button {
+  background-image: linear-gradient(var(--bg),black 300%);
+}
+
+.c-automator-docs-script-select {
+  width: 100%;
+  height: calc(2.1rem + 1rem / 3 - var(--var-border-width, 0rem) * 2);
+  text-align: left;
+  font-family: Typewriter, serif;
+  font-size: 1.2rem;
+  color: var(--color-automator-docs-font);
+  --bg: linear-gradient(var(--color-automator-controls-inactive),var(--color-automator-controls-inactive));
+  background: var(--leg-shading),var(--bg);
+  border: 0.1rem solid var(--color-automator-controls-border);
+  box-shadow: var(--var-box-shadow, 0 0 0.5rem var(--color-background) inset, 0 0 0 0.1rem var(--color-automator-controls-border) inset);
+  border-radius: var(--var-border-radius, 0.3rem);
+  padding: 0.1rem 0.5rem 0;
+  cursor: pointer;
+}
+
+.s-base--metro .c-automator-docs-script-select {
+  background: var(--bg);
+}
+
+.o-automator-error-underline {
+  display: inline-block;
+  position: relative;
+}
+
+.o-automator-error-underline::before {
+  content: "~~~~~~~~~~~~";
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 12px;
+  left: -1px;
+  color: red;
+}
+
+.c-automator-input-required {
+  background: linear-gradient(white -50%,var(--color-blockmator-block-required) 75%);
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-blockmator-block-required) inset,0 0 0.5rem 0.1rem black inset);
+}
+
+.c-automator-input-optional {
+  color: var(--color-blockmator-light-text);
+  background: linear-gradient(white -50%,var(--color-blockmator-block-optional) 75%);
+  box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-blockmator-block-optional) inset,0 0 0.5rem 0.1rem black inset);
+}
+
+.c-automator-block-row-active {
+  background: var(--color-automator-active-line-background);
+}
+
+.c-automator-block-row-event {
+  background: var(--color-automator-event-background);
+}
+
+.c-automator-block-row-error {
+  background: var(--color-automator-error-background);
+}
+
+/* AUTOMATOR LAYOUT CUSTOMIZATION */
+
+.c-automator-background-gradient-0 {
+  --color-automator-background-gradient: linear-gradient(var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
+}
+
+.c-automator-background-gradient-1 {
+  --color-automator-background-gradient: linear-gradient(0deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
+}
+
+.c-automator-background-gradient-2 {
+  --color-automator-background-gradient: linear-gradient(90deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
+}
+
+.c-automator-background-gradient-3 {
+  --color-automator-background-gradient: linear-gradient(-90deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
+}
+
+.c-automator-background-gradient-4 {
+  --color-automator-background-gradient: linear-gradient(var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base), var(--color-automator-background-accent) 350%)
+}
+
+.c-automator-background-gradient-5 {
+  --color-automator-background-gradient: linear-gradient(90deg,var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base), var(--color-automator-background-accent) 350%)
+}
+
+.c-automator-background-gradient-6 {
+  --color-automator-background-gradient: radial-gradient(var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base))
+}
+
+.c-automator-background-gradient-7 {
+  --color-automator-background-gradient: radial-gradient(var(--color-automator-background-base), 
+  var(--color-automator-background-accent) 350%)
+}
