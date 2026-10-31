@@ -1,12 +1,14 @@
 <script>
 import InformationModalButton from "@/components/modals/InformationModalButton";
 import ModalCloseButton from "@/components/modals/ModalCloseButton";
+import LogoHolder from "@/components/LogoHolder";
 
 export default {
   name: "InformationModal",
   components: {
     ModalCloseButton,
-    InformationModalButton
+    InformationModalButton,
+    LogoHolder
   },
 };
 </script>
@@ -15,8 +17,11 @@ export default {
   <div class="l-information-modal c-information-modal">
     <ModalCloseButton @click="emitClose" />
     <div class="l-h2p-header">
-      <img class="o-title" src="images/title-holder.png" alt="">
+      <div class="c-h2p-title">
+        About the game / mod
+      </div>
     </div>
+    <LogoHolder/>
     <div class="c-info-body">
       Antimatter Dimensions is an Idle Incremental game created by Finnish developer Hevipelle. 
       Originating as a solo project in 2016, it was expanded upon by a large team of developers and testers from then on.
@@ -26,9 +31,10 @@ export default {
       information about progressing.
       <br>
       <br>
-      AD: Legendary is a modified version of the game, created by MrKrutaman. 
-      It focuses on a complete overhaul of the game's graphics and visuals, 
-      along with small additional non-gameplay content. This mod is intended for mature audience.
+      AD: Legendary is a modified version of the game created by MrKrutaman, 
+      which overhauls the game's graphics and visuals completely and features 
+      small additional non-gameplay content. This mod is still intended for mature audiences, even
+      when the mod has the lack of graphic content.
     </div>
     <div class="l-socials">
       <InformationModalButton
@@ -71,12 +77,12 @@ export default {
   padding: 0.6rem;
   background: linear-gradient(transparent, var(--base) 500%);
   background-origin: border-box;
-  --base: #49cc8f;
+  --base: #00ffaa;
 }
 
 .c-info-body {
   text-align: center;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   font-size: 1.75rem;
   margin: 1rem;

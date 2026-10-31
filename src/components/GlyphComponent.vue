@@ -67,6 +67,36 @@ const rarityBorderStyles = {
       colorSplit: [65, 75],
     },
   ],
+  "exclusive!": [
+    {
+      lineType: "radial",
+      colorSplit: [55, 75],
+    },
+    {
+      lineType: "bump",
+      colorSplit: [25, 35],
+    },
+    {
+      lineType: "spike",
+      center: [40, 40],
+      angles: [305, 325],
+    },
+    {
+      lineType: "spike",
+      center: [60, 40],
+      angles: [35, 55],
+    },
+    {
+      lineType: "spike",
+      center: [60, 60],
+      angles: [125, 145],
+    },
+    {
+      lineType: "spike",
+      center: [40, 60],
+      angles: [215, 235],
+    },
+  ],
   cursed: [
     {
       lineType: "spike",
@@ -383,8 +413,8 @@ export default {
         height: this.size,
         "--crate-size":this.hasCrate>0?`calc(${this.size} * ${this.hasCrate===2?1.2:1.4})`:undefined,
         //"--crate-position":this.hasCrate>0?`calc(-${this.size} * ${this.hasCrate===2?1.1:1.2} + ${this.size})`:undefined,
-        "background": this.isRealityGlyph&&this.animationenabled?
-        `linear-gradient(${this.realitydirection}deg,${this.borderColor} -50%,white,${this.borderColor} 150%)`:this.borderColor,
+        "background": this.isRealityGlyph && this.animationenabled ?
+        `linear-gradient(${this.realitydirection}deg,${this.borderColor} -50%,white,${this.borderColor} 150%)`: `linear-gradient(${this.borderColor}, white 200%)`,
         "box-shadow": `0 0 ${this.glowBlur} ${this.glowSpread} ${this.borderColor}`,
         "border-radius": this.circular ? "50%" : "15%",
         "-webkit-user-drag": this.draggable ? "" : "none",
@@ -395,13 +425,13 @@ export default {
       const color = this.symbolColor;
       //const bgimg = getRarity(this.glyph.strength).name !== "Celestial" ? "url(../images/glyphs-alchemy/glyph-pattern.png)" : "url(../images/glyphs-alchemy/glyph-pattern-celestial.png)"
       return {
-        width: `calc(${this.size} - ${this.isRealityGlyph&&this.animationenabled?0.4:0.2}rem)`,
-        height: `calc(${this.size} - ${this.isRealityGlyph&&this.animationenabled?0.4:0.2}rem)`,
+        width: `calc(${this.size} - ${this.isRealityGlyph && this.animationenabled ? 0.4 : 0.2}rem)`,
+        height: `calc(${this.size} - ${this.isRealityGlyph && this.animationenabled ? 0.4 : 0.2}rem)`,
         "font-size": `calc( ${this.size} * ${this.textProportion} )`,
-        color:this.isRealityGlyph&&this.animationenabled?(this.bgColor==="white"?"black":"white"):color,
-        "text-shadow": this.symbolBlur ? (this.isRealityGlyph&&this.animationenabled?`0 0 0.3rem 
-        ${(this.bgColor==="white"?"black":"white")},0 0 0.3em ${color},0 0 0.3em ${color},0 0 0.3em ${color}`:
-        `${(player.options.extraShadows===0||player.options.extraShadows===2)?
+        color: this.isRealityGlyph && this.animationenabled ? (this.bgColor === "white" ? "black" : "white") : color,
+        "text-shadow": this.symbolBlur ? (this.isRealityGlyph && this.animationenabled? `0 0 0.3rem 
+        ${(this.bgColor==="white" ? "black" : "white")},0 0 0.3em ${color},0 0 0.3em ${color},0 0 0.3em ${color}`:
+        `${(player.options.extraShadows == 0 || player.options.extraShadows == 2) ?
         `0.1rem 0.2rem 0.3rem ${this.isCursedGlyph?"black":this.bgColor},`:``} -0.04em 0.04em 0.08em ${color}`) : undefined,
         "border-radius": this.circular ? "50%" : "15%",
         "padding-bottom": this.bottomPadding,
@@ -531,7 +561,7 @@ export default {
       return player.options.showHintText.glyphEffectDots;
     },
     displayedInfo() {
-      const blacklist = ["companion", "cursed","helios"];
+      const blacklist = ["companion", "cursed"];
       if (!this.isInventoryGlyph || blacklist.includes(this.glyph.type)) return null;
 
       const options = player.options.showHintText;
@@ -661,6 +691,7 @@ export default {
         this.currentAction = "refine";
       }
       this.scoreMode = AutoGlyphProcessor.scoreMode;
+      AudioManagement.playSound("click_hover")
     },
     moveTooltipTo(x, y) {
       // If we are just creating the tooltip now, we can't move it yet.
@@ -795,7 +826,7 @@ export default {
     glyphBorderStyle() {
       if (!this.showBorders) return null;
       let borderAttrs;
-      if (this.isCursedGlyph||this.isHeliosGlyph) borderAttrs = rarityBorderStyles.cursed;
+      if (this.isCursedGlyph) borderAttrs = rarityBorderStyles.cursed;
       else if (this.isCompanionGlyph) borderAttrs = rarityBorderStyles.companion;
       else borderAttrs = rarityBorderStyles[getRarity(this.glyph.strength).name.toLowerCase()];
       const lines = borderAttrs.map(attr => generateGradient(attr, this.borderColor, this.glyph, this.circular));

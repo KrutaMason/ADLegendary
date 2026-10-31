@@ -23,6 +23,7 @@ export default {
       isUnlockAffordable: false,
       isInEC8: false,
       ec8Purchases: 0,
+      EC8Name: "",
       amount: new Decimal(),
       mult: new Decimal(),
       hasADMult: false,
@@ -113,13 +114,13 @@ export default {
       if (this.hasADMult||this.realityUnlocked) {
         boostList.push(`<div class="c-replicanti-effect-container" ${!this.hasADMult?'style="opacity:0.375"':""}>
         <span class="c-replicanti-description__accent 
-        ${isInaccessible(this.multAD)?"c-replicanti-description__accent--fixed":""}">${this.hasADMult?formatX(this.multAD, 2, 2):"Locked"}</span>
+        ${isInaccessible(this.multAD)?"c-font--fixed":""}">${this.hasADMult?formatX(this.multAD, 2, 2):"Locked"}</span>
         <div>to all Antimatter Dimensions from Time Study 101</div></div>`);
       }
       if (this.hasTDMult||this.realityUnlocked) {
         boostList.push(`<div class="c-replicanti-effect-container" ${!this.hasTDMult?'style="opacity:0.375"':""}>
         <span class="c-replicanti-description__accent
-        ${isInaccessible(this.multTD)?"c-replicanti-description__accent--fixed":""}">${this.hasTDMult?formatX(this.multTD, 2, 2):"Locked"}</span>
+        ${isInaccessible(this.multTD)?"c-font--fixed":""}">${this.hasTDMult?formatX(this.multTD, 2, 2):"Locked"}</span>
         <div>to all Time Dimensions from a Dilation Upgrade</div></div>`);
       }
       if (this.hasDTMult) {
@@ -163,6 +164,7 @@ export default {
       if (this.isInEC8) {
         this.ec8Purchases = player.eterc8repl;
       }
+      this.EC8Name = EternityChallenge(8).displayName();
       this.amount.copyFrom(Replicanti.amount);
       this.mult.copyFrom(replicantiMult());
       this.hasADMult = TimeStudy(101).isBought;
@@ -198,10 +200,10 @@ export default {
         Replicanti.galaxies.max >= 1 || PlayerProgress.eternityUnlocked();
       this.maxReplicanti.copyFrom(player.records.thisReality.maxReplicanti);
       this.estimateToMax = this.calculateEstimate();
-      this.realityUnlocked = PlayerProgress.realityUnlocked()
+      this.realityUnlocked = PlayerProgress.realityUnlocked();
     },
     startHtml(value){
-      if (isInaccessible(value)) return `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent c-replicanti-description__accent--fixed">`
+      if (isInaccessible(value)) return `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent c-font--fixed">`
       else return `<div class="c-replicanti-effect-container"><span class="c-replicanti-description__accent">`
     },
     vacuumText() {
@@ -235,68 +237,76 @@ export default {
       Cost: {{ format(unlockCost) }} IP
     </PrimaryButton>
     <template v-else>
-      <div
-        v-if="isDoomed"
-        class="modified-cap"
-      >
-        Your Replicanti cap has been removed due to the second {{ scrambledText }} milestone.
-      </div>
-      <div
-        v-else-if="hasRaisedCap"
-        class="modified-cap"
-      >
-        Completion of Effarig's Infinity is giving you the following rewards:
-        <br>
-        Your Replicanti cap without TS192 is now {{ format(replicantiCap, 2) }}
-        ({{ capMultText }})
-        <br>
-        {{ quantifyInt("extra Replicanti Galaxy", effarigInfinityBonusRG) }}
-        (Next Replicanti Galaxy at {{ format(nextEffarigRGThreshold, 2) }} cap)
-      </div>
       <div class="c-replicanti-table">
-      <p class="c-replicanti-description">
-        You have
-        <span class="c-replicanti-description__accent"
-        :class="{'c-replicanti-description__accent--fixed': isInaccessible(amount) }"
-        >{{ format(amount, 2, 0) }}</span>
-        Replicanti, translated to
+        <div
+          v-if="isDoomed"
+          class="modified-cap"
+        >
+          Your Replicanti cap has been removed due to the second {{ scrambledText }} milestone.
+        </div>
+        <div
+          v-else-if="hasRaisedCap"
+          class="modified-cap"
+        >
+          Completion of Effarig's Infinity is giving you the following rewards:
+          <br>
+          Your Replicanti cap without TS192 is now {{ format(replicantiCap, 2) }}
+          ({{ capMultText }})
+          <br>
+          {{ quantifyInt("extra Replicanti Galaxy", effarigInfinityBonusRG) }}
+          (Next Replicanti Galaxy at {{ format(nextEffarigRGThreshold, 2) }} cap)
+        </div>
+        <div 
+          class="o-divider o-divider--replicanti"
+          v-if="hasRaisedCap || isDoomed"
+        />
+        <p class="c-replicanti-description">
+          You have
+          <span 
+            class="c-replicanti-description__accent"
+            :class="diffFont(amount)"
+          >
+          {{ format(amount, 2, 0) }}
+          </span>
+          Replicanti, translated to
         </p>
         <div 
-        class="l-replicanti-effects-list"
-        v-html="boostText" 
+          class="l-replicanti-effects-list"
+          v-html="boostText" 
         /> 
-      <div
-        v-if="hasMaxText"
-        class="c-replicanti-description c-replicanti-description-max"
-      >
-        Your maximum Replicanti reached this Reality is
-        <span
-          v-tooltip="toMaxTooltip"
-          class="max-accent"
-          :class="{'max-accent--fixed': isInaccessible(maxReplicanti) }"
-        >{{ format(maxReplicanti, 2) }}</span>.
-      </div>
-      <ReplicantiBar />
-      <ReplicantiGainText />
-      <div class="l-replicanti-seperator">
-          <br  v-if="!isInEC8">
-          <div v-if="isInEC8">
-            You have {{ quantifyInt("purchase", ec8Purchases) }} left within Eternity Challenge 8.
-          </div>
-          <div class="l-replicanti-upgrade-row">
+        <div
+          v-if="hasMaxText"
+          class="c-replicanti-description c-replicanti-description-max"
+        >
+          Your maximum Replicanti reached this Reality is
+          <span
+            v-tooltip="toMaxTooltip"
+            class="max-accent"
+            :class="diffFont(maxReplicanti)"
+          >
+            {{ format(maxReplicanti, 2) }}
+          </span>.
+        </div>
+        <ReplicantiBar />
+        <ReplicantiGainText />
+        <div class="o-divider o-divider--replicanti" />
+        <br v-if="!isInEC8">
+        <div v-else>
+          You have {{ quantifyInt("purchase", ec8Purchases) }} left within {{ EC8Name }}.
+        </div>
+        <div class="l-replicanti-upgrade-row">
           <ReplicantiUpgradeButton :setup="replicantiChanceSetup" />
           <ReplicantiUpgradeButton :setup="maxGalaxySetup" />
           <ReplicantiUpgradeButton :setup="replicantiIntervalSetup" />
         </div>
-      </div>
-      <ReplicantiGalaxyButton v-if="canSeeGalaxyButton" />
-      <br>
-      <div v-if="canSeeGalaxyButton">
-        The Max Replicanti Galaxy upgrade can be purchased endlessly, but costs increase
+        <ReplicantiGalaxyButton v-if="canSeeGalaxyButton" />
         <br>
-        more rapidly above {{ formatInt(distantRG) }} Replicanti Galaxies
-        and even more so above {{ formatInt(remoteRG) }} Replicanti Galaxies.
-      </div>
+        <div v-if="canSeeGalaxyButton">
+          The Max Replicanti Galaxy upgrade can be purchased endlessly, but costs increase
+          <br>
+          more rapidly above {{ formatInt(distantRG) }} Replicanti Galaxies
+          and even more so above {{ formatInt(remoteRG) }} Replicanti Galaxies.
+        </div>
     </div>
     </template>
   </div>
@@ -307,18 +317,13 @@ export default {
   color: var(--color-replicanti);
   text-shadow: 0 0 0.2rem var(--color-reality-dark);
   font-weight: bold;
-  font-family: cambria;
-  font-size:2rem;
+  font-family: var(--var-secondary-font);
+  font-size: 2rem;
   cursor: default;
 }
 
-.max-accent--fixed {
-  font-weight: normal;
-  font-family: typewriter;
-}
-
 .modified-cap {
-  margin: -0.8rem 0 0.8rem;
+  margin: 0.5rem;
   font-weight: bold;
 }
 </style>

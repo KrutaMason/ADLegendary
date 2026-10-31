@@ -15,7 +15,7 @@ export const infinityUpgrades = {
     effect: () => Math.pow(Time.totalTimePlayed.totalMinutes / 2, 0.15),
     formatEffect: value => formatX(value, 2, 2),
     charged: {
-      description: "Antimatter Dimensions gain a power effect based on time played and Teresa level",
+      description: "Antimatter Dimensions gain a power effect based on time played and Orias level",
       effect: () => 1 +
         Math.log10(Math.log10(Time.totalTimePlayed.totalMilliseconds)) *
         Math.pow(Ra.pets.teresa.level, 0.5) / 150,
@@ -26,14 +26,14 @@ export const infinityUpgrades = {
     id: "18Mult",
     cost: 1,
     description: () => `${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(1).uniqueName}s and Antimatter ${AntimatterDimension(8).uniqueName}s` : 
+      `${AntimatterDimension(1).fullName(...[,,,], 2)} and ${AntimatterDimension(8).fullName(...[,,,], 2)}` : 
       "1st and 8th Antimatter Dimensions"} gain a multiplier based on Infinities`,
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
       description: () => `${player.options.naming.dimensions ? 
-        `Antimatter ${AntimatterDimension(1).uniqueName}s and Antimatter ${AntimatterDimension(8).uniqueName}s` : 
-        "1st and 8th Antimatter Dimensions"} gain a power effect based on Infinities and Teresa level`,
+        `${AntimatterDimension(1).fullName(...[,,,], 2)} and ${AntimatterDimension(8).fullName(...[,,,], 2)}` : 
+        "1st and 8th Antimatter Dimensions"} gain a power effect based on Infinities and Orias level`,
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -43,14 +43,14 @@ export const infinityUpgrades = {
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim18mult.isBought,
     description: () => `${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(2).uniqueName}s and Antimatter ${AntimatterDimension(7).uniqueName}s` : 
+      `${AntimatterDimension(2).fullName(...[,,,], 2)} and ${AntimatterDimension(7).fullName(...[,,,], 2)}` : 
       "2nd and 7th Antimatter Dimensions"} gain a multiplier based on Infinities`,
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
       description: () => `${player.options.naming.dimensions ? 
-        `Antimatter ${AntimatterDimension(2).uniqueName}s and Antimatter ${AntimatterDimension(7).uniqueName}s` : 
-        "2nd and 7th Antimatter Dimensions"} gain a power effect based on Infinities and Teresa level`,
+        `${AntimatterDimension(2).fullName(...[,,,], 2)} and ${AntimatterDimension(7).fullName(...[,,,], 2)}` : 
+        "2nd and 7th Antimatter Dimensions"} gain a power effect based on Infinities and Orias level`,
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -60,14 +60,14 @@ export const infinityUpgrades = {
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim27mult.isBought,
     description: () => `${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(3).uniqueName}s and Antimatter ${AntimatterDimension(6).uniqueName}s` : 
+      `${AntimatterDimension(3).fullName(...[,,,], 2)} and ${AntimatterDimension(6).fullName(...[,,,], 2)}` : 
       "3rd and 6th Antimatter Dimensions"} gain a multiplier based on Infinities`,
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
       description: () => `${player.options.naming.dimensions ? 
-        `Antimatter ${AntimatterDimension(3).uniqueName}s and Antimatter ${AntimatterDimension(6).uniqueName}s` : 
-        "3rd and 6th Antimatter Dimensions"} gain a power effect based on Infinities and Teresa level`,
+        `${AntimatterDimension(3).fullName(...[,,,], 2)} and ${AntimatterDimension(6).fullName(...[,,,], 2)}` : 
+        "3rd and 6th Antimatter Dimensions"} gain a power effect based on Infinities and Orias level`,
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -77,14 +77,14 @@ export const infinityUpgrades = {
     cost: 1,
     checkRequirement: () => InfinityUpgrade.dim36mult.isBought,
     description: () => `${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(4).uniqueName}s and Antimatter ${AntimatterDimension(5).uniqueName}s` : 
+      `${AntimatterDimension(4).fullName(...[,,,], 2)} and ${AntimatterDimension(5).fullName(...[,,,], 2)}` : 
       "4th and 5th Antimatter Dimensions"} gain a multiplier based on Infinities`,
     effect: () => dimInfinityMult(),
     formatEffect: value => formatX(value, 1, 1),
     charged: {
       description: () => `${player.options.naming.dimensions ? 
-        `Antimatter ${AntimatterDimension(4).uniqueName}s and Antimatter ${AntimatterDimension(5).uniqueName}s` : 
-        "4th and 5th Antimatter Dimensions"} gain a power effect based on Infinities and Teresa level`,
+        `${AntimatterDimension(4).fullName(...[,,,], 2)} and ${AntimatterDimension(5).fullName(...[,,,], 2)}` : 
+        "4th and 5th Antimatter Dimensions"} gain a power effect based on Infinities and Orias level`,
       effect: () => chargedDimInfinityMult(),
       formatEffect: value => formatPow(value, 4, 4)
     }
@@ -97,7 +97,7 @@ export const infinityUpgrades = {
       `Decrease the number of Dimensions needed for Dimension Boosts and Antimatter Galaxies by ${formatInt(9)}`,
     effect: 9,
     charged: {
-      description: () => "Decrease Dimension Boost requirement based on Teresa level",
+      description: () => "Decrease Dimension Boost requirement based on Orias level",
       effect: () => 1 / (1 + Math.sqrt(Ra.pets.teresa.level) / 10),
       formatEffect: value => `${formatX(value, 4, 4)}`
     }
@@ -110,7 +110,7 @@ export const infinityUpgrades = {
     formatEffect: () => `${formatX(2, 0, 1)} ➜ ${formatX(2.2, 0, 1)}`,
     charged: {
       description: () => `The multiplier for buying ${formatInt(10)} Antimatter Dimensions gains ` +
-        "a power effect based on Teresa level",
+        "a power effect based on Orias level",
       effect: () => 1 + Ra.pets.teresa.level / 200,
       formatEffect: value => formatPow(value, 3, 3)
     }
@@ -122,7 +122,7 @@ export const infinityUpgrades = {
     description: "All Galaxies are twice as strong",
     effect: 2,
     charged: {
-      description: "All Galaxies are stronger based on Teresa level",
+      description: "All Galaxies are stronger based on Orias level",
       effect: () => 2 + Math.sqrt(Ra.pets.teresa.level) / 100,
       formatEffect: value => `+${formatPercents(value - 1)}`
     }
@@ -136,7 +136,7 @@ export const infinityUpgrades = {
     formatEffect: value => formatX(value, 2, 2),
     charged: {
       description:
-        "Antimatter Dimensions gain a power effect based on time spent in current Infinity and Teresa level",
+        "Antimatter Dimensions gain a power effect based on time spent in current Infinity and Orias level",
       effect: () => 1 +
         Math.log10(Math.log10(Time.thisInfinity.totalMilliseconds + 100)) *
         Math.sqrt(Ra.pets.teresa.level) / 150,
@@ -147,15 +147,11 @@ export const infinityUpgrades = {
     id: "unspentBonus",
     cost: 5,
     checkRequirement: () => InfinityUpgrade.thisInfinityTimeMult.isBought,
-    description: () => `Multiplier to 
-    ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(1).uniqueName}`:"1st Antimatter Dimension"}
-     based on unspent Infinity Points`,
+    description: () => `Multiplier to ${AntimatterDimension(1).fullName()} based on unspent Infinity Points`,
     effect: () => Currency.infinityPoints.value.dividedBy(2).pow(1.5).plus(1),
     formatEffect: value => formatX(value, 2, 2),
     charged: {
-      description: () => `Multiplier to 
-      ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(1).uniqueName}`:"1st Antimatter Dimension"} 
-      based on unspent Infinity Points, powered by Teresa level`,
+      description: () => `Multiplier to ${AntimatterDimension(1).fullName()} based on unspent Infinity Points, powered by Orias level`,
       effect: () => Currency.infinityPoints.value.dividedBy(2).pow(Math.sqrt(Ra.pets.teresa.level) * 1.5).plus(1),
       formatEffect: value => formatX(value, 2, 2)
     }
@@ -168,7 +164,7 @@ export const infinityUpgrades = {
     effect: () => 2.5,
     formatEffect: () => `${formatX(2, 0, 1)} ➜ ${formatX(2.5, 0, 1)}`,
     charged: {
-      description: "Dimension Boost multiplier gains a power effect based on Teresa level",
+      description: "Dimension Boost multiplier gains a power effect based on Orias level",
       effect: () => 1 + Ra.pets.teresa.level / 200,
       formatEffect: value => formatPow(value, 3, 3)
     }
@@ -189,7 +185,7 @@ export const infinityUpgrades = {
     charged: {
       description: () =>
         `Gain Reality Machines each real-time second proportional to amount gained on Reality,
-        increasing with Teresa level`,
+        increasing with Orias level`,
       effect: () => Math.pow(Ra.pets.teresa.level, 2) *
         Ra.unlocks.continuousTTBoost.effects.autoPrestige.effectOrDefault(1),
       formatEffect: value => formatX(value, 2, 1)
@@ -199,32 +195,28 @@ export const infinityUpgrades = {
     id: "skipReset1",
     cost: 20,
     description: () =>
-      `Start every reset with ${formatInt(1)} Dimension Boost, automatically unlocking the 
-     ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(5).uniqueName}`:"5th Antimatter Dimension"}`,
+      `Start every reset with ${formatInt(1)} Dimension Boost, automatically unlocking the ${AntimatterDimension(5).fullName()}`,
   },
   skipReset2: {
     id: "skipReset2",
     cost: 40,
     checkRequirement: () => InfinityUpgrade.skipReset1.isBought,
     description: () =>
-      `Start every reset with ${formatInt(2)} Dimension Boosts, automatically unlocking the 
-    ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(6).uniqueName}`:"6th Antimatter Dimension"}`,
+      `Start every reset with ${formatInt(2)} Dimension Boosts, automatically unlocking the ${AntimatterDimension(6).fullName()}`,
   },
   skipReset3: {
     id: "skipReset3",
     cost: 80,
     checkRequirement: () => InfinityUpgrade.skipReset2.isBought,
     description: () =>
-      `Start every reset with ${formatInt(3)} Dimension Boosts, automatically unlocking the 
-    ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(7).uniqueName}`:"7th Antimatter Dimension"}`,
+      `Start every reset with ${formatInt(3)} Dimension Boosts, automatically unlocking the ${AntimatterDimension(7).fullName()}`,
   },
   skipResetGalaxy: {
     id: "skipResetGalaxy",
     cost: 300,
     checkRequirement: () => InfinityUpgrade.skipReset3.isBought,
     description: () =>
-      `Start every reset with ${formatInt(4)} Dimension Boosts, automatically unlocking the 
-    ${player.options.naming.dimensions?`Antimatter ${AntimatterDimension(8).uniqueName}`:"8th Antimatter Dimension"};
+      `Start every reset with ${formatInt(4)} Dimension Boosts, automatically unlocking the ${AntimatterDimension(8).fullName()};
       and an Antimatter Galaxy`,
   },
   ipOffline: {

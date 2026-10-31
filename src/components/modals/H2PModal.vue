@@ -76,7 +76,7 @@ export default {
           class="c-h2p-search-bar"
           @keyup.esc="emitClose"
         >
-        <div class="l-h2p-tab-list">
+        <div class="l-h2p-tab-list c-h2p-tab-list">
           <div
             v-for="(searchObj, searchObjId) in matchingTabs"
             :key="searchObj.tab.name"
@@ -88,13 +88,25 @@ export default {
             }"
             @click="setActiveTab(searchObj.tab)"
           >
-            {{ searchObj.tab.alias }}
+            <div 
+              class="o-h2p-tab-button-symbol"
+              v-html="searchObj.tab.symbol"
+            />
+            <div class="o-h2p-tab-button-name"> {{ searchObj.tab.alias }} </div>
           </div>
         </div>
       </div>
       <div class="l-h2p-info">
         <div class="c-h2p-body--title">
+          <span 
+            class="c-h2p-body--title-symbol" 
+            v-html="activeTab.symbol"
+          />
           {{ activeTab.name }}
+          <span 
+            class="c-h2p-body--title-symbol"
+            v-html="activeTab.symbol"
+          />
         </div>
         <div
           id="h2p-body"
@@ -107,17 +119,30 @@ export default {
 </template>
 
 <style scoped>
+.o-h2p-tab-button-symbol {
+  width: 2.5rem;
+  font-family: Typewriter;
+  font-weight: normal;
+  padding-right: 0.5rem;
+  margin: 0.2rem;
+  transition: all 0.2s;
+}
+
+.o-h2p-tab-button:hover > .o-h2p-tab-button-symbol,
+.o-h2p-tab-button--selected > .o-h2p-tab-button-symbol {
+  margin-right: 0.7rem;
+}
+
+.o-h2p-tab-button-name {
+  width: 75%;
+}
+
 .o-h2p-tab-button--relevant {
-  background-color: #df505055;
+  --secondary: #df505055;
 }
 
 .o-h2p-tab-button--first-irrelevant {
-  border-top: 0.1rem solid black;
-  margin-top: 0.8rem;
-}
-
-.s-base--dark .o-h2p-tab-button--first-irrelevant {
-  border-top-color: white;
+  margin-top: 1.5rem;
 }
 
 .t-s12 .o-h2p-tab-button--first-irrelevant {

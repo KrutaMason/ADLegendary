@@ -1401,6 +1401,9 @@ export const news = [
         Legendary:
           `it has the colors intended for the Legendary. You just know it's the way the developer intended you
           to see the mod.`,
+        LegendaryMetro:
+          `even in graphical enhancements, there should still be a place for simplicity. Not everything needs
+          to have so many details nowadays.`,
         Legacy:
           `sometimes you just have to remember the old times. The developer knows that you don't 
           have to give up everything once you have grown up.`,
@@ -2696,7 +2699,7 @@ export const news = [
   },
   {
     id: "a401",
-    text:`<span style="font-size:3rem">Can this one get any bigger?</span>`,
+    text:`<span style="font-size:3rem">How do I change the font size? This is my first day in my first job and i'm already in deep trouble.</span>`,
   },
   {
     id: "a402",
@@ -3515,7 +3518,11 @@ export const news = [
   },
   {
     id: "l97",
-    text:`...Please, I don't want to die.`,
+    text:`"I met a traveller from an antique land who said: Two vast and trunkless legs of stone stand in the desart. 
+    Near them, on the sand, half sunk, a shattered visage lies, whose frown, and wrinkled lip, and sneer of cold command, 
+    tell that its sculptor well those passions read which yet survive, stamped on these lifeless things, the hand that mocked them and the heart that fed; 
+    and on the pedestal these words appear: "My name is Ozymandias, King of Kings: Look on my works, ye Mighty, and despair!" Nothing beside remains. 
+    round the decay of that colossal wreck, boundless and bare the lone and level sands stretch far away." -Percy Shelley`,
     get unlocked() { return Pelle.isDoomed; }
   },
   {
@@ -3573,9 +3580,10 @@ export const news = [
   },
   {
     id: "m2",
-    text:`@celestials Please DO NOT announce to the server when you are going to dimboost. 
+    text:`<span style='color: #7289da; background: rgba(250,166,26,0.2); cursor: text;'>@celestials</span> 
+    Please DO NOT announce to the server when you are going to dimboost. 
     This has been a reoccurring issue, and I'm not sure why some deities have such under-developed 
-    reality skills that they think that a server full of mostly diabolical strangers would need to know that. 
+    reality warping skills that they think that a server full of mostly diabolical strangers would need to know that. 
     No one is going to be impressed and give you a high-glyph (especially considering where that autobuyer has been). 
     I don't want to add this to the rules, since it would be embarrassing for new celestials to 
     see that we have a problem with this, but it is going to be enforced as a rule from now on. 

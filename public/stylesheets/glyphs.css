@@ -127,7 +127,7 @@
   align-items: center;
   background: var(--leg-shading),var(--bg),linear-gradient(var(--bg-bright),var(--bg-dark) 200%);
   background-position: center;
-  --bg:url(../images/upgrades/button-light.png);
+  --bg: url(../images/patterns/def_light.png);
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border-reality) 3;
   box-shadow: var(--var-box-shadow, 0 0 0.5rem var(--color-background) inset);
@@ -135,7 +135,7 @@
   cursor: pointer;
 }
 .s-base--dark  .c-glyph-sacrifice-options__option {
-  --bg:url(../images/upgrades/button-dark.png);
+  --bg: url(../images/patterns/def_light.png);
 }
 .c-glyph-sacrifice-options__option:hover {
   color: var(--color-text);
@@ -166,7 +166,7 @@
   z-index: 2;
   justify-content: center;
   align-items: center;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 2rem;
@@ -488,7 +488,7 @@
   font-size: 1rem;
   background: var(--leg-shading),var(--bg),linear-gradient(var(--bg-bright),var(--bg-dark) 200%);
   background-position: center;
-  --bg:url(../images/upgrades/button-light.png);
+  --bg: url(../images/patterns/def_light.png);
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border-reality) 3;
   box-shadow: var(--var-box-shadow, 0 0 1rem #000000aa inset);
@@ -500,7 +500,7 @@
   cursor: pointer;
 }
 .s-base--dark .c-glyph-auto-pick-options__option {
-  --bg:url(../images/upgrades/button-dark.png);
+  --bg: url(../images/patterns/ts_def.png);
 }
 .c-glyph-auto-pick-options__option:hover {
   color: var(--color-text);
@@ -526,6 +526,7 @@
 .s-base--dark .c-glyph-auto-pick-options__option--inactive {
   color: var(--color-reality);
 }
+
 .c-glyph-tooltip__effect {
   font-weight: normal;
   text-shadow: none;
@@ -533,9 +534,11 @@
   border-bottom: var(--cover-border) solid 1px;
   padding: 0.2rem 0.5rem;
 }
+
 .c-glyph-tooltip__effect:last-child {
   border-bottom: none;
 }
+
 .l-glyph-tooltip {
   display: flex;
   flex-direction: column;
@@ -543,13 +546,20 @@
   position: absolute;
   align-items: center;
   padding: 0.2rem 0;
-  /*animation: g-tooltip .1s;*/
-  transform:var(--g-tooltip)
+  /*animation: g-tooltip .3s;*/
+  transform: var(--g-tooltip)
 }
+
 @keyframes g-tooltip {
-  0%{transform: var(--g-tooltip-s) scale(0); opacity:0}
-  100%{transform:var(--g-tooltip)}
+  0% { 
+    transform: var(--g-tooltip-s) scale(0); 
+    opacity: 0;
+  }
+  100% { 
+    transform:var(--g-tooltip)
+  }
 }
+
 .l-glyph-tooltip--up-left {
   --g-tooltip-s: translate(calc(-50% - 0.7rem), -50%);
   --g-tooltip: translate(calc(-100% - 0.7rem), -100%);
@@ -581,27 +591,34 @@
   border-image-repeat: round;
   padding: 1rem;
   transition: opacity 0.3s;
-  box-shadow: var(--box-shadow),0.1rem 0.1rem 1rem 0.5rem black;
-  border-image-slice:12;
+  box-shadow: var(--box-shadow), 0.1rem 0.1rem 1rem 0.5rem black;
+  border-image-slice: 12;
+  background-image: var(--pattern), linear-gradient(var(--background) 25%, var(--type-color) 200%);
+  background-position: center;
 }
+
 .s-base--metro .c-glyph-tooltip {
   border-image-slice: 3;
   width: 32rem;
   border-width: 0.3rem;
 }
+
 .c-glyph-tooltip__description {
   font-size: 1.8rem;
-  font-family:cambria;
-  font-weight:bold;
-  line-height:1.1;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  line-height: 1.1;
   padding: 0.1rem 0rem 0.1rem 0rem;
 }
+
 .c-glyph-tooltip__g-container {
   margin: -4.5rem 0 1rem;
 }
+
 .s-base--metro .c-glyph-tooltip__g-container {
   margin: -3.5rem 0 1rem;
 }
+
 .c-glyph-component-hascrate:before{
   content: '';
   position: absolute;
@@ -611,36 +628,47 @@
   width: var(--crate-size);
   height:var(--crate-size);
   background: url(../images/glyphs-alchemy/crate_circle.png);
-  background-size: calc(var(--crate-size) * 13) calc(var(--crate-size) * 5);
+  background-size: calc(var(--crate-size) * 13) calc(var(--crate-size) * 6);
   background-position: var(--crate-bgx) var(--crate-bgy);
   --crate-bgx: calc(var(--crate-size) - var(--crate-size) * var(--crate-posx));
   --crate-bgy: 0;
-  border-radius:50%;
+  border-radius: 50%;
   z-index: -1;
 }
+
 .s-base--dark .c-glyph-component-hascrate:before{
   box-shadow: var(--var-box-shadow, 0 0 .5rem black);
 }
+
 .c-glyph-component-hascrate__altered:before{
   background: url(../images/glyphs-alchemy/background_glyphboost.png), url(../images/glyphs-alchemy/crate_circle.png);
   background-blend-mode: hue, normal;
-  background-size: calc(var(--crate-size) * 2) calc(var(--crate-size) * 2), calc(var(--crate-size) * 13) calc(var(--crate-size) * 5);
+  background-size: calc(var(--crate-size) * 2) calc(var(--crate-size) * 2), calc(var(--crate-size) * 13) calc(var(--crate-size) * 6);
   background-position: 0 0, var(--crate-bgx) var(--crate-bgy);
   animation: a-glyphcrate 10s linear infinite;
 }
+
 .t-amoled .c-glyph-component-hascrate:before,
 .t-amoled-metro .c-glyph-component-hascrate:before{
   --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 2)
 }
+
 .t-s1 .c-glyph-component-hascrate:before{
   --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 3)
 }
+
 .t-s4 .c-glyph-component-hascrate:before{
   --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 4)
 }
+
 .t-s7 .c-glyph-component-hascrate:before{
   --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 5)
 }
+
+.t-s16 .c-glyph-component-hascrate:before{
+  --crate-bgy: calc(var(--crate-size) - var(--crate-size) * 6)
+}
+
 @keyframes a-glyphcrate {
   0% {
     background-position: calc(var(--crate-size) * 2) calc(var(--crate-size) * 2), var(--crate-bgx) var(--crate-bgy)
@@ -649,25 +677,29 @@
     background-position: 0px 0px, var(--crate-bgx) var(--crate-bgy)
   }
 }
+
 .l-glyph-tooltip__info {
   padding: .2rem 0;
   font-size: 1.1rem;
   display: flex;
 }
+
 .l-glyph-tooltip__info > span,
 .c-glyph-tooltip__sacrifice > span{
-  width:100%;
+  width: 100%;
   text-align: center;
-  border-right: 1px var(--cover-border--rarity,var(--cover-border)) solid
+  border-right: 1px var(--cover-border--rarity, var(--cover-border)) solid
 }
+
 .l-glyph-tooltip__rarity{
-  font-weight:bold;
-  font-size:1.4rem;
-  line-height:1.2;
-  font-family:Cambria;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-family: var(--var-secondary-font);
   border-bottom: 1px solid;
   border-image: linear-gradient(90deg, transparent, currentcolor, transparent) 1;
 }
+
 .c-glyph-tooltip__header {
   display: flex;
   flex-direction: column;
@@ -682,7 +714,7 @@
   font-weight:bold;
   font-size:1.4rem;
   line-height:1.2;
-  font-family:Cambria;
+  font-family:var(--var-secondary-font);
 }
 .l-glyph-tooltip__effects {
   width: 100%;
@@ -1122,7 +1154,7 @@
 .c-current-glyph-effects__header {
   font-size: 1.5rem;
   font-weight: bold;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   line-height:1.1;
   text-shadow: var(--var-text-shadow, 
   0.1rem 0.1rem 0.2rem var(--color-background),
@@ -1172,7 +1204,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--color-reality-dark);
@@ -1232,7 +1264,7 @@
   border: var(--var-border-width, 0.2rem) solid;
   box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset);
   border-image:var(--leg-border-reality) 3;
-  background-image: linear-gradient(transparent,transparent),var(--leg-base);
+  background: var(--leg-base);
 
   border-radius: var(--var-border-radius, 0.5rem);
   padding: .5rem;
@@ -1304,7 +1336,7 @@
 
 .c-sacrificed-glyphs__header {
   font-size: 1.5rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   margin-bottom: 1rem;
   border-bottom: 0.1rem solid;
@@ -1329,12 +1361,9 @@
   font-size: 1.8rem;
   line-height: 1.1;
   font-weight: bold;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
 }
-.c-sacrificed-glyphs__type-amount--fixed {
-  font-weight: normal;
-  font-family: Typewriter;
-}
+
 .c-sacrificed-glyphs__type-new-amount {
   font-style: italic;
   text-shadow: var(--var-text-shadow, 0 0 0.5rem rgb(0, 180, 0));
@@ -1360,18 +1389,24 @@
 }
 
 .l-glyph-inventory {
-  border: 1.2rem solid;
-  padding: 0.8rem;
+  border: 2.5rem solid;
   border-image: var(--leg-border-reality) 12 round;
-  background: url(../images/glyphs-alchemy/background-glyph_transparentdark.png),var(--leg-base);
-  box-shadow: var(--var-box-shadow, 0 0 2rem 0 var(--color-background) inset);
-  color:var(--color-text);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   z-index: 0;
 }
+
+.l-glyph-inventory__header {
+  width: 100%;
+  border-bottom: 0.3rem solid;
+  border-image: var(--leg-border-reality) 3 round;
+  background: var(--leg-base);
+  box-shadow: var(--var-box-shadow, 0 0 2rem 0 var(--color-background) inset);
+  color: var(--color-text);
+}
+
 .l-glyph-inventory__row {
   display: flex;
   flex-direction: row;
@@ -1498,12 +1533,10 @@ background-position-y: -48rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
   color: var(--color-text);
-  background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%),
-              var(--bg),
-              linear-gradient(var(--bg-bright),var(--bg-dark));
+  background: var(--leg-shading), var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
   --bg-dark: #ffffff;
   --bg-bright: #c6ffc6;
-  --bg: url(../images/upgrades/button-light.png);
+  --bg: url(../images/patterns/def_light.png);
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border-reality) 3;
   box-shadow: var(--var-box-shadow, 0 0 0.5rem var(--color-background) inset);
@@ -1514,7 +1547,7 @@ background-position-y: -48rem;
   background-position: center;
 }
 .s-base--dark .c-glyph-inventory-option {
-  --bg: url(../images/upgrades/button-dark.png);
+  --bg: url(../images/patterns/ts_def.png);
   --bg-dark: #033004;
   --bg-bright: #0b0e0b;
 }
@@ -1651,16 +1684,15 @@ background-position-y: -48rem;
 
 .c-glyph-sidebar-button {
   text-align: center;
-  font-family: Typewriter;
-  font-size: 1rem;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 1.2rem;
   color: var(--color-reality-dark);
-  background: linear-gradient(transparent,transparent),var(--leg-base);
+  background: var(--leg-base);
   border: var(--var-border-width, 0.2rem) solid;
   border-image: var(--leg-border-reality) 3 round;
-  border-radius: var(--var-border-radius, 0.5rem) var(--var-border-radius, 0.5rem) 0 0;
   transition: all 0.1s ease-out, border-bottom 0ms, padding-bottom 0ms;
   cursor: pointer;
-
 }
 
 .s-base--dark .c-glyph-sidebar-button {
@@ -1672,12 +1704,14 @@ background-position-y: -48rem;
 }
 
 .c-glyph-sidebar-button:hover {
-  background: linear-gradient(var(--color-reality) -50%,transparent),var(--leg-base);
+  background: linear-gradient(var(--color-reality) -50%,transparent), var(--leg-base);
+  color: var(--color-text);
   top: 0rem !important;
 }
 .c-glyph-sidebar-button--active {
   top: 0rem !important;
-  background: linear-gradient(var(--color-reality) -200%,transparent),var(--leg-base);
+  background: linear-gradient(var(--color-reality) -200%,transparent), var(--leg-base);
+  color: var(--color-text);
   border-bottom: none;
   padding-bottom: 0.3rem;
   transition-duration: 0ms;
@@ -1692,6 +1726,7 @@ background-position-y: -48rem;
 .s-base--dark .c-glyph-sidebar-button--active,
 .s-base--dark .c-glyph-sidebar-button:hover {
   box-shadow: var(--var-box-shadow, 0rem 1rem 2rem -1rem #00000080 inset);
+  color: var(--color-text);
 }
 
 .l-glyph-sidebar-button {
@@ -1798,61 +1833,67 @@ background-position-y: -48rem;
   0% {
     color: #b67f33;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #b67f33 0 0 3px;
+      #b67f33 0 0 3px);
   }
 
   20% {
     color: #64dd17;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #64dd17 0 0 3px;
+      #64dd17 0 0 3px);
   }
 
   40% {
     color: #22aa48;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #22aa48 0 0 3px;
+      #22aa48 0 0 3px);
   }
 
   60% {
     color: #03a9f4;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #03a9f4 0 0 3px;
+      #03a9f4 0 0 3px);
   }
 
   80% {
     color: #b241e3;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #b241e3 0 0 3px;
+      #b241e3 0 0 3px);
   }
 
   100% {
     color: #b67f33;
     text-shadow:
+      var(--var-text-shadow,
       var(--color-text-base) -1px 1px 1px,
       var(--color-text-base) 1px 1px 1px,
       var(--color-text-base) -1px -1px 1px,
       var(--color-text-base) 1px -1px 1px,
-      #b67f33 0 0 3px;
+      #b67f33 0 0 3px);
   }
 }
 
@@ -2054,7 +2095,7 @@ background-position-y: -48rem;
 
 .c-glyph-levels-and-weights__slider-handle {
   color: var(--color-reality);
-  background-color: var(--color-background);
+  background: var(--color-background);
   border-radius: var(--var-border-radius, 0.8rem);
   box-shadow: 0 0 0 0.1rem var(--color-reality-light);
   border: 1px solid var(--color-reality-dark);
@@ -2070,7 +2111,7 @@ background-position-y: -48rem;
 
 .c-glyph-levels-and-weights__slider-handle:hover {
   color: black;
-  background-color: var(--color-reality);
+  background: var(--color-reality);
   border-color: var(--color-reality-light);
 }
 .s-base--dark .c-glyph-levels-and-weights__slider-handle:hover {

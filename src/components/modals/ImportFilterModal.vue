@@ -96,7 +96,8 @@ export default {
 <template>
   <ModalWrapperChoice
     :show-cancel="!inputIsValid"
-    :show-confirm="false"
+    :show-confirm="inputIsValid"
+    @confirm="importFilter"
     :style="{'--base':'var(--color-reality)'}"
   >
     <template #header>
@@ -139,14 +140,9 @@ export default {
         Not a valid Glyph filter string
       </div>
     </div>
-
-    <PrimaryButton
-      v-if="inputIsValid"
-      class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
-      @click="importFilter"
-    >
+    <template #confirm-text class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn">
       Import
-    </PrimaryButton>
+    </template>
   </ModalWrapperChoice>
 </template>
 

@@ -180,7 +180,8 @@ export default {
 }
 
 .o-selected-btn {
-  background-color: var(--color-good);
+  --bg-dark: var(--color-good);
+  --border: var(--color-good);
 }
 
 .c-legend {
@@ -205,23 +206,25 @@ export default {
   width: 2rem;
   height: 2rem;
   margin: 0.3rem;
-  border: var(--var-border-width, 0.2rem) solid var(--color-text);
+  border: 0.1rem solid var(--base);
+  background: linear-gradient(#ffffff88 -100%, transparent 49%, #00000044 50%, transparent), linear-gradient(var(--base) -100%, black 300%);
+  box-shadow: var(--var-box-shadow, 0 0 1rem -0.1rem black inset, 0 0 0 0.2rem var(--base) inset);
   border-radius: var(--var-border-radius, 0.5rem);
 }
 
 .l-milestone-none {
-  background-color: var(--color-base);
+  --base: gray;
 }
 
 .l-milestone-slow {
-  background-color: var(--color-bad);
+  --base: var(--color-bad);
 }
 
 .l-milestone-fast {
-  background-color: var(--color-good);
+  --base: var(--color-good);
 }
 
 .l-milestone-fastest {
-  background-color: var(--color-celestials);
+  --base: var(--color-celestials);
 }
 </style>

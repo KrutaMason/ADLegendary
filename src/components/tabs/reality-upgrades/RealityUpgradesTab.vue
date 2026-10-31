@@ -58,9 +58,9 @@ export default {
       v-for="row in 5"
       :key="row"
     >
-    <div v-if="row === 1"class="c-reality-upgrade-row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
-    <div v-else class="c-reality-upgrade-row-title">Row {{row}} - Cost: 
-     <span :class="{'c-reality-upgrade-row-title--fixed': isInaccessible(categoryText[row-1]) }">{{ format(categoryText[row-1],2) }}</span>
+    <div v-if="row === 1"class="c-reality-upgrade-grid__row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
+    <div v-else class="c-reality-upgrade-grid__row-title">Row {{row}} - Cost: 
+     <span :class="diffFont(categoryText[row-1])">{{ format(categoryText[row-1],2) }}</span>
       Reality Machines</div>
     <div class="l-reality-upgrade-grid__row">
       <RealityUpgradeButton
@@ -78,20 +78,5 @@ export default {
 .c-reality-upgrade-infotext {
   color: var(--color-text);
   margin: -1rem 0 1.5rem;
-}
-.c-reality-upgrade-row-title{
-  border-bottom: 0.1rem solid;
-  border-top: 0.1rem solid;
-  border-image: linear-gradient(90deg,transparent,var(--color-reality),transparent) 1;
-  background: linear-gradient(90deg,transparent,color-mix(in srgb, var(--color-reality) 33%, transparent),transparent);
-  color:var(--color-text);
-  margin-bottom:1rem;
-  font-family:cambria;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.c-reality-upgrade-row-title--fixed{
-  font-family: Typewriter;
-  font-weight: normal;
 }
 </style>

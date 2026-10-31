@@ -22,8 +22,7 @@ export default {
   },
   computed: {
     topLabel() {
-      if (this.bulk) return `You are about to purchase ${quantifyInt("Antimatter Galaxy", this.newGalaxies)}`;
-      return `You are about to purchase an Antimatter Galaxy`;
+      return formatInt(this.newGalaxies);
     },
     message() {
       const resetResouces = [];
@@ -34,7 +33,7 @@ export default {
       const resetList = makeEnumeration(resetResouces);
       let tickspeedFixed = "";
       if (InfinityChallenge(3).isRunning) {
-        tickspeedFixed = `Infinity Challenge ${InfinityChallenge(3).id}`;
+        tickspeedFixed = `${InfinityChallenge(3).displayName()}`;
       } else if (Ra.isRunning) {
         tickspeedFixed = `${Ra.displayName}'s Reality`;
       }
@@ -86,9 +85,14 @@ export default {
     @confirm="handleYesClick"
   >
     <template #header>
-      {{ topLabel }}
+      You are about to purchase
+      <span
+        v-if="bulk"
+        v-html="topLabel"
+        :class="diffFont(newGalaxies)"
+      />
+      {{ bulk ? pluralize("Antimatter Galaxy", newGalaxies) : `an Antimatter Galaxy`}}
     </template>
-
     <div class="c-modal-message__text">
       {{ message }}
     </div>

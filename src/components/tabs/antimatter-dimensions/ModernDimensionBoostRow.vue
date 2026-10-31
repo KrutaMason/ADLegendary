@@ -56,6 +56,9 @@ export default {
       };
     }
   },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("dimName"));
+  },
   methods: {
     update() {
       const requirement = DimBoost.requirement;

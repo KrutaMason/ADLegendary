@@ -1,6 +1,6 @@
 export const confirmationTypes = [
   {
-    name: "Disclaimer when visiting the page",
+    name: "Mod Disclaimer",
     option: "disclaimerModal",
     isUnlocked: () => true,
   }, 

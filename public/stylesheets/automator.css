@@ -1,4 +1,6 @@
-:root, .c-autotheme-light, .s-base--dark .c-autotheme-light {
+:root, 
+.c-automator-theme-light, 
+.s-base--dark .c-automator-theme-light {
   --color-automator-controls-background: #d3d3d3;
   --color-automator-controls-active: #0ba00e;
   --color-automator-controls-inactive: #eeeeee;
@@ -18,14 +20,16 @@
   --color-blockmator-block-optional: #684700;
   --color-blockmator-editor-background: white;
 
-  --automator-background-percent:625%;
-  --automator-background-start:white;
-  --automator-background-scaline:#00000018;
-  --automator-box-shadow: 0 0 2.5rem white inset;
-  --automator-text:black;
+  --color-automator-background-base: white;
+  --color-automator-background-distance: 625%;
+  --color-automator-background-scanline: #ffffff;
+  --color-automator-background-shadow: 0 0 2.5rem white inset;
+  --color-automator-controls-shadow: white;
 }
 
-:root .s-base--dark, .c-autotheme-dark, .s-base--dark .c-autotheme-dark {
+:root .s-base--dark, 
+.c-automator-theme-dark, 
+.s-base--dark .c-automator-theme-dark {
   --color-automator-controls-background: #262626;
   --color-automator-controls-active: #007c00;
   --color-automator-controls-inactive: #273757;
@@ -42,19 +46,26 @@
   --color-blockmator-block-optional: #684700;
   --color-blockmator-editor-background: black;
 
-  --automator-background-percent:500%;
-  --automator-background-start:black;
-  --automator-background-scaline:#00000080;
-  --automator-box-shadow: 0 0 2.5rem black inset;
-  --automator-text:white;
+  --color-automator-background-base: black;
+  --color-automator-background-distance: 500%;
+  --color-automator-background-scanline:#00000080;
+  --color-automator-background-shadow: 0 0 2.5rem black inset;
+  --color-automator-controls-shadow: black;
 }
-.c-autoscan-animation{
+
+.c-automator-animated {
   --animation: a-automator-background linear infinite 1s
 }
+
 @keyframes a-automator-background {
- 0%{background-position: center 0px, center center;}
- 100%{background-position: center 6px, center center;}
+  0% {
+    background-position: center 0%, center center;
+  }
+  100% {
+    background-position: center var(--color-automator-scanline-size), center center;
+  }
 }
+
 .l-automator-pane {
   display: flex;
   flex-direction: column;
@@ -70,9 +81,9 @@
 }
 
 .c-automator__controls {
-  background: linear-gradient(transparent,var(--color-automator-controls-background)),var(--leg-base);
+  background: linear-gradient(transparent, var(--color-automator-controls-background)), var(--leg-base);
   border-bottom: 0.3rem solid var(--color-automator-active-line-outline);
-  box-shadow: var(--var-box-shadow, 0 0 1rem #00000040 inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem color-mix(in srgb, var(--color-background) 25%, transparent) inset);
 }
 
 .l-automator__controls {
@@ -87,9 +98,11 @@
   height: 3rem;
   align-items: center;
 }
+
 .l-automator-button-row:first-child {
-border-bottom: 0.1rem dashed gray;
+  border-bottom: 0.1rem dashed gray;
 }
+
 .l-automator__button {
   display: flex;
   justify-content: center;
@@ -138,6 +151,8 @@ border-bottom: 0.1rem dashed gray;
   font-family: Typewriter, serif;
   font-size: 1.4rem;
   border-bottom: 0.15rem solid var(--color-automator-controls-background);
+  --color-automator-scanline-size: 6rem;
+  --color-automator-scanline-opacity: 50%;
 }
 
 .l-automator-editor {
@@ -173,27 +188,53 @@ border-bottom: 0.1rem dashed gray;
 }
 
 .c-automator-docs {
+  --color-automator-scanline-opacity: 50%;
+  --color-automator-scanline-size: 6rem;
   overflow: auto;
+  scrollbar-gutter: stable;
   position: relative;
   z-index: 1;
   text-align: left;
   font-size: 1.4rem;
   color: var(--color-automator-docs-font);
-	background: linear-gradient(to bottom,transparent 50%,var(--automator-background-scaline) 51%), var(--autograd);
-	background-size: 100% 6px, 100% 100%;
+	background: linear-gradient(to bottom, transparent 50%, 
+  color-mix(in srgb, var(--color-automator-background-base) var(--color-automator-scanline-opacity),
+  transparent) 51%), var(--color-automator-background-gradient);
+	background-size: 100% var(--color-automator-scanline-size), 100% 100%;
   border-right: 0.15rem solid var(--color-automator-controls-background);
   border-bottom: 0.15rem solid var(--color-automator-controls-background);
   padding: 1rem;
-	animation: var(--animation,none);
-  box-shadow: var(--var-box-shadow, var(--automator-box-shadow));
+	animation: var(--animation, none);
+  text-shadow: none;
+  box-shadow: var(--var-box-shadow, var(--color-automator-background-shadow));
 }
-.c-autotheme-bg{
-	background: var(--leg-base);
-  box-shadow: var(--var-box-shadow, 0 0 2.5rem #00000080 inset);
+
+.c-automator-docs--header {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(90deg ,transparent, 
+  color-mix(in srgb, var(--color-automator-background-accent), transparent 50%), transparent);
+  border-top: 0.1rem dashed var(--color-automator-background-accent);
+  border-bottom: 0.1rem dashed var(--color-automator-background-accent);
+  font-weight: bold;
+  font-style: italic;
+  font-family: var(--var-secondary-font);
+  text-shadow: 0.1rem 0.1rem var(--color-automator-background-accent);
+}
+.c-automator-docs--header > div {
+  padding: 0.5rem 0.5rem;
+}
+
+.c-automator-theme-background {
+  --color-automator-background-base: transparent;
+	background: var(--color-automator-background-gradient), var(--leg-base);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
+  box-shadow: var(--var-box-shadow, 0 0 2.5rem var(--color-automator-controls-shadow) inset);
 	background-size: unset;
   background-position: center;
   animation:none
 }
+
 .c-automator-docs-page {
   display: flex;
   flex-direction: column;
@@ -219,9 +260,11 @@ border-bottom: 0.1rem dashed gray;
   margin: 0.1rem;
   cursor: pointer;
 }
+
 .s-base--metro .c-automator-docs--button {
   background-image: linear-gradient(var(--bg),black 300%);
 }
+
 .c-automator-docs-script-select {
   width: 100%;
   height: calc(2.1rem + 1rem / 3 - var(--var-border-width, 0rem) * 2);
@@ -237,9 +280,11 @@ border-bottom: 0.1rem dashed gray;
   padding: 0.1rem 0.5rem 0;
   cursor: pointer;
 }
+
 .s-base--metro .c-automator-docs-script-select {
   background: var(--bg);
 }
+
 .o-automator-error-underline {
   display: inline-block;
   position: relative;
@@ -277,62 +322,45 @@ border-bottom: 0.1rem dashed gray;
 .c-automator-block-row-error {
   background: var(--color-automator-error-background);
 }
+
 /* AUTOMATOR LAYOUT CUSTOMIZATION */
-.c-autocolor-0 {
-  --autofade:green
-}
-.c-autocolor-1 {
-  --autofade:red
-}
-.c-autocolor-2 {
-  --autofade:blue
-}
-.c-autocolor-3 {
-  --autofade:yellow
-}
-.c-autocolor-4 {
-  --autofade:#8800ff
-}
-.c-autocolor-5 {
-  --autofade:cyan
-}
-.c-autocolor-6 {
-  --autofade:orange
-}
-.c-autocolor-7 {
-  --autofade:magenta
-}
-.c-autocolor-8 {
-  --autofade:gray
-}
-.c-autocolor-9 {
-  --autofade:green
-}
-.c-autocolor-10 {
-  --autofade:green
+
+.c-automator-background-gradient-0 {
+  --color-automator-background-gradient: linear-gradient(var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
 }
 
-.c-autograd-0 {
-  --autograd:linear-gradient(var(--automator-background-start),var(--autofade) var(--automator-background-percent))
+.c-automator-background-gradient-1 {
+  --color-automator-background-gradient: linear-gradient(0deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
 }
-.c-autograd-1 {
-  --autograd:linear-gradient(0deg,var(--automator-background-start),var(--autofade) var(--automator-background-percent))
+
+.c-automator-background-gradient-2 {
+  --color-automator-background-gradient: linear-gradient(90deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
 }
-.c-autograd-2 {
-  --autograd:linear-gradient(90deg,var(--automator-background-start),var(--autofade) var(--automator-background-percent))
+
+.c-automator-background-gradient-3 {
+  --color-automator-background-gradient: linear-gradient(-90deg, var(--color-automator-background-base), 
+  var(--color-automator-background-accent) var(--color-automator-background-distance))
 }
-.c-autograd-3 {
-  --autograd:linear-gradient(-90deg,var(--automator-background-start),var(--autofade) var(--automator-background-percent))
+
+.c-automator-background-gradient-4 {
+  --color-automator-background-gradient: linear-gradient(var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base), var(--color-automator-background-accent) 350%)
 }
-.c-autograd-4 {
-  --autograd:linear-gradient(var(--autofade) -250%,var(--automator-background-start),var(--autofade) 350%)
+
+.c-automator-background-gradient-5 {
+  --color-automator-background-gradient: linear-gradient(90deg,var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base), var(--color-automator-background-accent) 350%)
 }
-.c-autograd-5 {
-  --autograd:linear-gradient(90deg,var(--autofade) -250%,var(--automator-background-start),var(--autofade) 350%)
+
+.c-automator-background-gradient-6 {
+  --color-automator-background-gradient: radial-gradient(var(--color-automator-background-accent) -250%, 
+  var(--color-automator-background-base))
 }
-.c-autograd-6 {
-  --autograd:radial-gradient(var(--autofade) -250%,var(--automator-background-start))
-}
-.c-autograd-7 {
-  --autograd:radial-gradient(var(--automator-background-start),var(--autofade) 350%)
+
+.c-automator-background-gradient-7 {
+  --color-automator-background-gradient: radial-gradient(var(--color-automator-background-base), 
+  var(--color-automator-background-accent) 350%)
 }

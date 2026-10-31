@@ -6,15 +6,33 @@ export class DimensionState {
     this._displayName = DISPLAY_NAMES[tier];
     const SHORT_DISPLAY_NAMES = [null, "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
     this._shortDisplayName = SHORT_DISPLAY_NAMES[tier];
-    const UNIQUE_NAMES = [null, "Dion", "Polygon", "Polyhedron", "Polychoron", "Polyteron", "Polypeton", "Polyexon", "Polyzetton"];
-    this._uniqueName = UNIQUE_NAMES[tier];
+    const NEW_NAMES = [null, "Digon", "Polygon", "Polyhedron", "Polychoron", "Polyteron", "Polypeton", "Polyexon", "Polyzetton"];
+    this._newName = NEW_NAMES[tier];
   }
 
   get tier() { return this._tier; }
 
   get displayName() { return this._displayName; }
+
   get shortDisplayName() { return this._shortDisplayName; }
-  get uniqueName() { return this._uniqueName; }
+
+  get uniqueName() { 
+    return player.options.naming.customDimensions ? player.options.naming.dimensionNames[this.tier] : this._newName; 
+  }
+
+  get typeName() { return this.data.typeName; }
+
+  get shortTypeName() { return this.data.shortTypeName; }
+
+  /** @returns {String} */
+  fullName(isShort = true, needsType = true, needsHelp = true, plural = 1) {
+    let type = needsType ? ` ${this.typeName} ` : " "
+    let name = pluralize(this.uniqueName, plural)
+    let dimension = pluralize("Dimension", plural)
+    let help = ` ${needsType ? `(${this.shortTypeName}D${this.tier})` : `(${this.shortDisplayName})`}`
+    if (player.options.naming.dimensions) return `${needsType ? `${this.typeName} ${name}` : name}${needsHelp && player.options.naming.showHelp ? help : ""}`
+    else return `${isShort ? this.shortDisplayName : this.displayName}${type}${dimension}`
+  }
 
   get data() { return this._getData()[this.tier - 1]; }
 

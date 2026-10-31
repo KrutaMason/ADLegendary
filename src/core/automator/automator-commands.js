@@ -108,7 +108,7 @@ export const AutomatorCommands = [
       if (ctx.PrestigeEvent[0].tokenType === T.Infinity) {
         if (!Autobuyer.bigCrunch.isUnlocked) {
           V.addError(ctx.PrestigeEvent, "Infinity autobuyer is not unlocked",
-            "Complete the Big Crunch Autobuyer challenge to use this command");
+            `Complete ${NormalChallenge(12).displayName(...[,,], "the Big Crunch Autobuyer challenge")} to use this command`);
           return false;
         }
         if (advSetting && !EternityMilestone.bigCrunchModes.isReached) {
@@ -535,7 +535,7 @@ export const AutomatorCommands = [
           }
         }
         if (ec.start(true)) {
-          AutomatorData.logCommandEvent(`Eternity Challenge ${ecNumber} started`, ctx.startLine);
+          AutomatorData.logCommandEvent(`${EternityChallenge(ecNumber).displayName()} started`, ctx.startLine);
           return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_NEXT_INSTRUCTION;
         }
         return AUTOMATOR_COMMAND_STATUS.NEXT_TICK_SAME_INSTRUCTION;
@@ -649,7 +649,7 @@ export const AutomatorCommands = [
             EternityChallenge(studies.ec).start(true);
             if (EternityChallenge(studies.ec).isRunning) {
               AutomatorData.logCommandEvent(`Purchased all specified Time Studies, then unlocked and started running
-                Eternity Challenge ${studies.ec}`, ctx.startLine);
+                ${EternityChallenge(studies.ec).displayName()}`, ctx.startLine);
             } else {
               AutomatorData.logCommandEvent(`Purchased all specified Time Studies and unlocked Eternity Challenge
                 ${studies.ec}, but failed to start it`, ctx.startLine);

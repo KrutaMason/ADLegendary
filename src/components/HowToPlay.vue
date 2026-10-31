@@ -5,7 +5,7 @@ export default {
     return {
       hasTutorial: false,
       isModern: false,
-      sidebarSideSwitch:false,
+      rightSide:false,
       fade:0,
     };
   },
@@ -13,18 +13,23 @@ export default {
     h2pClassObject() {
       return {
         "o-tab-btn l-help-me": true,
-        "l-help-me-switched": this.sidebarSideSwitch,
+        "l-help-me-switched": this.rightSide,
       };
     },
     topMargin() {
       return {
         "margin-top": this.isModern ? "4.5rem" : "1rem",
       };
+    },
+    bottomMargin() {
+      return {
+        "margin-top": this.isModern ? "2.25rem" : "2.1rem",
+      };
     }
   },
   methods: {
     update() {
-      this.sidebarSideSwitch = Theme.currentName() !== "S12"&&player.options.sidebarSideSwitch && ui.newUI
+      this.rightSide = Theme.currentName() !== "S12" && ui.view.sidebar.rightSide && ui.newUI
       this.hasTutorial = Tutorial.emphasizeH2P();
       this.isModern = player.options.newUI;
       this.fade = GameEnd.endState>1&&GameEnd.endState<END_STATE_MARKERS.CREDITS_START? Math.clamp(1-(GameEnd.endState-3),0,1):1
@@ -34,6 +39,9 @@ export default {
     },
     showInfo() {
       Modal.information.show();
+    },
+    showOptions() {
+      Modal.optionsModal.show();
     }
   }
 };
@@ -61,10 +69,19 @@ export default {
     />
     <div
       class="o-tab-btn l-information l-help-me"
-      :class="{'l-help-me-switched': sidebarSideSwitch}"
+      :class="{'l-help-me-switched': rightSide}"
       @click="showInfo"
     >
       i
+    </div>
+    <div
+      v-if="$viewModel.newOptionsUI"
+      class="o-tab-btn l-information l-help-me"
+      :class="{'l-help-me-switched': rightSide}"
+      :style="bottomMargin"
+      @click="showOptions"
+    >
+      <i class="fas fa-cog"/>
     </div>
   </div>
 </template>
@@ -87,7 +104,7 @@ export default {
   font-family:typewriter
 }
 .l-help-me-switched {
-  right: calc(2rem + var(--sidebar-width));
+  right: calc(4rem + var(--sidebar-width));
 }
 .h2p-tutorial--glow {
   position: absolute;

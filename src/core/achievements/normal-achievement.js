@@ -69,10 +69,19 @@ class AchievementState extends GameMechanicState {
       GameCache.staticGlyphWeights.invalidate();
     }
     if (auto) {
-      GameUI.notify.reality(["Achievement automatically unlocked",`${this.name}`]);
+      GameUI.notify.reality(["Achievement automatically unlocked",`${this.name}`,
+        `<div class="o-achievement--small o-achievement--unlocked o-achievement--${
+          (Theme.current().name === "S4" || player.secretUnlocks.cancerAchievements) ? "cancer" : 
+          player.options.mature ? "normal " : "normal-safe"}"
+        style="background-position: ${(this.column - 1) / 7 * 100}% ${(this.row - 1) / 17 * 100}%"></div>`]);
     } else {
       //if (this.id === 188){new Audio("audio/ending.wav").play()}
-      GameUI.notify.success(["Achievement unlocked",`${this.name}`],undefined,"notif_Achieve");
+      GameUI.notify.success(["Achievement unlocked",`${this.name}`,
+        `<div class="o-achievement--small o-achievement--unlocked o-achievement--${
+          (Theme.current().name === "S4" || player.secretUnlocks.cancerAchievements) ? "cancer" : 
+          player.options.mature ? "normal " : "normal-safe"}"
+        style="background-position: ${(this.column - 1) / 7 * 100}% ${(this.row - 1) / 17 * 100}%"></div>`
+      ],undefined,"notif_Achieve");
       SteamRuntime.activateAchievement(this.id);
     }
     if (player.speedrun.isActive && !player.speedrun.achievementTimes[this.id]) {

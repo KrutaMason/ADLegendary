@@ -1,81 +1,84 @@
 <script>
-import ModalOptionsToggleButton from "@/components/ModalOptionsToggleButton";
 import ModalWrapperOptions from "@/components/modals/options/ModalWrapperOptions";
-import PrimaryButton from "@/components/PrimaryButton";
-import PrimaryToggleButton from "@/components/PrimaryToggleButton";
 import SliderComponent from "@/components/SliderComponent";
 
 export default {
   name: "AudioOptionsModal",
   components: {
-    ModalOptionsToggleButton,
     ModalWrapperOptions,
-    PrimaryButton,
-    PrimaryToggleButton,
     SliderComponent
   },
   data() {
     return {
       volume: 0,
+      softreset: 0,
+      notify: 0,
+      infinity: 0,
+      eternity: 0,
+      reality: 0,
       infinityUnlocked: false,
       eternityUnlocked: false,
       realityUnlocked: false,
-      softreset:true,
-      notify:true,
-      infinity:true,
-      eternity:true,
-      reality:true,
     };
   },
   computed: {
-    sliderPropsVolume() {
+    sliderPropsMaster() {
       return {
         min: 0,
         max: 2,
         interval: 0.01,
         width: "100%",
         tooltip: false
-    }
+      }
+    },
+    sliderPropsRegular() {
+      return {
+        min: 0,
+        max: 1,
+        interval: 0.01,
+        width: "100%",
+        tooltip: false
+      }
     },
   },
   watch: {
     volume(newValue) {
-    player.options.audio.volume = newValue;
+      player.options.audio.volume = newValue;
     },
     softreset(newValue) {
-    player.options.audio.softreset = newValue;
+      player.options.audio.softreset = newValue;
     },
     notify(newValue) {
-    player.options.audio.notify = newValue;
+      player.options.audio.notify = newValue;
     },
     infinity(newValue) {
-    player.options.audio.infinity = newValue;
+      player.options.audio.infinity = newValue;
     },
     eternity(newValue) {
-    player.options.audio.eternity = newValue;
+      player.options.audio.eternity = newValue;
     },
     reality(newValue) {
-    player.options.audio.reality = newValue;
+      player.options.audio.reality = newValue;
     },
   },
   methods: {
     update() {
-    const progress = PlayerProgress.current;
-    this.infinityUnlocked = this.fullCompletion || progress.isInfinityUnlocked;
-    this.eternityUnlocked = this.fullCompletion || progress.isEternityUnlocked;
-    this.realityUnlocked = this.fullCompletion || progress.isRealityUnlocked;
+      const progress = PlayerProgress.current;
+      this.infinityUnlocked = this.fullCompletion || progress.isInfinityUnlocked;
+      this.eternityUnlocked = this.fullCompletion || progress.isEternityUnlocked;
+      this.realityUnlocked = this.fullCompletion || progress.isRealityUnlocked;
 
-    const options = player.options.audio;
-    this.volume = options.volume;
-    this.softreset = options.softreset;
-    this.notify = options.notify;
-    this.infinity = options.infinity;
-    this.eternity = options.eternity;
-    this.reality = options.reality;
+      const options = player.options.audio;
+      this.volume = options.volume;
+      this.softreset = options.softreset;
+      this.notify = options.notify;
+      this.infinity = options.infinity;
+      this.eternity = options.eternity;
+      this.reality = options.reality;
     },
-    adjustSliderValueVolume(value) {
-      this.volume = value;
-      player.options.audio.volume = this.volume;
+    adjustVolume(value, type) {
+      this[type] = value;
+      player.options.audio[type] = this[type];
     },
   }
 };
@@ -87,43 +90,81 @@ export default {
       Audio Options
     </template>
     <div class="c-modal-options__button-container">
-      <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-    <b>Volume: {{ formatPercents(parseFloat(volume)) }}</b>
-    <SliderComponent
-      class="o-primary-btn--slider__slider"
-      v-bind="sliderPropsVolume"
-      :value="volume"
-      @input="adjustSliderValueVolume($event)"
-    />
-  </div>
-    <ModalOptionsToggleButton
-      v-model="notify"
-      class="o-primary-btn o-primary-btn--option-wide"
-      text="Notification:"
-    />
-    <ModalOptionsToggleButton
-      v-model="softreset"
-      class="o-primary-btn o-primary-btn--option-wide"
-      text="Soft Resets:"
-    />
-    <ModalOptionsToggleButton
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the overall volume of the game'"
+    >
+      <b>Master Volume: {{ formatPercents(parseFloat(volume)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsMaster"
+        :value="volume"
+        @input="adjustVolume($event, 'volume')"
+      />
+    </div>
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the volume of notification sounds'"
+    >
+      <b>Notification Volume: {{ formatPercents(parseFloat(notify)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsRegular"
+        :value="notify"
+        @input="adjustVolume($event, 'notify')"
+      />
+    </div>
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the volume of Dimension Boosts and Galaxies'"
+    >
+      <b>Soft Reset Volume: {{ formatPercents(parseFloat(softreset)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsRegular"
+        :value="softreset"
+        @input="adjustVolume($event, 'softreset')"
+      />
+    </div>
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the volume of Infinity resets'"
       v-if="infinityUnlocked"
-      v-model="infinity"
-      class="o-primary-btn o-primary-btn--option-wide"
-      text="Infinity:"
-    />
-    <ModalOptionsToggleButton
+    >
+      <b>Infinity Volume: {{ formatPercents(parseFloat(infinity)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsRegular"
+        :value="infinity"
+        @input="adjustVolume($event, 'infinity')"
+      />
+    </div>
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the volume of Eternity resets'"
       v-if="eternityUnlocked"
-      v-model="eternity"
-      class="o-primary-btn o-primary-btn--option-wide"
-      text="Eternity:"
-    />
-    <ModalOptionsToggleButton
+    >
+      <b>Eternity Volume: {{ formatPercents(parseFloat(eternity)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsRegular"
+        :value="eternity"
+        @input="adjustVolume($event, 'eternity')"
+      />
+    </div>
+    <div
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Control the volume of Reality resets'"
       v-if="realityUnlocked"
-      v-model="reality"
-      class="o-primary-btn o-primary-btn--option-wide"
-      text="Reality:"
-    />
+    >
+      <b>Reality Volume: {{ formatPercents(parseFloat(reality)) }}</b>
+      <SliderComponent
+        class="o-primary-btn--slider__slider"
+        v-bind="sliderPropsRegular"
+        :value="reality"
+        @input="adjustVolume($event, 'reality')"
+      />
+    </div>
     </div>
   </ModalWrapperOptions>
 </template>

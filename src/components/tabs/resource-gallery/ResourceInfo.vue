@@ -66,7 +66,7 @@ export default {
   border: 1.2rem solid;
   border-image: var(--leg-border-render) 12 round;
   box-shadow: var(--var-box-shadow, var(--box-shadow));
-  background: url(../../../../public/images/upgrades/bought.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
+  background: url(../../../../public/images/patterns/upg_pur.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
   background-position: center;
   padding: .5rem;
   margin: 0.5rem 0.5rem 0.5rem 0;
@@ -115,7 +115,7 @@ export default {
 .l-resource_info-name{
   font-size: 2rem;
   font-weight: bold;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   line-height: 1.1;
   border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
   border-top: none;

@@ -1,6 +1,7 @@
 <script>
 import OpenModalHotkeysButton from "@/components/OpenModalHotkeysButton";
 import OptionsButton from "@/components/OptionsButton";
+import PrimaryButton from "@/components/PrimaryButton";
 import PrimaryToggleButton from "@/components/PrimaryToggleButton";
 import SliderComponent from "@/components/SliderComponent";
 
@@ -9,6 +10,7 @@ export default {
   components: {
     OpenModalHotkeysButton,
     OptionsButton,
+    PrimaryButton,
     PrimaryToggleButton,
     SliderComponent
   },
@@ -97,6 +99,10 @@ export default {
     adjustSliderValueAutomatorLogSize(value) {
       this.automatorLogSize = value;
       player.options.automatorEvents.maxEntries = this.automatorLogSize;
+    },
+    toggleOptionsUI() {
+      GameOptions.toggleOptionsUI();
+      Modal.optionsModal.show({showTab: "Gameplay"});
     }
   }
 };
@@ -104,6 +110,14 @@ export default {
 
 <template>
   <div class="l-options-tab">
+    <div class="c-subtab-option-container c-subtab-option-container--border">
+      <PrimaryButton
+        class="o-primary-btn--subtab-option"
+        @click="toggleOptionsUI"
+      >
+        Use options modal
+      </PrimaryButton>
+    </div>
     <div class="l-options-grid">
       <div class="l-options-grid__row">
         <OptionsButton
@@ -118,11 +132,13 @@ export default {
           label="Hotkeys:"
           on="Enabled"
           off="Disabled"
+          v-tooltip="'Toggle keyboard shortcuts for performing various actions; Check the Hotkey list for more info'"
         />
         <PrimaryToggleButton
           v-model="automaticTabSwitching"
           class="o-primary-btn--option l-options-grid__button l-toggle-button"
           label="Switch tabs on some events (e.g. entering challenges):"
+          v-tooltip="'Allow certain actions to automatically switch tabs upon performing them'"
         />
       </div>
       <div class="l-options-grid__row">
@@ -130,8 +146,13 @@ export default {
           v-model="offlineProgress"
           class="o-primary-btn--option l-options-grid__button"
           label="Offline progress:"
+          v-tooltip="'Toggle the ability to have the game progress while being away'"
         />
-        <div class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button">
+        <div 
+          class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button"
+          v-tooltip="`Adjust how many ticks the offline progress should run; Higher amounts yield more accurate 
+          results but requires more time to complete`"
+        >
           <b>Offline ticks: {{ formatInt(offlineTicks) }}</b>
           <SliderComponent
             class="o-primary-btn--slider__slider"
@@ -144,12 +165,14 @@ export default {
           v-model="hibernationCatchup"
           class="o-primary-btn--option l-options-grid__button"
           label="Run suspended time as offline:"
+          v-tooltip="'Have the game run offline while the tab is not being currently used'"
         />
       </div>
       <div class="l-options-grid__row">
         <div
           v-if="automatorUnlocked"
           class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button"
+          v-tooltip="'Change the capacity of the event and error logs in the Automator'"
         >
           <b>Automator Log Max: {{ formatInt(parseInt(automatorLogSize)) }}</b>
           <SliderComponent

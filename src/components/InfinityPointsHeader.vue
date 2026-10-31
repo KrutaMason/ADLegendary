@@ -23,7 +23,7 @@ export default {
   >
     You have
     <span class="c-infinity-tab__infinity-points"
-    :class="{'c-infinity-tab__infinity-points--fixed': isInaccessible(infinityPoints) }"
+    :class="diffFont(infinityPoints)"
     >{{ format(infinityPoints, 2) }}</span>
     {{ pluralize("Infinity Point", infinityPoints) }}.
   </div>

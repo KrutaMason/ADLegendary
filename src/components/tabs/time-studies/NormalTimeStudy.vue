@@ -59,6 +59,7 @@ export default {
     <HintText
       type="studies"
       class="l-hint-text--time-study"
+      :data-text="hintText"
     >
       {{ hintText }}
     </HintText>

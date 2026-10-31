@@ -43,9 +43,7 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     name() {
-      return player.options.naming.dimensions?
-      `Antimatter ${AntimatterDimension(this.tier).uniqueName}`:
-      `${AntimatterDimension(this.tier).shortDisplayName} Antimatter Dimension`;
+      return AntimatterDimension(this.tier).fullName(...[,,], false);
     },
     costDisplay() {
       return this.buyUntil10 ? format(this.until10Cost) : format(this.singleCost);
@@ -57,8 +55,7 @@ export default {
       return this.isShown || this.isUnlocked || this.amount.gt(0);
     },
     boughtTooltip() {
-      if (this.isCapped) return `Nameless prevents the purchase of more than ${format(1)} 
-      ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}` : "8th Antimatter Dimension"}`;
+      if (this.isCapped) return `Nameless prevents the purchase of more than ${format(1)} ${AntimatterDimension(8).fullName(...[,,], false)}`;
       if (this.isContinuumActive) return "Continuum produces all your Antimatter Dimensions";
       return `Purchased ${quantifyInt("time", this.bought)}`;
     },
@@ -86,6 +83,9 @@ export default {
     isAutobuyerOn(newValue) {
       Autobuyer.antimatterDimension(this.tier).isActive = newValue;
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
   },
   methods: {
     update() {
@@ -167,6 +167,8 @@ export default {
       :name="name"
       :multiplier-text="!isDestabilized?formatX(multiplier, 2, 2) : 'Destabilized'"
       :amount-text="amountDisplay"
+      :amount-font="!isInaccessible(amount)"
+      :amount-value="amount"
       :rate="rateOfChange"
     />
     <div class="l-dim-row-multi-button-container c-modern-dim-tooltip-container">
@@ -230,7 +232,7 @@ export default {
   color: var(--color-laitela--accent);
   background: var(--color-laitela--base);
   box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--accent));
-  background-image: url(../../../../public/images/upgrades/button-continuum.png);
+  background-image: url(../../../../public/images/patterns/def_cont.png);
   border: 0.1rem solid var(--color-laitela--accent);
   background-position-y: center;
   animation: a-continuum 5s linear infinite
@@ -247,7 +249,7 @@ export default {
   background: var(--color-laitela--accent);
   background-position-y: center;
   box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--base));
-  background-image: url(../../../../public/images/upgrades/button-continuum.png);
+  background-image: url(../../../../public/images/patterns/def_cont.png);
 }
 
 .c-modern-dim-tooltip-container .c-modern-dim-purchase-count-tooltip.multi-buttons {

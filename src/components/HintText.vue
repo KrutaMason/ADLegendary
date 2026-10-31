@@ -5,13 +5,18 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    secondaryRequirement: {
+      type: Boolean,
+      required: false
     }
   },
   computed: {
     showThisHintText() {
       // Accessing the player object in this computed is intentional for the sake of performance.
       // Always access the player object in update method and store required stuff in component data.
-      return this.$viewModel.shiftDown || player.options.showHintText[this.type];
+      if (this.secondaryRequirement) return this.$viewModel.shiftDown || player.options.showHintText[this.type] || this.secondaryRequirement
+      else return this.$viewModel.shiftDown || player.options.showHintText[this.type];
     }
   },
 };

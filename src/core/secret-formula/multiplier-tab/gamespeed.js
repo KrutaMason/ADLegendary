@@ -93,7 +93,7 @@ export const gamespeed = {
     icon: MultiplierTabIcons.CHALLENGE("eternity"),
   },
   nerfLaitela: {
-    name: "Lai'tela's Reality",
+    name: () => Laitela.displayRealityName(),
     powValue: () => Math.clampMax(Time.thisRealityRealTime.totalMinutes / 10, 1),
     isActive: () => Laitela.isRunning,
     icon: MultiplierTabIcons.GENERIC_LAITELA,

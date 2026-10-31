@@ -10,6 +10,13 @@ export default {
     PerkPointLabel
   },
   computed: {
+    fullScreen() {
+      return this.$viewModel.tabs.reality.automator.fullScreen;
+    },
+    tabClass() {
+      if (!this.fullScreen) return undefined;
+      return "c-perk-tab--full-screen";
+    },
     showHintText() {
       return ui.view.shiftDown || player.options.showHintText.perks;
     }
@@ -235,7 +242,7 @@ export const PerkNetwork = {
         hover: true,
         hoverConnectedEdges: false,
         selectConnectedEdges: false,
-        tooltipDelay: 0,
+        tooltipDelay: 0
       },
       nodes: {
         image: "images/perks/bought.png",
@@ -243,7 +250,7 @@ export const PerkNetwork = {
         size: 18,
         font: {
           size: 0,
-          face: "cambria",
+          face: "Cambria",
         },
         borderWidth: 2,
         shadow: true
@@ -410,18 +417,18 @@ export const PerkNetwork = {
     }
     function nodeShadow(perk) {
       if (perk.canBeBought&&Theme.current().isDark()) return {
-        enabled:true,
+        enabled: true,
         color: "white",
-        size:10,
-        x:0,
-        y:0
+        size: 10,
+        x: 0,
+        y: 0
       }
       else return {
-        enabled:true,
+        enabled: true,
         color: 'rgba(0,0,0,0.5)',
-        size:10,
-        x:5,
-        y:5
+        size: 10,
+        x: 5,
+        y: 5
       }
     }
     const data = Perks.all
@@ -455,10 +462,13 @@ export const PerkNetwork = {
 
 <template>
   <div
+    :class="tabClass"
     class="c-perk-tab"
   >
   <div ref="tab" class="c-perk-container">
-    <PerkPointLabel />
+    <div class="c-perk-tab__header-fixed">
+      <PerkPointLabel/>
+    </div>
   </div>
   </div>
 </template>

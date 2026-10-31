@@ -144,8 +144,8 @@ export default {
       <div class="c-ra-pet-title">
         <!-- The full name doesn't fit here, so we shorten it as a special case -->
         {{ pet.id === "enslaved" ? "Nameless" : name }} Level 
-        <span :class="{'c-ra-pet-title--fixed': isInaccessible(level) }">{{ formatInt(level) }}</span> / 
-        <span :class="{'c-ra-pet-title--fixed': isInaccessible(levelCap) }">{{ formatInt(levelCap) }}</span>
+        <span :class="diffFont(level)">{{ formatInt(level) }}</span> / 
+        <span :class="diffFont(levelCap)">{{ formatInt(levelCap) }}</span>
       </div>
       <div
         v-if="showScalingUpgrade"

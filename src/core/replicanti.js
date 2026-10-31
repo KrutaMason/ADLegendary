@@ -549,6 +549,18 @@ export const Replicanti = {
   get chance() {
     return ReplicantiUpgrade.chance.value;
   },
+  get barStart() {
+    const milestoneStep = Pelle.isDoomed ? 100 : Math.max(Math.pow(10, Math.floor(Math.log10(this.amount.log10() / 2))), 1000);
+    if (this.amount.lte(replicantiCap())) return DC.D1;
+    if (this.isUncapped && ((replicantiCap().lt(DC.E1000) && this.amount.lte(DC.E1000)) || !Achievement(134).isUnlocked)) return replicantiCap();
+    return Decimal.pow10(milestoneStep * Math.floor(this.amount.log10() / milestoneStep));
+  },
+  get barEnd() {
+    const milestoneStep = Pelle.isDoomed ? 100 : Math.max(Math.pow(10, Math.floor(Math.log10(this.amount.log10() / 2))), 1000);
+    if (this.amount.lte(replicantiCap())) return replicantiCap();
+    if (!Achievement(134).isUnlocked) return DC.E18000;
+    return Decimal.pow10(milestoneStep * Math.floor(this.amount.log10() / milestoneStep + 1));
+  },
   galaxies: {
     isPlayerHoldingR: false,
     get bought() {

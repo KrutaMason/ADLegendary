@@ -265,6 +265,20 @@ export const FreeTickspeed = {
       newAmount: purchases + FreeTickspeed.softcap,
       nextShards: next,
     };
-  }
+  },
 
+  get barStart() {
+    const milestoneStep = Math.max(Math.pow(10, Math.floor(Math.log10(this.amount / 2))), 10);
+    const ECdisplay = EternityChallenge(2).completions !== EternityChallenge(2).maxCompletions && !Perk.studyECRequirement.isBought;
+    if (!Achievement(105).isUnlocked || ECdisplay) return new Decimal(0);
+    return new Decimal(milestoneStep * Math.floor(this.amount / milestoneStep));
+  },
+
+  get barEnd() {
+    const milestoneStep = Math.max(Math.pow(10, Math.floor(Math.log10(this.amount / 2))), 10);
+    const ECdisplay = EternityChallenge(2).completions !== EternityChallenge(2).maxCompletions && !Perk.studyECRequirement.isBought;
+    if (!Achievement(105).isUnlocked) return new Decimal(308);
+    if (ECdisplay) return new Decimal(TimeStudy.eternityChallenge(2).requirementTotal);
+    return new Decimal(milestoneStep * Math.floor(this.amount / milestoneStep + 1));
+  }
 };

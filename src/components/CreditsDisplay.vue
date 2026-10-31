@@ -1,6 +1,11 @@
 <script>
+import LogoHolder from "@/components/LogoHolder";
+
 export default {
   name: "CreditsDisplay",
+  components: {
+    LogoHolder
+  },
   props: {
     isModal: {
       type: Boolean,
@@ -25,13 +30,10 @@ export default {
 
 <template>
   <div :class="{ 'c-credits-s12-end': isS12EndDisplay }">
-    <h1
+    <LogoHolder 
       v-if="!isModal"
-      class="c-credits-header"
-    >
-    <img class="o-title" :class="{'o-title_credits':!isModal}" src="images/title-holder.png" alt="">
-    </h1>
-
+      :credit="true"
+    />
     <div
       v-for="role in roles.count"
       :key="role"
@@ -55,7 +57,6 @@ export default {
         </div>
       </div>
     </div>
-
     <br><br><br><br><br><br><br><br><br>
     <h1 class="c-credits-header">
       Thank you so much for playing!
@@ -70,9 +71,7 @@ export default {
 }
 
 .c-credits-header {
-  color: rgb(255, 255, 255);
-  font-family: Cambria;
-  font-weight:bold;
+  color: #fff;
 }
 
 .t-dark .c-credits-header,

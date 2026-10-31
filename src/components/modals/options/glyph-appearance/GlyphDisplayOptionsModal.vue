@@ -156,7 +156,7 @@ export default {
           text="Swap border and symbol colors:"
         />
         <ModalOptionsToggleButton
-        v-if="realityCreationVisible"
+          v-if="realityCreationVisible"
           v-model="realityglyphAnimation"
           text="New Reality Glyph visuals:"
         />

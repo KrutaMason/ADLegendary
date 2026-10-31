@@ -62,7 +62,7 @@ export default {
       if (isChallengePowerVisible) {
         const powerArray = [];
         if (isC2Running) powerArray.push(`Production: ${formatPercents(player.chall2Pow, 2, 2)}`);
-        if (isC3Running) powerArray.push(`First dimension: ${formatX(player.chall3Pow, 3, 4)}`);
+        if (isC3Running) powerArray.push(`${AntimatterDimension(1).fullName(false, false)}: ${formatX(player.chall3Pow, 3, 4)}`);
         if (isIC6Running) powerArray.push(`Matter: Antimatter Dimensions /
           ${format(new Decimal(1).timesEffectOf(InfinityChallenge(6)), 2, 2)}`);
         if (isIC8Running) powerArray.push(`Production: /

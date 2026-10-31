@@ -41,10 +41,6 @@ export default {
       EffarigUnlock.reality
     ],
     symbol: () => GLYPH_SYMBOLS.effarig,
-    realityTitle() {
-      return player.options.naming.celestial ? `Enter Effarig's ${Effarig.RealityName}`
-       : "Enter Effarig's Reality"
-    },
     runButtonOuterClass() {
       return {
         "l-effarig-run-button": true,
@@ -89,6 +85,9 @@ export default {
       this.relicShardRarityAlwaysMax = Ra.unlocks.extraGlyphChoicesAndRelicShardRarityAlwaysMax.canBeApplied;
       this.curseness = Glyphs.allGlyphs.filter(g => g !== null && g.type === "cursed").length
     },
+    runName() {
+      return `Enter ${Effarig.displayRealityName()}`
+    },
     startRun() {
       if (this.isDoomed) return;
       Modal.celestials.show({ name: "Effarig's", number: 1, celestial: Effarig });
@@ -107,7 +106,7 @@ export default {
       <div class="l-effarig-relics-and-shop">
         <div class="l-effarig-relics">
         <div class="l-effarig-title"> 
-          You have <span :class="{'l-effarig-title--fixed': isInaccessible(relicShards) }">
+          You have <span :class="diffFont(relicShards)">
             {{ format(relicShards, 2, 0) }}
           </span> {{ pluralize("Relic Shard", relicShards) }}
         </div>
@@ -180,7 +179,7 @@ export default {
       >
         <div class="c-effarig-run-description c-effarig-run-description__title">
           <span :class="{ 'o-pelle-disabled': isDoomed }">
-            {{ realityTitle }}
+            {{ runName() }}
           </span>
         </div>
         <div
@@ -216,15 +215,12 @@ export default {
   font-family: Typewriter;
   margin: 0 1rem;
 }
-.l-effarig-title--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
-}
+
 .c-effarig-run-description__title{
   width: 100%;
   font-size: 2rem;
   font-weight: bold;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   border-top: solid 1px;
   border-bottom: solid 1px;
   border-image: linear-gradient(90deg, transparent, var(--color-effarig--base), transparent) 1;

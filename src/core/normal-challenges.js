@@ -49,6 +49,11 @@ class NormalChallengeState extends GameMechanicState {
     return this._config.label
   }
   
+  displayName(needsHelp = true, isShort = false, differentName = undefined) {
+    if (player.options.naming.challenges) return `${this.name}${needsHelp && player.options.naming.showHelp ? ` (C${this.id})` : ""}`
+    else return differentName ? differentName : `${isShort ? `C` : `Challenge `}${this.id}`
+  }
+
   get isRunning() {
     const isPartOfIC1 = this.id !== 9 && this.id !== 12;
     return player.challenge.normal.current === this.id || (isPartOfIC1 && InfinityChallenge(1).isRunning);

@@ -56,7 +56,7 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
 }
 
 .c-underline {

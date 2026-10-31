@@ -34,6 +34,8 @@ export default {
         return;
       }
       Glyphs.addToInventory(GlyphGenerator.realityGlyph(this.realityGlyphLevel));
+      GameUI.notify.reality(["Reality Glyph created",`You have created a level ${formatInt(this.realityGlyphLevel)} Reality Glyph!`,
+      `<div class="o-notification--icon">Ϟ</div>`]);
       AlchemyResource.reality.amount = 0;
       player.reality.glyphs.createdRealityGlyph = true;
       this.emitClose();

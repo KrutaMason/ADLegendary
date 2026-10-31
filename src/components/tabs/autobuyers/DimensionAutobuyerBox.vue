@@ -26,8 +26,7 @@ export default {
       return Autobuyer.antimatterDimension(this.tier);
     },
     name() {
-      if (player.options.naming.dimensions) return `${AntimatterDimension(this.tier).uniqueName} Autobuyer`
-      return `${AntimatterDimension(this.tier).shortDisplayName} Dimension Autobuyer`;
+      return `${AntimatterDimension(this.tier).fullName(...[,], false)} Autobuyer`
     },
     modeDisplay() {
       switch (this.mode) {
@@ -36,6 +35,9 @@ export default {
       }
       throw "Unknown Dimension Autobuyer mode";
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
   },
   methods: {
     update() {

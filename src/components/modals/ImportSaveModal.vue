@@ -1,5 +1,6 @@
 <script>
 import ModalWrapperChoice from "@/components/modals/ModalWrapperChoice";
+import LoadGameEntry from "@/components/modals/LoadGameEntry";
 import PrimaryButton from "@/components/PrimaryButton";
 
 const OFFLINE_PROGRESS_TYPE = {
@@ -12,6 +13,7 @@ export default {
   name: "ImportSaveModal",
   components: {
     ModalWrapperChoice,
+    LoadGameEntry,
     PrimaryButton
   },
   data() {
@@ -163,22 +165,24 @@ export default {
         ???
       </div>
       <template v-else-if="inputIsValidSave">
-        <div v-if="fileName">
-          File name: {{ fileName }}
-        </div>
-        <div>Antimatter: {{ formatPostBreak(antimatter, 2, 1) }}</div>
-        <div v-if="progress.isInfinityUnlocked">
-          Infinities: {{ formatPostBreak(infinities, 2) }}
-        </div>
-        <div v-if="progress.isEternityUnlocked">
-          Eternities: {{ formatPostBreak(player.eternities, 2) }}
-        </div>
-        <div v-if="progress.isRealityUnlocked">
-          Realities: {{ formatPostBreak(player.realities, 2) }}
-        </div>
-        <div v-if="progress.hasFullCompletion">
-          Full game completions: {{ formatInt(player.records.fullGameCompletions) }}
-        </div>
+        <LoadGameEntry
+          :save-id="-1"
+          :input="input"
+          class="c-entry-border o-descriptionBlock"
+        >
+          <div v-if="progress.isInfinityUnlocked">
+            Infinities: {{ formatPostBreak(infinities, 2) }}
+          </div>
+          <div v-if="progress.isEternityUnlocked">
+            Eternities: {{ formatPostBreak(player.eternities, 2) }}
+          </div>
+          <div v-if="progress.isRealityUnlocked">
+            Realities: {{ formatPostBreak(player.realities, 2) }}
+          </div>
+          <div v-if="progress.hasFullCompletion">
+            Full game completions: {{ formatInt(player.records.fullGameCompletions) }}
+          </div>
+        </LoadGameEntry>
         <div class="c-modal-import__warning">
           (Your current save file will be overwritten!)
         </div>

@@ -18,6 +18,7 @@ export const h2p = {
   tabs: [
     {
       name: "This Modal",
+      symbol: '<i class="fa-solid fa-location-dot"/>',
       info: () => `
 Welcome to the How to Play!
 <br>
@@ -37,7 +38,101 @@ visible tab and subtab, if such an entry exists.
       tab: ""
     },
     {
+      name: "Mod Overview",
+      symbol: '🜾',
+      info: () => `
+<b>Welcome to Antimatter Dimensions: Legendary!</b>
+<br>
+This mod is designed to improve graphics and visuals of the original game. However, it includes new customizations alongside 
+other forms of non-gameplay content that influence the way you play the game. This entry explains each major additions in 
+detail and shows you how to handle them.
+<br>
+<br>
+<b>Mature Content</b>
+<br>
+<br>
+The mod changes the target group to mature audiences only, therefore it has content that may not be suitable for 
+those who are younger. The visibility of such contents defaults to off at first for new saves or save imported from vanilla, 
+but can be enabled in the Visual options tab. The Mod Disclaimer pop-up informs you of this feature and allows you to choose before 
+playing the game. The current state on graphic content is still minimal, but will be expanded throughout future updates.
+<br>
+<br>
+A list of features that are affected by Mature Content:
+<br>
+- <b>The News Ticker</b>: There are some news messages that contain mature content.<br>
+- <b>Achievements</b>: Only 1 of the 144 achievements are affected.<br>
+<br>
+<b>Sound Effects</b>
+<br>
+<br>
+This mod also introduces sound effects that play when you perform various actions such as buying Dimensions or performing a 
+Dimension Boost. The Audio Options in Gameplay tab allows you to change the volumes of specific kinds of sounds.
+<br>
+<br>
+<b>New Naming Conventions and Renames</b>
+<br>
+<br>
+AD:Legendary introduces new naming conventions for various mechanics, which can be toggled using the "Open Naming Convention 
+Options" button from the Visual options tab. Having them off will make the mechanics maintain their classic naming conventions. 
+If you can't get along with the new names but still want to keep them, you can enable "Display classic abbverations" which shows 
+some additional characters in brackets. Eg. "Antimatter Polygon" would then have "(AD3)" afterward.
+<br>
+<br>
+The most notable change in name you will see are the Dimensions. They are renamed to the polytopes of their respective Dimensions. 
+However, you can customize those names to your liking. Challenges of all types also have unique names, which replaces their former 
+conventions. (eg. Challenge 8)
+<br>
+<br>
+In addition to these optional name revamps, some other mechanics like Perks are given unique names. These are purely cosmetic. 
+There are also a few permanent renames that cannot be changed:
+<br>
+- Tachyon Particles => Tachyons<br>
+- Tachyon Galaxy => Tachyonic Galaxy<br>
+- Glyph Effect => Glyph Diacritic<br>
+- Glyph Rarity => Glyph Quality<br>
+- Teresa -> Orias
+<br>
+<br>
+<b>New Dimension names:</b> Digon, Polygon, Polyhedron, Polychoron, Polyteron, Polypeton, Polyexon, Polyzetton
+<br>
+<br>
+<b>Options Modal</b>
+<br>
+<br>
+Legendary adds a new UI for general options, which replaces the 3 options tabs with a big modal system. The modal has all 
+contents from the original 3 tabs alongside the other modals like the news ticker and animations. Some smaller modals are then 
+converted into tabs for the modal. Having this layout will disable the options tabs completely with no way to re-access them. 
+You can still choose to use the classic tabs by using the button on the bottom left side of the modal. Like the classic and 
+modern general UIs, you can't use both of them at the same time.
+<br>
+<br>
+<b>Minor Balance Changes</b>
+<br>
+<br>
+Despite being a cosmetics mod, Legendary still includes small balance changes for multiple parts of the game. The classic mode, 
+which uses the original balancing, will be added in future updates. 
+All changes are listed below:
+<br>
+- All Antimatter Dimensions receive a ×1.2 boost for each Antimatter Dimension discovered<br>
+- Infinity Upgrade order is altered to have a more coherent theme for each column<br>
+- The first 2 Break Infinity upgrades are buffed from log10(AM)^0.5 to log10(AM)<br>
+- "AD boost based on Infinity" Break Infinity upgrade has its multiplier increased tenfold<br>
+- "AD boost based on Achievements" Break Infinity upgrade is buffed from (Achievement count - 30)^4 / 40 to 
+Achievement count - 30)^4 / 10<br>
+- "AD boost based on slowest Challenge" Break Infinity upgrade has its multiplier and cap increased tenfold<br>
+- The EP multiplier upgrade's starting cost is reduced from 500 to 100<br>
+- The IDL Perk is improved, in which the starting time of 15 minutes increases by 1 minute for every Perk you have 
+purchased, up to 60 minutes<br>
+- The final singularity milestone is reduced even further, from 2.5e45 to 1e45
+
+`,
+      isUnlocked: () => true,
+      tags: ["legendary", "mod", "mature", "sensitive"],
+      tab: ""
+    },
+    {
       name: "Your savefile",
+      symbol: '<i class="fas fa-save"/>',
       info: () => `
 Your game's save data is stored on your computer's browser data if you are playing on a web browser, or in your Steam
 installation folder if you are playing on Steam. This means that clearing your browser's cache or cookies, or fully
@@ -98,6 +193,7 @@ irreversible and gives you no permanent benefits, secret or otherwise.</b>
     },
     {
       name: "Customization",
+      symbol: '<i class="fas fa-palette"/>',
       info: () => `
 The game has two different UI layouts - the Classic UI maintains the style of Antimatter Dimensions from before the
 Reality update, while the Modern UI is a redesign based on more modern dark theme styles. Additionally, there are
@@ -118,12 +214,7 @@ although the ability to disable any given animation or confirmation will only ap
 at least once.
 <br>
 <br>
-AD:Legendary introduces new naming conventions for various mechanics, most notably the Dimension names. Turning 
-them off by using the Naming Options button located in the Visuals tab, will make the affected mechanics 
-maintain the classic naming convention. This mod also introduces sound effects that are played from doing 
-various activities such as buying Dimensions or performing a Dimension boost. You will be notified of this 
-feature in the Mod Disclaimer in case you still have it enabled. The Audio Options in Gameplay tab allows you to 
-change the volume and disable specific kinds of sounds.
+All new options added from the Legendary mod are explained in the "Mod Overview" entry.
 `,
       isUnlocked: () => true,
       tags: ["UI", "update", "news", "theme", "notation", "comma", "exponent", "animation", "retry", "confirmation",
@@ -131,26 +222,8 @@ change the volume and disable specific kinds of sounds.
       tab: "options/visual"
     },
     {
-      name: "Mature Content",
-      info: () => `
-The mod changes the target group, making it now intended for Mature Audiences, therefore has content that 
-may not be suitable for younger Audiences. The visibility of Such Contents defaults to off, but can be enabled 
-in the Visuals tab. The Mod Disclaimer Pop-up informs you of this feature and allows you to choose before 
-playing the game. 
-<br>
-<br>
-This entry has a list of features that are affected by Mature Content.
-<br>
-- <b>The News Ticker</b>: There are some news messages that contain mature content.<br>
-- <b>Achievements</b>: Only 1 of the 144 achievements are affected.<br>
-- <b>(Celestial Quotes and Portraits)</b>: WIP.<br>
-`,
-      isUnlocked: () => true,
-      tags: ["mature", "sensitive"],
-      tab: "options/visual"
-    },
-    {
       name: "Offline Progress",
+      symbol: '<i class="fa-solid fa-door-open"/>',
       info: () => `
 Antimatter Dimensions has a catch-up mechanic which attempts to simulate the game's behavior if the game is closed for
 an extended period of time. The simulation behavior is only somewhat accurate, as the game is too mathematically
@@ -207,6 +280,7 @@ the game closed.
       tab: "options/gameplay"
     }, {
       name: "Effect Stacking",
+      symbol: '<i class="fa-solid fa-layer-group"/>',
       info: () => `
 Most of the effects and upgrades in Antimatter Dimensions largely fall into three categories:
 <br>
@@ -249,6 +323,7 @@ ${PlayerProgress.realityUnlocked()
       tab: "options/gameplay"
     }, {
       name: "Common Abbreviations",
+      symbol: '<i class="fas fa-font"/>',
       info: () => `
 Many resources within the game may appear in an abbreviated format as text in order to save space. This How to
 Play entry will update itself with additional entries for new resources as you encounter them for the first time.
@@ -267,7 +342,7 @@ ${PlayerProgress.eternityUnlocked() ? "- <b>TD</b>: Time Dimension<br>" : ""}
 ${PlayerProgress.eternityUnlocked() ? "- <b>EC</b>: Eternity Challenge<br>" : ""}
 ${PlayerProgress.dilationUnlocked() ? "- <b>TP</b>: Tachyon Particle<br>" : ""}
 ${PlayerProgress.dilationUnlocked() ? "- <b>DT</b>: Dilated Time<br>" : ""}
-${PlayerProgress.dilationUnlocked() ? "- <b>TG</b>: Tachyon Galaxy<br>" : ""}
+${PlayerProgress.dilationUnlocked() ? "- <b>TG</b>: Tachyonic Galaxy<br>" : ""}
 ${PlayerProgress.realityUnlocked() ? "- <b>RM</b>: Reality Machine<br>" : ""}
 ${PlayerProgress.realityUnlocked() ? "- <b>AP</b>: Automator Point<br>" : ""}
 ${PlayerProgress.realityUnlocked() ? "- <b>BH</b>: Black Hole<br>" : ""}
@@ -281,18 +356,20 @@ ${Laitela.isUnlocked ? "- <b>DE</b>: Dark Energy<br>" : ""}
       tab: ""
     }, {
       name: "Antimatter Dimensions",
+      symbol: '<i class="fas fa-cube"/>',
       info: () => `
 Antimatter is a resource that is used throughout the entire game for purchasing various things as you progress. You
 start with ${formatInt(10)} antimatter when you first open the game, and you can
-spend it to buy the 1st Antimatter Dimension to start the game.
+spend it to buy the ${AntimatterDimension(1).fullName()} to start the game.
 <br>
 <br>
-Antimatter Dimensions are your production units in game. The 1st Antimatter Dimension produces your antimatter.
+Antimatter Dimensions are your production units in game. The ${AntimatterDimension(1).fullName()} produces your antimatter.
 Each consecutive Antimatter Dimension produces the previous one, allowing you to have steady growth.
 There are eight Antimatter Dimensions total.
 <br>
 <br>
-<b>Dimension Multiplier:</b> Beside the Dimension there is a multiplier (example: 1st Dimension ${formatX(1, 1, 1)}).
+<b>Dimension Multiplier:</b> Beside the Dimension there is a multiplier 
+(example: ${AntimatterDimension(1).fullName(...[,], false)} ${formatX(1, 1, 1)}).
 The base production of each Dimension is multiplied by this number.
 This multiplier increases by ${formatX(2)} for every ${formatInt(10)} of that Dimension purchased.
 Each time this occurs, the price of the dimension will increase.
@@ -320,8 +397,8 @@ Alternatively, if the Until ${formatInt(10)} button is highlighted,
 you can buy whatever quantity gets you to that Dimension's next Dimension multiplier.
 <br>
 <br>
-<b>Max all:</b> Max all will buy until ${formatInt(10)} of the 1st Antimatter Dimension until it cannot anymore,
-then second, and so on until the 8th Antimatter Dimension, and then buy max Tickspeed Upgrades.
+<b>Max all:</b> Max all will buy until ${formatInt(10)} of the ${AntimatterDimension(1).fullName()} until it cannot anymore,
+then second, and so on until the ${AntimatterDimension(8).fullName()}, and then buy max Tickspeed Upgrades.
 <br>
 <br>
 <b>Dimension base prices:</b> ${Array.range(1, 8)
@@ -342,6 +419,7 @@ ${formatInt(1)} instead of ${formatInt(10)}), <b>M</b> for Max all
       tab: "dimensions/antimatter"
     }, {
       name: "Tickspeed",
+      symbol: '<i class="fa-solid fa-clock">',
       info: () => `
 Production in the game happens on each "tick", which initially occurs once per second. By buying Tickspeed Upgrades,
 you can make your Antimatter Dimensions produce faster, as if multiple ticks occur in each second.
@@ -368,19 +446,22 @@ with your current amount of antimatter.
       tab: "dimensions/antimatter"
     }, {
       name: "Dimension Boosts",
+      symbol: '<i class="fas fa-angles-up"/>',
       info: () => `
 <b>Dimension Boost:</b> This resets your antimatter and all of your Antimatter Dimensions, but unlocks another
 Antimatter Dimension for you to purchase and boosts your Dimension multipliers.
-The 1st Dimension Boost requires ${formatInt(20)} 4th Dimensions, the 2nd requires ${formatInt(20)} 5th Dimensions, etc.
+The 1st Dimension Boost requires ${formatInt(20)} ${AntimatterDimension(4).fullName(...[,,,],2)}, 
+the 2nd requires ${formatInt(20)} ${AntimatterDimension(5).fullName(...[,], false, ...[,] ,2)}, etc.
 After unlocking all ${formatInt(8)} Dimensions,
-every additional boost will cost ${formatInt(15)} more 8th Dimensions than the previous Boost and will no longer
-unlock a Dimension, but will continue to increase your Dimension multipliers.
+every additional boost will cost ${formatInt(15)} more ${AntimatterDimension(8).fullName(...[,], false, ...[,] ,2)} 
+than the previous Boost and will no longer unlock a Dimension, but will continue to increase your Dimension multipliers.
 <br>
 <br>
-You gain a ${formatX(2)} multiplier to the 1st Dimension for every Dimension Boost you have. Each higher
+You gain a ${formatX(2)} multiplier to the ${AntimatterDimension(1).fullName(...[,], false)} for every Dimension Boost you have. Each higher
 Dimension will have the multiplier applied one less time as the previous, down to a minimum of ${formatInt(0)}.
-For example, with ${formatInt(3)} Boosts, the 1st Dimension will gain ${formatX(8)}, the 2nd Dimension ${formatX(4)},
-the 3rd Dimension ${formatX(2)}, and all other Dimensions are unaffected.
+For example, with ${formatInt(3)} Boosts, the ${AntimatterDimension(1).fullName(...[,], false)} will gain ${formatX(8)}, 
+the ${AntimatterDimension(2).fullName(...[,], false)} ${formatX(4)}, the ${AntimatterDimension(3).fullName(...[,], false)} ${formatX(2)}, 
+and all other Dimensions are unaffected.
 <br>
 <br>
 <b>Hotkey: D</b> will try to purchase a Dimension Boost.
@@ -390,6 +471,7 @@ the 3rd Dimension ${formatX(2)}, and all other Dimensions are unaffected.
       tab: "dimensions/antimatter"
     }, {
       name: "Antimatter Galaxies",
+      symbol: '<i class="fas fa-bahai"/>',
       info: () => `
 Purchasing an Antimatter Galaxy will reset your game back to the point where only ${formatInt(4)} Dimensions are
 available, but will increase the effect of your Tickspeed Upgrades by +${format(0.02, 0, 2)} for your first two
@@ -400,8 +482,8 @@ Though it will have very little impact for the first few Tickspeed purchases,
 the increase is multiplicative and will not take long to be visible.
 <br>
 <br>
-Your first Antimatter Galaxy requires ${formatInt(80)} Eighth Dimensions, and each additional Galaxy will cost
-another ${formatInt(60)} more.
+Your first Antimatter Galaxy requires ${formatInt(80)} ${AntimatterDimension(8).fullName(false, false, ...[,] ,2)}, 
+and each additional Galaxy will cost another ${formatInt(60)} more.
 <br>
 <b>Distant Galaxy scaling:</b> Above ${formatInt(100)} Antimatter Galaxies the cost increase between Galaxies will
 increase by ${formatInt(2)} per Galaxy, making the next Galaxy cost ${formatInt(62)} more, then ${formatInt(64)} more,
@@ -418,19 +500,22 @@ increases by another ${formatPercents(0.002, 1)} per Galaxy, on top of Distant s
       tab: "dimensions/antimatter"
     }, {
       name: "Dimensional Sacrifice",
+      symbol: '<i class="fas fa-turn-down"/>',
       info: () => `
 <b>You unlock Dimensional Sacrifice after your fifth Dimension Boost.</b>
 <br>
 <br>
-Sacrificing will immediately reset the owned quantity of all non-Eighth Dimensions to zero, without reducing the
-multiplier or the current cost. In return, it will multiply the Eighth Dimension Multiplier by the shown value.
+Sacrificing will immediately reset the owned quantity of all non-${AntimatterDimension(8).fullName(false, false, ...[,] ,2)} 
+to zero, without reducing the multiplier or the current cost. In return, it will multiply the 
+${AntimatterDimension(8).fullName(false, false)} Multiplier by the shown value. 
 It will take time to get back to the production you previously had, but you will end up with a net increase.
 <br>
 <br>
-The Dimensional Sacrifice multiplier scales with the number of 1st Dimensions you had at the time of sacrifice,
-and the scaling can be improved by completing certain Achievements and challenges. The multiplier is kept between
-sacrifices, meaning that sacrificing once at ${formatX(10)} and then once at ${formatX(4)} will be the same as
-${formatX(8)} then ${formatX(5)}; in both cases you will end up with a total sacrifice multiplier of ${formatX(40)}.
+The Dimensional Sacrifice multiplier scales with the number of ${AntimatterDimension(1).fullName(...[,], false, ...[,] ,2)} 
+you had at the time of sacrifice, and the scaling can be improved by completing certain Achievements and challenges. 
+The multiplier is kept between sacrifices, meaning that sacrificing once at ${formatX(10)} and then once at ${formatX(4)} 
+will be the same as ${formatX(8)} then ${formatX(5)}; in both cases you will end up with a 
+total sacrifice multiplier of ${formatX(40)}.
 <br>
 <br>
 <b>Hotkey: S</b> will try to sacrifice.
@@ -440,6 +525,7 @@ ${formatX(8)} then ${formatX(5)}; in both cases you will end up with a total sac
       tab: "dimensions/antimatter"
     }, {
       name: "Achievements",
+      symbol: '<i class="fas fa-trophy"/>',
       info: () => `
 Each Achievement has requirements to unlock. Once unlocked, some Achievements give a reward.
 Requirements and rewards vary in difficulty and benefit significantly.
@@ -458,6 +544,7 @@ Achievement will give a hint on how to attain them.
       tab: "achievements"
     }, {
       name: "Infinity",
+      symbol: '<i class="fa-solid fa-infinity"/>',
       info: () => `
 Once you have too much antimatter for the world to handle (${formatInt(2)}<sup>${formatInt(1024)}</sup>
 or about ${formatPostBreak(Number.MAX_VALUE, 6)},
@@ -487,6 +574,7 @@ You must complete the Achievement "No DLC required" to start purchasing this par
       tab: "infinity/upgrades"
     }, {
       name: "Normal Challenges",
+      symbol: '<i class="fas fa-mountain"/>',
       info: () => `
 Normal Challenges are unlocked after your first Infinity; they change in-game mechanics in different ways to create more
 difficult Infinity circumstances. To complete a challenge, you must reach ${formatPostBreak(Number.MAX_VALUE, 2)}
@@ -509,6 +597,7 @@ The rightmost column of Infinity Upgrades does not work in challenges.
       tab: "challenges/normal"
     }, {
       name: "Autobuyers",
+      symbol: '<i class="fas fa-cog"/>',
       info: () => `
 Autobuyers allow you to automatically purchase dimensions, upgrades, or prestiges. All autobuyer
 controls are located under the "Autobuyers" subtab of the "Automation" tab, including any additional autobuyers
@@ -576,6 +665,7 @@ toggle the associated autobuyer.
       tab: "automation/autobuyers"
     }, {
       name: "Break Infinity",
+      symbol: '∝',
       info: () => `
 Once you Break Infinity, you are no longer limited to ${formatPostBreak(Number.MAX_VALUE, 2)} antimatter and can start
 gaining more than ${formatInt(1)} IP per crunch depending on how much more antimatter you have when you crunch.
@@ -597,6 +687,7 @@ Tickspeed Upgrade costs as well.
       tab: "infinity/break"
     }, {
       name: "Infinity Dimensions",
+      symbol: '<i class="fas fa-cubes"/>',
       info: () => `
 <b>Unlocking Infinity Dimensions:</b> Infinity Dimensions are unlocked by reaching a certain amount of antimatter.
 <br>
@@ -631,7 +722,7 @@ of Infinity Dimensions does not carry between crunches, all the multipliers you 
     .join(", ")}
 <br>
 <br>
-Instead of antimatter, the 1st Infinity Dimension produces Infinity Power, which gives a multiplier applied
+Instead of antimatter, the ${InfinityDimension(1).fullName()} produces Infinity Power, which gives a multiplier applied
 to all Antimatter Dimensions equal to (power<sup>${formatInt(7)}</sup>). Infinity Dimensions are not
 affected by Tickspeed Upgrades.
 `,
@@ -640,6 +731,7 @@ affected by Tickspeed Upgrades.
       tab: "dimensions/infinity"
     }, {
       name: "Infinity Challenges",
+      symbol: '<i class="fas fa-arrow-down-wide-short"/>',
       // This one could use some work!
       info: () => `
 Infinity Challenges are like Normal Challenges, but they have higher end goals and are generally harder. Instead of
@@ -659,6 +751,7 @@ amount of antimatter before you can attempt them.
       tab: "challenges/infinity"
     }, {
       name: "Replicanti",
+      symbol: 'Ξ',
       info: () => `
 Replicanti are another resource you unlock at ${format(DC.E140)} IP. Rather
 than producing something else, Replicanti actually produces <i>itself</i> up to a maximum of
@@ -693,6 +786,7 @@ from quadratic to cubic, with the ${formatX(DC.E55)} multiplier itself increasin
       tab: "infinity/replicanti"
     }, {
       name: "Eternity",
+      symbol: '<i class="fa-solid fa-hourglass"/>',
       info: () => `
 Upon reaching ${formatPostBreak(Number.MAX_VALUE, 2)} IP, you can Eternity. Eternities will reset everything before this
 point except challenge times, Achievements, and anything under the General section of the Statistics tab. You will be
@@ -718,6 +812,7 @@ ${formatInt(2)} EP until ${formatPostBreak(DC.E349)}.
       tab: "eternity/upgrades"
     }, {
       name: "Eternity Milestones",
+      symbol: '<i class="fas fa-star"/>',
       info: () => `
 To make Eternities faster and more convenient, you will unlock various buffs as you get more "Eternity". These
 buffs will generally let you start with certain upgrades you would otherwise lose after Eternity, give you new
@@ -742,6 +837,7 @@ properly, as noted on the milestone page itself.
       tab: "eternity/milestones"
     }, {
       name: "Time Dimensions",
+      symbol: 'Δ',
       info: () => `
 After your first Eternity, you unlock Time Dimensions. You buy them with Eternity Points and they produce Time Shards,
 which provide Tickspeed Upgrades. These Tickspeed Upgrades function like normal Tickspeed Upgrades but do not increase
@@ -749,9 +845,9 @@ their cost. Time Dimensions, Time Shards, and the Tickspeed Upgrades they provid
 but reset every Eternity.
 <br>
 <br>
-Similarly to the other dimensions, Second Time Dimensions produce 1st Time Dimensions and so on. Similarly to Infinity
-Dimensions, your production will be reset to the amount you purchased after every Eternity, but you will keep any
-upgrades to your multipliers you purchased.
+Similarly to the other dimensions, ${TimeDimension(2).fullName(false, ...[,,], 2)} produce 
+${TimeDimension(1).fullName(...[,,,], 2)} and so on. Similarly to Infinity Dimensions, your production will be reset to 
+the amount you purchased after every Eternity, but you will keep any upgrades to your multipliers you purchased.
 <br>
 <br>
 Each purchase increases the multiplier of that specific Time Dimension by ${formatX(4)}. The cost multiplier between
@@ -781,6 +877,7 @@ per ${formatInt(50000)} upgrades (${formatX(1.000006, 0, 6)} per upgrade).
       tab: "dimensions/time"
     }, {
       name: "Time Studies",
+      symbol: '<i class="fas fa-book"/>',
       info: () => `
 A Time Study is a powerful post-Eternity upgrade, which costs a new resource called Time Theorems. Time Studies can
 boost the production of anything you have seen so far in the game, or even change the way some formulas work.
@@ -847,6 +944,7 @@ the middle of an Eternity.
       tab: "eternity/studies"
     }, {
       name: "Eternity Challenges",
+      symbol: '<i class="fas fa-book-skull"/>',
       info: () => `
 Eternity Challenges are another set of challenges which are unlocked by the Time Study Tree. They require a certain
 amount of Time Theorems and a secondary requirement which you must meet when you unlock the challenge.
@@ -877,6 +975,7 @@ if you respec your time studies.
       tab: "challenges/eternity"
     }, {
       name: "Time Dilation",
+      symbol: 'Ψ',
       info: () => `
 Time Dilation is unlocked when you purchase the Time Study to unlock it below the EC11 and EC12 studies.
 In order to purchase this Time Study, you need ${formatInt(5000)} unspent TT with a tree that can reach
@@ -910,6 +1009,7 @@ also be repeatedly bought, but eventually reaches a cap.
       tab: "eternity/dilation"
     }, {
       name: "Reality",
+      symbol: '<i class="fa-solid fa-rocket"/>',
       info: () => `
 When you reach ${formatPostBreak(DC.E4000)} EP and have completed the first
 ${formatInt(13)} rows of Achievements, you will be able to purchase the Time Study that unlocks Reality.
@@ -961,6 +1061,7 @@ You get exactly ${formatInt(1)} Perk Point per Reality.
       tab: "reality/upgrades"
     }, {
       name: "Glyphs",
+      symbol: '<i class="fas fa-clone"/>',
       info: () => `
 A Glyph is an equippable object that has four attributes:
 <br>
@@ -1022,6 +1123,7 @@ in the Statistics page, your equipped Glyphs, and the Upcoming Glyph Selection t
       tab: "reality/glyphs"
     }, {
       name: "Perks",
+      symbol: '<i class="fas fa-project-diagram"/>',
       info: () => `
 Perks are a type of upgrade unlocked upon Reality. Each Perk effect varies, but most are QoL (quality of life)
 improvements which you can choose your own path through. All Perks only require ${formatInt(1)} Perk Point to buy.
@@ -1042,6 +1144,7 @@ different colors, roughly indicating which part of the game they affect the most
       tab: "reality/perks"
     }, {
       name: "Automator Overview",
+      symbol: '<i class="fas fa-code"/>',
       info: () => `
 The Automator is unlocked upon reaching a total of ${formatInt(AutomatorPoints.pointsForAutomator)} Automator Points.
 Automator Points are given when unlocking various Perks or Reality Upgrades, by unlocking the Black Hole, or by
@@ -1080,6 +1183,7 @@ will not be lost or overwritten.
       tab: "automation/automator"
     }, {
       name: "Automator Technical Details",
+      symbol: '<i class="fas fa-file-code"/>',
       info: () => `
 <b>Technical Limits</b>
 <br>
@@ -1136,6 +1240,7 @@ Additionally, the PAUSE command may behave oddly due to it also being based on r
       tab: "automation/automator"
     }, {
       name: "Black Hole",
+      symbol: '<i class="fas fa-circle"/>',
       info: () => `
 The Black Hole is a feature which speeds up how fast the game runs, on a periodic cycle.
 The game will run at normal speed for some amount of time, then have a burst of running extremely fast for a short
@@ -1223,6 +1328,7 @@ but the same cost multipliers.
       tab: "reality/hole"
     }, {
       name: "Celestials",
+      symbol: '<i class="fa-solid fa-meteor"/>',
       info: () => `
 Once you get all of the Reality Upgrades, the first Celestial is unlocked. This opens up a new tab for Celestials, next
 to the Reality tab. The first subtab under the Celestials tab shows a map called "Celestial Navigation" which updates as
@@ -1245,39 +1351,41 @@ by game speed multipliers and instead refer specifically to real time instead of
       tags: ["reality", "challenges", "endgame", "lategame"],
       tab: "celestials/celestial-navigation"
     }, {
-      name: "Teresa, Celestial of Reality",
-      alias: "Teresa",
+      name: "Orias, Celestial of Reality",
+      symbol: "Ϟ",
+      alias: "Orias",
       info: () => `
-Teresa is the first Celestial. They are unlocked by Achievement 147, which requires obtaining all Reality Upgrades.
+Orias is the first Celestial. They are unlocked by Achievement 147, which requires obtaining all Reality Upgrades.
 <br>
 <br>
 On the main screen, there is a bar with a button above it that says "Pour RM". This allows you to put your RM into the
 container for a Reality Machine multiplier. RM which has been poured into the container cannot be retrieved.
-When you reach ${format(TeresaUnlocks.run.price)} RM inside of the container, you unlock Teresa's Reality / Michanipolis.
+When you reach ${format(TeresaUnlocks.run.price)} RM inside of the container, you unlock ${Teresa.displayRealityName()}.
 <br>
 <br>
-When you complete Teresa's Reality,
+When you complete ${Teresa.displayRealityName(false)},
 ${Teresa.runCompleted
     ? "your Glyph Sacrifice is multiplied based on the amount of antimatter gained during the run"
-    : "<div style='color: var(--color-bad);'>(complete Teresa's Reality / Michanipolis to see the reward)</div>"}.
-Completing Teresa's Reality is only part of the story; you need to keep pouring RM in order to progress. Once
+    : `<div style='color: var(--color-bad);'>(complete ${Teresa.displayRealityName()} to see the reward)</div>`}.
+Completing ${Teresa.displayRealityName(false)} is only part of the story; you need to keep pouring RM in order to progress. Once
 you are at ${format(TeresaUnlocks.effarig.price)} RM in the container, you will unlock the next Celestial.
 <br>
 <br>
 ${Teresa.runCompleted
-    ? "Teresa's Reality can be entered again after completing it, and its reward will become stronger if you " +
-      "reach a higher amount of antimatter on this repeat run."
-    : "(More information available - complete Teresa's Reality)"}
+    ? `${Teresa.displayRealityName()} can be entered again after completing it, and its reward will become stronger if you 
+      reach a higher amount of antimatter on this repeat run.`
+    : `(More information available - complete ${Teresa.displayRealityName(false)})`}
 `,
       isUnlocked: () => Teresa.isUnlocked,
-      tags: ["rm", "endgame", "lategame", "perks", "sacrifice", "boo", "ghost", "celestial"],
+      tags: ["rm", "endgame", "lategame", "perks", "sacrifice", "jazz", "sigil", "celestial"],
       tab: "celestials/teresa"
     }, {
       name: "Effarig, Celestial of Ancient Relics",
+      symbol: "Ϙ",
       alias: "Effarig",
       info: () => `
 Effarig is the second Celestial you encounter.
-They are unlocked by pouring at least ${format(TeresaUnlocks.effarig.price)} RM into Teresa's container.
+They are unlocked by pouring at least ${format(TeresaUnlocks.effarig.price)} RM into Orias' container.
 <br>
 <br>
 Effarig introduces a currency called Relic Shards, which are obtained by using different kinds of Glyph effects during
@@ -1294,8 +1402,8 @@ Effarig's final unlock is their own Reality at ${format(GameDatabase.celestials.
 Shards.
 ${EffarigUnlock.run.isUnlocked
     ? "Their Reality is divided into three layers: Infinity, Eternity, and Reality. You must complete each layer " +
-      "before getting access to the next one. Completing Effarig's Eternity unlocks the next Celestial."
-    : "<div style='color: var(--color-effarig--base);'>(unlock Effarig's Reality to see details about it)</div>"
+      `before getting access to the next one. Completing Effarig's Eternity unlocks the next Celestial.`
+    : `<div style='color: var(--color-effarig--base);'>(unlock ${Effarig.displayRealityName()} to see details about it)</div>`
 }
 <br>
 <br>
@@ -1318,6 +1426,7 @@ ${Ra.unlocks.glyphEffectCount.canBeApplied
       tab: "celestials/effarig"
     }, {
       name: "Advanced Glyph Mechanics",
+      symbol: '<i class="fa-regular fa-clone"/>',
       info: () => `
 Glyph level Adjustment is purchasable for ${format(GameDatabase.celestials.effarig.unlocks.adjuster.cost)} Relic
 Shards. This allows you to set weights for each resource (EP, DT, Replicanti, Eternities), in how much they affect the
@@ -1389,6 +1498,7 @@ in order to bring up a modal summarizing the whole set of Glyphs.
       tab: "celestials/glyphfilter"
     }, {
       name: "The Nameless Ones, Celestial of Time",
+      symbol: '',
       alias: "Nameless Ones",
       info: () => `
 The Nameless Ones are the third Celestial, unlocked by completing Effarig's Eternity.
@@ -1432,10 +1542,10 @@ by ${format(1e5)} Tickspeed Upgrades.
 <br>
 <br>
 At ${format(TimeSpan.fromMilliseconds(ENSLAVED_UNLOCKS.RUN.price).totalYears)} years of stored game time, you are able
-to finally unlock their Reality. The reward for completing The Nameless Ones' Reality is
+to finally unlock their Reality. The reward for completing ${Enslaved.displayRealityName()} is
 ${Enslaved.isCompleted
     ? "unlocking Tesseracts, which have their own How To Play entry."
-    : "<span style='color: var(--color-bad);'>(complete The Nameless Ones' Reality to see reward details)</span>"}
+    : `<span style='color: var(--color-bad);'>(complete ${Enslaved.displayRealityName()} to see reward details)</span>`}
 <br>
 <br>
 The Nameless Ones will not directly unlock the next Celestial.
@@ -1447,8 +1557,9 @@ The Nameless Ones will not directly unlock the next Celestial.
       tab: "celestials/enslaved"
     }, {
       name: "Tesseracts",
+      symbol: '<i class="fas fa-up-right-and-down-left-from-center"/>',
       info: () => `
-Tesseracts are a new resource you unlock for completing The Nameless Ones' Reality.
+Tesseracts are a new resource you unlock for completing ${Enslaved.displayRealityName()}.
 <br>
 <br>
 Infinity Dimensions are normally capped at ${format(InfinityDimensions.HARDCAP_PURCHASES)} total purchases,
@@ -1470,12 +1581,13 @@ If affordable, the Infinity button itself will visually change and bring you to 
       tab: "celestials/tesseract"
     }, {
       name: "V, Celestial of Achievements",
+      symbol: "⌬",
       alias: "V",
       info: () => `
 V is a special Celestial in the sense that they are not unlocked by another Celestial,
 but is instead unlocked by completing Achievement ID 151 (row ${formatInt(15)}, column ${formatInt(1)},
 "You really didn't need it anyway"), which requires you to get ${formatInt(800)} Antimatter Galaxies
-without buying 8th Antimatter Dimensions in your current Infinity.
+without buying ${AntimatterDimension(8).fullName(...[,,,], 2)} in your current Infinity.
 <br>
 <br>
 After the subtab is unlocked from the Achievement, you are met with another set of requirements to fully unlock V.
@@ -1487,12 +1599,13 @@ ${format(GameDatabase.celestials.v.mainUnlock.dilatedTime.requirement)} Dilated 
 ${format(GameDatabase.celestials.v.mainUnlock.replicanti.requirement)} Replicanti, all in the same Reality.
 <br>
 <br>
-When you meet all of those requirements, you will be able to access V's Reality.
+When you meet all of those requirements, you will be able to access ${V.displayRealityName()}.
 ${VUnlocks.vAchievementUnlock.isUnlocked
     ? `However, completing the Reality itself is only the beginning. V has six different requirements, each of which
-      require you to make a certain amount of progress within V's Reality. Completing a requirement rewards you with a
-      V-Achievement.
-      V-Achievements are permanent and persist after exiting V's Reality, and do not all need to be done simultaneously.
+      require you to make a certain amount of progress within ${V.displayRealityName(false)}. 
+      Completing a requirement rewards you with a V-Achievement.
+      V-Achievements are permanent and persist after exiting ${V.displayRealityName(false)}, 
+      and do not all need to be done simultaneously.
       <br>
       <br>
       After completing the requirement, the V-Achievement threshold then increases and can be completed again
@@ -1518,7 +1631,7 @@ ${VUnlocks.vAchievementUnlock.isUnlocked
       <br>
       Reaching ${formatInt(36)} V-Achievements (and therefore completing all of V's Achievements) unlocks the next
       Celestial.`
-    : "<span style='color: var(--color-bad);'>(unlock V's Reality to see further details)</span>"}
+    : `<span style='color: var(--color-bad);'>(unlock ${V.displayRealityName(false)} to see further details)</span>`}
 `,
       isUnlocked: () => Achievement(151).isUnlocked,
       tags: ["reality", "lategame", "endgame", "girlfriend", "challenges", "achievement", "space", "theorems",
@@ -1526,6 +1639,7 @@ ${VUnlocks.vAchievementUnlock.isUnlocked
       tab: "celestials/v"
     }, {
       name: "Ra, Celestial of the Forgotten",
+      symbol: '<i class="fas fa-sun"/>',
       alias: "Ra",
       info: () => `
 Ra is the fifth Celestial, unlocked by fully completing all of V's Achievements. They use their memories in order to
@@ -1534,19 +1648,19 @@ Celestials <i>within</i> Ra, with each Celestial offering additional upgrades re
 <br>
 <br>
 Each previous Celestial within Ra gains levels by using memories, which are generated passively over time from
-Memory Chunks. Memory Chunks can only be gained by entering Ra's Reality, but inside of the Reality Chunks will
-be generated passively based on certain resource totals. If you are storing real time, you will not gain any
-Chunks inside of Ra's Reality, but Memories will still be generated normally. Having a total of
+Memory Chunks. Memory Chunks can only be gained by entering ${Ra.displayRealityName()}, but inside of the Reality 
+Chunks will be generated passively based on certain resource totals. If you are storing real time, you will not gain 
+any Chunks inside of ${Ra.displayRealityName(false)}, but Memories will still be generated normally. Having a total of
 ${formatInt(Ra.remembrance.requiredLevels)} levels across all Celestials unlocks Remembrance,
-which allows you to choose a particular Celestial to gain more chunks while inside of Ra's Reality.
+which allows you to choose a particular Celestial to gain more chunks while inside of ${Ra.displayRealityName(false)}.
 <br>
 <br>
 Memories can be spent on three things - an increase to Memory Chunk gain, an increase to Memory gain, and leveling up
-the Celestial. You start Ra with only Teresa unlocked and each successive Celestial is unlocked by reaching level
+the Celestial. You start Ra with only Orias unlocked and each successive Celestial is unlocked by reaching level
 ${formatInt(8)} with the previous Celestial. Levels are capped at ${formatInt(25)}.
 <br>
 <br>
-Teresa unlocks the ability to charge your Infinity Upgrades, making them much stronger. They also
+Orias unlocks the ability to charge your Infinity Upgrades, making them much stronger. They also
 improve your Glyph effects once you reach certain thresholds in Glyph sacrifice value.
 <br>
 <br>
@@ -1574,10 +1688,11 @@ ${Ra.unlocks.vUnlock.canBeApplied
 Ra will not directly unlock the next Celestial.`,
       isUnlocked: () => VUnlocks.raUnlock.isUnlocked,
       tags: ["reality", "memories", "razenpok", "levels", "glyphs", "lategame", "endgame",
-        "effarig", "teresa", "nameless", "v", "celestial"],
+        "effarig", "orias", "nameless", "v", "celestial"],
       tab: "celestials/ra"
     }, {
       name: "Glyph Alchemy Resources",
+      symbol: '<i class="fas fa-flask"/>',
       info: () => `
 Glyph Alchemy is a mechanic unlocked by reaching Effarig level ${formatInt(2)} in Ra. It unlocks the ability to
 use up your Glyphs by refining them into Alchemy Resources associated with their type. You can refine Glyphs by
@@ -1610,6 +1725,7 @@ with a higher refinement value.
       tab: "reality/alchemy"
     }, {
       name: "Glyph Alchemy Reactions",
+      symbol: '<i class="fas fa-vial"/>',
       info: () => `
 Alchemy Resources can be combined together in certain combinations in order to create new compound resources, which
 are unlocked at certain Effarig levels. Resources are combined once per Reality, unaffected by real time
@@ -1638,6 +1754,7 @@ that the reaction cannot proceed due to not having enough of that reagent to get
       tab: "reality/alchemy"
     }, {
       name: "Imaginary Machines",
+      symbol: '<i class="far fa-lightbulb"/>',
       info: () => `
 Once you are able to gain at least ${format(MachineHandler.baseRMCap)} Reality Machines in a single Reality, you
 unlock the ability to gain a new resource called Imaginary Machines. Reality Machines will also become hardcapped
@@ -1668,6 +1785,7 @@ Imaginary Machine upgrades will unlock the final two Celestials.
       tab: "reality/imag_upgrades"
     }, {
       name: "Lai'tela, Celestial of Dimensions",
+      symbol: "ᛝ",
       alias: "Lai'tela",
       info: () => `
 Lai'tela is the sixth Celestial, unlocked by purchasing the appropriate Imaginary Upgrade for
@@ -1717,6 +1835,7 @@ Lai'tela will not directly unlock the next Celestial.
       tab: "celestials/laitela"
     }, {
       name: "Continuum",
+      symbol: '<i class="fas fa-compress-arrows-alt"/>',
       info: () => `
 When you unlock Lai'tela, your Antimatter Dimensions and Tickspeed Upgrades switch to a new mode of production
 called Continuum, which gives the same effect as previously but allows for buying partial Dimension or
@@ -1744,6 +1863,7 @@ so all the related autobuyer settings for these autobuyers are now hidden on tha
       tab: ""
     }, {
       name: "Singularities",
+      symbol: '<i class="fa-regular fa-circle"/>',
       info: () => `
 Singularities are a new resource which you can obtain using features within Lai'tela.
 <br>
@@ -1779,6 +1899,7 @@ Independently of the milestone type, milestones also have an icon indicating wha
       tab: ""
     }, {
       name: "Pelle, Celestial of Antimatter",
+      symbol: "♅",
       alias: "Pelle",
       info: () => `
 When you purchase the last Imaginary Upgrade and unlock Pelle, you unlock their tab, where you can find a button to
@@ -1823,6 +1944,7 @@ ${Pelle.isDoomed
       tab: "celestials/pelle"
     }, {
       name: "Pelle Strikes",
+      symbol: '<i class="fa-solid fa-bolt-lightning"/>',
       info: () => `
 Pelle Strikes are encountered on different events in the Doomed Reality. You have encountered the first Pelle Strike by
 reaching Infinity for the first time within a Doomed Reality. More Strikes eventually occur by further progression.
@@ -1844,6 +1966,7 @@ In addition, each Rift offers three milestone rewards for filling them up to a c
       tab: "celestials/pelle"
     }, {
       name: "The Galaxy Generator",
+      symbol: '<i class="fas fa-flag-checkered"/>',
       info: () => `
 When you reach ${formatInt(100)}% Recursion/Dispersion/Destruction, you unlock the <b>Galaxy Generator</b>, which can
 passively generate Galaxies. Generated Galaxies are like Replicanti Galaxies and Tachyonic Galaxies in that they affect
@@ -1857,7 +1980,7 @@ The <b>Galaxy Generator</b> has a maximum number of Galaxies it can generate, wh
 Rifts once the current cap has been reached.
 <br>
 <br>
-Est-ce la fin?
+You're on your own now.
 `,
       isUnlocked: () => Pelle.hasGalaxyGenerator,
       tags: ["reality", "antimatter", "lategame", "endgame", "final", "pelle", "galaxy",
@@ -1865,12 +1988,10 @@ Est-ce la fin?
       tab: "celestials/pelle"
     },
     {
-      name: "VGhlIFNwb3Qu",
+      name: "It's so dark",
+      symbol: '',
       info: () => `
-      ${PlayerProgress.infinityUnlocked()? `VHJhcHBlZCBpbiBhIGJvdW5kbGVzcyBidXQgbGlnaHRsZXNzIHNwYWNlLg==<br><br>`: ""}
-      ${PlayerProgress.eternityUnlocked()? `RGl2aW5nIGluIHRoZSBoZWF0IGRlYXRoIG9mIHRoZSB1bml2ZXJzZS4=<br><br>`: ""}
-      ${PlayerProgress.realityUnlocked()? `VGhlIFJlYWxpdHkgeW91IGxpdmUgaW4gaXMgY3J1ZWwgdG8geW91Lg==<br><br>`: ""}
-      ${Teresa.isUnlocked? `RmVhciBjYW5ub3QgZXhpc3QgaWYgdGhlcmUgaXMgbm8gdW5rbm93bi4=<br><br>Tm8gbWF0dGVyIGhvdyBkYXJrLCBkZWVwIHRoaXMgcGxhY2UgaXMsIHdhdGNoIHRoZSBzcG90Lg==`: "<span style='color: var(--color-bad);'><b>V2F0Y2ggdGhlIHNwb3Qu</b></span>"}
+You need to find a better source of light. It's still way too dark in here, even with the tool you have.
 `,
       isUnlocked: () => ui.view.theme === "S13",
       tags: ["spot"],

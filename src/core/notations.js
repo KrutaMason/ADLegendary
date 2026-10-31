@@ -43,7 +43,7 @@ export const Notation = (function() {
 Notation.emoji.setAsCurrent = (silent = false) => {
   player.options.notation = Notation.emoji.name;
   ui.notationName = Notation.emoji.name;
-  if (!silent) GameUI.notify.success(["😂😂😂","😂😂😂"]);
+  if (!silent) GameUI.notify.success(["😂😂😂","😂😂😂","😂"]);
 };
 
 export const Notations = {

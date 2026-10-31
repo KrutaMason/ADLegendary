@@ -16,6 +16,21 @@ export default {
     };
   },
   computed: {
+    fullScreen: {
+      get() {
+        return this.$viewModel.tabs.reality.automator.fullScreen;
+      },
+      set(value) {
+        this.$viewModel.tabs.reality.automator.fullScreen = value;
+        AutomatorData.isEditorFullscreen = value;
+      }
+    },
+    fullScreenIconClass() {
+      return this.fullScreen ? "fas fa-compress-arrows-alt" : "fas fa-expand-arrows-alt";
+    },
+    fullScreenTooltip() {
+      return this.fullScreen ? "Exit full screen" : "Expand to full screen";
+    },
     layoutText() {
       return PerkLayouts[this.treeLayout].buttonText;
     },
@@ -28,6 +43,9 @@ export default {
     this.treeLayout = player.options.perkLayout;
     this.physicsOverride = PerkLayouts[this.treeLayout].forcePhysics;
     this.gridsEnabled = player.options.perkGridsEnabled
+  },
+  destroyed() {
+    this.fullScreen = false;
   },
   methods: {
     update() {
@@ -81,10 +99,11 @@ export default {
   <div class="c-perk-tab__header">
     You have <span class="c-perk-tab__perk-points">{{ formatInt(pp) }}</span> {{ pluralize("Perk Point", pp) }}.
     <br>
+    <div v-if="!fullScreen">
     Perk choices are permanent and cannot be respecced.
     <br>
     Diamond-shaped perks also give Automator Points.
-    <br>
+    <br></div>
     <div class="perk-settings">
       <PrimaryButton
         class="o-primary-btn c-button-perk-layout"
@@ -117,6 +136,12 @@ export default {
       >
         Toggle Grids
       </PrimaryButton>
+      <PrimaryButton
+        v-tooltip="fullScreenTooltip"
+        :class="fullScreenIconClass"
+        class="o-primary-btn"
+        @click="fullScreen = !fullScreen"
+      />
     </div>
   </div>
 </template>

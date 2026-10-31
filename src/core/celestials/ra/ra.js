@@ -240,11 +240,15 @@ const pets = mapGameDataToObject(
 
 export const Ra = {
   displayName: "Ra",
-  displayTitle: "Ra, The Abandoned",
-  fullName: "Ra, Celestial of the Forgotten",
-  celestialOf: "the Forgotten",
+  displayTitle: "Ra",
+  epithet: "the Forgotten",
   possessiveName: "Ra's",
-  RealityName: "Cosmic Library",
+  realityName: "Axis Mundi",
+  displayRealityName(needsName = true, the = "the") {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? this.realityName : "Reality"
+    return `${celName} ${realName}`
+  },
   unlocks,
   pets,
   remembrance: {

@@ -57,7 +57,7 @@ function giveEternityRewards(auto) {
 
 export function eternityAnimation() {
   FullScreenAnimationHandler.display("a-eternify", 3);
-  if (player.options.audio.eternity) AudioManagement.playSound("reset_wait");
+  AudioManagement.playSound("reset_wait", player.options.audio.eternity);
 
 }
 
@@ -109,7 +109,7 @@ export function eternity(force, auto, specialConditions = {}) {
 
   player.challenge.eternity.current = 0;
   if (!specialConditions.enteringEC && !Pelle.isDoomed) {
-    if (player.options.audio.eternity && player.dilation.active) AudioManagement.playSound(`reset_dilate-${auto?"exitauto":"exit"}`)
+    if (player.dilation.active) AudioManagement.playSound(`reset_dilate-${auto ? "exitauto" : "exit"}`, player.options.audio.eternity)
     player.dilation.active = false;
   }
   resetInfinityRuns();
@@ -144,7 +144,7 @@ export function eternity(force, auto, specialConditions = {}) {
   ECTimeStudyState.invalidateCachedRequirements();
 
   PelleStrikes.eternity.trigger();
-  if (player.options.audio.eternity) AudioManagement.playSound("reset_eternity")
+  AudioManagement.playSound("reset_eternity", player.options.audio.eternity)
   EventHub.dispatch(GAME_EVENT.ETERNITY_RESET_AFTER);
   return true;
 }
@@ -314,7 +314,7 @@ class EPMultiplierState extends GameMechanicState {
     if (!this.isAffordable) return false;
     Currency.eternityPoints.subtract(this.cost);
     ++this.boughtAmount;
-    if (playSound) AudioManagement.playSound("upgrade_rebuyable")
+    if (playSound) AudioManagement.playSound("purchase_rebuyable")
     return true;
   }
 
@@ -332,7 +332,7 @@ class EPMultiplierState extends GameMechanicState {
     if (!bulk) return false;
     Currency.eternityPoints.subtract(bulk.purchasePrice);
     this.boughtAmount += bulk.quantity;
-    if (playSound) AudioManagement.playSound("upgrade_rebuyable")
+    if (playSound) AudioManagement.playSound("purchase_rebuyable")
     return true;
   }
 

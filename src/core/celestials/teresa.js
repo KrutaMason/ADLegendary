@@ -7,12 +7,16 @@ export const Teresa = {
   timePoured: 0,
   lastUnlock: "effarig",
   pouredAmountCap: 1e24,
-  displayName: "Teresa",
-  displayTitle: "Teresa, The Gatekeeper",
-  fullName: "Teresa, Celestial of Reality",
-  celestialOf: "Reality",
-  possessiveName: "Teresa's",
-  RealityName: "Michanipolis",
+  displayName: "Orias",
+  displayTitle: "Gatekeeper Orias",
+  epithet: "Reality",
+  possessiveName: "Orias'",
+  realityName: "Obstructed Source",
+  displayRealityName(needsName = true, the = "the") {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? this.realityName : "Reality"
+    return `${celName} ${realName}`
+  },
   get isUnlocked() {
     return Achievement(147).isUnlocked;
   },
@@ -104,17 +108,17 @@ class PerkShopUpgradeState extends RebuyableMechanicState {
       if (GameCache.glyphInventorySpace.value === 0) {
         // Refund the perk point if they didn't actually get a glyph
         Currency.perkPoints.add(1);
-        GameUI.notify.error(["Teresa's Perk Shop","You have no empty inventory space!"],undefined,"click_wrong");
+        GameUI.notify.error(["Orias' Perk Shop","You have no empty inventory space!",`<div class="o-notification--icon">♫</div>`],undefined,"click_wrong");
       } else {
         Glyphs.addToInventory(GlyphGenerator.musicGlyph());
-        GameUI.notify.celestial(["Teresa's Perk Shop","Created a Music Glyph"]);
+        GameUI.notify.celestial(["Orias' Perk Shop","Created a Music Glyph",`<div class="o-notification--icon">♫</div>`]);
       }
     }
     // Fill the inventory with music glyphs
     if (this.id === 5 && !Pelle.isDoomed) {
       const toCreate = GameCache.glyphInventorySpace.value;
       for (let count = 0; count < toCreate; count++) Glyphs.addToInventory(GlyphGenerator.musicGlyph());
-      GameUI.notify.celestial(["Teresa's Perk Shop",`Created ${quantifyInt("Music Glyph", toCreate)}`]);
+      GameUI.notify.celestial(["Orias' Perk Shop",`Created ${quantifyInt("Music Glyph", toCreate)}`,`<div class="o-notification--icon">♫</div>`]);
     }
   }
 }

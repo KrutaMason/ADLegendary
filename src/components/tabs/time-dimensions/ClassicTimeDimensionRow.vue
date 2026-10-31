@@ -45,9 +45,7 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return player.options.naming.dimensions?
-      `Time ${TimeDimension(this.tier).uniqueName}`:
-      `${TimeDimension(this.tier).shortDisplayName} Time Dimension`;
+      return TimeDimension(this.tier).fullName(...[,,], false);
     },
     buttonContents() {
       if (this.showTTCost) return this.formattedTTCost;
@@ -83,6 +81,9 @@ export default {
     isAutobuyerOn(newValue) {
       Autobuyer.timeDimension(this.tier).isActive = newValue;
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
   },
   methods: {
     update() {
@@ -135,8 +136,10 @@ export default {
     <GenericDimensionRowText
       :tier="tier"
       :name="name"
-      :multiplier-text="!isDestabilized?formatX(multiplier, 2, 1) : 'Destabilized'"
-      :amount-text="tier===8?formatInt(amount):format(amount, 2)"
+      :multiplier-text="!isDestabilized ? formatX(multiplier, 2, 1) : 'Destabilized'"
+      :amount-text="tier===8 ? formatInt(amount) : format(amount, 2)"
+      :amount-font="!isInaccessible(amount)"
+      :amount-value="amount"
       :rate="rateOfChange"
     />
     <div class="l-dim-row-multi-button-container">

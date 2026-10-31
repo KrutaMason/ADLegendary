@@ -41,7 +41,7 @@ export default {
     styleObject() {
       return {
         color: this.isDMCapped ? "var(--color-bad)" : "",
-        "font-family" : isInaccessible(this.darkMatter) ? "Typewriter" : "Cambria",
+        "font-family" : isInaccessible(this.darkMatter) ? "Typewriter" : "var(--var-secondary-font)",
         "font-weight" : isInaccessible(this.darkMatter) ? "normal" : "bold",
         "font-size" : "2rem"
       };

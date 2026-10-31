@@ -14,11 +14,20 @@ export const EFFARIG_STAGES = {
 
 export const Effarig = {
   displayName: "Effarig",
-  displayTitle: "Glyphkeeper Effarig",
-  fullName: "Effarig, Celestial of Ancient Relics",
-  celestialOf: "Ancient Relics",
+  displayTitle: "Grand Racketeer Effarig",
+  epithet: "Ancient Relics",
   possessiveName: "Effarig's",
-  RealityName: "Omnidolor",
+  realityName: "Catalogue of Babel",
+  get dynamicRealityName() { 
+    if (this.currentStage==EFFARIG_STAGES.COMPLETED) return "Catalogue of Babel";
+    let adjective = ["Boundless","Eternal","True"]
+    return `${adjective[this.currentStage-1]} Catalogue of Babel`
+  },
+  displayRealityName(needsName = true, the = "the", altName = this.realityName) {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? altName : "Reality"
+    return `${celName} ${realName}`
+  },
   initializeRun() {
     clearCelestialRuns();
     player.celestials.effarig.run = true;

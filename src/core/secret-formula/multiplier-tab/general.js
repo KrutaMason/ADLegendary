@@ -82,7 +82,7 @@ export const general = {
     },
   },
   infinityChallenge: {
-    name: ic => `Infinity Challenge ${ic}`,
+    name: ic => `${InfinityChallenge(ic).displayName()}`,
     displayOverride: ic => (ic === 4 ? formatPow(InfinityChallenge(4).reward.effectValue, 0, 3) : ""),
     multValue: (ic, dim) => {
       // We cheat here by actually giving IC4 a multiplier of a value equal to its effect on the final
@@ -116,7 +116,7 @@ export const general = {
     },
   },
   eternityChallenge: {
-    name: ec => `Eternity Challenge ${ec}`,
+    name: ec => `${EternityChallenge(ec).displayName()}`,
     multValue: (ec, dim) => {
       if (dim?.length === 2) {
         let totalEffect = DC.D1;

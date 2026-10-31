@@ -9,6 +9,10 @@ export class BigCrunchAutobuyerState extends UpgradeableAutobuyerState {
     return `Infinity`;
   }
 
+  get key() {
+    return "C";
+  }
+
   get isUnlocked() {
     return Pelle.isDoomed
       ? PelleStrikes.infinity.hasStrike

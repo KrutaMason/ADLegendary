@@ -120,19 +120,29 @@ export default {
 }
 
 .o-pelle-button {
-  font-family: Typewriter;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 1.6rem;
   color: var(--color-text);
-  background: var(--color-text-inverted);
-  border: 0.1rem solid var(--color-pelle--base);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
+  background: var(--lighting),linear-gradient(var(--color-background),var(--color-pelle--base) 200%);
+  --lighting: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
+  border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset);
   border-radius: var(--var-border-radius, 0.5rem);
-  margin-bottom: 1rem;
   padding: 1rem;
   transition-duration: 0.12s;
   cursor: pointer;
 }
 
 .o-pelle-button:hover {
-  box-shadow: 0.1rem 0.1rem 0.3rem var(--color-pelle--base);
+  background: var(--lighting),linear-gradient(var(--color-background) -25%,var(--color-pelle--base) 150%);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 
+  0 0 0 0.2rem var(--color-pelle--base) inset, 0.1rem 0.1rem 0.3rem var(--color-pelle--base));
+}
+
+.s-base--dark .o-pelle-button{
+  --lighting:linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent)
 }
 
 .o-pelle-quotes-button {
@@ -157,7 +167,7 @@ export default {
   border-radius: var(--var-border-radius, 0.5rem);
 }
 .s-base--dark .pelle-unlock-requirements {
-  background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(#00000060,#ed143d60), var(--leg-base);
+  background: url(../../../../public/images/patterns/cel_7.png), linear-gradient(#00000060,#ed143d60), var(--leg-base);
   background-position: center;
 }
 .pelle-doom-button {
@@ -254,7 +264,7 @@ export default {
   border-radius: 2rem;
   padding: .5rem;
   width: 30rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
 font-weight: bold;
 }
 .pelle-doom-button:hover .pelle-title,

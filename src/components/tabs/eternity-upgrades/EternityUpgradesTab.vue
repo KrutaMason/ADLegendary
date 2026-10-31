@@ -61,7 +61,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  padding-top: calc(1rem + var(--padding))
 }
 .l-eternity-upgrades-actual-grid {
   display: flex;

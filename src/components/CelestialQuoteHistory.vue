@@ -9,7 +9,8 @@ export default {
   },
   data() {
     return {
-      isShown: false
+      isShown: false,
+      name: ""
     };
   },
   computed: {
@@ -19,19 +20,17 @@ export default {
     possessiveForm() {
       return Celestials[this.celestial].possessiveName;
     },
-    name() {
-      return Celestials[this.celestial].displayTitle;
-    },
     symbol() {
       return Celestials[this.celestial].symbol;
     },
-    celestialOf() {
-      return Celestials[this.celestial].celestialOf;
+    epithet() {
+      return Celestials[this.celestial].epithet;
     }
   },
   methods: {
     update() {
       this.isShown = Celestials[this.celestial].quotes.all.some(x => x.isUnlocked);
+      this.name = Celestials[this.celestial].displayTitle;
     },
     showQuotes() {
       Quote.showHistory(Celestials[this.celestial].quotes.all);
@@ -61,7 +60,7 @@ export default {
       {{ name }}
       <span class="c-celestial-title--header-symbol" v-html="symbol"/>
       <div class="c-celestial-title--header-small">
-        Celestial of {{ celestialOf }}
+        Celestial of {{ epithet }}
       </div>
     </div>
   <button
@@ -96,21 +95,21 @@ export default {
 
 <style scope>
 .c-celestial-title--header{
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight:bold;
   font-size: 2rem;
   line-height: 1;
   background: linear-gradient(90deg,transparent,color-mix(in srgb,var(--scoped-cel-color) 40%,transparent),transparent);
-  border-top:0.1rem solid;
-  border-bottom:0.1rem solid;
+  border-top: 0.1rem solid;
+  border-bottom: 0.1rem solid;
   border-image: linear-gradient(90deg,transparent,var(--scoped-cel-color),transparent) 1;
-  padding:0.2rem 15rem;
+  width: 50rem;
   margin-bottom: 0.5rem;
   margin-top: -0.3rem;
   color:var(--color-text)
 }
 .c-celestial-title--header-small{
-  font-size:1.5rem
+  font-size: 1.5rem;
 }
 .c-celestial-title--header-symbol{
   font-family: Typewriter;
@@ -119,7 +118,7 @@ export default {
 }
 .c-celestial-quote-history--button {
   align-self: center;
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   font-size: 1.5rem;
   width: 15rem;

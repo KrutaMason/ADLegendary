@@ -217,7 +217,7 @@ export const celestialNavigation = {
         rMinor: 70,
       },
       legend: {
-        text: "Teresa",
+        text: "Orias",
         angle: 135,
         diagonal: 32,
         horizontal: 16,
@@ -277,7 +277,7 @@ export const celestialNavigation = {
       },
       alwaysShowLegend: true,
       legend: {
-        text: ()=> {return !player.options.naming.celestial?"Teresa's Reality":"The "+Teresa.RealityName},
+        text: ()=> { return Teresa.displayRealityName(false, "The") },
         angle: -135,
         diagonal: 96,
         horizontal: 16,
@@ -300,11 +300,11 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return "Teresa's Perk Shop";
+          if (complete >= 1) return "Orias' Perk Shop";
           const rm = Teresa.pouredAmount;
           const cost = TeresaUnlocks.shop.price;
           return [
-            "Teresa's Perk Shop",
+            "Orias' Perk Shop",
             `Pour ${format(rm, 2)} / ${format(cost, 2)} Reality Machines`
           ];
         },
@@ -372,11 +372,11 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          if (complete >= 1) return !player.options.naming.celestial?"Unlock Effarig's Reality":"Unlock Effarig's "+Effarig.RealityName;
+          if (complete >= 1) return `Unlock ${Effarig.displayRealityName()}`;
           const rs = Currency.relicShards.value;
           const cost = EffarigUnlock.run.cost;
           return [
-            !player.options.naming.celestial?"Unlock Effarig's Reality":"Unlock Effarig's "+Effarig.RealityName,
+            `Unlock ${Effarig.displayRealityName()}`,
             `Reach ${format(rs, 2)} / ${format(cost, 2)} Relic Shards`
           ];
         },
@@ -412,12 +412,12 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           if (complete >= 1) return "Effarig's Infinity";
-          if (complete === 0) return "Unlock Effarig's Reality";
+          if (complete === 0) return `Unlock ${Effarig.displayRealityName()}`;
           const am = Effarig.isRunning ? Currency.antimatter.value : 0;
           return [
             "Effarig's Infinity",
             `Reach ${format(am, 2)} / ${format(Number.MAX_VALUE, 2)}`,
-            `Antimatter inside Effarig's ${!player.options.naming.celestial?"Effarig's Reality":"the "+Effarig.RealityName}.`
+            `Antimatter inside ${Effarig.displayRealityName()}.`
           ];
         },
         angle: 75,
@@ -458,7 +458,7 @@ export const celestialNavigation = {
           return [
             "Effarig's Eternity",
             `Reach ${format(ip, 2)} / ${format(Number.MAX_VALUE, 2)}`,
-            `Infinity Points inside ${!player.options.naming.celestial?"Effarig's Reality":"the "+Effarig.RealityName}.`
+            `Infinity Points inside ${Effarig.displayRealityName()}.`
           ];
         },
         angle: -45,
@@ -504,13 +504,14 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          if (complete >= 1) return !player.options.naming.celestial?"Effarig's Reality":["Effarig's Reality","The "+Effarig.RealityName];
+          if (complete >= 1) return !player.options.naming.celestial ? "Effarig's Reality" : 
+            ["Effarig's Reality", Effarig.displayRealityName(false, "The")];
           const ep = Effarig.isRunning ? Currency.eternityPoints.value : 0;
           const goal = DC.E4000;
           return [
             "Effarig's Reality",
             `Reach ${format(ep, 2)} / ${format(goal, 2)}`,
-            `Eternity Points inside ${!player.options.naming.celestial?"Effarig's Reality":"the "+Effarig.RealityName}.`
+            `Eternity Points inside ${Effarig.displayRealityName()}.`
           ];
         },
         angle: -120,
@@ -671,13 +672,13 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          if (complete >= 1) return !player.options.naming.celestial?"The Nameless Ones' Reality":"The "+Enslaved.RealityName;
+          if (complete >= 1) return Enslaved.displayRealityName(false, "The");
           const ep = Enslaved.isRunning ? Currency.eternityPoints.value : 0;
           const goal = DC.E4000;
           return [
-            !player.options.naming.celestial?"The Nameless Ones' Reality":"The "+Enslaved.RealityName,
+            Enslaved.displayRealityName(false, "The"),
             `Reach ${format(ep, 2)} / ${format(goal, 2)}`,
-            `Eternity Points inside ${!player.options.naming.celestial?"The Nameless Ones' Reality":"the "+Enslaved.RealityName}.`
+            `Eternity Points inside ${Enslaved.displayRealityName()}.`
           ];
         },
         angle: 45,
@@ -716,12 +717,12 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           const goal = 800;
-          if (complete >= 1) return !player.options.naming.celestial?"V's Reality": "The "+V.RealityName;
+          if (complete >= 1) return V.displayRealityName(false, "The");
           const galaxies = player.requirementChecks.infinity.noAD8 ? player.galaxies : 0;
           return [
             "V's unlock Achievement",
             `Reach ${formatInt(galaxies)} / ${formatInt(goal)} Antimatter Galaxies without buying`,
-            "8th Antimatter Dimensions in your current Infinity"
+            "${AntimatterDimension(8).fullName(...[,,,], 2)} in your current Infinity"
           ];
         },
         angle: 135,
@@ -1145,7 +1146,7 @@ export const celestialNavigation = {
       },
       alwaysShowLegend: true,
       legend: {
-        text: ()=> !player.options.naming.celestial?"Ra's Reality":"The "+Ra.RealityName,
+        text: ()=> Ra.displayRealityName(false, "The"),
         angle: 230,
         diagonal: 85,
         horizontal: 16,
@@ -1168,9 +1169,9 @@ export const celestialNavigation = {
       legend: {
         text: () => {
           const level = Ra.pets.teresa.level;
-          if (level === 25) return `Ra's Teresa Memories have all been returned`;
+          if (level === 25) return `Ra's Orias Memories have all been returned`;
           return [
-            "Ra's Teresa Memory level",
+            "Ra's Orias Memory level",
             `${formatInt(level)} / ${formatInt(25)}`
           ];
         },
@@ -1218,7 +1219,7 @@ export const celestialNavigation = {
         text: complete => {
           const unlocked = Ra.pets.teresa.level;
           const level = Ra.pets.effarig.level;
-          if (complete < 1) return `Ra's Teresa Memory level ${unlocked} / ${formatInt(8)}`;
+          if (complete < 1) return `Ra's Orias Memory level ${unlocked} / ${formatInt(8)}`;
           if (level === 25) return `Ra's Effarig Memories have all been returned`;
           return [
             "Ra's Effarig Memory level",
@@ -1454,7 +1455,7 @@ export const celestialNavigation = {
       alwaysShowLegend: true,
       legend: {
         text: complete => {
-          const realityName = !player.options.naming.celestial?"Lai'tela's Reality" :"The "+Laitela.RealityName;
+          const realityName = Laitela.displayRealityName(false, "The");
           if (complete >= 1) return [realityName];
 
           if (!MachineHandler.isIMUnlocked) {
@@ -1515,7 +1516,7 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "2nd Dark Matter Dimension";
+          const dmdText = DarkMatterDimension(2).fullName();
           const dim = DarkMatterDimension(2);
           if (dim.isUnlocked) return [dmdText];
 
@@ -1535,11 +1536,11 @@ export const celestialNavigation = {
 
           if (player.celestials.laitela.fastestCompletion > 30 && Laitela.difficultyTier < 0) return [
             dmdText,
-            `Beat Lai'tela's Reality in less that ${format(30)} seconds`
+            `Beat ${Laitela.displayRealityName(false)} in less than ${format(30)} seconds`
           ];
           return [
             dmdText,
-            `Beat Lai'tela's Reality`
+            `Beat ${Laitela.displayRealityName(false)}`
           ];
         },
         angle: 135,
@@ -1613,7 +1614,7 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "3rd Dark Matter Dimension";
+          const dmdText = DarkMatterDimension(3).fullName();
           const dim = DarkMatterDimension(3);
           if (dim.isUnlocked) return [dmdText];
 
@@ -1685,7 +1686,7 @@ export const celestialNavigation = {
       },
       legend: {
         text: complete => {
-          const dmdText = "4th Dark Matter Dimension";
+          const dmdText = DarkMatterDimension(4).fullName();
           const dim = DarkMatterDimension(4);
           if (dim.isUnlocked) return [dmdText];
 
@@ -1777,14 +1778,14 @@ export const celestialNavigation = {
       legend: {
         text: complete => {
           if (complete < 1) return [
-            `Destabilize ${!player.options.naming.celestial?"Lai'tela's Reality" :"the "+Laitela.RealityName}`,
+            `Destabilize $${Laitela.displayRealityName(false)}`,
             "To the point where you cannot",
             "use any Dimensions",
             `${format(Laitela.difficultyTier)} / ${format(8)} Dimensions disabled`
           ];
           return [
             "Completely destabilized",
-            !player.options.naming.celestial?"Lai'tela's Reality" :"the "+Laitela.RealityName,
+            Laitela.displayRealityName(false),
           ];
         },
         angle: 180,
@@ -1838,9 +1839,9 @@ export const celestialNavigation = {
           }
           let laitelaString = `${format(Currency.eternityPoints.value)} / ${format("1e4000")} EP`;
           if (!Laitela.isRunning || Laitela.difficultyTier !== 8 || Glyphs.activeWithoutCompanion.length > 1) {
-            laitelaString = "Lai'tela's Reality is still intact";
+            laitelaString = `${Laitela.displayRealityName(false, "The")} is still intact`;
           } else if (ImaginaryUpgrade(25).isAvailableForPurchase) {
-            laitelaString = "Lai'tela's Reality has been destroyed";
+            laitelaString = `${Laitela.displayRealityName(false, "The")} has been destroyed`;
           }
           return [
             "Unlock Pelle",

@@ -352,6 +352,10 @@ class AntimatterDimensionState extends DimensionState {
     const C6_BASE_COST_MULTIPLIERS = [null, 1e3, 5e3, 1e4, 1.2e4, 1.8e4, 2.6e4, 3.2e4, 4.2e4];
     this._c6BaseCostMultiplier = C6_BASE_COST_MULTIPLIERS[tier];
   }
+  
+  get typeName () { return "Antimatter"; }
+
+  get shortTypeName() { return "A"; }
 
   /**
    * @returns {ExponentialCostScaling}

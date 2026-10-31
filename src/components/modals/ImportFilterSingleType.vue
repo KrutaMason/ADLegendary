@@ -161,12 +161,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: var(--var-border-width, 0.2rem) solid;
+  border: 0.1rem solid;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem inset);
   padding: 0.1rem;
 }
 
 .o-cell--changed {
-  background-color: var(--color-accent);
+  border: 0.1rem solid var(--color-accent);
+  background: linear-gradient(transparent, var(--color-accent) 200%);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-accent) inset);
 }
 
 .c-rarity {

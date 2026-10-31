@@ -16,6 +16,21 @@ function padPercents(percents) {
   return percents.padStart(7, "\xa0");
 }
 
+const MULT_TAB_OPTIONS = [
+  "var(--color-accent)",
+  "var(--color-eternity)",
+  "var(--color-accent)",
+  "var(--color-infinity)",
+  "var(--color-infinity)",
+  "var(--color-infinity)",
+  "var(--color-replicanti)",
+  "var(--color-eternity)",
+  "var(--color-eternity)",
+  "var(--color-eternity)",
+  "var(--color-dilation)",
+  "var(--color-reality)"
+];
+
 export default {
   name: "MultiplierBreakdownEntry",
   components: {
@@ -51,6 +66,7 @@ export default {
       totalPositivePower: 1,
       replacePowers: player.options.multiplierTab.replacePowers,
       inNC12: false,
+      NC12name: "",
     };
   },
   computed: {
@@ -69,7 +85,7 @@ export default {
     containerClass() {
       return {
         "c-multiplier-entry-container": true,
-        "c-multiplier-entry-root-container": this.isRoot,
+        "c-multiplier-entry-root-container": this.isRoot
       };
     },
     isEmpty() {
@@ -124,6 +140,7 @@ export default {
       this.now = Date.now();
       this.replacePowers = player.options.multiplierTab.replacePowers && this.allowPowerToggle;
       this.inNC12 = NormalChallenge(12).isRunning;
+      this.NC12name = NormalChallenge(12).displayName();
     },
     changeGroup() {
       this.selected = (this.selected + 1) % this.groups.length;
@@ -195,20 +212,26 @@ export default {
         height: `${100 * barSize(percents)}%`,
         width: "100%",
         "transition-duration": this.isRecent(this.lastLayoutChange) ? undefined : "0.2s",
-        border: percents === 0 ? "" : "0.1rem solid #00000088",
+        border: percents === 0 ? "" : "0.1rem solid color-mix(in srgb, var(--color-text-inverted) 50%, transparent)",
         color: iconObj?.textColor ?? "black",
         background: isNerf
           ? `url(images/visuals/mult-breakdown-bar.png),repeating-linear-gradient(-45deg, #ff000040 0rem 0.4rem, ${iconObj?.color} 0.4rem 0.8rem)`
           : `url(images/visuals/mult-breakdown-bar.png),linear-gradient(${iconObj?.color},${iconObj?.color})`,
-        animation:this.mouseoverIndex !== index?"25s a-mult-bar linear infinite":undefined,
-        "text-shadow":`0.1rem 0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"}, -0.1rem -0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"}`,
-        "box-shadow": `var(--var-box-shadow, inset 0 0 0.5rem 0 black, inset 0 0 0 0.1rem ${iconObj?.color})`
+        animation: this.mouseoverIndex !== index ? "25s a-mult-bar linear infinite" : undefined,
+        "text-shadow":`var(--var-text-shadow, 0.1rem 0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"},
+         -0.1rem -0.1rem 0.2rem ${(iconObj?.textColor && iconObj.textColor!=="var(--color-laitela--accent)") ?? "white"})`,
+        "box-shadow": `var(--var-box-shadow, inset 0 0 0.5rem 0 var(--color-background), inset 0 0 0 0.1rem ${iconObj?.color})`
       };
     },
     singleEntryClass(index) {
       return {
         "c-single-entry": true,
         "c-single-entry-highlight": this.mouseoverIndex === index,
+      };
+    },
+    singleEntryStyle(index) {
+      return {
+        "--color2": this.entries[index].icon?.color,
       };
     },
     shouldShowEntry(entry) {
@@ -421,6 +444,7 @@ export default {
         <div
           v-if="shouldShowEntry(entry)"
           :class="singleEntryClass(index)"
+          :style="singleEntryStyle(index)"
         >
           <div @click="showGroup[index] = !showGroup[index]">
             <span
@@ -428,6 +452,9 @@ export default {
               :style="expandIconStyle(index)"
             />
             {{ entryString(index) }}
+            <span 
+              v-html="barSymbol(index)"
+            />
           </div>
           <MultiplierBreakdownEntry
             v-if="showGroup[index] && hasChildEntries(index)"
@@ -454,7 +481,7 @@ export default {
           and numbers become larger.
         </div>
         <div v-if="inNC12">
-          The breakdown in this tab within Normal Challenge 12 may be inaccurate for some entries, and might count
+          The breakdown in this tab within {{ NC12name }} may be inaccurate for some entries, and might count
           extra multipliers which apply to all Antimatter Dimensions rather than just the ones which are displayed.
         </div>
       </div>
@@ -469,13 +496,12 @@ export default {
   justify-content: space-between;
   width: 100%;
   max-width: 100rem;
-  border: var(--var-border-width, 0.2rem) solid;
-  border-image: var(--leg-border-render) 3;
+  border: 0.1rem solid var(--color);
   padding: 0.5rem;
   font-weight: normal;
-  background: linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
+  background: linear-gradient(var(--color) -25%, transparent 10%, var(--color) 500%),var(--leg-base-render);
   background-position: center;
-  box-shadow: var(--var-box-shadow, 0rem -1rem 2rem #00000080 inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color) inset);
   
   -webkit-tap-highlight-color: transparent;
 }
@@ -487,7 +513,7 @@ export default {
 .c-stacked-bars {
   border: var(--var-border-width, 0.3rem) solid;
   border-image: var(--leg-border-render) 3;
-  box-shadow: var(--var-box-shadow, 0 0 1rem black inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset);
   position: relative;
   width: 5rem;
   background: url(../../../../public/images/visuals/mult-breakdown-bar-empty.png);
@@ -515,12 +541,16 @@ export default {
 }
 
 @keyframes a-glow-bar {
-  0% { box-shadow: inset 0 0 0.5rem 0; }
+  0% { 
+    box-shadow: inset 0 0 0.5rem 0;
+  }
   50% {
     box-shadow: inset 0 0 1rem 0;
     filter: brightness(130%);
   }
-  100% { box-shadow: inset 0 0 0.5rem 0; }
+  100% { 
+    box-shadow: inset 0 0 0.5rem 0;
+  }
 }
 
 .c-info-list {
@@ -534,6 +564,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 8rem;
+  height: 2.5rem
 }
 
 .c-change-display-btn {
@@ -564,20 +595,20 @@ export default {
   color: var(--color-text);
   padding: 0.2rem 0.5rem;
   margin: 0.2rem;
-  border: 0.1rem dashed;
+  border: 0.1rem dashed color-mix(in srgb, var(--color2) 75%, currentcolor);
   cursor: pointer;
   user-select: none;
 }
 
 .c-single-entry-highlight {
   border: 0.1rem solid;
-  font-style: bold;
-  background: linear-gradient(90deg, var(--color-accent) -25%, transparent 50%);
+  font-weight: bold;
+  background: linear-gradient(90deg, var(--color2) -25%, transparent 75%);
   animation: a-glow-text 2s infinite;
 }
 
 @keyframes a-glow-text {
-  50% { background-color: var(--color-accent); }
+  50% { background-color: var(--color); }
 }
 
 .c-dilation-entry {

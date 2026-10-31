@@ -37,9 +37,11 @@ export default {
       const toExport = AutomatorBackend.exportFullScriptData(id);
       if (toExport) {
         copyToClipboard(toExport);
-        GameUI.notify.automator(`Exported all data associated with "${this.script.name}" to your clipboard`, 6000);
+        GameUI.notify.automator([`Exported all data associated with "${this.script.name}" to your clipboard`,"",
+        `<div class="o-notification--icon"><i class="fas fa-file-export"></i></div>`], 6000);
       } else {
-        GameUI.notify.error("Could not export data from blank Automator script!");
+        GameUI.notify.error(["Could not export data from blank Automator script!","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-triangle-exclamation"></i></div>`]);
       }
     }
   }

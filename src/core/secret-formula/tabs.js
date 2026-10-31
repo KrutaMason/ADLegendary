@@ -43,6 +43,7 @@ export const tabs = [
     key: "options",
     name: "Options",
     hideAt: 1.6,
+    condition: () => !ui.newOptionsUI,
     id: 1,
     hidable: false,
     subtabs: [
@@ -432,7 +433,7 @@ export const tabs = [
       },
       {
         key: "teresa",
-        name: "Teresa",
+        name: "Orias",
         symbol: "Ϟ",
         component: "TeresaTab",
         id: 1,

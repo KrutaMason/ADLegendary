@@ -278,7 +278,7 @@ export const ID = {
   },
 
   nerfV: {
-    name: "V's Reality",
+    name: () => V.displayRealityName(),
     powValue: () => 0.5,
     isActive: () => V.isRunning,
     icon: MultiplierTabIcons.GENERIC_V,

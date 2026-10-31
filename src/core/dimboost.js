@@ -85,9 +85,9 @@ export class DimBoost {
 
   static get lockText() {
     if (DimBoost.purchasedBoosts >= this.maxBoosts) {
-      if (Ra.isRunning) return `Locked (Ra's ${player.options.naming.celestial?Ra.RealityName:"Reality"})`;
-      if (InfinityChallenge(1).isRunning) return `Locked (${player.options.naming.challenges?InfinityChallenge(1).name:"Infinity Challenge 1"})`;
-      if (NormalChallenge(8).isRunning) return `Locked (${player.options.naming.challenges?NormalChallenge(8).name:"8th Antimatter Dimension Autobuyer Challenge"})`;
+      if (Ra.isRunning) return `Locked (${Ra.displayRealityName()})`;
+      if (InfinityChallenge(1).isRunning) return `Locked (${InfinityChallenge(1).displayName()})`;
+      if (NormalChallenge(8).isRunning) return `Locked (${NormalChallenge(8).displayName(...[,,], `${NormalChallenge(8).config.name()} Challenge`)})`;
     }
     return null;
   }
@@ -130,13 +130,13 @@ export class DimBoost {
 
     let newUnlock = "";
     if (!allNDUnlocked && boosts < DimBoost.maxDimensionsUnlockable - 4) {
-      newUnlock = `unlock the ${boosts + 5}th Dimension`;
+      newUnlock = `unlock the ${AntimatterDimension(boosts + 5).fullName(...[,], false)}`;
     } else if (boosts === 4 && !NormalChallenge(10).isRunning && !EternityChallenge(3).isRunning) {
       newUnlock = "unlock Sacrifice";
     }
 
     const formattedMultText = `give a ${formatX(DimBoost.power, 2, 1)} multiplier `;
-    let dimensionRange = `to the 1st Dimension`;
+    let dimensionRange = `to the ${AntimatterDimension(1).fullName(...[,], false)}`;
     if (boosts > 0) dimensionRange = `to Dimensions 1-${Math.min(boosts + 1, 8)}`;
     if (boosts >= DimBoost.maxDimensionsUnlockable - 1) dimensionRange = `to all Dimensions`;
 
@@ -198,7 +198,9 @@ export function softReset(tempBulk, forcedADReset = false, forcedAMReset = false
     Currency.antimatter.reset();
   }
   EventHub.dispatch(GAME_EVENT.DIMBOOST_AFTER, bulk);
-  if (player.options.audio.softreset&&playaudio)AudioManagement.playSound("reset_boost",Math.log10(player.dimensionBoosts+1)/2+1)
+  if (playaudio) {
+    AudioManagement.playSound("reset_boost", player.options.audio.softreset / (Math.log10(player.dimensionBoosts + 1) / 2 + 1))
+  }
 }
 
 export function skipResetsIfPossible(enteringAntimatterChallenge) {

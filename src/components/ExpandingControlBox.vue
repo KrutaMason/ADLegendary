@@ -250,7 +250,7 @@ export default {
   align-items: center;
   border: none !important;
   cursor: pointer;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
     font-weight: bold;
     font-size: 1.5rem;
 }

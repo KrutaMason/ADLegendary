@@ -3,18 +3,18 @@ import { createEntryInfo } from "./breakdown-entry-info";
 import MultiplierBreakdownEntry from "./MultiplierBreakdownEntry";
 
 const MULT_TAB_OPTIONS = [
-  { id: 0, key: "AM", text: "Antimatter Production" },
-  { id: 1, key: "tickspeed", text: "Tickspeed" },
-  { id: 2, key: "AD", text: "Antimatter Dimensions" },
-  { id: 3, key: "IP", text: "Infinity Points" },
-  { id: 4, key: "ID", text: "Infinity Dimensions" },
-  { id: 5, key: "infinities", text: "Infinities" },
-  { id: 6, key: "replicanti", text: "Replicanti Speed" },
-  { id: 7, key: "EP", text: "Eternity Points" },
-  { id: 8, key: "TD", text: "Time Dimensions" },
-  { id: 9, key: "eternities", text: "Eternities" },
-  { id: 10, key: "DT", text: "Dilated Time" },
-  { id: 11, key: "gamespeed", text: "Game Speed" },
+  { id: 0, key: "AM", text: "Antimatter Production", style: "var(--color-antimatter)" },
+  { id: 1, key: "tickspeed", text: "Tickspeed", style: "var(--color-eternity)" },
+  { id: 2, key: "AD", text: "Antimatter Dimensions", style: "var(--color-antimatter)" },
+  { id: 3, key: "IP", text: "Infinity Points", style: "var(--color-infinity)" },
+  { id: 4, key: "ID", text: "Infinity Dimensions", style: "var(--color-infinity)" },
+  { id: 5, key: "infinities", text: "Infinities", style: "var(--color-infinity)" },
+  { id: 6, key: "replicanti", text: "Replicanti Speed", style: "var(--color-replicanti)" },
+  { id: 7, key: "EP", text: "Eternity Points", style: "var(--color-eternity)" },
+  { id: 8, key: "TD", text: "Time Dimensions", style: "var(--color-eternity)" },
+  { id: 9, key: "eternities", text: "Eternities", style: "var(--color-eternity)" },
+  { id: 10, key: "DT", text: "Dilated Time", style: "var(--color-dilation)" },
+  { id: 11, key: "gamespeed", text: "Game Speed", style: "var(--color-reality)" },
 ];
 
 export default {
@@ -29,6 +29,9 @@ export default {
     };
   },
   computed: {
+    allOptions() {
+      return MULT_TAB_OPTIONS;
+    },
     currentKey() {
       return MULT_TAB_OPTIONS.find(opt => opt.id === this.currentID).key;
     },
@@ -74,6 +77,7 @@ export default {
         v-for="(option, index) in availableOptions"
         :key="option.key + option.isActive"
         :class="subtabClassObject(option)"
+        :style="[{'--color' : option.style}]"
         @click="clickSubtab(index)"
       >
         {{ option.text }}
@@ -87,12 +91,14 @@ export default {
         <span
           class="c-symbol-overlay"
           v-html="symbol"
+          :style="[{'--color' : allOptions[currentID].style}]"
         />
       </span>
       <MultiplierBreakdownEntry
         :key="resource.key"
         :resource="resource"
         :is-root="true"
+        :style="[{'--color' : allOptions[currentID].style}]"
       />
       <div class="c-multiplier-tab-text-line">
         Note: Entries are only expandable if they contain multiple sources which can be different values.
@@ -120,7 +126,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 100rem;
-  height: calc(4rem - var(--var-border-radius, 0.2rem));
+  height: calc(4rem - 0.2rem);
 }
 
 .c-multiplier-subtab-btn {
@@ -128,30 +134,31 @@ export default {
   height: 4rem;
   margin: 0rem 0.5rem -0.1rem;
   text-align: center;
-  font-family: Typewriter;
-  font-size: 1rem;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 1.2rem;
   color: var(--color-text);
-  background: var(--leg-base-render);
-  border: var(--var-border-width, 0.2rem) solid;
-  border-image: var(--leg-border-render) 3;
+  background: linear-gradient(var(--color) -150%,transparent),var(--leg-base-render);
+  border: 0.1rem solid var(--color);
+  border-radius: var(--var-border-radius, .5rem) var(--var-border-radius, .5rem) 0 0;
   cursor: pointer;
-  box-shadow: var(--var-box-shadow, 0rem -.5rem 1.5rem #00000080 inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color) inset);
   text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted), -0.1rem -0.1rem 0.3rem var(--color-text-inverted));
   position: relative;
-  top: 0.5rem;
+  top: .5rem;
   transition-duration: 0.15s;
 }
 .c-multiplier-subtab-btn:hover {
-  top: 0rem;
-  box-shadow: var(--var-box-shadow, 0rem 1rem 2rem -1rem #00000080 inset);
-  background: linear-gradient(var(--color-accent) -50%,transparent),var(--leg-base-render);
+  top: -0.1rem;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0.2rem 0 0.2rem var(--color) inset);
+  background: linear-gradient(var(--color) -50%, transparent 125%),var(--leg-base-render);
 }
 .c-multiplier-subtab-btn--active {
-  top: 0rem;
+  top: -0.1rem;
   z-index: 1;
-  font-weight: bold;
-  box-shadow: var(--var-box-shadow, 0rem 1rem 2rem -1rem #00000080 inset);
-  background: linear-gradient(var(--color-accent) -100%,transparent),var(--leg-base-render);
+  box-shadow: var(--var-box-shadow, 0 0.2rem 1rem color-mix(in srgb, var(--color-background) 50%, transparent) inset, 
+  0 0.2rem 0 0.2rem var(--color) inset);
+  background: linear-gradient(var(--color), transparent 200%),var(--leg-base-render);
   border-bottom: none;
   padding-bottom: 0.2rem;
   cursor: default;
@@ -173,7 +180,7 @@ export default {
   align-items: center;
   font-size: 40rem;
   color: var(--color-text);
-  text-shadow: 0 0 .75rem var(--color-accent),0 0 .75rem var(--color-accent),0 0 3rem;
+  text-shadow: 0 0 .75rem var(--color),0 0 .75rem var(--color),0 0 3rem;
   pointer-events: none;
   user-select: none;
   opacity: 0.15;

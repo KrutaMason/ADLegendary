@@ -19,7 +19,7 @@ export const infinityChallenges = [
     id: 2,
     label: "Persistent Purge",
     description: () => `Dimensional Sacrifice happens automatically every ${formatInt(400)} milliseconds once you have
-      an ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}` : "8th Antimatter Dimension"}`,
+      an ${AntimatterDimension(8).fullName()}.`,
     goal: DC.E10500,
     isQuickResettable: false,
     reward: {
@@ -84,8 +84,7 @@ export const infinityChallenges = [
     label: "Subatomic Heresy",
     description: () =>
       `exponentially rising matter divides the multiplier on all of your Antimatter Dimensions
-      once you have at least ${formatInt(1)} ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(2).uniqueName}`
-       : "2nd Antimatter Dimension"}.`,
+      once you have at least ${formatInt(1)} ${AntimatterDimension(2).fullName()}.`,
     goal: DC.D2E22222,
     isQuickResettable: true,
     effect: () => Currency.matter.value.clampMin(1),
@@ -135,7 +134,7 @@ export const infinityChallenges = [
     reward: {
       description: () =>
         `You get a multiplier to AD 2-7 based on ${player.options.naming.dimensions ? 
-          `${AntimatterDimension(1).uniqueName} and ${AntimatterDimension(8).uniqueName}` : "1st and 8th AD"} multipliers.`,
+          `Antimatter ${AntimatterDimension(1).uniqueName} and ${AntimatterDimension(8).uniqueName}` : "1st and 8th AD"} multipliers.`,
       effect: () => AntimatterDimension(1).multiplier.times(AntimatterDimension(8).multiplier).pow(0.02),
       formatEffect: value => formatX(value, 2, 2)
     },

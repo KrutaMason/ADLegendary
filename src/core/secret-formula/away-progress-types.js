@@ -31,6 +31,7 @@ export const awayProgressTypes = [
     isUnlocked: () => PlayerProgress.eternityUnlocked(),
   }, {
     name: "tachyonParticles",
+    forcedName: "Tachyons",
     reference: ["dilation", "tachyonParticles"],
     isUnlocked: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
   }, {
@@ -43,6 +44,7 @@ export const awayProgressTypes = [
     isUnlocked: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
   }, {
     name: "tachyonGalaxies",
+    forcedName: "Tachyonic Galaxies",
     reference: ["dilation", "totalTachyonGalaxies"],
     isUnlocked: () => PlayerProgress.dilationUnlocked() || PlayerProgress.realityUnlocked(),
   }, {
@@ -86,7 +88,7 @@ export const awayProgressTypes = [
     // Functions as the visible option for all Memories, never appears due to having no reference.
     appearsInAwayModal: false,
   }, {
-    name: "teresaMemories",
+    name: "oriasMemories",
     awayOption: "celestialMemories",
     reference: ["celestials", "ra", "pets", "teresa", "memories"],
     isUnlocked: () => Ra.pets.teresa.isUnlocked && !Ra.pets.teresa.isCapped,

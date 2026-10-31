@@ -64,6 +64,7 @@ export default {
 </script>
 
 <template>
+<div class="l-automator-tab-tab">
   <div
     :class="tabClass"
     class="c-automator-tab l-automator-tab"
@@ -103,12 +104,18 @@ export default {
     </div>
     <AutomatorPointsList v-else />
   </div>
+</div>
 </template>
 
 <style scoped>
 .c-overlimit {
   font-weight: bold;
   color: var(--color-bad);
+}
+
+.l-automator-tab-tab {
+  display: flex;
+  justify-content: center;
 }
 
 .c-automator-tab {
@@ -122,21 +129,20 @@ export default {
   align-self: center;
   margin-top: 0.5rem;
 }
+
 .c-automator-monitor{
   padding:0rem 1rem 1rem 1rem;
-  border: var(--var-border-width, 0.3rem) solid;
-  border-image:url(../../../../public/images/frames/automation.png) 3;
+  border-image: url(../../../../public/images/frames/automation.png) 3;
   background:url(../../../../public/images/background/automator-light.png)
 }
 .s-base--dark .c-automator-monitor{
   background:url(../../../../public/images/background/automator.png)
 }
 .c-automator-monitor-info{
-  margin-bottom:1rem;
-  background:var(--leg-base);
-  color:var(--color-text);
-  border: var(--var-border-width, 0.3rem) solid;
-  border-image:url(../../../../public/images/frames/automation.png) 3;
+  margin-bottom: 1rem;
+  background:var(--leg-base-render);
+  color: var(--color-text);
+  border-image: url(../../../../public/images/frames/automation.png) 3;
   border-top:none;
   box-shadow: var(--var-box-shadow, 0 0 1rem #00000080 inset);
 }
@@ -145,7 +151,7 @@ export default {
   height: 60rem;
   background-color: #bbbbbb;
   border: 1.2rem solid;
-  border-image-source:url(../../../../public/images/frames/automation-light.png);
+  border-image-source: url(../../../../public/images/frames/automation-light.png);
   border-image-repeat: round;
   border-image-slice: 12;
 }

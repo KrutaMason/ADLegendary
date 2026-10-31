@@ -67,15 +67,12 @@ export default {
     line() {
       return this.quote.line(this.currentLine);
     },
-    noTalkies() {
-      return [" ",",",".","!",":",";","?"]
-    },
-    Ends() {
-      return [".","!","?"]
-    },
+    noTalkies: ()=> [" ",",",".","!",":",";","?"],
     talk() {
-      //if ((this.progress-2) % 2 > 0) return;
-      if (!this.noTalkies.includes(this.line.line.charAt(this.progress))&&this.soundsReady) AudioManagement.speakQuote(this.line._parent.celestial)
+      if ((this.progress -2 ) % 2 > 0) return;
+      if (!this.noTalkies.includes(this.line.line.charAt(this.progress)) && this.soundsReady) {
+        AudioManagement.speakQuote(this.line._parent.celestial)
+      };
     },
     putDelay(){
       if (this.delay > 0) return;
@@ -195,7 +192,7 @@ export default {
   left: 0;*/
   width: 100%;
   font-weight: bold;
-  font-family:cambria;
+  font-family:var(--var-secondary-font);
   line-height:1.2;
   font-size:1.8rem;
   border-bottom: 0.1rem solid;

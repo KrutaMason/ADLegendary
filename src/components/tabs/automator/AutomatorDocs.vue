@@ -22,7 +22,31 @@ export const AutomatorPanels = {
   CONSTANTS: 5,
   TEMPLATES: 6,
   BLOCKS: 7,
-  VISUALS: 8
+  VISUALS: 8,
+};
+
+export const AutomatorPanelNames = {
+  0: "AUTOMATOR INTRODUCTION",
+  1: "SCRIPTING INFORMATION",
+  2: "ERROR LOG",
+  3: "EVENT LOG",
+  4: "EXTENDED DATA TRANSFER",
+  5: "DEFINED CONSTANTS",
+  6: "TEMPLATE CREATOR",
+  7: "BLOCK COMMAND MENU",
+  8: "APPEARANCE CUSTOMIZATION",
+};
+
+export const AutomatorPanelIcons = {
+  0: "fa-circle-info",
+  1: "fa-list",
+  2: "fa-exclamation-triangle",
+  3: "fa-eye",
+  4: "fa-window-restore",
+  5: "fa-book",
+  6: "fa-file-code",
+  7: "fa-cubes",
+  8: "fa-palette",
 };
 
 export default {
@@ -39,7 +63,7 @@ export default {
     AutomatorDefinePage,
     AutomatorScriptDropdownEntryList,
     ExpandingControlBox,
-    AutomatorVisuals
+    AutomatorVisuals,
   },
   data() {
     return {
@@ -53,10 +77,17 @@ export default {
       totalChars: 0,
       scriptCount: 0,
       canMakeNewScript: true,
-      panelTheme: 0,
-      panelColor: 0,
-      panelGradient: 0,
-      scanimation:false
+      appearance: {
+        theme: 0,
+        color: 0,
+        customColor: "",
+        gradient: 0,
+      },
+      scanLine: {
+        animated: false,
+        size: 3,
+        opacity: 0,
+      }
     };
   },
   computed: {
@@ -112,6 +143,12 @@ export default {
     panelEnum() {
       return AutomatorPanels;
     },
+    panelEname() {
+      return AutomatorPanelNames;
+    },
+    panelEicon() {
+      return AutomatorPanelIcons;
+    },
     importTooltip() {
       return this.canMakeNewScript
         ? "Import single automator script or data"
@@ -120,14 +157,22 @@ export default {
     currentEditorScriptName() {
       return this.scripts.find(s => s.id === this.currentScriptID).name;
     },
-    autovisuals(){
+    paneAppearance() {
       return {
-        "c-autoscan-animation":this.scanimation&&this.panelTheme!==3,
-        "c-autotheme-light":this.panelTheme===1,
-        "c-autotheme-dark":this.panelTheme===2,
-        "c-autotheme-bg":this.panelTheme===3,
-        [`c-autocolor-${this.panelColor}`]:true,
-        [`c-autograd-${this.panelGradient}`]:true,
+        "c-automator-animated": this.scanLine.animated && this.appearance.theme !== 3,
+        "c-automator-theme-light": this.appearance.theme === 1,
+        "c-automator-theme-dark": this.appearance.theme === 2,
+        "c-automator-theme-background": this.appearance.theme === 3,
+        [`c-automator-background-gradient-${this.appearance.gradient}`]: true,
+      }
+    },
+    style() {
+      let color = this.appearance.color == AUTOMATOR_APPEARANCE.COLOR.CUSTOM ? 
+      this.appearance.customColor : AUTOMATOR_APPEARANCE.COLOR_CODES[this.appearance.color]
+      return {
+        "--color-automator-background-accent": color,
+        "--color-automator-scanline-opacity": `${this.scanLine.opacity * 100}%`,
+        "--color-automator-scanline-size": `${this.scanLine.size / 5}rem`,
       }
     }
   },
@@ -147,10 +192,6 @@ export default {
   },
   methods: {
     update() {
-      this.panelTheme=player.options.automator.theme[1]
-      this.panelColor=player.options.automator.color[1]
-      this.panelGradient=player.options.automator.gradient[1]
-      this.scanimation = player.options.automator.animation
       this.isBlock = player.reality.automator.type === AUTOMATOR_TYPE.BLOCK;
       this.infoPaneID = player.reality.automator.currentInfoPane;
       this.errorCount = AutomatorData.currentErrors().length;
@@ -159,14 +200,27 @@ export default {
       this.scriptCount = Object.keys(player.reality.automator.scripts).length;
       this.canMakeNewScript = this.scriptCount < this.maxScriptCount;
       this.currentScriptID = player.reality.automator.state.editorScript;
+      this.appearance = {
+        theme: player.options.automatorAppearance.infoPane.theme,
+        color: player.options.automatorAppearance.infoPane.color,
+        customColor: player.options.automatorAppearance.infoPane.customColor,
+        gradient: player.options.automatorAppearance.infoPane.gradient,
+      };
+      this.scanLine = {
+        animated: player.options.automatorAppearance.scanLine.animated,
+        size: player.options.automatorAppearance.scanLine.size,
+        opacity: player.options.automatorAppearance.scanLine.opacity,
+      };
     },
     exportScript() {
       const toExport = AutomatorBackend.exportCurrentScriptContents();
       if (toExport) {
         copyToClipboard(toExport);
-        GameUI.notify.automator("Exported current Automator script to your clipboard");
+        GameUI.notify.automator(["Exported current Automator script to your clipboard","",
+        `<div class="o-notification--icon"><i class="fas fa-file-export"></i></div>`]);
       } else {
-        GameUI.notify.error("Could not export blank Automator script!");
+        GameUI.notify.error(["Could not export blank Automator script!","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-triangle-exclamation"></i></div>`]);
       }
     },
     importScript() {
@@ -313,7 +367,7 @@ export default {
           @click="infoPaneID = panelEnum.BLOCKS"
         />
         <AutomatorButton
-          v-tooltip="'Open Visual Options'"
+          v-tooltip="'Customize appearance'"
           class="fa-palette"
           :class="activePanelClass(panelEnum.VISUALS)"
           @click="infoPaneID = panelEnum.VISUALS"
@@ -382,7 +436,22 @@ export default {
         />
       </div>
     </div>
-    <div class="c-automator-docs l-automator-pane__content" :class="autovisuals">
+    <div 
+      class="c-automator-docs l-automator-pane__content" 
+      :class="paneAppearance"
+      :style="style"
+    >
+      <h2 class="c-automator-docs--header">
+        <div 
+          class="fas"
+          :class="panelEicon[infoPaneID]"
+         />
+        {{ panelEname[infoPaneID] }}
+        <div 
+          class="fas"
+          :class="panelEicon[infoPaneID]"
+         />
+      </h2>
       <AutomatorDocsIntroPage v-if="infoPaneID === panelEnum.INTRO_PAGE" />
       <AutomatorDocsCommandList v-else-if="infoPaneID === panelEnum.COMMANDS" />
       <AutomatorErrorPage v-else-if="infoPaneID === panelEnum.ERRORS" />

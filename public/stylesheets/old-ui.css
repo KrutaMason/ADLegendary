@@ -59,7 +59,7 @@
   width: 36rem;
   height: 10rem;
   z-index: 1;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-size: 5rem;
 }
 .l-old-ui-antimatter-dim-tab {
@@ -252,7 +252,6 @@
   background: linear-gradient(transparent, var(--base) 400%);
   border-bottom: var(--var-border-width, 0.1rem) solid var(--base);
   width: 100%;
-  margin-bottom: 0.8rem;
   padding-bottom: 0.3rem;
 }
 
@@ -329,9 +328,9 @@
 }
 
 .c-antimatter-dim-row {
-  --img:url(../images/time-studies/ts-antimatter.png);
+  --img: url(../images/patterns/ts_am.png);
   --color:#2196f3;
-  --border:var(--color-accent);
+  --border: var(--color-accent);
 }
 .t-legendary .c-antimatter-dim-row,
 .t-legendary-metro .c-antimatter-dim-row {
@@ -350,13 +349,13 @@
   --color:#eb6ce4;
 }
 .c-infinity-dim-row {
-  --img:url(../images/time-studies/ts-infinity.png);
-  --border:var(--color-infinity);
+  --img: url(../images/patterns/ts_inf.png);
+  --border: var(--color-infinity);
   --color: var(--color-infinity);
 }
 .c-time-dim-row {
-  --img:url(../images/time-studies/ts-time.png);
-  --border:var(--color-eternity);
+  --img: url(../images/patterns/ts_time.png);
+  --border: var(--color-eternity);
   --color: var(--color-eternity);
 }
 

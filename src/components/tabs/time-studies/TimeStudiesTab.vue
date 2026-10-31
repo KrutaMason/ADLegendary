@@ -124,10 +124,12 @@ export default {
     },
     exportStudyTree() {
       if (player.timestudy.studies.length === 0) {
-        GameUI.notify.error(["Time Studies","You cannot export an empty Time Study Tree!"]);
+        GameUI.notify.error(["Time Studies","You cannot export an empty Time Study Tree!",
+        `<div class="o-notification--icon"><i class="fas fa-ban"></i></div>`]);
       } else {
         copyToClipboard(GameCache.currentStudyTree.value.exportString);
-        GameUI.notify.info(["Time Studies","Exported current Time Studies to your clipboard"]);
+        GameUI.notify.info(["Time Studies","Exported current Time Studies to your clipboard",
+        `<div class="o-notification--icon"><i class="fas fa-file-export"></i></div>`]);
       }
     }
   }

@@ -1,8 +1,10 @@
 .cm-s-liquibyte.CodeMirror,
-.c-autotheme-light .cm-s-liquibyte.CodeMirror,
-.s-base--dark .c-autotheme-light .cm-s-liquibyte.CodeMirror {
-	background: linear-gradient(to bottom,transparent 50%,var(--automator-background-scaline) 51%), var(--autograd);
-	background-size: 100% 6px, 100% 100%;
+.c-automator-theme-light .cm-s-liquibyte.CodeMirror,
+.s-base--dark .c-automator-theme-light .cm-s-liquibyte.CodeMirror {
+	background: linear-gradient(to bottom, transparent 50%, 
+  	color-mix(in srgb, var(--color-automator-background-base) var(--color-automator-scanline-opacity),
+  	transparent) 51%), var(--color-automator-background-gradient);
+	background-size: 100% var(--color-automator-scanline-size), 100% 100%;
 	color: #000;
 	line-height: 1.2em !important;
 	font-size: 1em;
@@ -10,8 +12,8 @@
 	text-shadow:none !important;
 }
 .s-base--dark .cm-s-liquibyte.CodeMirror,
-.c-autotheme-dark .cm-s-liquibyte.CodeMirror,
-.s-base--dark .c-autotheme-dark .cm-s-liquibyte.CodeMirror {
+.c-automator-theme-dark .cm-s-liquibyte.CodeMirror,
+.s-base--dark .c-automator-theme-dark .cm-s-liquibyte.CodeMirror {
 	color: #fff;
 }
 .cm-s-liquibyte .CodeMirror-focused .cm-matchhighlight {
@@ -33,44 +35,44 @@
 .cm-s-liquibyte .CodeMirror-gutter-elt div { font-size: 1.2em; }
 .cm-s-liquibyte .CodeMirror-guttermarker {  }
 .cm-s-liquibyte .CodeMirror-guttermarker-subtle {  }
-.cm-s-liquibyte .CodeMirror-linenumber,.c-autotheme-light .cm-s-liquibyte .CodeMirror-linenumber,.s-base--dark .c-autotheme-light .cm-s-liquibyte .CodeMirror-linenumber{ color: #000000; padding-left: 0; }
-.cm-s-liquibyte .CodeMirror-cursor,.c-autotheme-light .cm-s-liquibyte .CodeMirror-cursor,.s-base--dark .c-autotheme-light .cm-s-liquibyte .CodeMirror-cursor{ border-left: 1px solid #262626; }
+.cm-s-liquibyte .CodeMirror-linenumber,.c-automator-theme-light .cm-s-liquibyte .CodeMirror-linenumber,.s-base--dark .c-automator-theme-light .cm-s-liquibyte .CodeMirror-linenumber{ color: #000000; padding-left: 0; }
+.cm-s-liquibyte .CodeMirror-cursor,.c-automator-theme-light .cm-s-liquibyte .CodeMirror-cursor,.s-base--dark .c-automator-theme-light .cm-s-liquibyte .CodeMirror-cursor{ border-left: 1px solid #262626; }
 
-.s-base--dark .cm-s-liquibyte .CodeMirror-cursor,.c-autotheme-dark .cm-s-liquibyte .CodeMirror-cursor,.s-base--dark .c-autotheme-dark .cm-s-liquibyte .CodeMirror-cursor{ border-left: 1px solid #eee; }
-.s-base--dark .cm-s-liquibyte .CodeMirror-linenumber,.c-autotheme-dark .cm-s-liquibyte .CodeMirror-linenumber,.s-base--dark .c-autotheme-dark .cm-s-liquibyte .CodeMirror-linenumber{ color: #ffffff; padding-left: 0; }
+.s-base--dark .cm-s-liquibyte .CodeMirror-cursor,.c-automator-theme-dark .cm-s-liquibyte .CodeMirror-cursor,.s-base--dark .c-automator-theme-dark .cm-s-liquibyte .CodeMirror-cursor{ border-left: 1px solid #eee; }
+.s-base--dark .cm-s-liquibyte .CodeMirror-linenumber,.c-automator-theme-dark .cm-s-liquibyte .CodeMirror-linenumber,.s-base--dark .c-automator-theme-dark .cm-s-liquibyte .CodeMirror-linenumber{ color: #ffffff; padding-left: 0; }
 
 .s-base--dark .cm-s-liquibyte .CodeMirror-gutters { border-right: 1px solid #505050; }
 
 .cm-s-liquibyte span.cm-comment     { color: #008000; }
 .cm-s-liquibyte span.cm-def         { color: #ffaf40; font-weight: bold; }
-.cm-s-liquibyte span.cm-keyword, .c-autotheme-light .cm-s-liquibyte span.cm-keyword, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-keyword{ color: #9d68d3; font-weight: bold; }
+.cm-s-liquibyte span.cm-keyword, .c-automator-theme-light .cm-s-liquibyte span.cm-keyword, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-keyword{ color: #9d68d3; font-weight: bold; }
 .cm-s-liquibyte span.cm-builtin     { color: #ffaf40; font-weight: bold; }
-.cm-s-liquibyte span.cm-variable, .c-autotheme-light .cm-s-liquibyte span.cm-variable, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-variable{ color: #5967ff; font-weight: bold; }
+.cm-s-liquibyte span.cm-variable, .c-automator-theme-light .cm-s-liquibyte span.cm-variable, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-variable{ color: #5967ff; font-weight: bold; }
 .cm-s-liquibyte span.cm-string     	{ color: #ff8000; }
-.cm-s-liquibyte span.cm-number, .c-autotheme-light .cm-s-liquibyte span.cm-number, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-number { color: rgb(0, 190, 0); font-weight: bold; }
+.cm-s-liquibyte span.cm-number, .c-automator-theme-light .cm-s-liquibyte span.cm-number, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-number { color: rgb(0, 190, 0); font-weight: bold; }
 .cm-s-liquibyte span.cm-atom	    { color: #bf3030; font-weight: bold; }
 
-.s-base--dark .cm-s-liquibyte span.cm-keyword,.c-autotheme-dark .cm-s-liquibyte span.cm-keyword,.s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-keyword{ color: #c080ff; }
-.s-base--dark .cm-s-liquibyte span.cm-number,.c-autotheme-dark .cm-s-liquibyte span.cm-number,.s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-number{ color: #0f0; }
+.s-base--dark .cm-s-liquibyte span.cm-keyword,.c-automator-theme-dark .cm-s-liquibyte span.cm-keyword,.s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-keyword{ color: #c080ff; }
+.s-base--dark .cm-s-liquibyte span.cm-number,.c-automator-theme-dark .cm-s-liquibyte span.cm-number,.s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-number{ color: #0f0; }
 
-.cm-s-liquibyte span.cm-variable-2, .c-autotheme-light .cm-s-liquibyte span.cm-variable-2, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-variable-2{ color: #6ca7a7; font-weight: bold; }
+.cm-s-liquibyte span.cm-variable-2, .c-automator-theme-light .cm-s-liquibyte span.cm-variable-2, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-variable-2{ color: #6ca7a7; font-weight: bold; }
 .cm-s-liquibyte span.cm-variable-3, .cm-s-liquibyte span.cm-type { color: #c080ff; font-weight: bold; }
 .cm-s-liquibyte span.cm-property    { color: #999; font-weight: bold; }
-.cm-s-liquibyte span.cm-operator, .c-autotheme-light .cm-s-liquibyte span.cm-operator, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-operator{ color: #000; }
+.cm-s-liquibyte span.cm-operator, .c-automator-theme-light .cm-s-liquibyte span.cm-operator, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-operator{ color: #000; }
 
-.s-base--dark .cm-s-liquibyte span.cm-variable-2, .c-autotheme-dark .cm-s-liquibyte span.cm-variable-2, .s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-variable-2{ color: #21a8a8; }
-.s-base--dark .cm-s-liquibyte span.cm-operator, .c-autotheme-dark .cm-s-liquibyte span.cm-operator, .s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-operator{ color: #fff; }
-.s-base--dark .cm-s-liquibyte span.cm-qualifier, .c-autotheme-dark .cm-s-liquibyte span.cm-qualifier, .s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-qualifier{ color: #fff700; font-weight: bold; }
+.s-base--dark .cm-s-liquibyte span.cm-variable-2, .c-automator-theme-dark .cm-s-liquibyte span.cm-variable-2, .s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-variable-2{ color: #21a8a8; }
+.s-base--dark .cm-s-liquibyte span.cm-operator, .c-automator-theme-dark .cm-s-liquibyte span.cm-operator, .s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-operator{ color: #fff; }
+.s-base--dark .cm-s-liquibyte span.cm-qualifier, .c-automator-theme-dark .cm-s-liquibyte span.cm-qualifier, .s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-qualifier{ color: #fff700; font-weight: bold; }
 
 .cm-s-liquibyte span.cm-meta        { color: #0f0; }
-.cm-s-liquibyte span.cm-qualifier, .c-autotheme-light .cm-s-liquibyte span.cm-qualifier, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-qualifier{ color: #bdb700; font-weight: bold; }
+.cm-s-liquibyte span.cm-qualifier, .c-automator-theme-light .cm-s-liquibyte span.cm-qualifier, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-qualifier{ color: #bdb700; font-weight: bold; }
 .cm-s-liquibyte span.cm-bracket     { color: #cc7; }
 .cm-s-liquibyte span.cm-tag         { color: #ff0; font-weight: bold; }
 .cm-s-liquibyte span.cm-attribute   { color: #c080ff; font-weight: bold; }
 .cm-s-liquibyte span.cm-error       { color: #f00; }
-.cm-s-liquibyte span.cm-blob, .c-autotheme-light .cm-s-liquibyte span.cm-blob, .s-base--dark .c-autotheme-light .cm-s-liquibyte span.cm-blob{ color: rgb(228, 181, 26); }
+.cm-s-liquibyte span.cm-blob, .c-automator-theme-light .cm-s-liquibyte span.cm-blob, .s-base--dark .c-automator-theme-light .cm-s-liquibyte span.cm-blob{ color: rgb(228, 181, 26); }
 
-.s-base--dark .cm-s-liquibyte span.cm-blob, .c-autotheme-dark .cm-s-liquibyte span.cm-blob, .s-base--dark .c-autotheme-dark .cm-s-liquibyte span.cm-blob{ color: #fc2; }
+.s-base--dark .cm-s-liquibyte span.cm-blob, .c-automator-theme-dark .cm-s-liquibyte span.cm-blob, .s-base--dark .c-automator-theme-dark .cm-s-liquibyte span.cm-blob{ color: #fc2; }
 
 .cm-s-liquibyte div.CodeMirror-selected { background-color: rgba(255, 0, 0, 0.1); }
 

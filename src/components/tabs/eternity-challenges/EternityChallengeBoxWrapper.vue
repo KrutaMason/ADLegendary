@@ -45,6 +45,8 @@ export default {
     return {
       challengeId: Number,
       stars: "",
+      hasName: false,
+      showHintText: false,
     };
   },
   computed: {
@@ -65,6 +67,11 @@ export default {
         "o-challenge-btn--unlocked": !challengeDone && challengeUnlock,
         "o-challenge-btn--locked": challengeLocked,
         "o-challenge-btn--unenterable": !challengeClickable,
+      };
+    },
+    goldenStars() {
+      return {
+        "l-hint-text--challenge-stars--complete": this.isCompleted,
       };
     },
     // Width and height attributes are copied from o-challenge-btn
@@ -90,19 +97,25 @@ export default {
       if (this.isUnlocked) return "Start";
       if (this.canBeUnlocked) return "Unlock";
       return "Locked";
-    }
+    },
+    challengeDisplay() {
+      if (this.hasName && this.showHintText) return `${this.name} : ${this.label}`;
+      if (this.hasName) return this.label;
+      if (this.showHintText) return this.name;
+      return;
+    },
   },
   methods: {
     update() {
-      this.stars = this.completionStars(this.name)
+      this.stars = this.completionStars(this.name);
+      this.hasName = player.options.naming.challenges;
+      this.showHintText = player.options.showHintText.challenges;
     },
     completionStars(id) {
       let text = "";
-      let stars = EternityChallenge(id.replace("EC","")).completions
-      if (stars < 6) for (let i = 0; i < stars; i++) {
-        text += "★"
-      }
-      else text = `${stars}★`
+      let stars = EternityChallenge(id.replace("EC","")).completions;
+      if (stars < 6) for (let i = 0; i < stars; i++) text += "★";
+      if (stars === EternityChallenge(1).maxCompletions && Enslaved.isRunning) text = "★★★★★★";
       return text;
     }
   } 
@@ -113,14 +126,17 @@ export default {
   <div class="c-challenge-box l-challenge-box c-challenge-box--eternity">
     <HintText
       type="challenges"
+      :secondaryRequirement="hasName"
       class="l-hint-text--challenge"
+      :data-text="challengeDisplay"
     >
-      {{ name }} : {{ label }}
+      {{ challengeDisplay }}
     </HintText>
     <HintText
-      type="challenges"
-      class="l-hint-text--challenge"
-      style="width:100%;text-align:right;font-weight: normal;"
+      type="challengeStats"
+      class="l-hint-text--challenge l-hint-text--challenge-stars"
+      :data-text="stars"
+      :class="goldenStars"
     >
       {{this.stars}}
     </HintText>

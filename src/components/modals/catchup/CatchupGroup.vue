@@ -67,7 +67,7 @@ border-image: linear-gradient(90deg, currentcolor, transparent) 1;
 background: linear-gradient(90deg, currentcolor -500%, transparent);
 }
 .o-catchup-group-title-font{
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
     font-weight: bold;
     font-size: 1.8rem;
     line-height: 0;

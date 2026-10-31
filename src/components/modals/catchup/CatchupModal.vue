@@ -80,9 +80,10 @@ export default {
   width: 100%;
   text-align: left;
   border: 0.4rem double var(--color-accent);
-  box-shadow:0 0 1rem var(--color-background) inset;
+  box-shadow: 0 0 1rem var(--color-background) inset;
   border-radius: var(--var-border-radius, 0.4rem);
-  background: linear-gradient(transparent, var(--color-accent) 500%);
+  background: var(--leg-secondary-render), linear-gradient(transparent, var(--color-accent) 500%);
+  background-position: center;
   background-origin: border-box;
   margin: 1rem 0;
   padding: 1.5rem;

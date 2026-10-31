@@ -87,14 +87,14 @@ export default {
 }
 
 .l-milestone-slow {
-  background-color: var(--color-bad);
+  --base: var(--color-bad);
 }
 
 .l-milestone-fast {
-  background-color: var(--color-good);
+  --base: var(--color-good);
 }
 
 .l-milestone-fastest {
-  background-color: var(--color-celestials);
+  --base: var(--color-celestials);
 }
 </style>

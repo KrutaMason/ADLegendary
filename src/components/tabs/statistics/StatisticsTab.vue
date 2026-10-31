@@ -338,7 +338,7 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.2;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
 }
 
 .c-stats-tab-subheader {

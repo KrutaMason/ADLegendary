@@ -19,12 +19,14 @@ export default {
   },
   data() {
     return {
-      sidebarDisplayAmount: 1,
-      sidebarWidth:12.8,
+      amount: 1,
+      width: 12.8,
       switchCount: 0,
-      ids:[0,0,0,0],
-      sidebarResource: ["","","",""],
-      sidebarSideSwitch:false
+      id: [0, 0, 0, 0],
+      resource: ["", "", "", ""],
+      rightSide: false,
+      arrowMode: false,
+      fullHeight: false,
     };
   },
   computed: {
@@ -41,46 +43,59 @@ export default {
       return {
         min: 12.8,
         max: 25.6,
-        interval:0.1,
+        interval: 0.1,
         width: "100%",
         tooltip: false
     }
     }
   },
   watch: {
-    sidebarDisplayAmount(newValue) {
-    player.options.sidebarDisplayAmount = newValue;
+    amount(newValue) {
+      player.options.sidebar.amount = newValue;
     },
-    sidebarWidth(newValue) {
-    player.options.sidebarWidth = newValue;
+    width(newValue) {
+      player.options.sidebar.width = newValue;
     },
-    sidebarSideSwitch(newValue) {
-    player.options.sidebarSideSwitch = newValue;
-    if (++this.switchCount > 49) SecretAchievement(52).unlock();
+    rightSide(newValue) {
+      player.options.sidebar.rightSide = newValue;
+      ui.view.sidebar.rightSide = newValue;
+      if (++this.switchCount > 49) SecretAchievement(52).unlock();
+    },
+    arrowMode(newValue) {
+      player.options.sidebar.arrowMode = newValue;
+    },
+    fullHeight(newValue) {
+      player.options.sidebar.fullHeight = newValue;
+      this.$viewModel.sidebar.fullHeight = newValue;
     },
   },
   methods: {
     update() {
-    const options = player.options;
-    this.sidebarDisplayAmount = player.options.sidebarDisplayAmount;
-    this.sidebarWidth = player.options.sidebarWidth
-    this.sidebarSideSwitch=player.options.sidebarSideSwitch
-    this.ids = [options.sidebarResourceType[0],options.sidebarResourceType[1],options.sidebarResourceType[2],options.sidebarResourceType[3]];
-    this.sidebarResource = [options.sidebarResourceType[0] === 0? "Latest Resource": this.sidebarDB.find(e => e.id === options.sidebarResourceType[0]).optionName,
-    options.sidebarResourceType[1] === 0? "Latest Resource": this.sidebarDB.find(e => e.id === options.sidebarResourceType[1]).optionName,
-    options.sidebarResourceType[2] === 0? "Latest Resource": this.sidebarDB.find(e => e.id === options.sidebarResourceType[2]).optionName,
-    options.sidebarResourceType[3] === 0? "Latest Resource": this.sidebarDB.find(e => e.id === options.sidebarResourceType[3]).optionName,]
+      const options = player.options.sidebar;
+      this.amount = options.amount;
+      this.width = options.width;
+      this.rightSide = options.rightSide;
+      this.fullHeight = options.fullHeight;
+      this.id = [options.resourceID[0], options.resourceID[1], options.resourceID[2], options.resourceID[3]]
+      // For whatever reason it doesn't re-render when it's written in a loop
+      this.resource = [
+        this.id[0] === 0 ? "Latest Resource" : this.sidebarDB.find(e => e.id === this.id[0]).optionName, 
+        this.id[1] === 0 ? "Latest Resource" : this.sidebarDB.find(e => e.id === this.id[1]).optionName,
+        this.id[2] === 0 ? "Latest Resource" : this.sidebarDB.find(e => e.id === this.id[2]).optionName,
+        this.id[3] === 0 ? "Latest Resource" : this.sidebarDB.find(e => e.id === this.id[3]).optionName
+      ];
+      this.arrowMode = options.arrowMode;
     },
     adjustSliderValue(value) {
-    this.sidebarDisplayAmount = value;
-    player.options.sidebarDisplayAmount = this.sidebarDisplayAmount;
+      this.amount = value;
+      player.options.sidebar.amount = this.amount;
     },
     adjustSliderWidth(value) {
-    this.sidebarWidth = value;
-    player.options.sidebarWidth = this.sidebarWidth;
+      this.width = value;
+      player.options.sidebar.width = this.width;
     },
-    sidebarLabel(n) {
-      return `#${n+1}: ${this.sidebarResource[n]}`;
+    sidebarLabel(i) {
+      return `#${i+1}: ${this.resource[i]}`;
     },
   }
 };
@@ -89,51 +104,68 @@ export default {
 <template>
   <ModalWrapperOptions class="c-modal-options__large">
     <template #header>
-      Sidebar Options
+      Sidebar Options 
     </template>
     <div class="c-modal-options__button-container">
+      <div 
+        class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button"
+        v-tooltip="`Change the width of the sidebar; Shortens the currency display(s) when the sidebar is wider`"
+      >
+       Sidebar Width: {{ width }}rem
+       <SliderComponent
+         class="o-primary-btn--slider__slider"
+         v-bind="sliderPropsWidth"
+         :value="width"
+         @input="adjustSliderWidth($event)"
+        />
+      </div>
+      <div 
+        class="o-primary-btn o-primary-btn--option o-primary-btn--slider l-options-grid__button"
+        v-tooltip="`Display the amount of currencies you want to show in the sidebar`"
+      >
+        Display {{ quantify("Resource", amount) }}
+        <SliderComponent
+          class="o-primary-btn--slider__slider"
+          v-bind="sliderPropsAmount"
+          :value="amount"
+          @input="adjustSliderValue($event)"
+        />
+      </div>
       <PrimaryToggleButton
-          v-model="sidebarSideSwitch"
+          v-model="rightSide"
           class="o-primary-btn--option l-options-grid__button"
           label="Sidebar on the Right:"
-        />
-    <div 
-      class="o-primary-btn o-primary-btn--option o-primary-btn--slider" 
-      style="margin:0.5rem 0.8rem"
-    >
-      Sidebar Width: {{ sidebarWidth }}rem
-      <SliderComponent
-        class="o-primary-btn--slider__slider"
-        v-bind="sliderPropsWidth"
-        :value="sidebarWidth"
-        @input="adjustSliderWidth($event)"
-     />
-    </div>
-  <div
-  class="o-primary-btn o-primary-btn--option o-primary-btn--slider"
-  style="margin:0.5rem 0.8rem"
-  >
-    Display {{ quantify("Resource", sidebarDisplayAmount) }}
-    <SliderComponent
-      class="o-primary-btn--slider__slider"
-      v-bind="sliderPropsAmount"
-      :value="sidebarDisplayAmount"
-      @input="adjustSliderValue($event)"
-    />
-  </div>
+          v-tooltip="`Display the sidebar on the opposite side of the screen`"
+      />
+      <PrimaryToggleButton
+          v-model="fullHeight"
+          class="o-primary-btn--option l-options-grid__button"
+          label="Maximize Sidebar:"
+          v-tooltip="`Have the sidebar use all of the height`"
+      />
+      <PrimaryToggleButton
+          v-model="arrowMode"
+          class="o-primary-btn--option l-options-grid__button"
+          label="Switch currencies with arrows:"
+          v-tooltip="`Change the interactives to 2 arrows for switching currencies; 
+          Avoids clicking on the currencies on accident`"
+      />
     </div>
     <div class="c-modal-options__button-container c-modal-options__button-container-fixed">
-    <ExpandingControlBox
-          v-for="n in 4"
-          :key="n"
-          class="l-options-grid__button c-options-grid__notations"
-          button-class="o-primary-btn o-primary-btn--option l-options-grid__notations-header o-primary-btn--option-nomargin"
-          :style="{'z-index':n<3?4:3}"
-          :label="sidebarLabel(n-1)"
-        >
-        <template #dropdown><SelectSidebarDropdown :id="n-1"/></template>
-    </ExpandingControlBox>
-</div>
+      <ExpandingControlBox
+        v-for="n in 4"
+        :key="n"
+        class="l-options-grid__button c-options-grid__notations"
+        button-class="o-primary-btn o-primary-btn--option l-options-grid__notations-header o-primary-btn--option-nomargin"
+        :style="{'z-index':n < 3 ? 4 : 3}"
+        :label="sidebarLabel(n-1)"
+        v-tooltip="`Change the currency you want to show`"
+      >
+        <template #dropdown>
+          <SelectSidebarDropdown :id="n-1"/>
+        </template>
+      </ExpandingControlBox>
+    </div>
   </ModalWrapperOptions>
 </template>
 <style scoped>

@@ -26,7 +26,8 @@ export const pelleStrikes = {
   },
   ECs: {
     id: 4,
-    requirementDescription: () => `Reach ${formatInt(115)} TT`,
+    requirementDescription: () => isInaccessible() ? `Reach <span class="c-pelle-strike-header--fixed">
+    ${formatInt(115)}</span> TT` : `Reach ${formatInt(115)} TT`,
     penaltyDescription: () => `In Eternity Challenges, ${wordShift.wordCycle(PelleRifts.vacuum.name)}
       IP multiplier is only ${formatPercents(0.3)} as strong and capped at ${formatPercents(0.15)}
       of the goal`,

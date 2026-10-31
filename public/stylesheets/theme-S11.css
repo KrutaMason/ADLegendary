@@ -12,13 +12,8 @@ body.t-s11 {
 
 .t-s11 .c-tt-buy-button--unlocked {
   color: #3aacd6;
-  background: black;
-  border: 0.1rem solid #3aacd6;
-}
-
-.t-s11 .c-tt-buy-button--unlocked:hover {
-  color: black;
-  background: #3aacd6;
+  --bg-bright: black;
+  --border: #3aacd6;
 }
 
 .t-s11 .c-tt-buy-button--locked {

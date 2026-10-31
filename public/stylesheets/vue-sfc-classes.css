@@ -71,6 +71,16 @@
   border: var(--var-border-width, 0.2rem) solid black;
   border-radius: var(--var-border-radius, 0.4rem);
   padding: 0.2rem 0;
+  background-image: var(--leg-shading), var(--leg-base);
+}
+
+.old-ui .c-news-border {
+  border: solid black;
+  border-width: var(--var-border-width, 0.2rem) 3rem;
+  border-radius: var(--var-border-radius, 0.4rem);
+  border-image: url(../images/frames/news_s7.png) round;
+  border-image-width: 2 30;
+  border-image-slice: 4 30;
 }
 
 .old-ui .s-base--metro .c-news-ticker,
@@ -79,7 +89,7 @@
   border-width: 0.1rem;
 }
 
-.old-ui .t-dark .c-news-ticker {
+.t-dark .old-ui .c-news-ticker {
   background-color: #455a64;
   border-color: #546e7a;
 }

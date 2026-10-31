@@ -4,57 +4,50 @@ export const normalAchievements = [
   {
     id: 11,
     name: "You gotta start somewhere",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(1).uniqueName}` : "a 1st Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(1).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 12,
     name: "100 antimatter is a lot",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(2).uniqueName}` : "a 2nd Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(2).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 13,
     name: "Half life 3 CONFIRMED",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(3).uniqueName}` : "a 3rd Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(3).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 14,
     name: "L4D: Left 4 Dimensions",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(4).uniqueName}` : "a 4th Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(4).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 15,
     name: "5 Dimension Antimatter Punch",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(5).uniqueName}` : "a 5th Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(5).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 16,
     name: "We couldn't afford 9",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(6).uniqueName}` : "a 6th Antimatter Dimension"}${Enslaved.isRunning ? ` (they never amount to anything)` : "."}`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(6).fullName()}
+    ${Enslaved.isRunning ? ` (they never amount to anything)` : "."}`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 17,
     name: "Not a luck related achievement",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(7).uniqueName}` : "a 7th Antimatter Dimension"}.`; },
+    get description() { return `Buy ${player.options.naming.dimensions ? "an" : "a"} ${AntimatterDimension(7).fullName()}.`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 18,
     name: "90 degrees to infinity",
-    get description() { return `Buy ${player.options.naming.dimensions ? 
-      `an Antimatter ${AntimatterDimension(8).uniqueName}` : "an 8th Antimatter Dimension"}${Enslaved.isRunning ? ` (don't get used to it)` : "."}`; },
+    get description() { return `Buy an ${AntimatterDimension(8).fullName()} ${Enslaved.isRunning ? ` (don't get used to it)` : "."}`; },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
@@ -76,11 +69,9 @@ export const normalAchievements = [
   {
     id: 23,
     get name() {return `The ${player.options.naming.dimensions ? `Polyyotton` : "9th Dimension"} is a lie`},
-    get description() { return `Have exactly ${formatInt(99)} ${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(8).uniqueName}s` : "8th Antimatter Dimensions"}.`; },
+    get description() { return `Have exactly ${formatInt(99)} ${AntimatterDimension(8).fullName(...[,,,], 99)}.`; },
     checkRequirement: () => AntimatterDimension(8).amount.eq(99),
-    get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}s` 
-      : "8th Antimatter Dimensions"} are ${formatPercents(0.1)} stronger.`; },
+    get reward() { return `${AntimatterDimension(8).fullName(...[,,,], 2)} are ${formatPercents(0.1)} stronger.`; },
     effect: 1.1
   },
   {
@@ -115,13 +106,11 @@ export const normalAchievements = [
     id: 28,
     name: "There's no point in doing that...",
     get description() {
-      return `Buy a single ${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(1).uniqueName}` : "1st Antimatter Dimension"} when you have over ${format(DC.E150)} of them.`;
+      return `Buy a single ${AntimatterDimension(1).fullName()} when you have over ${format(DC.E150)} of them.`;
     },
     checkRequirement: () => AntimatterDimension(1).amount.exponent >= 150,
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-    get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}s`
-       : "1st Antimatter Dimensions"} are ${formatPercents(0.1)} stronger.`; },
+    get reward() { return `${AntimatterDimension(1).fullName(...[,,,], 2)} are ${formatPercents(0.1)} stronger.`; },
     effect: 1.1
   },
   {
@@ -130,15 +119,13 @@ export const normalAchievements = [
     get description() { return `Get any Antimatter Dimension multiplier over ${formatX(DC.E31)}.`; },
     checkRequirement: () => AntimatterDimensions.all.some(x => x.multiplier.exponent >= 31),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}s`
-       : "1st Antimatter Dimensions"} are ${formatPercents(0.05)} stronger.`; },
+    get reward() { return `${AntimatterDimension(1).fullName(...[,,,], 2)} are ${formatPercents(0.05)} stronger.`; },
     effect: 1.05
   },
   {
     id: 32,
     name: "The Gods are pleased",
-    get description() { return `Get over ${formatX(600)} from Dimensional Sacrifice outside of 
-    ${player.options.naming.challenges?`${NormalChallenge(8).name} (C8)`:`Challenge 8`}.`; },
+    get description() { return `Get over ${formatX(600)} from Dimensional Sacrifice outside of ${NormalChallenge(8).displayName()}.`; },
     checkRequirement: () => !NormalChallenge(8).isOnlyActiveChallenge && Sacrifice.totalBoost.gte(600),
     checkEvent: GAME_EVENT.SACRIFICE_RESET_AFTER,
     get reward() {
@@ -158,8 +145,7 @@ export const normalAchievements = [
   {
     id: 34,
     name: "You didn't need it anyway",
-    get description() { return `Infinity without having any ${player.options.naming.dimensions ? 
-      `Antimatter ${AntimatterDimension(8).uniqueName}s` : "8th Antimatter Dimensions"}`; },
+    get description() { return `Infinity without having any ${AntimatterDimension(8).fullName(...[,,,], 2)}.`; },
     checkRequirement: () => AntimatterDimension(8).totalAmount.eq(0),
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
     get reward() { return `Dimensions 1-7 are ${formatPercents(0.02)} stronger.`; },
@@ -235,9 +221,7 @@ export const normalAchievements = [
     id: 43,
     name: "How the antitables have turned..",
     get description() {
-      return `Get the ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}`
-       : "8th Antimatter Dimension"} multiplier to be highest, ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(7).uniqueName}`
-       : "7th Antimatter Dimension"} multiplier second highest, etc.`;
+      return `Get the ${AntimatterDimension(8).fullName()} multiplier to be highest, ${AntimatterDimension(7).fullName()} multiplier second highest, etc.`;
     },
     checkRequirement: () => {
       const multipliers = Array.range(1, 8).map(tier => AntimatterDimension(tier).multiplier);
@@ -345,9 +329,8 @@ export const normalAchievements = [
     id: 56,
     name: "Many Deaths",
     get description() {
-      return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the ${NormalChallenge(2).config.name()} Challenge`}
-       in ${formatInt(3)} minutes or less.`;
+      return `Complete ${NormalChallenge(2).displayName(...[,,], `the ${NormalChallenge(2).config.name()} Challenge`)} 
+      in ${formatInt(3)} minutes or less.`;
     },
     checkRequirement: () => NormalChallenge(2).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
@@ -362,8 +345,7 @@ export const normalAchievements = [
     id: 57,
     name: "Gift from the Gods",
     get description() {
-      return `Complete ${player.options.naming.challenges?`
-        ${NormalChallenge(8).name} (C8)`:`the ${NormalChallenge(8).config.name()} Challenge`} 
+      return `Complete ${NormalChallenge(8).displayName(...[,,], `the ${NormalChallenge(8).config.name()} Challenge`)} 
         in ${formatInt(3)} minutes or less.`;
     },
     checkRequirement: () => NormalChallenge(8).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
@@ -378,9 +360,8 @@ export const normalAchievements = [
   {
     id: 58,
     name: "This is fine.",
-    get description() { return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(9).name} (C9)`:`the ${NormalChallenge(9).config.name} Challenge`}
-       in ${formatInt(3)} minutes or less.`; },
+    get description() { return `Complete ${NormalChallenge(9).displayName(...[,,], `the ${NormalChallenge(9).config.name()} Challenge`)} 
+      in ${formatInt(3)} minutes or less.`; },
     checkRequirement: () => NormalChallenge(9).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalMinutes <= 3,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
     get reward() {
@@ -457,30 +438,27 @@ export const normalAchievements = [
     id: 68,
     name: "You did this again just for the achievement right?",
     get description() {
-      return `Complete 
-      ${player.options.naming.challenges?`${NormalChallenge(3).name} (C3)`:`the ${NormalChallenge(3).config.name()} Challenge`}
+      return `Complete ${NormalChallenge(3).displayName(...[,,], `the ${NormalChallenge(3).config.name()} Challenge`)} 
        in ${formatInt(10)} seconds or less.`;
     },
     checkRequirement: () => NormalChallenge(3).isOnlyActiveChallenge && Time.thisInfinityRealTime.totalSeconds <= 10,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}s` : 
-      "1st Antimatter Dimensions"} are ${formatPercents(0.5)} stronger.`; },
+    get reward() { return `${AntimatterDimension(1).fullName(...[,,,], 2)} are ${formatPercents(0.5)} stronger.`; },
     effect: 1.5
   },
   {
     id: 71,
     name: "ERROR 909: Dimension not found",
-    get description() { return `Get to Infinity with only a single ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}` : 
-      "1st Antimatter Dimension"} without Dimension Boosts or Antimatter Galaxies, while in 
-      ${player.options.naming.challenges?`${NormalChallenge(2).name} (C2)`:`the ${NormalChallenge(2).config.name()} Challenge`}.`;},
+    get description() { return `Get to Infinity with only a single ${AntimatterDimension(1).fullName()}
+     without Dimension Boosts or Antimatter Galaxies, while in 
+      ${NormalChallenge(2).displayName(...[,,], `the ${NormalChallenge(2).config.name()} Challenge`)}.`;},
     checkRequirement: () =>
       NormalChallenge(2).isOnlyActiveChallenge &&
       AntimatterDimension(1).amount.eq(1) &&
       DimBoost.purchasedBoosts === 0 &&
       player.galaxies === 0,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(1).uniqueName}s` : 
-      "1st Antimatter Dimensions"} are ${formatInt(3)} times stronger.`; },
+    get reward() { return `${AntimatterDimension(1).fullName(...[,,,], 2)} are ${formatInt(3)} times stronger.`; },
     effect: 3
   },
   {
@@ -517,8 +495,7 @@ export const normalAchievements = [
   {
     id: 75,
     name: "NEW DIMENSIONS???",
-    get description() { return `Unlock the ${player.options.naming.dimensions ? 
-      `Infinity ${InfinityDimension(4).uniqueName}`: "4th Infinity Dimension"}.`; },
+    get description() { return `Unlock the ${InfinityDimension(4).fullName()}.`; },
     checkRequirement: () => InfinityDimension(4).isUnlocked,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     reward: "Your Achievement bonus affects Infinity Dimensions.",
@@ -555,9 +532,7 @@ export const normalAchievements = [
   {
     id: 81,
     name: "Game Design Is My Passion",
-    get description() { return `Beat 
-      ${player.options.naming.challenges?`${InfinityChallenge(5).name} (IC5)`:`Infinity Challenge 5`}
-       in ${formatInt(15)} seconds or less.`; },
+    get description() { return `Beat ${InfinityChallenge(5).displayName()} in ${formatInt(15)} seconds or less.`; },
     checkRequirement: () => InfinityChallenge(5).isRunning && Time.thisInfinityRealTime.totalSeconds <= 15,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE
   },
@@ -711,8 +686,7 @@ export const normalAchievements = [
   {
     id: 98,
     name: "0 degrees from Infinity",
-    get description() { return `Unlock the ${player.options.naming.dimensions ? 
-      `Infinity ${InfinityDimension(8).uniqueName}`: "8th Infinity Dimension"}.`; },
+    get description() { return `Unlock the ${InfinityDimension(8).fullName()}.`; },
     checkRequirement: () => InfinityDimension(8).isUnlocked,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
@@ -908,7 +882,7 @@ export const normalAchievements = [
     name: "Like feasting on a behind",
     get description() {
       return `Reach ${format(DC.E90)} Infinity Points without having any Infinities
-      or any 1st Antimatter Dimensions in your current Eternity.`;
+      or any ${AntimatterDimension(1).fullName(...[,,,], 2)} in your current Eternity.`;
     },
     checkRequirement: () => Currency.infinityPoints.exponent >= 90 &&
       player.requirementChecks.eternity.noAD1 && Currency.infinities.eq(0),
@@ -973,7 +947,7 @@ export const normalAchievements = [
     },
     checkRequirement: () => player.galaxies >= 569 && player.requirementChecks.eternity.noRG,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
-    reward: "Gain a multiplier to Tachyon Particle and Dilated Time gain based on Antimatter Galaxies.",
+    reward: "Gain a multiplier to Tachyon and Dilated Time gain based on Antimatter Galaxies.",
     effect: () => 1.22 * Math.max(Math.pow(player.galaxies, 0.04), 1),
     formatEffect: value => `${formatX(value, 2, 2)}`
   },
@@ -1117,7 +1091,7 @@ export const normalAchievements = [
     description: "Have all Reality upgrades bought.",
     checkRequirement: () => RealityUpgrades.allBought,
     checkEvent: GAME_EVENT.REALITY_UPGRADE_BOUGHT,
-    reward: "Unlock Teresa, the Celestial of Reality."
+    reward: "Unlock Orias, the Celestial of Reality."
   },
   {
     id: 148,
@@ -1134,9 +1108,7 @@ export const normalAchievements = [
     id: 151,
     name: "You really didn't need it anyway",
     get description() {
-      return `Get ${formatInt(800)} Antimatter Galaxies without
-      buying ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}s`
-       : "8th Antimatter Dimensions"} in your current Infinity.`;
+      return `Get ${formatInt(800)} Antimatter Galaxies without buying ${AntimatterDimension(8).fullName(...[,,,], 2)} in your current Infinity.`;
     },
     checkRequirement: () => player.galaxies >= 800 && player.requirementChecks.infinity.noAD8,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER,
@@ -1187,7 +1159,7 @@ export const normalAchievements = [
   {
     id: 157,
     name: "It's super effective!",
-    get description() { return `Get a Glyph with ${formatInt(4)} effects.`; },
+    get description() { return `Get a Glyph with ${formatInt(4)} diacritics.`; },
     checkRequirement: () => Glyphs.activeList.concat(Glyphs.inventoryList).map(
       glyph => getGlyphEffectsFromBitmask(glyph.effects, 0, 0)
         .filter(effect => effect.isGenerated).length
@@ -1279,7 +1251,7 @@ export const normalAchievements = [
     id: 171,
     name: "The god is delighted",
     description: "Sacrifice every sacrificable Glyph type at least once. (Companion doesn't count)",
-    checkRequirement: () => Object.values(player.reality.glyphs.sac).every(s => s > 0),
+    checkRequirement: () => Object.values(player.reality.glyphs.sac).slice(0,7).every(s => s > 0),
     checkEvent: GAME_EVENT.GLYPHS_CHANGED,
     get reward() { return `Glyph sacrifice is ${formatX(2)} stronger.`; },
     effect: 2,
@@ -1361,9 +1333,7 @@ export const normalAchievements = [
   {
     id: 183,
     name: "Déjà vOoM",
-    get description() { return `Complete 
-      ${player.options.naming.challenges?`${InfinityChallenge(5).name} (IC5)`:`Infinity Challenge 5`}
-       while Doomed.`;},
+    get description() { return `Complete ${InfinityChallenge(5).displayName()} while Doomed.`;},
     checkRequirement: () => Pelle.isDoomed && InfinityChallenge(5).isCompleted,
     checkEvent: GAME_EVENT.INFINITY_CHALLENGE_COMPLETED,
     // Weirdly specific reward? Yes, its V's ST bonus because we forgot to disable it

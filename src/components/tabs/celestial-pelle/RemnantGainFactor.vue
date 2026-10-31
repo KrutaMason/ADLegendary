@@ -139,13 +139,18 @@ export default {
 
 .c-remnant-factors {
   z-index: 4;
-  color: white;
-  background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(black,var(--color-pelle--base)300%);
+  color: var(--color-text);
+  background: linear-gradient(white,var(--color-pelle--base)300%);
   background-position: center;
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset,0 0 1rem 0.1rem black);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset, 0 0 1rem 0.1rem var(--color-background));
   border-radius: var(--var-border-radius, 0.5rem);
   padding: 0.4rem;
+}
+
+.s-base--dark .c-remnant-factors {
+  background: url(../../../../public/images/patterns/cel_7.png),linear-gradient(black,var(--color-pelle--base)300%);
+  background-position: center;
 }
 
 .c-remnant-factors-text {

@@ -158,7 +158,7 @@ export default {
       />
     </div>
     <div class="o-pelle-rift-bar-percentage">
-      <span :class="{'o-pelle-rift-bar-percentage--fixed': isInaccessible(percentage) }">{{ formatPercents(percentage, 3) }}</span>
+      <span :class="diffFont(percentage)">{{ formatPercents(percentage, 3) }}</span>
       <span v-if="!isMaxed"> ( {{ isActive ? "Filling" : "Idle" }} )</span>
     </div>
     <CustomizeableTooltip
@@ -354,17 +354,12 @@ export default {
   z-index: 2;
   font-size: 1.8rem;
   color: var(--color-text);
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-pelle--base),-0.1rem -0.1rem 0.3rem var(--color-pelle--base));
 
   /* This keeps the percentage from blocking the hover area */
   pointer-events: none;
-}
-
-.o-pelle-rift-bar-percentage--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
 }
 
 .c-pelle-rift-bar--idle .l-overflow-hidden,
@@ -410,30 +405,27 @@ export default {
   z-index: 4;
   font-size: 1.1rem;
   color: var(--color-pelle--base);
-  background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(var(--bg-bright),var(--bg-dark));
-  background-position: center;
-  --bg-bright:black;
-  --bg-dark:#330910;
+  background: linear-gradient(var(--color-background),var(--color-pelle--base) 300%);
   background-color: var(--color-base);
   border: 0.1rem solid var(--color-pelle--base);
-  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset);
 }
 
 .s-base--dark .c-pelle-milestone-tooltip {
-  background-color: #111111;
+  background: url(../../../../public/images/patterns/cel_7.png), linear-gradient(var(--color-background),var(--color-pelle--base) 300%);
+  background-position: center;
 }
 
-.c-pelle-milestone-tooltip--unlocked {
+.c-pelle-milestone-tooltip--unlocked,
+.s-base--dark .c-pelle-milestone-tooltip--unlocked {
   color: white;
+  background: url(../../../../public/images/patterns/cel_7.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+  background-position: center;
   --bg-bright:#741224;
   --bg-dark:var(--color-pelle--base);
-  background-color: var(--color-pelle--base);
-  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset,0 0 0 0.1rem black);
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem var(--color-pelle--base) inset, 0 0 0 0.1rem black);
 }
 
-.s-base--dark .c-pelle-milestone-tooltip--unlocked {
-  background-color: var(--color-pelle--base);
-}
 .o-pelle-rift-bar-milestone-title{
   border-bottom: 0.1rem solid;
   padding-bottom: 0.5rem;

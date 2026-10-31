@@ -21,35 +21,36 @@ export const AudioManagement = {
     if (Theme.current().name === "S9") return 0
     return player.options.audio.volume
   },
-  playSound(file,volumescale=1,pitch=1){
-    if (this.volume()>0&&document.getElementById("loading").style.display==="none"){
+  playSound(file, volumescale = 1, pitch = 1) {
+    if (this.volume() > 0 && volumescale > 0 && document.getElementById("loading").style.display === "none") {
     var audio = new Audio(`audio/${Theme.current().name === "S7"?"secret_s7-click":file}.wav`)
-    //var audio = new Audio(`audio/${"doomtest"}.wav`)
     if (pitch !== 1){
-      audio.preservesPitch=false;
-      audio.mozPreservesPitch=false;
-      audio.webkitPreservesPitch=false;
-      audio.playbackRate= Array.isArray(pitch) ? pitch[0]+( Math.random()*(pitch[1]-pitch[0]) ) : pitch;
+      audio.preservesPitch = false;
+      audio.mozPreservesPitch = false;
+      audio.webkitPreservesPitch = false;
+      audio.playbackRate = Array.isArray(pitch) ? pitch[0] + (Math.random() * (pitch[1] - pitch[0])) : pitch;
     }
-    audio.volume = Math.min(.5 / volumescale * this.volume(),1)
+    audio.volume = Math.min(.5 * this.volume() * volumescale, 1)
     audio.play()
     }   
   },
-  speakQuote(celestial){
+  speakQuote(celestial) {
     if (this.volume()<0) return;
     var audio = new Audio(`audio/quote_${celestial}.wav`)
-    audio.preservesPitch=false;
-    audio.mozPreservesPitch=false;
-    audio.webkitPreservesPitch=false;
-    audio.playbackRate = 0.95+Math.random()*0.1;
-    audio.volume = Math.min(.5 * this.volume(),1)
+    //var audio = new Audio(`audio/quote_test_${Math.min(Math.floor(Math.random() * 10) + 1, 10)}.wav`)
+    audio.preservesPitch = false;
+    audio.mozPreservesPitch = false;
+    audio.webkitPreservesPitch = false;
+    audio.playbackRate = 0.95 + Math.random() * 0.1;
+    audio.volume = Math.min(.5 * this.volume(), 1)
     audio.play()
   },
-  notifyNoise(file){
-    if (this.volume()>0&&player.options.audio.notify){
-    var audio = new Audio(`audio/${file}.wav`)
-    audio.play()
-  }
+  notifyNoise(file) {
+    if (this.volume() > 0 && player.options.audio.notify > 0) {
+      var audio = new Audio(`audio/${file}.wav`)
+      audio.volume = Math.min(0.5 * this.volume() * player.options.audio.notify, 1)
+      audio.play()
+    }
   },
 }
 export function playerInfinityUpgradesOnReset() {
@@ -765,7 +766,7 @@ function laitelaRealityTick(realDiff) {
 
   // Setting entropy to -1 on completion prevents the modal from showing up repeatedly
   if (laitelaInfo.entropy >= 1) {
-    let completionText = `Lai'tela's Reality has been destabilized after ${Time.thisRealityRealTime.toStringShort()}.`;
+    let completionText = `${Laitela.displayRealityName()} has been destabilized after ${Time.thisRealityRealTime.toStringShort()}.`;
     laitelaInfo.entropy = -1;
     const oldInfo = {
       fastestCompletion: laitelaInfo.fastestCompletion,
@@ -825,19 +826,22 @@ function laitelaRealityTick(realDiff) {
 
 function laitelaBeatText(disabledDim) {
   switch (disabledDim) {
-    case 1: return `<br><br>Lai'tela's Reality will now completely disable production from all Dimensions.
-        The Reality can still be entered, but further destabilization is no longer possible.
+    case 1: return `<br><br>${Laitela.displayRealityName(false, "The")} will now completely disable production 
+        from all Dimensions. The Reality can still be entered, but further destabilization is no longer possible.
         For completely destabilizing the Reality, you also get an additional ${formatX(8)} to Dark Energy gain.`;
-    case 2: return `<br><br>Lai'tela's Reality will now disable production from all 2nd Dimensions during
-      future runs, but the reward will be ${formatInt(100)} times stronger than before. Completely destabilizing
-      the Reality for the final Dimension will give you an additional ${formatX(8)} to Dark Energy gain.`;
-    case 3: return `<br><br>Lai'tela's Reality will now disable production from all 3rd Dimensions during
-        future runs, but the reward will be ${formatInt(100)} times stronger than before.`;
-    case 8: return `<br><br>Lai'tela's Reality will now disable production from all 8th Dimensions during
-        future runs, but the reward will be ${formatInt(100)} times stronger than before. This boost can be
-        repeated for each remaining Dimension by reaching destabilization within ${formatInt(30)} seconds again.`;
-    default: return `<br><br>Lai'tela's Reality will now disable production from all
-        ${disabledDim}th Dimensions during future runs, but the reward will be
+    case 2: return `<br><br>${Laitela.displayRealityName(false, "The")} will now disable production from all 
+        ${TimeDimension(2).fullName(...[,], false, ...[,], 2)} during future runs, but the reward will be 
+        ${formatInt(100)} times stronger than before. Completely destabilizing the Reality for the final Dimension 
+        will give you an additional ${formatX(8)} to Dark Energy gain.`;
+    case 3: return `<br><br>${Laitela.displayRealityName(false, "The")} will now disable production from all 
+        ${TimeDimension(3).fullName(...[,], false, ...[,], 2)} during future runs, but the reward will be 
+        ${formatInt(100)} times stronger than before.`;
+    case 8: return `<br><br>${Laitela.displayRealityName(false, "The")} will now disable production from all 
+        ${TimeDimension(8).fullName(...[,], false, ...[,], 2)} during future runs, but the reward will be 
+        ${formatInt(100)} times stronger than before. This boost can be repeated for each remaining Dimension by 
+        reaching destabilization within ${formatInt(30)} seconds again.`;
+    default: return `<br><br>${Laitela.displayRealityName(false, "The")} will now disable production from all
+        ${TimeDimension(disabledDim).fullName(...[,], false, ...[,], 2)} during future runs, but the reward will be
         ${formatInt(100)} times stronger than before.`;
   }
 }

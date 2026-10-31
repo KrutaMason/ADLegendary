@@ -11,7 +11,7 @@ export const enslaved = {
     ec1: {
       id: 1,
       hint: "That's odd, the Automatic Eternity Challenge perk seems to be having some trouble working properly.",
-      condition: () => `Gained more than ${formatInt(5)} completions of Eternity Challenge 1 at once`,
+      condition: () => `Gained more than ${formatInt(5)} completions of ${EternityChallenge(1).displayName()} at once`,
     },
     feelEternity: {
       id: 2,
@@ -22,13 +22,14 @@ export const enslaved = {
       id: 3,
       hint: `Some Challenges are harder, but also boost something in exchange. I wonder if there's a Challenge
         that's just strictly better than normal here.`,
-      condition: () => `Entered Eternity Challenge 6 again after completing it ${formatInt(5)} times in order
-        to use its cheaper Replicanti Galaxies`,
+      condition: () => `Entered ${EternityChallenge(6).displayName()} again after completing it ${formatInt(5)} 
+      times in order to use its cheaper Replicanti Galaxies`,
     },
     c10: {
       id: 4,
-      hint: "Is there a way to get Antimatter Galaxies without 8th Antimatter Dimensions?",
-      condition: "Used Challenge 10 to get more than one Antimatter Galaxy with 6th Antimatter Dimensions",
+      hint: () => `Is there a way to get Antimatter Galaxies without ${AntimatterDimension(8).fullName(...[,,,], 2)}?`,
+      condition: () => `Used ${NormalChallenge(10).displayName()} to get more than one Antimatter Galaxy with 
+      ${AntimatterDimension(6).fullName(...[,,,], 2)}`,
     },
     secretStudy: {
       id: 5,
@@ -43,7 +44,7 @@ export const enslaved = {
     challengeCombo: {
       id: 7,
       hint: "Could I possibly use one Challenge to get around a restriction in another Challenge?",
-      condition: "Entered Challenge 10 while already inside of Eternity Challenge 6",
+      condition: () => `Entered ${NormalChallenge(10).displayName()} while already inside of ${EternityChallenge(6).displayName()}`,
     },
   },
   // These get unlocked sequentially

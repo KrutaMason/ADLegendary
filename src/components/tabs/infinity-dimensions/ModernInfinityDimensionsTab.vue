@@ -16,7 +16,9 @@ export default {
       incomeType: "",
       isEC8Running: false,
       EC8PurchasesLeft: 0,
+      EC8Name: "",
       isEC9Running: false,
+      EC9Name: "",
       isEnslavedRunning: false,
       isAnyAutobuyerUnlocked: false,
       conversionRate: 0,
@@ -31,7 +33,7 @@ export default {
       creditsClosed: false,
       showLockedDimCostNote: true,
       showNewCap:false,
-      uniqueDimName: false,
+      eigthDimName: "",
     };
   },
   computed: {
@@ -52,11 +54,13 @@ export default {
         this.dimMultiplier.copyFrom(this.infinityPower.pow(this.conversionRate).max(1));
       }
       this.powerPerSecond.copyFrom(InfinityDimension(1).productionPerSecond);
-      this.incomeType = EternityChallenge(7).isRunning ? "Seventh Dimensions" : "Infinity Power";
+      this.incomeType = EternityChallenge(7).isRunning ? AntimatterDimension(7).fullName(false, ...[,,], 2) : "Infinity Power";
       this.isEC8Running = EternityChallenge(8).isRunning;
       if (this.isEC8Running) {
         this.EC8PurchasesLeft = player.eterc8ids;
       }
+      this.EC8Name = EternityChallenge(8).displayName();
+      this.EC9Name = EternityChallenge(9).displayName();
       this.isEnslavedRunning = Enslaved.isRunning;
       this.isAnyAutobuyerUnlocked = Autobuyer.infinityDimension(1).isUnlocked;
       this.nextDimCapIncrease = Tesseracts.nextTesseractIncrease;
@@ -68,7 +72,7 @@ export default {
       this.boughtTesseracts = Tesseracts.bought;
       this.extraTesseracts = Tesseracts.extra;
       this.creditsClosed = GameEnd.creditsEverClosed;
-      this.uniqueDimName = player.options.naming.dimensions;
+      this.eigthDimName = player.options.naming.dimensions ? InfinityDimension(8).uniqueName : "8th";
     },
     maxAll() {
       InfinityDimensions.buyMax();
@@ -88,7 +92,9 @@ export default {
 
 <template>
   <div class="l-infinity-dim-tab">
-    <div class="c-subtab-option-container c-subtab-option-container--border">
+    <div class="c-subtab-option-container"
+      :class="{'c-subtab-option-container--border' : !isEC8Running}"
+    >
       <PrimaryButton
         v-if="!isEC8Running"
         class="o-primary-btn--subtab-option"
@@ -109,14 +115,14 @@ export default {
         You have
         <span 
         class="c-infinity-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(infinityPower) }"
+        :class="diffFont(infinityPower)"
         >{{ format(infinityPower, 2, 1) }}</span>
         Infinity Power,
         <br>
         <span v-if="!isEC9Running">
           increased by
           <span class="c-infinity-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(conversionRate) }"
+        :class="diffFont(conversionRate)"
         >{{ formatPow(conversionRate, 2, 3) }}</span>
         </span>
         <span v-else>
@@ -124,11 +130,11 @@ export default {
         </span>
         to a
         <span class="c-infinity-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(dimMultiplier) }"
+        :class="diffFont(dimMultiplier)"
         >{{ formatX(dimMultiplier, 2, 1) }}</span>
         multiplier on all
         <span v-if="!isEC9Running">Antimatter Dimensions.</span>
-        <span v-else>Time Dimensions due to Eternity Challenge 9.</span>
+        <span v-else>Time Dimensions due to {{ EC9Name }}.</span>
       </p>
     </div>
     <div
@@ -146,7 +152,7 @@ export default {
         @mouseleave="showNextCap(false)"
       >
         <p class="c-infinity-dim-tab__tesseract-button__title">
-          Buy a Tesseract (<span :class="{'c-infinity-dim-tab__tesseract-button__title--fixed': isInaccessible(tesseractCountString) }">{{ tesseractCountString }}</span>)
+          Buy a Tesseract (<span :class="diffFont(tesseractCountString)">{{ tesseractCountString }}</span>)
         </p>
         <p>Increase Dimension caps by {{ formatInt(nextDimCapIncrease, 2) }}</p>
         <p><b>Costs: {{ format(tesseractCost) }} IP</b></p>
@@ -156,8 +162,7 @@ export default {
       All Infinity Dimensions are limited to a single purchase.
     </div>
     <div v-else>
-      All Infinity Dimensions except for the {{ uniqueDimName ? "Polyzetton" : "the 8th" }} 
-      are limited to a maximum of <b style="color:var(--color-infinity)">
+      All Infinity Dimensions except for the {{ eigthDimName }} are limited to a maximum of <b style="color:var(--color-infinity)">
         {{ formatInt(totalDimCap) }}<i
         class="c-infinity-dim-tesseract__accent"
         :class="{'c-infinity-dim-tesseract__glow':showNewCap}"
@@ -170,7 +175,7 @@ export default {
       v-if="isEC8Running"
       class="l-infinity-dim-tab__ec8-purchases"
     >
-      You have {{ quantifyInt("purchase", EC8PurchasesLeft) }} left within Eternity Challenge 8.
+      You have {{ quantifyInt("purchase", EC8PurchasesLeft) }} left within {{ EC8Name }}.
     </b>
     <div class="l-dimensions-container">
       <InfinityDimensionRow
@@ -192,14 +197,14 @@ export default {
   color-mix(in srgb, var(--color-infinity) 30%, transparent), transparent);
   border-image: linear-gradient(90deg, transparent, var(--color-infinity), transparent) 1;
 }
-.c-infinity-dim-tesseract__accent{
-  color:var(--color-text);
-  font-weight:normal;
-  font-size:0rem;
+.c-infinity-dim-tesseract__accent {
+  color: var(--color-text);
+  font-weight: normal;
+  font-size: 0rem;
   transition: 0.15s;
   text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem #2ebce6,0.1rem 0.1rem 0.1rem #2ebce6);
 }
-.c-infinity-dim-tesseract__glow{
-  font-size:unset
+.c-infinity-dim-tesseract__glow {
+  font-size: unset
 }
 </style>

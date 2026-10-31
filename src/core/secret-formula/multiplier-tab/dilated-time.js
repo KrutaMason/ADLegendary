@@ -84,7 +84,7 @@ export const DT = {
   },
 
   nerfV: {
-    name: "V's Reality",
+    name: () => V.displayRealityName(),
     powValue: () => 0.5,
     isActive: () => V.isRunning && getDilationGainPerSecond().neq(0),
     icon: MultiplierTabIcons.GENERIC_V,

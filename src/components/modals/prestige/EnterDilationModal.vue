@@ -24,7 +24,7 @@ export default {
       }
       if (!isInCelestialReality() && Ra.unlocks.unlockDilationStartingTP.canBeApplied) {
         return `You already have the maximum feasible amount of Tachyons you can attain due to
-          Teresa's Level ${formatInt(25)} reward.`;
+          Orias' Level ${formatInt(25)} reward.`;
       }
       return `You last completed Dilation at ${format(player.dilation.lastEP, 2, 2)} Eternity Points.`;
     }

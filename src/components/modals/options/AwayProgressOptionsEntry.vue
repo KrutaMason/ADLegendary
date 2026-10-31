@@ -11,6 +11,10 @@ export default {
       type: String,
       required: true,
     },
+    isinOptionsModal: {
+      type: Boolean,
+      required: false
+    }
   },
   data() {
     return {
@@ -23,7 +27,7 @@ export default {
       return AwayProgressTypes.all[this.name];
     },
     text() {
-      return `${this.type.formatName}:`;
+      return this.isinOptionsModal ? "" : `${this.type.formatName}:`;
     }
   },
   watch: {

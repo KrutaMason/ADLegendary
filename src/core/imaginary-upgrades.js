@@ -84,7 +84,8 @@ class ImaginaryUpgradeState extends BitPurchasableMechanicState {
   tryUnlock() {
     if (!MachineHandler.isIMUnlocked || this.isAvailableForPurchase || !this.config.checkRequirement()) return;
     player.reality.imaginaryUpgReqs |= (1 << this.id);
-    GameUI.notify.reality(["Imaginary Upgrade unlocked!",`${this.config.name}`]);
+    GameUI.notify.celestial(["Imaginary Upgrade unlocked!",`${this.config.name}`,
+        `<div class="o-notification--icon"><i class="far fa-lightbulb"></i></div>`]);
     this.hasPlayerLock = false;
   }
 
@@ -103,7 +104,7 @@ class ImaginaryUpgradeState extends BitPurchasableMechanicState {
       Laitela.quotes.finalRowIM.show();
     }
     if (this.id === 22) {
-      for (const key of Object.keys(player.reality.glyphs.sac)) {
+      for (const key of Object.keys(player.reality.glyphs.sac).filter(type => type !== "helios")) {
         player.reality.glyphs.sac[key] = ImaginaryUpgrade(22).effectValue;
       }
     }

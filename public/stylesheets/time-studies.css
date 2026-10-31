@@ -23,13 +23,13 @@
   font-size: 1.35rem;
   border: 0.1rem solid var(--border);
   --border:#682e97;
-  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+  background: var(--pattern), linear-gradient(var(--bg-bright),var(--bg-dark));
   text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
   box-shadow: var(--var-box-shadow, 0 0 1rem var(--border) inset,0 0 1rem black inset);
   border-radius: var(--var-border-radius, 4px);
   transition-duration: 0.2s;
   background-position: center;
-  --bg-image: url(../images/time-studies/ts-time.png);
+  --pattern: url(../images/patterns/ts_time.png);
 }
 
 .c-tt-buy-button--unlocked {
@@ -39,10 +39,27 @@
   cursor: pointer;
 }
 
+.t-amoled .c-tt-buy-button--unlocked,
+.t-amoled-metro .c-tt-buy-button--unlocked {
+  --bg-bright: #111111;
+  --bg-dark: #222222;
+}
+
+.t-inverted-metro .c-tt-buy-button--unlocked {
+  color: #00bcd4;
+  --bg-dark: #212121;
+  --border: #00bcd4;
+}
+
 .c-tt-buy-button--unlocked:hover {
   color: #ffffff;
   --border:#3aacd6;
   --bg-dark: #2f86a5;
+}
+
+.t-inverted-metro .c-tt-buy-button--unlocked:hover {
+  color: white;
+  --bg-bright: #00bcd4;
 }
 
 .c-tt-buy-button--locked {
@@ -53,9 +70,34 @@
   --bg-dark:#555555;
 }
 
+.t-dark .c-tt-buy-button--locked,
+.t-dark-metro .c-tt-buy-button--locked {
+  --bg-bright: #263238;
+  --border: #548b9f;
+}
+
+.t-amoled .c-tt-buy-button--locked,
+.t-amoled-metro .c-tt-buy-button--locked,
+.t-s6 .c-tt-buy-button--locked,
+.t-s10 .c-tt-buy-button--locked {
+  color: var(--color-bad);
+  --bg-bright: #000000;
+  --bg-dark: #444444;
+  --border: var(--color-bad);
+}
+
 .c-tt-buy-button--locked:hover {
   color: white;
   --bg-dark: #652f2f;
+}
+
+.s-base--metro .c-tt-buy-button--locked:hover {
+  --bg-dark: #e53950;
+}
+
+.t-amoled .c-tt-buy-button--locked:hover,
+.t-amoled-metro .c-tt-buy-button--locked:hover {
+  --bg-dark: var(--color-bad);
 }
 
 .timetheorems {
@@ -163,10 +205,10 @@
 
 .ttshop-background {
   z-index: 1;
-  background: linear-gradient(transparent,var(--color-eternity) 300%),var(--leg-base);
-  box-shadow: var(--var-box-shadow, var(--box-shadow));
-  border: var(--var-border-width, 0.2rem) solid;
-  border-image: var(--leg-border) 3;
+  --border: var(--color-eternity);
+  background: linear-gradient(transparent,var(--color-eternity) 300%), var(--leg-base);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--border) inset);
+  border: 0.1rem solid var(--border);
   border-bottom: none;
   border-top-left-radius: var(--var-border-radius, 7px);
   border-top-right-radius: var(--var-border-radius, 7px);
@@ -174,7 +216,7 @@
 
 .t-s6 .ttshop-background,
 .t-s10 .ttshop-background {
-  border: 0.1rem solid #3aacd6;
+  --border: #3aacd6;
 }
 
 .ttshop-container {
@@ -225,10 +267,10 @@
   width: 20rem;
   height: 6rem;
   position: relative;
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
   font-size: 1.8rem;
   font-weight: bold;
-  background: var(--bg-image), linear-gradient(var(--bg-bright), var(--bg-dark));
+  background: var(--pattern), linear-gradient(var(--bg-bright), var(--bg-dark));
   background-position: center;
   border: 0.1rem solid var(--border);
   box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px);
@@ -279,12 +321,13 @@
   height: 10rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
-  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
-  --bg-image: url(../images/upgrades/pelle.png);
+  background: var(--pattern), linear-gradient(var(--bg-bright),var(--bg-dark));
+  --pattern: url(../images/patterns/cel_7.png);
   background-position: center;
   box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
   text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   border: 0.1rem solid var(--border);
+  border-color: color-mix(in srgb, var(--border) 80%, white) color-mix(in srgb, var(--border) 80%, black) color-mix(in srgb, var(--border) 70%, black) var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
   text-decoration: line-through;
@@ -314,24 +357,30 @@
 /* #region o-time-study */
 
 .o-time-study {
-  width: 18rem;height: 10rem;
+  --gradient-text: var(--bg-bright);
+  width: 18rem;
+  height: 10rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
-  background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+  background: var(--pattern), linear-gradient(var(--bg-bright), var(--bg-dark));
   background-position: center;
-  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
-  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+  box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset, var(--border) inset 0px 0px 0px 2px);
+  text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
   border: 0.1rem solid var(--border);
+  border-color: color-mix(in srgb, var(--border) 80%, white) color-mix(in srgb, var(--border) 80%, black) color-mix(in srgb, var(--border) 70%, black) var(--border);
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
 }
-
+.s-base--metro .o-time-study,
+.s-base--metro .c-pelle-useless {
+  border-color: var(--border);
+}
 .o-time-study--available {
   --bg-dark: #0c0b0f;
   --bg-bright: #2b2f3b;
   box-shadow: inset 0 0 1rem 0;
   cursor: pointer;
-  --bg-image: url(../images/time-studies/ts-available.png);
+  --pattern: url(../images/patterns/ts_avail.png);
 }
 .c-pelle-useless-available {
   animation: a-time-study 7s infinite;
@@ -348,7 +397,7 @@
 .o-time-study--unavailable {
   color: #bbbbbb;
   --border: #909090;
-  --bg-image: url(../images/time-studies/ts-normal.png);
+  --pattern: url(../images/patterns/ts_def.png);
 }
 .s-base--dark .o-time-study--unavailable {
   color: #888888;
@@ -407,6 +456,7 @@
 .t-hex .o-time-study-normal--available:hover {
   --bg-dark: #39bb28;
 }
+
 .o-time-study-antimatter-dim--available {
   color: #22aa48;
   --border: #22aa48;
@@ -414,6 +464,16 @@
 
 .o-time-study-antimatter-dim--available:hover {
   --bg-dark: #198036;
+}
+
+.t-hex .o-time-study-antimatter-dim--available {
+  color: #e5e587;
+  --border: #e5e587;
+}
+
+.t-hex .o-time-study-antimatter-dim--available:hover {
+  color: white;
+  --bg-dark: #797932;
 }
 
 .o-time-study-infinity-dim--available {
@@ -425,6 +485,16 @@
   --bg-dark: #8b6227;
 }
 
+.t-hex .o-time-study-infinity-dim--available {
+  color: #ff00ff;
+  --border: #ff00ff;
+}
+
+.t-hex .o-time-study-infinity-dim--available:hover {
+  color: white;
+  --bg-dark: #830083;
+}
+
 .o-time-study-time-dim--available {
   color: #b241e3;
   --border: #b241e3;
@@ -432,6 +502,16 @@
 
 .o-time-study-time-dim--available:hover {
   --bg-dark: #631485;
+}
+
+.t-hex .o-time-study-time-dim--available {
+  color: #00ffff;
+  --border: #00ffff;
+}
+
+.t-hex .o-time-study-time-dim--available:hover {
+  color: white;
+  --bg-dark: #007c7c;
 }
 
 .o-time-study-active--available {
@@ -485,7 +565,7 @@
 
 .o-time-study-eternity-challenge--available {
   color: white;
-  --bg-image: url(../images/time-studies/ts-time.png);
+  --pattern: url(../images/patterns/ts_time.png);
   --bg-bright: #63568f;
   --bg-dark: #8f9ebc;
   --border:#745DC7
@@ -506,13 +586,13 @@
 }
 
 .o-time-study-dilation--available {
-  color: #64dd17;
-  --border: #64dd17;
+  color: var(--color-dilation);
+  --border: var(--color-dilation);
   animation: a-time-study-dilation 10s infinite;
 }
 
 .o-time-study-dilation--available:hover {
-  --bg-dark: #64dd17;
+  --bg-dark: var(--color-dilation);
   animation: a-time-study-dilation 10s infinite;
 }
 
@@ -523,19 +603,24 @@
   --border: var(--color-reality);
 }
 
+.t-hex .o-time-study-reality--available {
+  --bg-dark: #be9b9b;
+  --bg-bright: #d4bdbd;
+}
+
 .o-time-study-reality--available:hover {
-  --bg-bright: hsl(224, 15%, 20%);
+  --bg-bright: #2b2f3b;
   --bg-dark: var(--color-reality);
 }
 
 .o-time-study-triad--available {
   color: var(--color-v--base);
-  --border:var(--color-v--base);
+  --border: var(--color-v--base);
   animation: a-time-study 1.5s infinite;
 }
 
 .o-time-study-triad--available:hover {
-  --bg-dark: hsl(45, 55%, 22%);
+  --bg-dark: #574819;
 }
 
 @keyframes a-time-study-dilation {
@@ -565,6 +650,7 @@
   --bg-bright: var(--leg-bg-bright);
   background-color: #9e9e9e;
 }
+
 .t-dark .o-time-study--unavailable:hover,
 .t-s6 .o-time-study--unavailable:hover,
 .t-s10 .o-time-study--unavailable:hover {
@@ -576,9 +662,16 @@
   --bg-bright: #617968;
   --bg-dark: #242d26;
 }
+
 .s-base--dark .o-time-study-antimatter-dim--unavailable {
   --bg-bright: #404f44;
   --bg-dark: #171c18;
+}
+
+.t-hex .o-time-study-antimatter-dim--unavailable {
+  background-color: #a8a894;
+  --bg-bright: #49493b;
+  --bg-dark: #1b1b16;
 }
 
 .o-time-study-infinity-dim--unavailable {
@@ -590,6 +683,10 @@
   --bg-bright: #544d45;
   --bg-dark: #2a2622;
 }
+.t-hex .o-time-study-infinity-dim--unavailable {
+  --bg-bright: #514554;
+  --bg-dark: #29222a;
+}
 
 .o-time-study-time-dim--unavailable {
   background-color: #a294a8;
@@ -599,6 +696,10 @@
 .s-base--dark .o-time-study-time-dim--unavailable {
   --bg-bright: #423946;
   --bg-dark: #1b171c;
+}
+.t-hex .o-time-study-time-dim--unavailable {
+  --bg-bright: #394646;
+  --bg-dark: #171c1c;
 }
 
 .o-time-study-active--unavailable {
@@ -657,7 +758,7 @@
   background-color: #9e9e9e;
   --bg-bright: #444157;
   --bg-dark: #383e4b;
-  --bg-image: url(../images/time-studies/ts-time.png);
+  --pattern: url(../images/patterns/ts_time.png);
 }
 .s-base--dark .o-time-study-eternity-challenge--unavailable {
   --bg-bright: #17161d;
@@ -674,6 +775,11 @@
   --bg-dark: #121410;
 }
 
+.t-hex .o-time-study-dilation--unavailable {
+  --bg-bright: #38342e;
+  --bg-dark: #141210;
+}
+
 .o-time-study-reality--unavailable {
   background-color: #94a895;
   --bg-bright: #506350;
@@ -682,6 +788,11 @@
 .s-base--dark .o-time-study-reality--unavailable {
   --bg-bright: #222a22;
   --bg-dark: #0b0e0b;
+}
+
+.t-hex .o-time-study-reality--unavailable {
+  --bg-bright: #292525;
+  --bg-dark: #111010;
 }
 
 .o-time-study-triad--unavailable {
@@ -702,7 +813,7 @@
   --bg-bright: #423961;
   --bg-dark: #485b85;
   background-color: #745DC9;
-  --bg-image: url(../images/time-studies/ts-normal.png);
+  --pattern: url(../images/patterns/ts_def.png);
 }
 .t-hex .o-time-study-normal--bought {
   color: #c9ffc9;
@@ -717,7 +828,15 @@
   --border: #6ae28c;
   color: white;
   background-color: #22aa48;
-  --bg-image: url(../images/time-studies/ts-antimatter.png);
+  --pattern: url(../images/patterns/ts_am.png);
+}
+
+.t-hex .o-time-study-antimatter-dim--bought {
+  --bg-bright: #807e19;
+  --bg-dark: #3d400d;
+  --border: #e5e587;
+  color: white;
+  background-color: #e5e587;
 }
 
 .o-time-study-infinity-dim--bought {
@@ -726,7 +845,14 @@
   --border: #d8ae74;
   color: white;
   background-color: #b67f33;
-  --bg-image: url(../images/time-studies/ts-infinity.png);
+  --pattern: url(../images/patterns/ts_inf.png);
+}
+
+.t-hex .o-time-study-infinity-dim--bought {
+  --bg-bright: #83278b;
+  --bg-dark: #4b1650;
+  --border: #ff00ff;
+  background-color: #ff00ff;
 }
 
 .o-time-study-time-dim--bought {
@@ -735,7 +861,14 @@
   --border: #b168cf;
   color: white;
   background-color: #b241e3;
-  --bg-image: url(../images/time-studies/ts-time.png);
+  --pattern: url(../images/patterns/ts_time.png);
+}
+
+.t-hex .o-time-study-time-dim--bought {
+  --bg-bright: #148185;
+  --bg-dark: #0a3b43;
+  --border: #68cccf;
+  background-color: #00ffff;
 }
 
 .o-time-study-active--bought {
@@ -744,11 +877,11 @@
   --border: #ffd700;
   color: white;
   background-color: #e60000;
-  --bg-image: url(../images/time-studies/ts-active.png);
+  --pattern: url(../images/patterns/ts_act.png);
 }
 
 .o-time-study-passive--bought {
-  --bg-image: url(../images/time-studies/ts-passive.png);
+  --pattern: url(../images/patterns/ts_pass.png);
   --bg-bright: #713fd8;
   --bg-dark: #371874;
   --border: #ffffff;
@@ -757,7 +890,7 @@
 }
 
 .o-time-study-idle--bought {
-  --bg-image: url(../images/time-studies/ts-idle.png);
+  --pattern: url(../images/patterns/ts_idl.png);
   --bg-bright: #006bd6;
   --bg-dark: #003569;
   --border: #f09579;
@@ -766,7 +899,7 @@
 }
 
 .o-time-study-dark--bought {
-  --bg-image: url(../images/time-studies/ts-dark.png);
+  --pattern: url(../images/patterns/ts_dark.png);
   --bg-bright: #111111;
   --bg-dark: #444444;
   --border: #87daf8;
@@ -775,7 +908,7 @@
 }
 
 .o-time-study-light--bought {
-  --bg-image: url(../images/time-studies/ts-light.png);
+  --pattern: url(../images/patterns/ts_light.png);
   --bg-bright: #999999;
   --bg-dark: #686868;
   --border: #59b6d7;
@@ -788,7 +921,7 @@
   --bg-dark: #1c3668;
   color: white;
   background-color: #490066;
-  --bg-image: url(../images/time-studies/ts-time.png);
+  --pattern: url(../images/patterns/ts_time.png);
 }
 
 .o-time-study-eternity-challenge--running {
@@ -796,8 +929,8 @@
   --bg-dark: #152a50;
   --border: cyan;
   color: cyan;
-  --bg-image: url(../images/time-studies/ts-challengerun.png);
-  animation: a-eternity-challenge-running 6s infinite,a-eternity-challenge-running-pattern 3s infinite linear;
+  --pattern: url(../images/patterns/ts_crun.png);
+  animation: a-eternity-challenge-running 6s infinite, a-eternity-challenge-running-pattern 3s infinite linear;
 }
 
 @keyframes a-eternity-challenge-running {
@@ -838,7 +971,7 @@
   }
 }
 .o-time-study-dilation--bought {
-  --bg-image: url(../images/time-studies/ts-dilation.png);
+  --pattern: url(../images/patterns/ts_dil.png);
   color: #dfffab;
   --bg-bright: #477e09;
   --bg-dark: #2c4603;
@@ -846,13 +979,28 @@
   background-color: #64dd17;
 }
 
+.t-hex .o-time-study-dilation--bought {
+  color: #ffe4ab;
+  --bg-bright: #7e5509;
+  --bg-dark: #462b03;
+  --border: #ffae00;
+  background-color: #ff9933;
+}
+
 .o-time-study-reality--bought {
-  --bg-image: url(../images/time-studies/ts-reality.png);
+  --pattern: url(../images/patterns/ts_real.png);
   color: #d6ffd8;
   --bg-dark: #141f14;
   --bg-bright: #305030;
   --border: #bdffc0;
   background-color: var(--color-reality);
+}
+
+.t-hex .o-time-study-reality--bought {
+  color: #ffd6d6;
+  --bg-dark: #201e1e;
+  --bg-bright: #504040;
+  --border: #ffbdbd;
 }
 
 .o-time-study-dilation-glow.o-time-study-dilation--bought:before {
@@ -905,20 +1053,6 @@
   animation: none
 }
 
-/*.o-time-study-reality--bought::after {
-  content: '';
-  position: absolute;
-  display: block;
-  left: -6.1rem;
-  top: -10.1rem;
-  width: 30rem;
-  height: 30rem;
-  background-image: url(../images/EldenRing.png);
-  background-size: contain;
-  z-index: -1;
-  animation: a-reality-unlock 120s infinite linear
-}*/
-
 @keyframes a-reality-unlock {
   0% {
       transform: rotate(0deg);
@@ -930,49 +1064,13 @@
 }
 
 .o-time-study-triad--bought {
-  --bg-image: url(../images/time-studies/ts-triad.png);
+  --pattern: url(../images/patterns/ts_triad.png);
   color: white;
   --bg-bright: #433813;
   --bg-dark: #9e802e;
   --border: #c9bb6b;
   background-color: var(--color-v--base);
 }
-
-/*.t-dark .o-time-study-antimatter-dim--bought,
-.t-s6 .o-time-study-antimatter-dim--bought,
-.t-s10 .o-time-study-antimatter-dim--bought {
-  border-color: #198036;
-}
-
-.t-dark .o-time-study-infinity-dim--bought,
-.t-s6 .o-time-study-infinity-dim--bought,
-.t-s10 .o-time-study-infinity-dim--bought {
-  border-color: #8b6227;
-}
-
-.t-dark .o-time-study-time-dim--bought,
-.t-s6 .o-time-study-time-dim--bought,
-.t-s10 .o-time-study-time-dim--bought {
-  border-color: #951ec8;
-}
-
-.t-dark .o-time-study-active--bought,
-.t-s6 .o-time-study-active--bought,
-.t-s10 .o-time-study-active--bought {
-  border-color: #cc0000;
-}
-
-.t-dark .o-time-study-passive--bought,
-.t-s6 .o-time-study-passive--bought,
-.t-s10 .o-time-study-passive--bought {
-  border-color: #4b288f;
-}
-
-.t-dark .o-time-study-idle--bought,
-.t-s6 .o-time-study-idle--bought,
-.t-s10 .o-time-study-idle--bought {
-  border-color: #0066cc;
-}*/
 
 .o-time-study--secret {
   opacity: 0;
@@ -983,7 +1081,7 @@
   --bg-dark: #741a28;
   color: gold;
   --border: gold;
-  --bg-image: url(../images/time-studies/ts-secret.png);
+  --pattern: url(../images/patterns/ts_s.png);
 }
 
 .o-time-study--secret-unlocked {
@@ -995,7 +1093,7 @@
   --bg-dark: #741a28;
   color: gold;
   --border: gold;
-  --bg-image: url(../images/time-studies/ts-secret.png);
+  --pattern: url(../images/patterns/ts_s.png);
 }
 
 .o-time-study--enslaved {
@@ -1004,7 +1102,7 @@
   --bg-dark: #5b361f;
   color: var(--color-enslaved--base);
   --border: var(--color-enslaved--base);
-  --bg-image: url(../images/time-studies/ts-normal.png);
+  --pattern: url(../images/patterns/ts_avail.png);
   transition: all 1s;
   animation: a-time-study 0.5s infinite;
   cursor: pointer;
@@ -1046,6 +1144,12 @@
 .t-s14 .o-time-study-triad--available:hover{
   --bg-dark: #bb2828;
 }
+
+.t-s14 .o-time-study--unavailable {
+  --bg-bright: #3d2828;
+  --bg-dark: #160909;
+}
+
 .t-s14 .o-time-study-normal--bought{
   --bg-bright: #444444;
   --bg-dark: #777777;
@@ -1081,12 +1185,24 @@
   stroke: #37533f;
 }
 
+.t-hex .o-time-study-connection--antimatter-dim {
+  stroke: #535237;
+}
+
 .o-time-study-connection--infinity-dim {
   stroke: #534737;
 }
 
+.t-hex .o-time-study-connection--infinity-dim {
+  stroke: #503753;
+}
+
 .o-time-study-connection--time-dim {
   stroke: #4a3753;
+}
+
+.t-hex .o-time-study-connection--time-dim {
+  stroke: #375253;
 }
 
 .o-time-study-connection--active {
@@ -1139,19 +1255,33 @@
 .s-base--dark  .o-time-study-connection--bought {
   stroke: #318bac;
 }
+
 .t-hex  .o-time-study-connection--bought {
   stroke: #22631c;
 }
+
 .o-time-study-connection--bought.o-time-study-connection--antimatter-dim {
   stroke: #22aa48;
+}
+
+.t-hex .o-time-study-connection--bought.o-time-study-connection--antimatter-dim {
+  stroke: #e5e587;
 }
 
 .o-time-study-connection--bought.o-time-study-connection--infinity-dim {
   stroke: #b67f33;
 }
 
+.t-hex .o-time-study-connection--bought.o-time-study-connection--infinity-dim {
+  stroke: #ff00ff;
+}
+
 .o-time-study-connection--bought.o-time-study-connection--time-dim {
   stroke: #b241e3;
+}
+
+.t-hex .o-time-study-connection--bought.o-time-study-connection--time-dim {
+  stroke: #00ffff;
 }
 
 .o-time-study-connection--bought.o-time-study-connection--active {
@@ -1171,14 +1301,16 @@
 }
 
 .o-time-study-connection--bought.o-time-study-connection--dilation {
-  stroke: #64dd17;
+  stroke: var(--color-dilation);
 }
+
 .t-s14 .o-time-study-connection {
   stroke: #440000;
 }
 .t-s14 .o-time-study-connection--bought {
   stroke: #660000;
 }
+
 .o-time-study-connection--secret {
   opacity: 0;
   transition: opacity 1s;

@@ -213,7 +213,7 @@ export function processManualReality(sacrifice, glyphID) {
   // Should be here so that the perk graphics update even when we're on the perk subtab, while also keeping its
   // relatively expensive operations off of the reality reset hot path for when realities are significantly faster
   PerkNetwork.updatePerkColor();
-  if (player.options.audio.reality) AudioManagement.playSound("reset_reality-create")
+  AudioManagement.playSound("reset_reality-create", player.options.audio.reality)
 }
 
 export function runRealityAnimation() {
@@ -279,7 +279,7 @@ export function getRealityProps(isReset, alreadyGotGlyph = false) {
 export function autoReality() {
   if (GlyphSelection.active || !isRealityAvailable()) return;
   beginProcessReality(getRealityProps(false, false));
-  if (player.options.audio.reality) AudioManagement.playSound("reset_reality-auto")
+  AudioManagement.playSound("reset_reality-auto", player.options.audio.reality)
 }
 
 function updateRealityRecords(realityProps) {
@@ -329,12 +329,11 @@ function giveRealityRewards(realityProps) {
     const current = Teresa.runRewardMultiplier;
     const newMultiplier = Teresa.rewardMultiplier(player.antimatter);
     const isHigher = newMultiplier > current;
-    const realname =  player.options.naming.celestial ? "the "+Teresa.RealityName : "Teresa's Reality"
-    const modalText = `You have completed ${realname}! ${isHigher
+    const modalText = `You have completed ${Teresa.displayRealityName(false)}! ${isHigher
       ? `Since you gained more Antimatter, you increased your
       Glyph Sacrifice multiplier from ${format(current, 2, 2)} to ${format(newMultiplier, 2, 2)}`
       : `However, you did not gain more Antimatter during this run, so the Glyph Sacrifice multiplier
-      from Teresa did not increase`}.`;
+      from Orias did not increase`}.`;
     Modal.message.show(modalText, {}, 2);
     if (Currency.antimatter.gt(player.celestials.teresa.bestRunAM)) {
       player.celestials.teresa.bestRunAM = Currency.antimatter.value;
@@ -397,7 +396,7 @@ export function beginProcessReality(realityProps) {
       } else {
         GlyphSelection.select(Math.floor(Math.random() * GlyphSelection.choiceCount), false);
       }
-      if (Math.floor(Math.random() * 5e5)==1)Glyphs.addToInventory(GlyphGenerator.heliosGlyph());
+      if (Math.floor(Math.random() * GlyphSacrifice.helios.effectValue)==1) Glyphs.addToInventory(GlyphGenerator.heliosGlyph());
     }
     Glyphs.processSortingAfterReality();
     return;

@@ -85,7 +85,7 @@ export default {
       if (node.resource.isUnlocked) {
         this.focusedResourceId = node.resource.id;
       }
-      AudioManagement.playSound("click_hover")
+      AudioManagement.playSound((this.isDoomed||node.resource.amount<=0)?"alchemy_hover-doomed":"alchemy_hover",undefined,[0.9,1.1])
     },
     handleMouseLeave() {
       this.focusedResourceId = -1;
@@ -100,8 +100,8 @@ export default {
       }
       if (resource.isBaseResource) return;
       resource.reaction.isActive = !resource.reaction.isActive;
-      AudioManagement.playSound(resource.reaction.isActive?"click_light":"click_light-reverse")
       GameUI.update();
+      if (!this.isDoomed) AudioManagement.playSound(resource.reaction.isActive?"alchemy_active":"alchemy_inactive");
     },
     isUnlocked(reactionArrow) {
       return reactionArrow.product.resource.isUnlocked && reactionArrow.reagent.resource.isUnlocked;

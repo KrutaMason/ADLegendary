@@ -30,8 +30,7 @@ export const glyphSacrifice = {
       const capped = Math.clampMax(sac, GlyphSacrificeHandler.maxSacrificeForEffects);
       return 1 + Math.log10(1 + Math.pow(capped, 0.2) / 100);
     },
-    description: amount => `${formatX(amount, 2, 2)} bigger multiplier when buying 
-    ${player.options.naming.dimensions ? `Infinity ${InfinityDimension(8).uniqueName}` : "8th Infinity Dimension"}`,
+    description: amount => `${formatX(amount, 2, 2)} bigger multiplier when buying ${InfinityDimension(8).fullName()}`,
     boostValue: added =>{
       return GlyphAlteration.sacrificeBoost("infinity",added ?? 0) / 50
     },
@@ -46,8 +45,7 @@ export const glyphSacrifice = {
       const capped = Math.clampMax(sac, GlyphSacrificeHandler.maxSacrificeForEffects);
       return Math.pow(1 + Math.pow(capped, 0.2) / 100, 2);
     },
-    description: amount => `${formatX(amount, 2, 2)} bigger multiplier when buying 
-    ${player.options.naming.dimensions ? `Time ${TimeDimension(8).uniqueName}` : "8th Time Dimension"}`,
+    description: amount => `${formatX(amount, 2, 2)} bigger multiplier when buying ${TimeDimension(8).fullName()}`,
     boostValue: added =>{
       return Math.pow(3, GlyphAlteration.sacrificeBoost("time",added ?? 0))
     },
@@ -119,10 +117,20 @@ export const glyphSacrifice = {
       return Math.clampMax(1 + Math.sqrt(sac) / 15, 100);
     },
     description: amount => `Multiply Memory Chunk gain by ${formatX(amount, 2, 3)}`,
-    boostValue: added =>{
-      return 0
+    boostValue: () => 0,
+    boostdescription: () => "",
+    cap: () => GlyphSacrificeHandler.maxSacrificeForEffects
+  },
+  "helios": {
+    id: "helios",
+    effect: added => {
+      const sac = player.reality.glyphs.sac.helios + (added ?? 0);
+      return Math.floor(5e5 * (1 * Math.pow(2, sac * 0.1)));
     },
-    boostdescription: amount => `no`,
+    description: (amount, added) => `Helios Glyph level ${formatInt(player.reality.glyphs.sac.helios + (added ?? 0))} with a 1 in 
+    ${formatInt(Math.floor(amount / (AlchemyResource.multiversal.effectValue + 1)))} chance`,
+    boostValue: () => 0,
+    boostdescription: () => "",
     cap: () => GlyphSacrificeHandler.maxSacrificeForEffects
   }
 };

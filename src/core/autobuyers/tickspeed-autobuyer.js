@@ -7,6 +7,10 @@ export class TickspeedAutobuyerState extends UpgradeableAutobuyerState {
     return player.auto.tickspeed;
   }
 
+  get key() {
+    return "T";
+  }
+
   get name() {
     return `Tickspeed`;
   }

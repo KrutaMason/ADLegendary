@@ -9,8 +9,12 @@ export class ReplicantiGalaxyAutobuyerState extends AutobuyerState {
     return `Replicanti Galaxy`;
   }
 
+  get key() {
+    return "R";
+  }
+
   get color() {
-    return `#2196f3`;
+    return `var(--color-replicanti)`;
   }
 
   get isUnlocked() {

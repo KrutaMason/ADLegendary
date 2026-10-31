@@ -217,7 +217,7 @@ window.makeEnumeration = function makeEnumeration(items) {
   return `${commaSeparated}, and ${last}`;
 };
 
-// Cambria doesn't support Bar and Blob symbols. This function helps some texts change the font to Typewriter.
+// var(--var-secondary-font) doesn't support Bar and Blob symbols. This function helps some texts change the font to Typewriter.
 window.isInaccessible = function isInaccessible(value) {
   if (Notations.current.name === "Bar" || Notations.current.name === "Blobs") return true;
   else if (Notations.current.name === "ALL") {
@@ -226,4 +226,27 @@ window.isInaccessible = function isInaccessible(value) {
     else return false
   }
   else return false
+}
+
+window.displayGradientText = function displayGradientText(string, value) {
+  const regex = /[^-a-zA-Z0-9.,(){}:\^\×\[\]\u221e\u16DD ]/;
+  let whitelist = ["Bar", "Zalgo", "Shi", "Prime", "Roman", "Dots"];
+  let whitelistnum = [6, 7, 8, 12, 13, 14]
+  let blacklist = ["Blobs", "Clock"];
+  let blacklistnum = [11, 15];
+  var index = Math.floor(Math.log2(new Decimal(value).abs().plus(2).log2())) % 17;
+  if (whitelist.includes(Notations.current.name) || 
+    (Notations.current.name === "ALL" && whitelistnum.includes(index))) return string;
+  if (blacklist.includes(Notations.current.name) || 
+    (Notations.current.name === "ALL" && blacklistnum.includes(index))) return `<span class="c-nongrad">${string}</>`;
+  let input = string.split(/(?:)/);
+  let output = [];
+  for (let i = 0; i < string.length; i++) {
+    output[i] = (regex.test(input[i])) ? `<span class="c-nongrad">${input[i]}</span>` : input[i];
+    if (regex.test(input[i - 1]) && regex.test(input[i]) && i >= 1) {
+      output[i - 1] = output[i - 1].slice(0, output[i - 1].length - 7);
+      output[i] = output[i].slice(24, output[i].length);
+    };
+  };
+  return `${output.join("")}`;
 }

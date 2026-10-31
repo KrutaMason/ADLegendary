@@ -104,7 +104,7 @@ export const progressStages = [
   },
   {
     id: PROGRESS_STAGE.TERESA,
-    name: "Teresa (1st Celestial)",
+    name: "Orias (1st Celestial)",
     hasReached: save => save.celestials?.teresa?.quoteBits > 0,
     suggestedResource: "Reality Machines",
     subProgressValue: save => Math.log10(1 + save.celestials.teresa.pouredAmount) / 21,

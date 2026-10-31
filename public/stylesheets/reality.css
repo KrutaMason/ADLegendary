@@ -4,10 +4,7 @@
   .c-reality-tab__reality-machines {
     color: var(--color-reality);
   }
-  .c-reality-tab__reality-machines--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
-  }
+
   /* #region themes */
   
   /* #region t-dark t-s6 t-s10 */
@@ -39,37 +36,53 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    margin-top: 1.2rem;
+    padding-top: calc(1.2rem + var(--padding))
   }
+
   .l-reality-upgrade-actual-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(transparent,var(--color-reality) 250%),var(--leg-base);
+    background: linear-gradient(transparent, var(--color-reality) 250%), var(--leg-base);
     border: 1.2rem solid;
     border-image: var(--leg-border-reality) 12 round;
-    box-shadow: var(--var-box-shadow, 0 0 1.5rem black inset);
-    border-radius: var(--var-border-radius,0.5rem);
+    box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset);
   }
+
   .s-base--dark .l-reality-upgrade-actual-grid {
-    background: url(../images/time-studies/ts-reality.png),linear-gradient(#00000080,var(--color-reality) 600%),var(--leg-base);
+    --pattern: url(../images/patterns/ts_real.png);
+    background: var(--pattern), linear-gradient(#00000080, var(--color-reality) 600%), var(--leg-base);
     background-position: center;
   }
+
   .c-imaginary-grid {
-    background: linear-gradient(transparent,var(--color-ra--base) 200%),var(--leg-base);
-    border: 1.2rem solid;
+    --pattern: url(../images/patterns/ts_real.png);
+    --color-reality: var(--color-ra--base);
     border-image: url(../images/frames/upgrade-imaginary.png) 12 round;
-    box-shadow: var(--var-box-shadow, 0 0 1.5rem black inset);
   }
-  .s-base--dark .c-imaginary-grid {
-    background: url(../images/upgrades/imaginary-bought.png),linear-gradient(#00000080,var(--color-ra--base) 600%),var(--leg-base);
-    background-position: center;
-  }
+
   .l-reality-upgrade-grid__row {
     display: flex;
     flex-direction: row;
   }
+
+  .c-reality-upgrade-grid__row-title {
+    border-bottom: 0.1rem solid;
+    border-top: 0.1rem solid;
+    border-image: linear-gradient(90deg, transparent, var(--color-reality), transparent) 1;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-reality) 33%, transparent), transparent);
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-family: var(--var-secondary-font);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .c-imaginary-grid .c-reality-upgrade-grid__row-title {
+    --color-reality: var(--color-ra--base);
+  }
+
   .l-reality-upgrade-btn {
     display: flex;
     flex-direction: column;
@@ -80,6 +93,7 @@
     align-items: center;
     margin: 1.2rem;
     padding: 0 0.5rem;
+    border: var(--var-border-width, 0.2rem) solid;
     text-align: center;
     transition-duration: 0.15s;
     font-size: 1rem;
@@ -88,81 +102,89 @@
   }
   
   .c-reality-upgrade-btn {
-    text-align: center;
     transition-duration: 0.15s;
     font-size: 1rem;
     font-family: Typewriter, serif;
-    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+    cursor: pointer;
+
+    background: var(--pattern), linear-gradient(var(--bg-bright), var(--bg-dark));
     background-position: center;
-    --bg-image:url(../images/upgrades/bought.png);
+    --pattern: url(../images/patterns/upg_pur.png);
+    --gradient-text: var(--color-reality);
     box-shadow: var(--var-box-shadow, var(--box-shadow));
-    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
-    border: var(--var-border-width, 0.2rem) solid;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
     border-image: var(--leg-border-reality) 3;
-    border-radius: var(--var-border-radius, 0.5rem);
   }
+
   .c-reality-upgrade-btn--available {
     --bg-dark: #ffffff;
     --bg-bright: #c6ffc6;
-    --bg-image:url(../images/upgrades/reality-white.png);
+    --pattern: url(../images/patterns/upg_realw.png);
     color: var(--color-reality-dark);
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem white,0.1rem 0.1rem 0.3rem white);
   }
+
   .c-glyphs-tab-doomed .c-reality-upgrade-btn--available{
     --bg-dark: #ffffff;
     --bg-bright: #ffc6c9;
   }
+
   .s-base--dark .c-reality-upgrade-btn--available {
-    --bg-image:url(../images/upgrades/bought.png);
+    --pattern: url(../images/patterns/upg_pur.png);
     color: var(--color-reality-light);
-    --bg-dark:#222a22;
-    --bg-bright:#0b0e0b;
-    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
+    --bg-dark: #222a22;
+    --bg-bright: #0b0e0b;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
   }
 
   .t-amoled .c-reality-upgrade-btn--available {
-    --bg-dark:#111611;
-    --bg-bright:#000000;
+    --bg-dark: #111611;
+    --bg-bright: #000000;
   }
+
   .t-hex .c-reality-upgrade-btn--available {
-    --bg-dark:#2a2222;
-    --bg-bright:#0e0b0b;
+    --bg-dark: #2a2222;
+    --bg-bright: #0e0b0b;
   }
+
   .t-s14 .c-reality-upgrade-btn--available,
   .s-base--dark .c-glyphs-tab-doomed .c-reality-upgrade-btn--available{
-    --bg-dark:#2a0000;
-    --bg-bright:#0e0000;
+    --bg-dark: #2a0000;
+    --bg-bright: #0e0000;
   }
+
   .c-imaginary-upgrade-btn {
     color: #e7d5ff;
-    background: var(--bg-image), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: var(--pattern), linear-gradient(var(--bg-bright), var(--bg-dark));
     background-position: center;
-    --bg-image:url(../images/upgrades/bought.png);
+    --pattern: url(../images/patterns/upg_pur.png);
+    --gradient-text: var(--color-ra--base);
     box-shadow: var(--var-box-shadow, var(--box-shadow));
-    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
-    border: var(--var-border-width, 0.2rem) solid;
+    text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
     border-image: url(../images/frames/upgrade-imaginary.png) 3;
-    border-radius: var(--var-border-radius, 0.5rem);
   }
+
   .c-imaginary-upgrade-btn--available{
     --bg-dark: #e8c6ff;
     --bg-bright: #ffffff;
-    --bg-image:url(../images/upgrades/reality-white.png);
+    --pattern: url(../images/patterns/upg_realw.png);
     color: var(--color-ra--base);
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem white,0.1rem 0.1rem 0.3rem white);
   }
+
   .s-base--dark .c-imaginary-upgrade-btn--available{
-    --bg-image:url(../images/upgrades/bought.png);
+    --pattern: url(../images/patterns/upg_pur.png);
     color: #e7d5ff;
-    --bg-dark:#28222a;
-    --bg-bright:#0e0b0d;
+    --bg-dark: #28222a;
+    --bg-bright: #0e0b0d;
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
   }
+
   .c-reality-upgrade-btn__requirement {
     font-style: italic;
-    font-weight:bold;
+    font-weight: bold;
     border-top: 1px solid;
-    border-image: linear-gradient(90deg,transparent,currentcolor,transparent) 1;
+    border-image: linear-gradient(90deg, transparent, currentcolor, transparent) 1;
     display: block;
     margin-top: 0.1rem;
     padding-top: 0.1rem;
@@ -178,12 +200,11 @@
     --bg-bright: var(--color-ra--base);
   }
 
-  .s-base--dark .c-reality-upgrade-btn:hover {
-    color: white;
-  }
+  .s-base--dark .c-reality-upgrade-btn:hover,
   .s-base--dark .c-imaginary-upgrade-btn:hover {
     color: white;
-  }  
+  }
+
   .c-reality-upgrade-btn--unavailable,
   .s-base--dark .c-reality-upgrade-btn--unavailable{
     color: var(--color-reality-light);
@@ -191,25 +212,28 @@
     --bg-bright: var(--leg-bg-bright);
     cursor: default;
   }
+
   .c-imaginary-upgrade-btn--unavailable{
-    /*--bg-dark:#666666;--bg-bright:#333333;*/
     --bg-dark: var(--leg-bg-bright);
     --bg-bright: var(--leg-bg-dark);
     cursor: default;
   }
+
   .c-reality-upgrade-btn--unavailable:hover{
     color: var(--color-reality-light);
-    --bg-dark:var(--leg-bg-hover);
+    --bg-dark: var(--leg-bg-hover);
   }
+
   .c-imaginary-upgrade-btn--unavailable:hover {
     color: #e7d5ff;
-    --bg-bright:var(--leg-bg-hover);
+    --bg-bright: var(--leg-bg-hover);
   }
+
   .c-reality-upgrade-btn--useless,
   .c-imaginary-upgrade-btn--useless {
     --bg-dark: #673740;
     --bg-bright: #3f3133;
-    --bg-image:url(../images/upgrades/pelle.png);
+    --pattern: url(../images/patterns/upg_reald.png);
     background-color: var(--color-pelle--base);
     color: white;
     cursor: default;
@@ -221,53 +245,59 @@
     color: var(--color-reality-light);
     --bg-dark: #367d36;
     --bg-bright: #1a3d1a;
-    --bg-image:url(../images/upgrades/reality-bought.png);
+    --pattern:url(../images/patterns/upg_real.png);
     cursor: default;
     pointer-events: none;
   }
+
   .t-hex .c-reality-upgrade-btn--bought{
     --bg-dark: #815252;
     --bg-bright: #3f2a2a;
-    pointer-events: none;
   }
+
   .t-s14 .c-reality-upgrade-btn--bought{
-    --bg-dark: #7d3636;
-    --bg-bright: #3d1a1a;
-    pointer-events: none;
+    color: white;
+    --bg-bright: #851414;
+    --bg-dark: #430a0a;
   }
+
   .s-base--metro .c-reality-upgrade-btn--bought{
     --bg-dark: #3d8d40;
     --bg-bright: #27582a;
-    pointer-events: none;
   }
+
   .c-imaginary-upgrade-btn--bought{
     color: #e7d5ff;
     --bg-bright: #634f87;
     --bg-dark: #382a51;
-    --bg-image:url(../images/upgrades/imaginary-bought.png);
+    --pattern:url(../images/patterns/upg_i.png);
     cursor: default;
     pointer-events: none;
   }
+
   .c-reality-upgrade-btn--possible {
-    color: white!important;
+    color: white !important;
     --bg-dark: #868613;
     --bg-bright: #343419;
-    --bg-image:url(../images/upgrades/reality-possible.png);
-    animation:a-possible 3s linear infinite;
+    --pattern: url(../images/patterns/def_poss.png);
+    animation: a-possible 3s linear infinite;
     cursor: default;
   }
+
   .c-imaginary-upgrade-btn--possible {
-    color: white!important;
+    color: white !important;
     --bg-bright: #1a305f;
     --bg-dark: #133786;
-    --bg-image:url(../images/upgrades/imaginary-possible.png);
-    animation:a-impossible 3s linear infinite;
+    --pattern: url(../images/patterns/upg_imposs.png);
+    animation: a-impossible 3s linear infinite;
     cursor: default;
   }
+
   .c-reality-upgrade-btn--possible:hover{
     /* This is actually a solid color, but it flickers on hover if we don't make it a linear-gradient */
     --bg-dark: #b3b319;
   }
+
   .c-imaginary-upgrade-btn--possible:hover {
     /* This is actually a solid color, but it flickers on hover if we don't make it a linear-gradient */
     --bg-bright: #426ad7;
@@ -277,19 +307,22 @@
     color: white !important;
     --bg-dark: #9c162f;
     --bg-bright: #452127;
-    --bg-image:url(../images/upgrades/reality-locked.png);
+    --pattern: url(../images/patterns/def_lock.png);
     cursor: default;
   }
+
   .c-imaginary-upgrade-btn--locked {
     color: white !important;
     --bg-dark: #16809c;
     --bg-bright: #213f45;
-    --bg-image:url(../images/upgrades/reality-locked.png);
+    --pattern: url(../images/patterns/def_lock.png);
     cursor: default;
   }
+
   .c-reality-upgrade-btn--locked:hover {
     --bg-dark: #df2043;
   }
+
   .c-imaginary-upgrade-btn--locked:hover {
     --bg-bright: #20d1df;
   }
@@ -314,34 +347,11 @@
     color: var(--color-reality-light);
     background-color: #37474f;
   }
-  
-  .t-s6.c-reality-upgrade-btn:hover,
-  .t-s10.c-reality-upgrade-btn:hover {
-    background-color: var(--color-reality-light);
-  }
-  
-  .t-s6.c-reality-upgrade-btn--unavailable:hover,
-  .t-s10.c-reality-upgrade-btn--unavailable:hover {
-    color: var(--color-reality-light);
-    background-color: #656565;
-  }
-  
-  .t-s6.c-reality-upgrade-btn--bought,
-  .t-s10.c-reality-upgrade-btn--bought {
-    background-color: var(--color-reality);
-    border-color: #094e0b;
-  }
-  
-  .t-s6.c-reality-upgrade-btn--bought:hover,
-  .t-s10.c-reality-upgrade-btn--bought:hover {
-    color: var(--color-reality-light);
-    background-color: var(--color-reality);
-  }
 
   /* #endregion reality/imaginary-upgrades tab */
 
 /* #region black-hole */
-.l-black-hole-tab {
+  .l-black-hole-tab {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -351,23 +361,26 @@
     display:flex;
     flex-direction: row;
   }
+
   .l-black-hole-text-grid {
     display: flex;
     flex-direction: column;
     width: 75rem;
     align-items: center;
   }
+
   .l-black-hole-upgrade-grid {
     padding: 2rem;
     margin: 0.5rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: linear-gradient(transparent,var(--color-reality) 600%),var(--leg-base);
+    background: linear-gradient(transparent, var(--color-reality) 600%), var(--leg-base);
     border: var(--var-border-width, 0.3rem) solid;
     border-image: var(--leg-border-reality) 3 round;
     box-shadow: var(--var-box-shadow, var(--box-shadow));
   }
+
   .l-black-hole-upgrade-grid.l-black-hole-upgrade-permanent {
     display: inline-flex;
     flex-direction: column;
@@ -378,6 +391,7 @@
     display: flex;
     flex-direction: column;
   }
+
   .c-black-hole-canvas {
     border: var(--var-border-width, 0.3rem) solid;
     border-image: var(--leg-border-reality) 3 round;
@@ -387,10 +401,12 @@
     margin: 0.5rem 0;
     animation: a-bhbg-x 32s ease-in-out infinite, a-bhbg-y 45s ease-in-out infinite;
   }
+
   .s-base--dark .c-black-hole-canvas {
     background: black;
     background-image: url(../images/background/bh_dark.png);
   }
+  
   @keyframes a-bhbg-x {
     0%{background-position-x: 0;}
     50%{background-position-x: -200px;}
@@ -420,15 +436,35 @@
 }
 
 .s-base--dark .c-perk-container {
-  background: url(../images/time-studies/ts-reality.png),linear-gradient(0deg, #00000080,var(--color-reality) 600%),var(--leg-base);
+  background: url(../images/patterns/ts_real.png), linear-gradient(0deg, #00000080,var(--color-reality) 600%),var(--leg-base);
   background-position: center;
 }
 
-.c-perk-tab__header {
+  .c-perk-tab__header {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  
+
+  .c-perk-tab--full-screen .c-perk-tab__header-fixed {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    z-index: 7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .c-perk-tab--full-screen .c-perk-tab__header {
+    width: 65rem;
+    padding: 1rem;
+    border-radius: 0 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem);
+    background: var(--color-background);
+    pointer-events: all;
+  }
+
   .c-perk-tab__perk-points {
     color: var(--color-reality);
   }
@@ -465,7 +501,19 @@
     0% {background-position: 0rem 0rem, 0rem 0rem;}
     100% {background-position: 190rem 120rem, -95rem -60rem;}
   }
-  
+
+  .c-perk-tab--full-screen .c-perk-network {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+    margin-top: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    border: none;
+  }
+
   .c-perk-network__canvas {
     width: 100%;
     height: 100%;
@@ -498,7 +546,7 @@
     height: 3rem;
     min-width: 4.5rem;
     color: var(--color-blockmator-block-command);
-    background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%),linear-gradient(currentcolor -50%,var(--color-blockmator-block-background) 75%);
+    background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%), linear-gradient(currentcolor -50%,var(--color-blockmator-block-background) 75%);
     box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-blockmator-block-command) inset,0 0 1rem 0.1rem black inset);
     border: 0.1rem solid var(--color-blockmator-block-border);
     border-radius: var(--var-border-radius, 0.5rem);

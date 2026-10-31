@@ -62,8 +62,14 @@ export default {
         text: Speedrun.seedModeText(this.prevRunInfo),
       };
     },
+    modeAttr() {
+      return {
+        icon: `fas o-icon ${true ? "fa-wrench" : "fa-ice-cream"}`,
+        text: `${true ? "Legendary" : "Classic"} Mode`,
+      };     
+    },
     iconAttrs() {
-      return [this.offlineAttr, this.segmentAttr, this.stdAttr, this.seedAttr];
+      return [this.offlineAttr, this.segmentAttr, this.stdAttr, this.seedAttr, this.modeAttr];
     },
     startDate() {
       return Time.toDateTimeString(this.prevRunInfo.startDate);
@@ -102,7 +108,7 @@ export default {
 <style scoped>
 .c-icon-container {
   display: grid;
-  grid-template-columns: 7rem 20rem 4rem 4rem 4rem 4rem 30rem 20rem;
+  grid-template-columns: 7rem 20rem 4rem 4rem 4rem 4rem 4rem 30rem 20rem;
   align-items: center;
   font-size: 1.3rem;
 }

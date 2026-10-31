@@ -10,6 +10,7 @@ export default {
     return {
       canReality: false,
       showSpecialEffect: false,
+      isIMUnlocked: false,
       hasRealityStudy: false,
       machinesGained: new Decimal(),
       projectedRM: new Decimal(),
@@ -64,6 +65,7 @@ export default {
     classObject() {
       return {
         "c-reality-button--unlocked": this.canReality,
+        "c-reality-button--imaginary": this.isIMUnlocked,
         "c-reality-button--locked": !this.canReality,
         "c-reality-button--special": this.showSpecialEffect,
         "a-wobble-multi": this.wobbly
@@ -82,6 +84,7 @@ export default {
       this.hasRealityStudy = TimeStudy.reality.isBought;
       this.canReality = isRealityAvailable();
       this.showSpecialEffect = this.hasSpecialReward();
+      this.isIMUnlocked = MachineHandler.isIMUnlocked;
       if (!this.canReality) {
         this.shardsGained = 0;
         return;

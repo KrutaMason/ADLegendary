@@ -14,12 +14,6 @@ input.t-dark {
   text-shadow: 0 0 7px #64dd17;
 }
 
-
-.t-dark .c-tt-buy-button--locked {
-  --bg-bright: #263238;
-  --border: #548b9f;
-}
-
 .t-dark .c-rm-amount__desc {
   color: #757575;
 }

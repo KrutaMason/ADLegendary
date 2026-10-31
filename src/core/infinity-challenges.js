@@ -27,6 +27,11 @@ class InfinityChallengeState extends GameMechanicState {
   get name() {
     return this._config.label
   }
+
+  displayName(needsHelp = true, isShort = false) {
+    if (player.options.naming.challenges) return `${this.name}${needsHelp && player.options.naming.showHelp ? ` (IC${this.id})` : ""}`
+    else return `${isShort ? `IC` : `Infinity Challenge `}${this.id}`
+  }
   
   get unlockAM() {
     return this.config.unlockAM;
@@ -159,8 +164,8 @@ export const InfinityChallenges = {
       // This has a reasonably high likelihood of happening when the player isn't looking at the game, so
       // we also give it a tab notification
       TabNotification.ICUnlock.clearTrigger();
-      GameUI.notify.infinity(["Infinity Challenge unlocked!",`You have unlocked 
-        ${player.options.naming.challenges? ic.name : "Infinity Challenge " + ic.id}`], 7000);
+      GameUI.notify.infinity(["Infinity Challenge unlocked!", `You have unlocked ${InfinityChallenge(ic.id).displayName()}`,
+        `<div class="o-notification--icon"><i class="fas fa-arrow-down-wide-short"></i></div>`], 7000);
       TabNotification.ICUnlock.tryTrigger();
     }
   },

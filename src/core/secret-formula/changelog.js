@@ -9,19 +9,224 @@ export const changelog = [
    * }
    */
   {
+    date: [2026, 10, 31],
+    // Legendary out of Early Access Full Release 1.0 absolutely not Beta Update Patch Changelog
+    name: "Painting the unpainted Minatures by painting them Grey",
+    isLegendary: true,
+    info: `
+<b><i>This Update is intended to be the full release, but all the actually important changes 
+(eg. the graphic overhaul) are moved to the next major update.</i></b>
+<br>
+<br>
+<b>Major Things:</b><br>
+<ul>
+<li>Added a new main logo to the mod</li>
+<li>Added the options modal which has all 3 option tabs along with other, smaller modals</li>
+<ul>
+<li>The Old Options style is still available in the visuals tab</li>
+<li>Having the Modern Options UI enabled removes the options tab until it's switched back to Classic</li>
+<li>Added tooltips for various options</li>
+<li>The mod disclaimer now includes information about the options modal and its button</li>
+</ul>
+<li>Added designs for Teresa and Lai'tela (They are subject to change)</li>
+<li>Renamed the first Celestial from "Teresa" to "Orias". There are no plans to add the option to 
+toggle its former name.</li>
+<li>Added a general entry for the contents of the mod. All other information outside that 
+entry (eg. mature content) are relocated there</li>
+<li>Added a new secret theme (very unfinished!!!)</li>
+<li>Added mechanics for the secret Glyph</li>
+<li>Added a new Nicolas Cage</li>
+</ul>
+<br><b>New options and customizations:</b><br>
+<ul>
+<li>Added an option to toggle extra shadows</li>
+<li>Added an option to customize dimension tier names</li>
+<li>Added an option to display the original, abbreviated names of the features with new naming conventions</li>
+<li>Added an option to maximize and minimize the sidebar</li>
+<li>Added an option to toggle completion statistics in the Challenges tabs</li>
+<li>Added an option to toggle full screen mode in the Perk Tree</li>
+<li>Expanded the options for the scanline effect in the Automator to include opacity and size</li>
+</ul>
+<br><b>Visual changes:</b><br>
+<ul>
+<li style="font-family:Trebuchet MS;font-weight:bold;font-size:2rem">Metro themes now have a different secondary font</li>
+<li>Improved the visuals of various tabs and modals</li>
+<ul>
+<li>Multiplier Breakdown tab</li>
+<li>Glyph Set Records tab</li>
+<li>Automator Points tab</li>
+<li>The 2 Speedrun Tabs</li>
+<li>Save Selection modal (Unfinished)</li>
+<li>Turned the away arogress modal into a table</li>
+</ul>
+<li>Improved the modern sidebar, kinda</li>
+<li>Added icons for entries in the How To Play modal</li>
+<li>Gave buttons of changelog entries related to the mod a different look</li>
+<li>Various notifications now have icons or images</li>
+<li>Default buttons in light themes now have white inner shadows instead of black*</li>
+<li>Default buttons' borders now have shading in non-metro themes</li>
+<li>Buttons that are turned off now have a purple (or another color) border</li>
+<li>Improved the visuals on sliders</li>
+<li>The colors on various things are now more consistent in some themes:</li>
+<ul>
+<li>Time Studies from the Dimension split in the Hex theme</li>
+<li>Dilation and Reality Studies in the Hex theme</li>
+<li>Eternity Milestones and Dilation Upgrades in theme S14</li>
+</ul>
+<li>The information header's lighting and colors now depend on which tab you're at*</li>
+<li>Resources in the sidebar are now more colorful</li>
+<li>The background theme on the Automator information Pane no longer disables other options related to the pane.
+Improved the background theme to be affected by the other options</li>
+<li>The Reality button now turns purple once you unlock Imaginary Machines</li>
+<li>Armageddon button, Remnant Gain Factors and Pelle Strikes are now bright in light themes</li>
+</ul>
+<br><b>Renames (credit to realrapidjazz for some (celestial reality names) of the ideas and recommendations):</b><br>
+<ul>
+<li>Dion => Digon (that was a massive tpyo actually)</li>
+<li>Beginner's Infinity => Antimatter Universe</li>
+<li>Renamed the celestial titles</li>
+<ul>
+<li>Teresa, The Gatekeeper => Gatekeeper Orias</li>
+<li>Glyphkeeper Effarig => Grand Racketeer Effarig</li>
+<li>Star Dragon General V => Nabob Advocate-General V</li>
+<li>Ra, The Abandoned => Ra</li>
+<li>Goddess Lai'tela => Lai'tela, The Entropic Scion</li>
+<li>Pelle, The Eternal => Eternal/Deity/Wheel Pelle</li>
+</ul>
+<li>Renamed the celestial Realities</li>
+<ul>
+<li>Michanipolis => Obstructed Source</li>
+<li>Omnidolor => Catalogue of Babel</li>
+<li>Temporal Stasis => Unwatched Panopticon</li>
+<li>Palace of Pride => Wealth of Cosmoses</li>
+<li>Cosmic Library => Axis Mundi</li>
+<li>Nightfall => Perfect Protocol</li>
+</ul>
+<li>Renamed the Ra Upgrades</li>
+<ul>
+<li>Old Orias memory names: Paradoxical Radiation, Omnimorphosis, Artificial Omniscience,
+God's Volcabulary[sic], Marks of rebirth, Multifarious Godstore, Paradoxical Verisimilitude</li>
+<li>New Orias memory names: Might of the Gatekeeper, Heat Death, Reminiscence of Simulations,
+Shells of a Husk, Scour to Alter, Higher Abstractions, Celestial Judgement</li>
+<li>Old Effarig memory names: Ascended Determination, Sorcery of Symbols, Souvenir's Sigil,
+Empty Evocation, Tongue of Transcendance, Refined Linguistics, Lingo Perfectus</li>
+<li>New Effarig memory names: Irrelevant Expansion, Retired Careers from the Past, Reminiscence of Linguistics,
+Methods of Escape, Take it all, Inevitable Stagnation, Imposter Syndrome</li>
+<li>Old Nameless memory names: Automatic Horizon, Perceptive Enthusiasm, Omnithymesia,
+Echo's Ego, Vacuum Pulsation, Capacious Superliminality, Chants of Chronos</li>
+<li>New Nameless memory names: Penal Labour, Long Stories Short, Persistence of Memory,
+Tales of Greed, Broken Hearts of Chronos, Metachronometry, Desire for Freedom</li>
+<li>Old V memory names: Olympic Mechanism, Paradoxical Immortality, Pondering Potential,
+Abstruse Euphoria, Knowledge of the Stars, Bright Accomplishment, Exponential Prize</li>
+<li>New V memory names: Primordial Declaration, Nabob’s Totality, Recruit at the Council,
+The Lost Collection, Supercosmic Knowledge, Supreme Intellect, Claimer of All</li>
+</ul>
+<li>Imaginary Upgrade row 3 - Path of Manipulation => Retrospective Reminiscence</li>
+<li>Imaginary Upgrade row 4 - Path of Darkness => Flawless Fortification</li>
+<li>Imaginary Upgrade row 5 - Path of Destruction => Absolute Acceptance</li>
+</ul>
+<br><b>Sound changes and additions:</b><br>
+<ul>
+<li>Changed the error sound</li>
+<li>Added some sounds for Glyph Alchemy</li>
+</ul>
+<br><b>Additional changes and information:</b><br>
+<ul>
+<li>Improved the consistency in displays with the new naming conventions</li>
+<li>Applied modern naming conventions in many texts that were previously not applied</li>
+<li>How to play entries are now affected by the new naming conventions if toggled</li>
+<li>Added a fading transition for the loading screen</li>
+<li>Notifications from pressing hotkeys now show what hotkeys you have pressed</li>
+<li>Changed the name of the "Disclaimer when visiting the page" confirmation option to "Mod Disclaimer"</li>
+<li>The Visible Tabs modal now show the name of the tabs</li>
+<li>Incompleted normal and infinity challenges now display "--:--:--" instead of "??:??:??"</li>
+<li>Completing a challenge no longer plays the sound if you have Auto-retry enabled</li>
+<li>The new names of the Challanges are now only shown if you have the new naming conventions enabled</li>
+<li>Added uses for the replicanti progress bar above 1.79e308, along with tooltips</li>
+<li>Added a progress bar for Tickspeed upgrades from Time Dimensions with tooltips</li>
+<li>The Eternity button now displays the red bar if the Reality Upgrade condition locks are enabled</li>
+<li>Added headers for all Automator pages</li>
+<li>Added Celestial Memories as resources to the sidebar options</li>
+<li>Added a notification for creating Reality Glyphs</li>
+</ul>
+<br><b>Bugfixes:</b><br>
+<ul>
+<li>Fixed the information header's color and lighting on theme S12</li>
+<li>Fixed some backgrounds not rendering properly on Galactic and Stellar themes</li>
+<li>Fixed the description of achievement r125 not being affected by the dimension naming conventions</li>
+<li>Fixed the first Normal Challenge not being visible when setting the notation to ALL</li>
+<li>Fixed a bug where the locked buttons in normal and infinity challenges, antimatter and replicanti galaxy confirmation modals 
+don't display properly in the bar and blob notation</li>
+<li>Fixed the challenge names not displaying correctly in the Past Prestige Runs while having the new naming convention enabled (WIP)</li>
+<li>Fixed a bug where the purchase limit information in the the Infinity Dimensions tab displays 2 thes 
+while having the old naming convention in the modern UI</li>
+<li>Fixed the EP multiplier upgrade not making sounds when purchased</li>
+<li>Fixed a visual bug with the Infinity Dimension tab when EC8 is running</li>
+<li>Fixed a dilation upgrade, a H2P entry and the away progress modal and option 
+still having the old wording for Tachyonic Galaxies</li>
+<li>Fixed an autobuyer name, an achievement description (r132) and the away progress modal and option 
+still having the old wording for Tachyons</li>
+<li>Fixed a bug where hovering at the locked reality button causes the textures to move</li>
+<li>Fixed the Blocktomator dropdown colors</li>
+<li>Fixed a visual bug with the import Glyph filter settings modal when the input is valid</li>
+<li>Fixed a bug where the Space Theorem limit in the sidebar isn't affected by notations</li>
+<li>Fixed some notation-related visual bugs in Ra's and the Automator tab</li>
+<li>Reality Glyph Sacrifice and Effect visuals now work and sync with the other Glyph types properly</li>
+<li>Fixed the bulletpoints in Lai'tela's Reality modal</li>
+<li>Fixed the description in the Imaginary Upgrade "Massless Momentum" not being affected by the new naming convention</li>
+<li>Fixed the description in the Imaginary Upgrade "Planar Purification" having the naming convention inverted</li>
+<li>Added a missing space in Achievement 16 and 18's description while being in the Nameless One's Reality</li>
+<li>Added a missing period in some Achievements</li>
+<li>Renamed the description in Achievement 157 "It's super effective!"</li>
+<li>Removed "start"/"enter" in other places in Orias' Tab</li>
+<li>Fixed a bug where the Pelle strike notifications were missing the "You encountered a Pelle Strike" text</li>
+<li>Fixed the color of reality in hidden tabs still being green while doomed</li>
+<li>Fixed a bug where you could have toolips shown during the credits sequence</li>
+</ul>
+<br><b>Meta:</b><br>
+<ul>
+<li>Renamed the name of the previous patch to just "Celestial Legs"</li>
+<li>Removed periods from all changelogs related to the mod</li>
+</ul>
+`
+},
+ {
+    date: [2026, 7, 17],
+    name: "Celebrate iOS Version Release",
+    info: `
+Celebrating the official iOS launch! It's finally time to perform a Big Crunch right in your pocket.
+A massive thank you to all the contributors who helped expand our dimensions to iOS! 
+<br>
+<br>
+<b>Added things:</b><br>
+<ul>
+<li>Added iOS Testers in the Credits</li>
+<li>Added a link to the iOS Version</li>
+<li>Added all AD Autobuyers' buy max/singles toggle button</li>
+</ul>
+<br>
+<b>Text change:</b><br>
+<ul>
+<li>Changed Android Developer to Mobile Developer in the Credits</li>
+</ul>
+<br>
+`
+  },
+  {
     date: [2025, 4, 20],
-    name: "Celestial Legs (The left one)",
+    name: "Celestial Legs",
+    isLegendary: true,
     info: `
 <b>New things:</b><br>
 <ul>
-<li>All Celestials now have artworks, but can only be found in quotes at the moment.</li>
-<li>Celestial quote lines can now be replayed using the button in the top left corner of the quote boxes.</li>
-<li>Polished a secret theme.</li>
-<li>Made more visual improvements. The "Visual changes" category explains this more precisely.</li>
-<li>Added more sound effects. The "Sound changes and additions" category explains this more precisely.</li>
-<li>The link to this mod may have a thumbnail.</li>
-<li>Added a new H2P entry about the mature contents in the mod.</li>
-<li>Added a new nicolas cage.</li>
+<li>All Celestials now have artworks, but can only be found in quotes at the moment</li>
+<li>Celestial quote lines can now be replayed using the button in the top left corner of the quote boxes</li>
+<li>Polished a secret theme</li>
+<li>Made more visual improvements. The "Visual changes" category explains this more precisely</li>
+<li>Added more sound effects. The "Sound changes and additions" category explains this more precisely</li>
+<li>The link to this mod may have a thumbnail</li>
+<li>Added a new H2P entry about the mature contents in the mod</li>
+<li>Added a new nicolas cage</li>
 </ul>
 <br><b>Visual changes:</b><br>
 <ul>
@@ -35,87 +240,88 @@ export const changelog = [
 <li>Relic Shard information and Effarig's Glyph shop</li>
 <li>Alchemy Resource information</li>
 </ul>
-<li>Maxed out Replicanti Upgrades now display the background colors corresponding to themes where the replicanti's color scheme is different.</li>
-<li>Time dilation tab now also uses the Cambria font.</li>
-<li>Improved various textures from the Glyphs tab.</li>
-<li>Circular Glyph crates now have more variety based on amount of diacritics, types and theme.</li>
-<li>Changed the Glyph Sacrifice Bonus backgrounds.</li>
-<li>The Perk Tree now has an animated background.</li>
-<li>Changed the disabled Perk textures.</li>
-<li>Polished the bordered tabs in the classic UI.</li>
-<li>Changed some achievement arts.</li>
-<li>Improved the scrollbar visuals.</li>
+<li>Maxed out Replicanti Upgrades now display the background colors corresponding to themes where the replicanti's color scheme is different</li>
+<li>Time dilation tab now also uses the Cambria font</li>
+<li>Improved various textures from the Glyphs tab</li>
+<li>Circular Glyph crates now have more variety based on amount of diacritics, types and theme</li>
+<li>Changed the Glyph Sacrifice Bonus backgrounds</li>
+<li>The Perk Tree now has an animated background</li>
+<li>Changed the disabled Perk textures</li>
+<li>Polished the bordered tabs in the classic UI</li>
+<li>Changed some achievement arts</li>
+<li>Improved the scrollbar visuals</li>
 </ul>
 <br><b>Sound changes and additions:</b><br>
 <ul>
-<li>Polished the sounds for opening and closing stuff.</li>
-<li>Changed the achievement pop-up sound.</li>
-<li>Added a sound for entering and failing a challenge.</li>
-<li>Applied challenge sounds to Normal, Infinity Challenges and Celestial Realities.</li>
+<li>Polished the sounds for opening and closing stuff</li>
+<li>Changed the achievement pop-up sound</li>
+<li>Added a sound for entering and failing a challenge</li>
+<li>Applied challenge sounds to Normal, Infinity Challenges and Celestial Realities</li>
 <li>Improved Glyph sacrifice sound and works for all glyph sacrifice events</li>
-<li>Added a sound for glyph purges.</li>
-<li>Added a sound for straightening the perk's edges.</li>
-<li>Changed the starting and ending Black Hole sounds.</li>
-<li>Replaced the charging, uncharging and discharging the Black Hole template sounds with proper ones.</li>
-<li>Appiled charging/uncharging sounds to storing real time.</li>
-<li>Added a sound for Black hole pulse.</li>
+<li>Added a sound for glyph purges</li>
+<li>Added a sound for straightening the perk's edges</li>
+<li>Changed the starting and ending Black Hole sounds</li>
+<li>Replaced the charging, uncharging and discharging the Black Hole template sounds with proper ones</li>
+<li>Appiled charging/uncharging sounds to storing real time</li>
+<li>Added a sound for Black hole pulse</li>
 </ul>
 <br><b>Additional changes and information:</b><br>
 <ul>
-<li>Removed the sum of Challenge record times in the Challenges tabs.</li>
-<li>Revamped the Challenge Records Subtab's visuals instead. (NOT DONE!)</li>
-<li>The automatic prestige box orders are reversed horizontally.</li>
-<li>Achievement 35 is automatically obtained after you make your first reality.</li>
-<li>Centering the Tree on the START Perk now plays a transition.</li>
-<li>Added an option to toggle grids in the Perk tree.</li>
-<li>Improved the Celestial titles in the celestial subtabs.</li>
-<li>Purchased Dimensions Quantity will now display the symbol of Cel6 if you have Continuum enabled.</li>
-<li>Doomed colors on glyphs now only affect the basic Glyphs.</li>
-<li>Moved the Resource Gallery subtab position to be behind the 2 speedrun subtabs.</li>
-<li>Changed texts in some entries in the Resource Gallery tab.</li>
-<li>Notification pop-ups are now on the left side of the UI if you have the sidebar on the right side.</li>
-<li>Added more options for sounds.</li>
-<li>Removed the achievement option in the Naming Options modal.</li>
-<li>Added a link to the vanilla version of this game in the About The Game modal.</li>
-<li>The Customization entry in How To Play now includes the details of naming conventions and sound effects.</li>
-<li>Added a "newer show again" button in the mod disclaimer modal.</li>
-<li>Changed the Balance entries in the initial release patches to be more precise.</li>
-<li>Changed a lot of image filenames for a better naming convention.</li>
+<li>Removed the sum of Challenge record times in the Challenges tabs</li>
+<li>Revamped the Challenge Records Subtab's visuals instead (NOT DONE!)</li>
+<li>The automatic prestige box orders are reversed horizontally</li>
+<li>Achievement 35 is automatically obtained after you make your first reality</li>
+<li>Centering the Tree on the START Perk now plays a transition</li>
+<li>Added an option to toggle grids in the Perk tree</li>
+<li>Improved the Celestial titles in the celestial subtabs</li>
+<li>Purchased Dimensions Quantity will now display the symbol of Cel6 if you have Continuum enabled</li>
+<li>Doomed colors on glyphs now only affect the basic Glyphs</li>
+<li>Moved the Resource Gallery subtab position to be behind the 2 speedrun subtabs</li>
+<li>Changed texts in some entries in the Resource Gallery tab</li>
+<li>Notification pop-ups are now on the left side of the UI if you have the sidebar on the right side</li>
+<li>Added more options for sounds</li>
+<li>Removed the achievement option in the Naming Options modal</li>
+<li>Added a link to the vanilla version of this game in the About The Game modal</li>
+<li>The Customization entry in How To Play now includes the details of naming conventions and sound effects</li>
+<li>Added a "newer show again" button in the mod disclaimer modal</li>
+<li>Changed the Balance entries in the initial release patches to be more precise</li>
+<li>Changed a lot of image filenames for a better naming convention</li>
 </ul>
 <br><b>Balance Changes:</b><br>
 <ul>
-<li>Nerfed the discovered Dimensions Bonus effect (×1.25 => ×1.2).</li>
-<li>Nerfed the first 2 Break Infinity upgrades (log10(AM)^1.5 => log10(AM)^1).</li>
+<li>Nerfed the discovered Dimensions Bonus effect (×1.25 => ×1.2)</li>
+<li>Nerfed the first 2 Break Infinity upgrades (log10(AM)^1.5 => log10(AM)^1)</li>
 <li>Changed the IDL Perk's effect formula (Time spent on this Reality => Time spent on this Infinity/Eternity; 
-15 minutes => 15 min + 1 min extra per Perk owned up to a total of 60 minutes).</li>
+15 minutes => 15 min + 1 min extra per Perk owned up to a total of 60 minutes)</li>
 </ul>
 <br><b>Bugfixes:</b><br>
 <ul>
-<li>Fixed a bug where the Mod Disclaimer modal kept showing up even after you closed it.</li>
-<li>Fixed some bold texts not being bold.</li>
-<li>Fixed a bug where normal challenge names in challenge header looked weird with new dimension naming turned on but new challenge naming off.</li>
-<li>Fixed EM1000 failing to work when you set the Infinity Autobuyer to 5 seconds.</li>
-<li>Fixed a bug where EC12 timer isn't shown while having the new naming system turned on.</li>
-<li>Fixed a bug where where some Dilation Upgrades still contained "tachyon particles" instead of "tachyons".</li>
-<li>Fixed a bug where there is a random pause during the typing animation in Celestial quotes.</li>
-<li>Fixed the exit challenge modal showing that you're about to restart a celestial reality instead of exiting it.</li>
-<li>Fixed a bug where the Reality glyph sacrifice bonus's colors were twitching.</li>
-<li>Fixed a bug where things referring to normal challenges and celestial realities aren't affected by the new naming convention.</li>
-<li>Fixed a bug where charging all 12 Infinity upgrades doesn't play the sound needed.</li>
-<li>Fixed a bug where the single glyph customizer box still has the border color of reality while doomed.</li>
-<li>Fixed a bug where cursed glyphs don't have their fancy borders while doomed.</li>
-<li>Fixed some tpyos with achievement descriptions.</li>
-<li>Fixed a bug where a secret theme lacked an animation.</li>
-<li>Fixed some tpoys in Resource Gallery.</li>
-<li>Fixed a bug where the base background failed to render in Dark theme.</li>
-<li>Fixed a bug where the Blob and Bar notation couldn't be displayed in Cambria font.</li>
-<li>Fixed a bug where the Replicanti and various transparent bars failed to display nor work in some Notations.</li>
+<li>Fixed a bug where the Mod Disclaimer modal kept showing up even after you closed it</li>
+<li>Fixed some bold texts not being bold</li>
+<li>Fixed a bug where normal challenge names in challenge header looked weird with new dimension naming turned on but new challenge naming off</li>
+<li>Fixed EM1000 failing to work when you set the Infinity Autobuyer to 5 seconds</li>
+<li>Fixed a bug where EC12 timer isn't shown while having the new naming system turned on</li>
+<li>Fixed a bug where where some Dilation Upgrades still contained "tachyon particles" instead of "tachyons"</li>
+<li>Fixed a bug where there is a random pause during the typing animation in Celestial quotes</li>
+<li>Fixed the exit challenge modal showing that you're about to restart a celestial reality instead of exiting it</li>
+<li>Fixed a bug where the Reality glyph sacrifice bonus's colors were twitching</li>
+<li>Fixed a bug where things referring to normal challenges and celestial realities aren't affected by the new naming convention</li>
+<li>Fixed a bug where charging all 12 Infinity upgrades doesn't play the sound needed</li>
+<li>Fixed a bug where the single glyph customizer box still has the border color of reality while doomed</li>
+<li>Fixed a bug where cursed glyphs don't have their fancy borders while doomed</li>
+<li>Fixed some tpyos with achievement descriptions</li>
+<li>Fixed a bug where a secret theme lacked an animation</li>
+<li>Fixed some tpoys in Resource Gallery</li>
+<li>Fixed a bug where the base background failed to render in Dark theme</li>
+<li>Fixed a bug where the Blob and Bar notation couldn't be displayed in Cambria font</li>
+<li>Fixed a bug where the Replicanti and various transparent bars failed to display nor work in some Notations</li>
 </ul>
 `
 },
 {
     date: [2024, 12, 18],
     name: "Feedbacks And Fixes",
+    isLegendary: true,
     info: `
 If there was something you suggested but this update was missing, it should be in the next update.
 <br>
@@ -125,69 +331,70 @@ If there was something you suggested but this update was missing, it should be i
 <br>
 <b>December 25th, 2024. Happy Holidays and Merry Christmas!:</b><br>
 <ul>
-<li>Added the sum of Challenge record times into the Challenges tabs.</li>
-<li>Added a new entry to the Resource Gallery Tab.</li>
+<li>Added the sum of Challenge record times into the Challenges tabs</li>
+<li>Added a new entry to the Resource Gallery Tab</li>
 </ul>
 <br><b>December 24th, 2024:</b><br>
 <ul>
-<li>The disclaimer modal now opens every time you open the game.</li>
-<li>Added a toggle to the above, which can be found in the confirmations button.</li>
-<li>Mature content option is now off by default.</li>
+<li>The disclaimer modal now opens every time you open the game</li>
+<li>Added a toggle to the above, which can be found in the confirmations button</li>
+<li>Mature content option is now off by default</li>
 </ul>
 <br><b>December 23rd, 2024:</b><br>
 <ul>
-<li>Applied sounds to various purchases and upgrades.</li>
-<li>Applied Unique Dimension names to Singularity milestones.</li>
+<li>Applied sounds to various purchases and upgrades</li>
+<li>Applied Unique Dimension names to Singularity milestones</li>
 <li>"Fixed" a bug where the Black Hole canvas is still shown in Celestial Realities which have the black holes disabled 
 (Actually replaced it with an artwork)</li>
 <li>Fixed a bug in the text in the Antimatter Galaxy button which still had the effects of 
-Achievement 111 and 143, despite being disabled in Doomed Reality.</li>
+Achievement 111 and 143, despite being disabled in Doomed Reality</li>
 </ul>
 <br><b>December 22nd, 2024:</b><br>
 <ul>
-<li>Revamped this changelog.</li>
-<li>Applied sounds to Antimatter Dimension purchases.</li>
-<li>Added a note to the Altered Glyph's 1e60 boost.</li>
-<li>Added "Discovered Dimensions bonus" entry to the Multipler breakdown tab.</li>
-<li>Fixed a bug where Normal Challenge confirmations displayed the rewards wrong.</li>
+<li>Revamped this changelog</li>
+<li>Applied sounds to Antimatter Dimension purchases</li>
+<li>Added a note to the Altered Glyph's 1e60 boost</li>
+<li>Added "Discovered Dimensions bonus" entry to the Multipler breakdown tab</li>
+<li>Fixed Normal Challenge confirmations displaying the rewards incorrectly</li>
 </ul>
 <br><b>December 21st, 2024:</b><br>
 <ul>
-<li>Unique Dimension names are now fully applied.</li>
-<li>Improved the tesseract button by a bit.</li>
+<li>Unique Dimension names are now fully applied</li>
+<li>Improved the tesseract button by a bit</li>
 </ul>
 <br><b>December 20th, 2024:</b><br>
 <ul>
-<li>Applied sounds to some things.</li>
-<li>Added records to Normal and Infinity Challenges tabs, and stars as completions to Eternity Challenges tab.</li>
+<li>Applied sounds to some things</li>
+<li>Added records to Normal and Infinity Challenges tabs, and stars as completions to Eternity Challenges tab</li>
 <li>Added the Legendary Tester role in the credits. Note that there are no plans to bring 
-additional testers, since the mod's main objective is to improve graphics.</li>
+additional testers, since the mod's main objective is to improve graphics</li>
 <li>Applied the unique dimension names to DimBoost/Galaxy requirements</li>
-<li>Fixed a bug where the achievement "Gift from the Gods" showed the wrong challenge ID.</li>
+<li>Fixed a bug where the achievement "Gift from the Gods" showed the wrong challenge ID</li>
 <li>Fixed a bug where DimBoost and Galaxy buttons still have the translucent bars 
-in challenges where you normally can't purchase them.</li>
+in challenges where you normally can't purchase them</li>
 </ul>
 <br><b>December 18th, 2024:</b><br>
 <ul>
-<li>Added a disclaimer about the mod having mature contents and sound effects. 
+<li>Added a disclaimer about the mod having mature contents and sound effects 
 (Currently only pops up when you import a save from vanila)</li>
 <li>Added a toggle for mature contents, which can be found in both 
-the disclaimer modal and the visual options tab.</li>
-<li>Added a thing in the previous patch.</li>
-<li>Removed a jumpscare from a newsticker.</li>
+the disclaimer modal and the visual options tab</li>
+<li>Added a thing in the previous patch</li>
+<li>Removed a jumpscare from a newsticker</li>
 <li>Added more newstickers</li>
-<li>Fixed a bug where some themes weren't rendered properly.</li>
-<li>Fixed a bug where a Ra quote wasn't rendered properly.</li>
+<li>Fixed a bug where some themes weren't rendered properly</li>
+<li>Fixed a bug where a Ra quote wasn't rendered properly</li>
 </ul>
 <br><b>December 17th, 2024:</b><br>
 <ul>
-<li>Fixed a bug where some images couldn't be rendered.</li>
+<li>Fixed a bug where some images couldn't be rendered</li>
 </ul>
 `
 },
 {
     date: [2024, 12, 17],
     name: "Initial Legs / Early Access",
+    isLegendary: true,
     info: `
 <b><i>Happy 2nd anniversary of the Reality Update!</i></b>
 <br>
@@ -198,9 +405,9 @@ Note: This mod is in early access and lacks non-gameplay content which will be a
 <b>Major Things:</b><br>
 <ul>
 <li>Implemeted legs into the game</li>
-<li>Improved the overall game visuals, introducing textures.</li>
-<li>Added artworks for the Celestials. (WIP)</li>
-<li>Added various sound effects.</li>
+<li>Improved the overall game visuals, introducing textures</li>
+<li>Added artworks for the Celestials (WIP)</li>
+<li>Added various sound effects</li>
 <li>Added a new statistics subtab: Resource Gallery</li>
 <li>Added unique names to various mechanics</li>
 <ul>
@@ -209,14 +416,14 @@ Note: This mod is in early access and lacks non-gameplay content which will be a
 <li>Perks</li>
 <li>Ra Upgrades</li>
 </ul>
-<li>Added even more Nicolas Cage and secrets.</li>
-<li>Added new themes, both regular and secret.</li>
+<li>Added even more Nicolas Cage and secrets</li>
+<li>Added new themes, both regular and secret</li>
 </ul>
 <br><b>Improved Visuals:</b><br>
 <ul>
-<li style="font-family:cambria;font-weight:bold;font-size:2rem">Added a secondary font in the game.</li>
-<li>Redesigned the Autobuyer layouts.</li>
-<li>Added translucent progress bars into the following.</li>
+<li style="font-family:var(--var-secondary-font);font-weight:bold;font-size:2rem">Added a secondary font in the game</li>
+<li>Redesigned the Autobuyer layouts</li>
+<li>Added translucent progress bars into the following</li>
 <ul>
 <li>Dimension Boost and Galaxies</li>
 <li>ID Purchase buttons</li>
@@ -224,27 +431,27 @@ Note: This mod is in early access and lacks non-gameplay content which will be a
 <li>Prestige Buttons; progessions are based on either autobuyer modes, challenge goals or next glyph level</li>
 <li>Singularity</li>
 </ul>
-<li>Achievement row backgrounds now work like Infinity upgrade Columns.</li>
-<li>Revamped the achievement images. Use the Legacy theme for the classic achievement images.</li>
+<li>Achievement row backgrounds now work like Infinity upgrade Columns</li>
+<li>Revamped the achievement images. Use the Legacy theme for the classic achievement images</li>
 <li>Stylised the replicanti effects to be an organized table with more information</li>
 <li>Improved the Reality/Imaginary Upgrade lock visuals</li>
 <li>Adjusted the Celestial Navigation layout</li>
 <li>Added Background animation for Celestial Realities</li>
-<li>Added a typing effect for Celestial quotes during a sequence.</li>
+<li>Added a typing effect for Celestial quotes during a sequence</li>
 <li>Quote lines are more compact, reducing the Quote box amount needed</li>
 <li>Capped Infinity Dimension purchase buttons are stylized like a bought infinity upgrade</li>
-<li>Gave the Imaginary Upgrades a unique color scheme.</li>
-<li>Singularity Milestones now have different color schemes based on directions.</li>
-<li>Dimension rows with its inactive tiers in Lai'tela's Reality are more stylized.</li>
+<li>Gave the Imaginary Upgrades a unique color scheme</li>
+<li>Singularity Milestones now have different color schemes based on directions</li>
+<li>Dimension rows with its inactive tiers in Lai'tela's Reality are more stylized</li>
 <li>Dooming your reality alters the Reality tab</li>
 </ul>
 <br><b>New options for customization:</b><br>
 <ul>
-<li>Added visual options tab for the Automator.</li>
-<li>Added an option for names in various mechanics.</li>
-<li>Improved the Sidebar options, allowing you to switch sides, change width and display up to 4 different resources.</li>
-<li>Added a weird way to enable Autobuyer toggles in Antimatter Dimensions.</li>
-<li>Added a functionality to change the positions of the Prestige buttons.</li>
+<li>Added visual options tab for the Automator</li>
+<li>Added an option for names in various mechanics</li>
+<li>Improved the Sidebar options, allowing you to switch sides, change width and display up to 4 different resources</li>
+<li>Added a weird way to enable Autobuyer toggles in Antimatter Dimensions</li>
+<li>Added a functionality to change the positions of the Prestige buttons</li>
 <li>Added a toggle for new and old Reality Glyph visuals</li>
 <li>Added options for SFX</li>
 <li>Wobble</li>
@@ -261,44 +468,44 @@ Note: This mod is in early access and lacks non-gameplay content which will be a
 </ul>
 <br><b>Additional changes and information:</b><br>
 <ul>
-<li>Added new News.</li>
-<li>Added extra titles for celestials. (WIP)</li>
-<li>Added portraits for celestials.</li>
+<li>Added new News</li>
+<li>Added extra titles for celestials (WIP)</li>
+<li>Added portraits for celestials</li>
 <li>Added raw Glyph level to the Glyph level Factors (i.e. the glyph level without instability)</li>
-<li>Added extra info about glyph sacrifice boosts in the bonuses.</li>
-<li>Added text for uncapped RM past e1000 in Imaginary Upgrades tab.</li>
-<li>Added text for Paradox/Contradiction/Fallacy's 3rd milestone's effect in the Time Dilation tab.</li>
-<li>Extended the Matter scale statistics up to Milankovitch cycles.</li>
-<li>Gave Reality an unique text for first reset.</li>
+<li>Added extra info about glyph sacrifice boosts in the bonuses</li>
+<li>Added text for uncapped RM past e1000 in Imaginary Upgrades tab</li>
+<li>Added text for Paradox/Contradiction/Fallacy's 3rd milestone's effect in the Time Dilation tab</li>
+<li>Extended the Matter scale statistics up to Milankovitch cycles</li>
+<li>Gave Reality an unique text for first reset</li>
 <li>Added an option to skip quote sequences (requires at least 2 lines.)</li>
 <li>Added an option to skip the credits</li>
-<li>Achievement 35 now requires having to be either online or offline for 6 hours.</li>
-<li>Changed matter scale text ("If every antimatter were...") to only change once per 100ms.</li>
+<li>Achievement 35 now requires having to be either online or offline for 6 hours</li>
+<li>Changed matter scale text ("If every antimatter were...") to only change once per 100ms</li>
 <li>Changed the BI upgrade order</li>
-<li>Infinity Upgrades can now be charged in Teresa's tab too.</li>
-<li>Made Confused theme more confusing.</li>
-<li>Increased the save slot limit to 5.</li>
-<li>the dimension phases Matter scale text works as if x is log of antimatter.</li>
-<li>Some minor format changes.</li>
-<li>Increased the save slot limit to 5.</li>
+<li>Infinity Upgrades can now be charged in Teresa's tab too</li>
+<li>Made Confused theme more confusing</li>
+<li>Increased the save slot limit to 5</li>
+<li>the dimension phases Matter scale text works as if x is log of antimatter</li>
+<li>Some minor format changes</li>
+<li>Increased the save slot limit to 5</li>
 </ul>
 <br><b>Balance Changes:</b><br>
 <ul>
 <li>Antimatter Dimensions now have a multiplier based on the amount of unlocked Antimatter dimensions 
 (×1.25 for every non-first dimension unlocked)</li>
-<li>Changed the infinity upgrade order to be more fitting with the theme of the effects.</li>
-<li>Buffed the first 2 Break Infinity upgrades (log10(AM)^0.5 => log10(AM)^1.5).</li>
-<li>Buffed the "AD boost based on Infinity" Break Infinity upgrade (pLog10(Total Infinites)×10 => pLog10(Total Infinites)×100).</li>
-<li>Buffed the "AD boost based on Achievements" Break Infinity upgrade ((Achievement count - 30)^4 / 40 => (Achievement count - 30)^4 / 10).</li>
-<li>Buffed the "AD boost based on slowest Challenge" Break Infinity upgrade (50 / minutes => 500 / minutes; Cap: ×3e4 => ×3e5).</li>
-<li>5x EP's starting cost cost is cheaper ( 500 => 100 ).</li>
-<li>Improved IDL perk's effect to include that the effect is now based on time spent on this Reality.</li>
-<li>Reduced final singularity milestone even further (2.5e45 => 1e45).</li>
+<li>Changed the infinity upgrade order to be more fitting with the theme of the effects</li>
+<li>Buffed the first 2 Break Infinity upgrades (log10(AM)^0.5 => log10(AM)^1.5)</li>
+<li>Buffed the "AD boost based on Infinity" Break Infinity upgrade (pLog10(Total Infinites)×10 => pLog10(Total Infinites)×100)</li>
+<li>Buffed the "AD boost based on Achievements" Break Infinity upgrade ((Achievement count - 30)^4 / 40 => (Achievement count - 30)^4 / 10)</li>
+<li>Buffed the "AD boost based on slowest Challenge" Break Infinity upgrade (50 / minutes => 500 / minutes; Cap: ×3e4 => ×3e5)</li>
+<li>5x EP's starting cost cost is cheaper ( 500 => 100 )</li>
+<li>Improved IDL perk's effect to include that the effect is now based on time spent on this Reality</li>
+<li>Reduced final singularity milestone even further (2.5e45 => 1e45)</li>
 </ul>
 <br><b>Bugfixes:</b><br>
 <ul>
-<li>Fixed the modern blind theme.</li>
-<li>Fixed a bug where a time glyph with the time shard power effect has an extra hidden dot.</li>
+<li>Fixed the modern blind theme</li>
+<li>Fixed a bug where a time glyph with the time shard power effect has an extra hidden dot</li>
 <li>Fixed Dimensional Sacrifice display being incorrect in doomed Reality when having the achievement "IT'S OVER 9000"</li>
 </ul>
 `

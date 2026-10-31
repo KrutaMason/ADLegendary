@@ -9,6 +9,10 @@ export class RealityAutobuyerState extends AutobuyerState {
     return `Reality`;
   }
 
+  get key() {
+    return "R";
+  }
+
   get isUnlocked() {
     return RealityUpgrade(25).isBought;
   }

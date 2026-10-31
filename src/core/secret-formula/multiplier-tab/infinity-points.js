@@ -109,13 +109,13 @@ export const IP = {
   },
 
   nerfTeresa: {
-    name: "Teresa's Reality",
+    name: () => Teresa.displayRealityName(),
     powValue: () => 0.55,
     isActive: () => Teresa.isRunning,
     icon: MultiplierTabIcons.GENERIC_TERESA,
   },
   nerfV: {
-    name: "V's Reality",
+    name: () => V.displayRealityName(),
     powValue: () => 0.5,
     isActive: () => V.isRunning,
     icon: MultiplierTabIcons.GENERIC_V,

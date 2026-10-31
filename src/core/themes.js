@@ -16,7 +16,7 @@ export const Theme = function Theme(name, config) {
   this.isSecret = config.isSecret;
 
   this.isDefault = function() {
-    return name === "Normal" ||  name === "S9";
+    return name === "Normal" || name === "S9";
   };
 
   this.isAvailable = function() {
@@ -93,6 +93,7 @@ Theme.secretThemeIndex = function(name) {
     "31a74c1805c3ab57d158ed2b25704efaed0272dc269924ee82c4638288ccd169",
     "4605bef52c35f050ef036297d77aacef6fb5f344ee3426ea5271022893458375",
     "4ece46550cf8840f240b2a5f2f9bf9751fde6d02f486dd1886590b790a794c2d",
+    "52e73f5deefef51e9e7c6855339b67e05e1f2e933edb50d1ec6a868e4b763621"
   ];
   const sha = sha512_256(name.toUpperCase());
   return secretThemes.indexOf(sha);
@@ -118,7 +119,8 @@ Theme.tryUnlock = function(name) {
   Theme.set(prefix);
   SecretAchievement(25).unlock();
   if (!isAlreadyUnlocked) {
-    GameUI.notify.success([`A new Theme unlocked!`,`The ${name.capitalize()} Theme`], 5000);
+    GameUI.notify.success([`A new Theme unlocked!`,`The ${name.capitalize()} Theme`,
+        `<div class="o-notification--icon"><i class="fas fa-palette"></i></div>`], 5000);
     if (Theme.current().isAnimated) {
       setTimeout(Modal.message.show(`This secret theme has animations. If they are giving you performance issues,
         you can turn them off in the Options/Visual tab to reduce lag.`), 100);
@@ -168,6 +170,7 @@ export const Themes = {
     Theme.create("S13",             { dark: true,                               secret: true, }),
     Theme.create("S14",             { dark: true,                               secret: true, }),
     Theme.create("S15",             { dark: true,  metro: true, animated: true, secret: true, }),
+    Theme.create("S16",             { dark: true,                               secret: true, }),
     /* eslint-enable no-multi-spaces */
   ],
 

@@ -126,7 +126,7 @@ export default {
         Math.round(Math.clampMax(ratio, 1 / ratio) * 255),
       ];
       return { color: `rgb(${rgb.join(",")})` };
-    }
+    },
   },
   methods: {
     update() {
@@ -144,7 +144,7 @@ export default {
       this.isInEC12 = EternityChallenge(12).isRunning;
       this.currentDuration = Time.thisEternity.totalSeconds;
       this.maximumDuration = EternityChallenge(12).config.restriction(EternityChallenge(12).completions)
-      if (this.isInEC12) this.dangerWidth = this.DangerProgress();
+      if (this.checkIfFailable()) this.dangerWidth = this.DangerProgress();
       if (!this.canEternity) {
         this.type = EP_BUTTON_DISPLAY_TYPE.CANNOT_ETERNITY;
         return;
@@ -198,6 +198,11 @@ export default {
       this.autobuyer.mode = autobuyer.mode;
       this.autobuyerWidth = this.AutobuyerProgress();
     },
+    checkIfFailable() {
+      if (RealityUpgrade(10).isLockingMechanics) return true
+      if (RealityUpgrade(12).isLockingMechanics && EternityChallenge(1).isRunning) return true
+      if (EternityChallenge(12).isRunning) return true
+    },
     updateChallengeWithRUPG() {
       const ec = EternityChallenge.current;
       this.fullyCompleted = ec.isFullyCompleted;
@@ -220,7 +225,8 @@ export default {
       return `${progress * 100}%`;
     },
     DangerProgress() {
-      return `${this.currentDuration / this.maximumDuration * 100}%`;
+      if (this.isInEC12) return `${this.currentDuration / this.maximumDuration * 100}%`;
+      return "100%"
     },
     AutobuyerProgress() {
       let progress = 1
@@ -354,7 +360,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
           />
         </template>
         <FillBar
-          v-if="isInEC12"
+          v-if="checkIfFailable()"
           class="o-fill-bar--red"
           :width="dangerWidth"
           style="position: absolute;"
@@ -368,7 +374,7 @@ const EP_BUTTON_DISPLAY_TYPE = {
   background: linear-gradient(transparent -100%, var(--color-text) 300%);
 }
 .o-fill-bar--red {
-  background: url(../../../../public/images/upgrades/ec-red.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
+  background: url(../../../../public/images/patterns/c_dgr.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
   animation: a-possible 2s linear infinite;
   box-shadow: var(--var-box-shadow, 0 0 .5rem #ffffff inset, 0 0 1rem red inset);
 }

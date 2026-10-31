@@ -26,7 +26,6 @@ export default {
       bigCrunch: false,
       hasReality: false,
       newGameKey: "",
-      sidebarSideSwitch:false,
       fade:0
     };
   },
@@ -45,7 +44,6 @@ export default {
   },
   methods: {
     update() {
-      this.sidebarSideSwitch = player.options.sidebarSideSwitch
       const crunchButtonVisible = !player.break && Player.canCrunch;
       this.bigCrunch = crunchButtonVisible && Time.bestInfinityRealTime.totalMinutes > 1;
       this.hasReality = PlayerProgress.realityUnlocked();
@@ -72,7 +70,7 @@ export default {
     <div
       :key="newGameKey"
       class="game-container"
-      :class="{'game-container-switched':this.sidebarSideSwitch}"
+      :class="{'game-container-switched' : $viewModel.sidebar.rightSide}"
       :style="topMargin"
     >
       <NewsTicker

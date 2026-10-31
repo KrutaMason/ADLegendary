@@ -120,7 +120,7 @@ export default {
     </span>
     <span v-else>
       <i :class="dropDownIconClass" />
-      You have <span :class="{'c-reality-reminder--fixed': isInaccessible(suggestions.lengt) }">{{ formatInt(suggestions.length) }}</span> 
+      You have <span :class="diffFont(suggestions.length)">{{ formatInt(suggestions.length) }}</span> 
       {{ pluralize("thing", suggestions.length) }}
       you may want to do before Reality. {{ clickText }}
       <div
@@ -147,8 +147,5 @@ export default {
 
 .c-reality-reminder-pointer {
   cursor: pointer;
-}
-.c-reality-reminder--fixed{
-  font-family: Typewriter;
 }
 </style>

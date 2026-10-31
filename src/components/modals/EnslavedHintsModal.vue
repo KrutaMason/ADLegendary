@@ -30,8 +30,7 @@ export default {
       return this.progressEntries.some(entry => entry.id === id);
     },
     realityTitle() {
-      return player.options.naming.celestial ? `The ${Enslaved.RealityName}`
-       : "The Nameless Ones' Reality"
+      return Enslaved.displayRealityName(false, "The")
     },
     // Note: This calculation seems to behave extremely poorly if the goal has been raised more than 12 hints worth
     // of cost bumps and I'm not entirely sure why. There's probably a numerical issue I can't quite figure out, but

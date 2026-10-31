@@ -25,6 +25,9 @@ export default {
     id() {
       return this.study.id;
     },
+    dataText() {
+      return this.id + " Triad"
+    },
     config() {
       return this.study.config;
     },
@@ -41,6 +44,7 @@ export default {
     <HintText
       type="studies"
       class="l-hint-text--time-study"
+      :data-text="dataText"
     >
       {{ id }} Triad
     </HintText>

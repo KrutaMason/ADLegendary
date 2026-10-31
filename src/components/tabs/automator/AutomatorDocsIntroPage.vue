@@ -22,8 +22,12 @@ export default {
     <b>Layout:</b> This Automator itself is split up into two halves; the left half contains your script and controls
     for starting, stopping, and repeating its execution, and the right half contains Automator information. Clicking
     <div class="fas fa-expand-arrows-alt c-automator-button-icon" /> in the top-right corner will expand the Automator
-    to take up the whole browser page for easier editing. In Legendary, you can now use 
-    <div class="fas fa-palette c-automator-button-icon" /> to change the looks of your Automator.
+    to take up the whole browser page for easier editing.
+    <br>
+    <br>
+    <b>Customization:</b> The mod adds a new page that lets you customize the appearance of the Automator. The
+    <div class="fas fa-palette c-automator-button-icon" /> page has options to change the backgrounds of both panes  
+    alongside the scanline effect.
     <br>
     <br>
     <b>Editor Modes:</b> There are two different editors you can use to write your automator scripts - a block-based

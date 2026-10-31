@@ -128,10 +128,12 @@ export default {
           blocks: blockifyTextAutomator(this.templateScript.script).blocks
         };
         AutomatorData.blockTemplates.push(newTemplateBlock);
-        GameUI.notify.info(["The Automator","Custom template block created"]);
+        GameUI.notify.info(["The Automator","Custom template block created",
+        `<div class="o-notification--icon"><i class="fas fa-file-code"></i></div>`]);
       } else {
         copyToClipboard(this.templateScript.script);
-        GameUI.notify.info(["The Automator","Template copied to clipboard"]);
+        GameUI.notify.info(["The Automator","Template copied to clipboard",
+        `<div class="o-notification--icon"><i class="fa-solid fa-clipboard"></i></div>`]);
       }
       this.emitClose();
     }

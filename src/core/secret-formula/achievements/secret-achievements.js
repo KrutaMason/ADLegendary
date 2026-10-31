@@ -195,7 +195,7 @@ export const secretAchievements = [
   {
     id: 51,
     name: "You got me",
-    description: "Obtain the ancient Glyph of Helios.",
+    description: "Obtain the ancient Glyph of Helios. They can be sacrificed for better, but rarer Helios Glyphs.",
     checkRequirement: () => Glyphs.activeList.concat(Glyphs.inventoryList).filter(glyph => glyph.type==="helios").length >= 1,
     checkEvent: GAME_EVENT.GLYPHS_CHANGED
   },
@@ -206,8 +206,8 @@ export const secretAchievements = [
   },
   {
     id: 53,
-    name: "To be developed...",
-    description: "S53"
+    name: "Rhymes with Grug",
+    description: "Have all dimensions share the same custom name."
   },
   {
     id: 54,

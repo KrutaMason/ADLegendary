@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     topLabel() {
-      return `You are about to purchase ${quantifyInt("Replicanti Galaxy", this.canBeBought)}`;
+      return formatInt(this.canBeBought);
     },
     message() {
       const reductionString = this.divideReplicanti
@@ -48,8 +48,16 @@ export default {
     @confirm="handleYesClick"
     :style="{'--base':'var(--color-replicanti)'}"
   >
-    <template #header>
-      {{ topLabel }}
+    <template 
+      #header
+      v-html="topLabel"
+    >
+      You are about to purchase 
+      <span
+        v-html="topLabel"
+        :class="diffFont(canBeBought)"
+      />
+      {{ pluralize("Replicanti Galaxy", canBeBought) }}
     </template>
     <div class="c-modal-message__text">
       {{ message }}

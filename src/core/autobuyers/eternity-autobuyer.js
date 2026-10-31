@@ -9,6 +9,10 @@ export class EternityAutobuyerState extends AutobuyerState {
     return `Eternity`;
   }
 
+  get key() {
+    return "E";
+  }
+
   get isUnlocked() {
     return EternityMilestone.autobuyerEternity.isReached;
   }

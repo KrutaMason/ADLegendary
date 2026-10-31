@@ -1,10 +1,12 @@
 <script>
+import BarTickMarks from "@/components/BarTickMarks";
 import NewTimeDimensionRow from "./ModernTimeDimensionRow";
 import PrimaryButton from "@/components/PrimaryButton";
 
 export default {
   name: "NewTimeDimensionsTab",
   components: {
+    BarTickMarks,
     PrimaryButton,
     NewTimeDimensionRow
   },
@@ -19,7 +21,14 @@ export default {
       incomeType: "",
       areAutobuyersUnlocked: false,
       showLockedDimCostNote: true,
-      uniqueDimName: false,
+      eighthDimName: "",
+      bar: {
+        barStart: new Decimal(),
+        barEnd: new Decimal(),
+        totalUpgradesDecimal: new Decimal(),
+        progress: 0,
+        width: 0,
+      }
     };
   },
   computed: {
@@ -28,7 +37,8 @@ export default {
   methods: {
     update() {
       this.showLockedDimCostNote = !TimeDimension(8).isUnlocked && player.realities >= 1;
-      this.totalUpgrades = player.totalTickGained;
+      this.totalUpgrades = FreeTickspeed.amount;
+      this.bar.totalUpgradesDecimal.copyFrom(new Decimal(FreeTickspeed.amount));
       this.multPerTickspeed = FreeTickspeed.multToNext;
       this.tickspeedSoftcap = FreeTickspeed.softcap;
       this.timeShards.copyFrom(Currency.timeShards);
@@ -36,7 +46,11 @@ export default {
       this.shardsPerSecond.copyFrom(TimeDimension(1).productionPerSecond);
       this.incomeType = EternityChallenge(7).isRunning ? "Eighth Infinity Dimensions" : "Time Shards";
       this.areAutobuyersUnlocked = Autobuyer.timeDimension(1).isUnlocked;
-      this.uniqueDimName = player.options.naming.dimensions;
+      this.eighthDimName = TimeDimension(8).fullName(...[,,,], 2);
+      this.bar.barStart.copyFrom(FreeTickspeed.barStart);
+      this.bar.barEnd.copyFrom(FreeTickspeed.barEnd);
+      this.progress = new Decimal((this.bar.totalUpgradesDecimal.sub(this.bar.barStart)).div(this.bar.barEnd.sub(this.bar.barStart))).toNumber();
+      this.width = `${this.progress * 100}%`
     },
     maxAll() {
       tryUnlockTimeDimensions();
@@ -70,19 +84,19 @@ export default {
       <p>
         You have gained
         <span class="c-time-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(totalUpgrades) }"
+        :class="diffFont(totalUpgrades)"
         >{{ formatInt(totalUpgrades) }}</span> Tickspeed upgrades from
         <span class="c-time-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(timeShards) }"
+        :class="diffFont(timeShards)"
         >{{ format(timeShards, 2, 1) }}</span> Time Shards.
       </p>
       <p>
         Next Tickspeed upgrade at
         <span class="c-time-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(upgradeThreshold) }"
+        :class="diffFont(upgradeThreshold)"
         >{{ format(upgradeThreshold, 2, 1) }}</span>, increasing by
         <span class="c-time-dim-description__accent"
-        :class="{'c-dim-description__accent--fixed': isInaccessible(multPerTickspeed) }"
+        :class="diffFont(multPerTickspeed)"
         >{{ formatX(multPerTickspeed, 2, 2) }}</span> per
         Tickspeed upgrade gained.
       </p>
@@ -92,6 +106,29 @@ export default {
       increasing above <b style="color:var(--color-eternity)">{{ formatInt(tickspeedSoftcap) }}</b> Tickspeed upgrades.
     </div>
     <div>You are getting {{ format(shardsPerSecond, 2, 0) }} {{ incomeType }} per second.</div>
+    <div class="c-replicanti-bar--container">
+      <div
+        class="c-replicanti-bar" 
+        style="--color-replicanti: var(--color-eternity);"
+      >
+        <div 
+          class="c-replicanti-bar-fill"
+          :style="{'width': width}"
+        />
+        <span
+          :class="diffFont(progress * 100)"
+        >
+          {{ formatPercents(progress, 2) }}
+        </span>
+      </div>
+      <BarTickMarks
+        className="c-tick-mark--time-shard"
+        :count="5"
+        :resource="bar.totalUpgradesDecimal"
+        :barStart="bar.barStart"
+        :barEnd="bar.barEnd"
+      />
+    </div>
     <div class="l-dimensions-container">
       <NewTimeDimensionRow
         v-for="tier in 8"
@@ -108,8 +145,8 @@ export default {
       <div v-if="showLockedDimCostNote">
         Hold shift to see the Eternity Point cost for locked Time Dimensions.
       </div>
-      Any {{ uniqueDimName ? "Time Polyzettons" : "8th Time Dimensions" }} 
-      purchased above <b style="color:var(--color-eternity)">{{ formatInt(1e8) }}</b> will not further increase the multiplier.
+      Any {{ eighthDimName }} purchased above <b style="color:var(--color-eternity)">{{ formatInt(1e8) }}</b> 
+      will not further increase the multiplier.
     </div>
   </div>
 </template>

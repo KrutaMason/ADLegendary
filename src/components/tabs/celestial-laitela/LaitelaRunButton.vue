@@ -15,9 +15,6 @@ export default {
       singularitiesUnlocked: false,
       bestSet: [],
       tierNotCompleted: true,
-      labelmode:false,
-      newname:false,
-      newnamenormal:false,
     };
   },
   computed: {
@@ -33,6 +30,9 @@ export default {
     },
     isDoomed: () => Pelle.isDoomed,
   },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("runEffects"));
+  },
   methods: {
     update() {
       this.realityTime = player.celestials.laitela.fastestCompletion;
@@ -42,13 +42,13 @@ export default {
       this.singularitiesUnlocked = Currency.singularities.gt(0);
       this.bestSet = Glyphs.copyForRecords(player.records.bestReality.laitelaSet);
       this.tierNotCompleted = this.realityTime === 3600 || (this.realityTime === 300 && this.maxDimTier < 8);
-      this.labelmode = !player.options.naming.celestial
-      this.newname = `${Laitela.RealityName} ${Laitela.LevelName[Laitela.difficultyTier]}`
-      this.newnamenormal = `${Laitela.RealityName}`
     },
-    realityTitle() {
-      return player.options.naming.celestial ? `Enter the ${Laitela.RealityName} ${Laitela.LevelName[Laitela.difficultyTier]}`
-       : "Start Lai'tela's Reality"
+    runVerb() {
+      return player.options.naming.celestial ? `Enter`: "Start"
+    },
+    runName(needsName, the,  altName = false) {
+      let name = altName ? Laitela.dynamicRealityName : Laitela.realityName
+      return Laitela.displayRealityName(needsName, the, name)
     },
     startRun() {
       if (this.isDoomed) return;
@@ -75,10 +75,13 @@ export default {
 <template>
   <button :class="classObject()">
     <span 
-    style="font-family: cambria;font-size:1.8rem"
-    :class="{ 'o-pelle-disabled': isDoomed }"
+      style="font-family: var(--var-secondary-font);font-size:1.8rem"
+      :class="{ 'o-pelle-disabled': isDoomed }"
     >
-      <b>{{ realityTitle() }}</b>
+      <b>
+        {{ runVerb() }}
+        {{ runName(...[,,], true) }}
+      </b>
     </span>
     <div
       :class="runButtonClassObject()"
@@ -112,7 +115,7 @@ export default {
           You also gain an additional {{ formatX(8) }} Dark Energy.
         </b>
         <br><br>
-        {{`${labelmode?"Lai'tela's Reality":"The "+newnamenormal}`}} has been fully destabilized and cannot have its reward further improved.
+        {{ runName(false, "The") }} has been fully destabilized and cannot have its reward further improved.
       </span>
       <br>
     </div>

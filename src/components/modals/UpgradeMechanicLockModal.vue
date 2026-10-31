@@ -22,6 +22,9 @@ export default {
     }
   },
   computed: {
+    color() {
+      return this.isImaginary ? "var(--color-ra--base)" : "var(--color-reality)";
+    },
     upgradeStr() {
       return this.isImaginary ? "Imaginary Upgrade" : "Reality Upgrade";
     },
@@ -39,6 +42,7 @@ export default {
 
 <template>
   <ModalWrapperChoice
+  :style="{'--base': color}"
     @confirm="disableLock"
   >
     <template #header>

@@ -23,9 +23,10 @@ export default {
     categoryText: () => [
       `Intensifier Rebuyables`,
       `Secondary Rebuyables`,
-      `Path of Manipulation`,
-      `Path of Darkness`,
-      `Path of Destruction`],      
+      `Retrospective Reminiscence`,
+      `Flawless Fortification`,
+      `Absolute Acceptance`
+    ],      
   },
   methods: {
     update() {
@@ -46,14 +47,16 @@ export default {
   <div class="l-reality-upgrade-grid">
     <div class="c-cap-text">
       Your Machine cap is 
-      <span class="c-reality-tab__reality-machines"
-      :class="{'c-reality-tab__reality-machines--fixed': isInaccessible(this.capRM) }"
+      <span 
+        class="c-reality-tab__reality-machines"
+        :class="diffFont(this.capRM)"
       >{{ capStr }}</span>.
     </div>
     <div class="c-cap-text">
       Without the cap, you would have gained 
-      <span class="c-reality-tab__reality-machines"
-      :class="{'c-reality-tab__reality-machines--fixed': isInaccessible(baseRMunCap) }"
+      <span 
+        class="c-reality-tab__reality-machines"
+        :class="diffFont(baseRMunCap)"
       >
         {{ format(baseRMunCap,2) }}</span> Reality Machines from Reality.
     </div>
@@ -86,7 +89,7 @@ export default {
       v-for="row in 5"
       :key="row"
     >
-    <div class="c-reality-upgrade-row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
+    <div class="c-reality-upgrade-grid__row-title">Row {{row}} - {{ categoryText[row-1] }}</div>
     <div class="l-reality-upgrade-grid__row">
       <ImaginaryUpgradeButton
         v-for="column in 5"
@@ -103,7 +106,7 @@ export default {
 .c-cap-text {
   color: var(--color-text);
   font-size: 1.8rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   line-height: 1.1;
 }
@@ -111,17 +114,5 @@ export default {
 .c-info-text {
   color: var(--color-text);
   margin: 1.5rem;
-}
-
-.c-reality-upgrade-row-title{
-  border-bottom: 0.1rem solid;
-  border-top: 0.1rem solid;
-  border-image: linear-gradient(90deg,transparent,var(--color-ra--base),transparent) 1;
-  background: linear-gradient(90deg,transparent,color-mix(in srgb, var(--color-ra--base) 33%, transparent),transparent);
-  color:var(--color-text);
-  margin-bottom:1rem;
-  font-family:cambria;
-  font-weight: bold;
-  font-size: 1.5rem;
 }
 </style>

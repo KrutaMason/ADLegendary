@@ -124,11 +124,11 @@ export const Pelle = {
   get displayName() {
     return Date.now() % 4000 > 500 ? "Pelle" : wordShift.randomCrossWords("Pelle");
   },
-  displayTitle: "Pelle, The Eternal",
-  celestialOf: "Antimatter",
-  get fullName() {
-    return Date.now() % 4000 > 500 ? "Pelle, Celestial of Antimatter" : `${wordShift.randomCrossWords("Pelle")}, Celestial of ${wordShift.randomCrossWords("Antimatter")}`;
+  get displayTitle() { 
+    return `${wordShift.wordCycle(["Eternal","Deity","Wheel"],false,750)} 
+    ${Date.now() % 4000 > 500 ? "Pelle" : wordShift.randomCrossWords("Pelle")}`
   },
+  epithet: "Antimatter",
   get isUnlocked() {
     return ImaginaryUpgrade(25).isBought;
   },
@@ -376,7 +376,7 @@ export function runDoomAnimation() {
   document.getElementById("doomanimbg").style.display = "block";
   document.getElementById("doomanimbg").currentTime = 0;
   setTimeout(() => {
-    GameUI.notify.strike(`WHAT HAVE YOU DONE???`);
+    GameUI.notify.strike([`WHAT HAVE YOU DONE???`]);
   }, 2500);
   setTimeout(() => {
     document.getElementById("pelle-button").classList.remove("pelle-active")

@@ -88,6 +88,7 @@ export const glyphTypes = {
     fixedSymbolColor: true,
     isUnlocked: () => false,
     canCustomize: () => false,
+    hasRarity: true
   },
 };
 

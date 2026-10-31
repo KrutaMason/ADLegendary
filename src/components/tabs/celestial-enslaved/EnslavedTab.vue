@@ -54,9 +54,8 @@ export default {
       return Enslaved.storedTimeInsideEnslaved(this.storedBlackHole);
     },
     realityTitle() {
-      if (this.isRunning) return player.options.naming.celestial ? `You are inside the ${Enslaved.RealityName}` 
-      : "You are inside The Nameless Ones' Reality"
-      return player.options.naming.celestial ? `Enter the ${Enslaved.RealityName}` : "Start The Nameless Ones' Reality";
+      if (this.isRunning) return `You are inside ${Enslaved.displayRealityName(false)}`;
+      return `${player.options.naming.celestial ? "Enter" : "Start"} ${Enslaved.displayRealityName(false)}`;
     },
     runButtonClassObject() {
       return {
@@ -117,6 +116,9 @@ export default {
     autoRelease(newValue) {
       player.celestials.enslaved.isAutoReleasing = newValue;
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("runDescription"));
   },
   methods: {
     update() {

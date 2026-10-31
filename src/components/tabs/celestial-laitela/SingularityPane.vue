@@ -131,7 +131,7 @@ export default {
   <div class="c-laitela-singularity-container">
     <div>
       <h2 class="c-laitela-singularity__currency">
-        You have <span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(singularities) }">
+        You have <span :class="diffFont(singularities)">
           {{ format(singularities, 2) }}</span>
         {{ pluralize("Singularity", singularities) }}
       </h2>
@@ -152,9 +152,8 @@ export default {
     </div>
     <div v-if="singularities !== 0">
       <div class="o-laitela-matter-amount c-laitela-singularity__currency"> You have 
-        <span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(darkEnergy) }"> {{ format(darkEnergy, 2, 4) }}</span> 
-        Dark Energy. (+<span :class="{'c-laitela-singularity__currency--fixed': isInaccessible(darkEnergyGainPerSecond) }">
-        {{ format(darkEnergyGainPerSecond, 2, 4) }}</span>/s)
+        <span :class="diffFont(darkEnergy)"> {{ format(darkEnergy, 2, 4) }}</span> 
+        Dark Energy. (+<span :class="diffFont(darkEnergyGainPerSecond)">{{ format(darkEnergyGainPerSecond, 2, 4) }}</span>/s)
       </div>
       <div v-if="unlockedBulkSingularity">
         <button
@@ -209,10 +208,6 @@ export default {
 .c-laitela-singularity__currency {
   font-weight: bold;
   font-size: 1.8rem;
-  font-family: Cambria;
-}
-.c-laitela-singularity__currency--fixed {
-  font-weight: normal;
-  font-family: Typewriter;
+  font-family: var(--var-secondary-font);
 }
 </style>

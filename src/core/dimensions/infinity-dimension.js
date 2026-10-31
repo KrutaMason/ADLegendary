@@ -59,6 +59,10 @@ class InfinityDimensionState extends DimensionState {
     this.ipRequirement = BASE_COSTS[1];
   }
 
+  get typeName () { return "Infinity"; }
+
+  get shortTypeName() { return "I"; }
+
   /** @returns {Decimal} */
   get cost() { return this.data.cost; }
   /** @param {Decimal} value */
@@ -257,8 +261,9 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+        ? `purchase ${player.options.naming.dimensions ? "an" : "a"} ${InfinityDimension(1).fullName()}`
+        : `purchase a Dimension which will produce ${player.options.naming.dimensions ? 
+          InfinityDimension(1).fullName(...[,,,], 2) : "1st IDs"}`;
       ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }
@@ -282,8 +287,9 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+        ? `purchase ${player.options.naming.dimensions ? "an" : "a"} ${InfinityDimension(1).fullName()}`
+        : `purchase a Dimension which will produce ${player.options.naming.dimensions ? 
+          InfinityDimension(1).fullName(...[,,,], 2) : "1st IDs"}`;
       if (!auto) ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }

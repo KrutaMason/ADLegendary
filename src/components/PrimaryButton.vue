@@ -6,6 +6,11 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    sound: {
+      type: Function,
+      required: false,
+      default: () => AudioManagement.playSound("click_light")
     }
   },
   computed: {

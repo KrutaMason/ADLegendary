@@ -33,6 +33,7 @@ export default {
         "c-hide-modal-button--inactive": this.hidden,
         "c-hide-modal-button--always-visible": !this.hidable || this.isCurrentSubtab,
         [`c-hide-modal-tab-button--${this.tab.key}`]: !this.isCurrentSubtab,
+        "c-hide-modal-tab-button--armageddon": Pelle.isDoomed && this.tab.key === "reality" && !this.isCurrentSubtab,
       };
     },
     isModernUI() {
@@ -46,7 +47,8 @@ export default {
     },
     toggleVisibility() {
       if (!this.changeEnabled) return;
-      this.subtab.toggleVisibility();AudioManagement.playSound(this.hidden ?"click_light-reverse":"click_light");
+      this.subtab.toggleVisibility();
+      AudioManagement.playSound(this.hidden ? "click_light-reverse" : "click_light");
     },
   },
 };
@@ -54,7 +56,7 @@ export default {
 
 <template>
   <div
-    v-tooltip="hidable ? isCurrentSubtab ? 'You cannot hide the tab you are on' : '' : 'Options tabs cannot be hidden'"
+    v-tooltip="hidable ? isCurrentSubtab ? 'You cannot hide the tab you are on' : '' : 'Options tabs can only be hidden with the options modal'"
     :class="classObject"
     @click="toggleVisibility"
   >
@@ -79,10 +81,11 @@ export default {
 }
 
 .l-hide-modal-button__subtab-icon {
+  font-family: Typewriter;
   font-size: 1.5rem;
   width: 2.5rem;
   margin: 0.2rem;
-  padding-right:0.5rem;
+  padding-right: 0.5rem;
   border-right: 0.1rem solid;
   border-image: linear-gradient(transparent -25%, currentcolor, transparent 125%) 1
 }

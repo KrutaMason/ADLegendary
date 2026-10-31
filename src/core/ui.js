@@ -78,6 +78,14 @@ Vue.mixin({
     isInaccessible(value) {
       return isInaccessible(value);
     },
+    diffFont(value) {
+      return {
+        "c-font--fixed" : isInaccessible(value)
+      }
+    },
+    displayGradientText(string, value) {
+      return displayGradientText(string, value);
+    },
   }
 });
 
@@ -213,6 +221,15 @@ export const ui = new Vue({
     newUI() {
       return this.view.newUI;
     },
+    newOptionsUI() {
+      return this.view.newOptionsUI;
+    },
+    rightSidebar() {
+      return this.view.sidebar.rightSide;
+    },
+    maxSidebar() {
+      return this.view.sidebar.fullHeight;
+    }
   },
   watch: {
     currentGlyphTooltip(newVal) {

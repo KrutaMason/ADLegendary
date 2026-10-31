@@ -20,6 +20,7 @@ export default {
       achievements: false,
       achievementUnlockStates: false,
       challenges: false,
+      challengeStats: false,
       studies: false,
       glyphEffectDots: false,
       realityUpgrades: false,
@@ -31,6 +32,11 @@ export default {
   computed: {
     fullCompletion() {
       return player.records.fullGameCompletions > 0;
+    },
+    realityUpgradeInfo() {
+      if (MachineHandler.isIMUnlocked) return `Displays the unique names over the Reality Upgrades; 
+      Imaginary Upgrades are also affected by this option`;
+      return "Displays the unique names over the Reality Upgrades"
     }
   },
   watch: {
@@ -45,6 +51,9 @@ export default {
     },
     challenges(newValue) {
       player.options.showHintText.challenges = newValue;
+    },
+    challengeStats(newValue) {
+      player.options.showHintText.challengeStats = newValue;
     },
     studies(newValue) {
       player.options.showHintText.studies = newValue;
@@ -79,6 +88,7 @@ export default {
       this.achievements = options.achievements;
       this.achievementUnlockStates = options.achievementUnlockStates;
       this.challenges = options.challenges;
+      this.challengeStats = options.challengeStats;
       this.studies = options.studies;
       this.glyphEffectDots = options.glyphEffectDots;
       this.realityUpgrades = options.realityUpgrades;
@@ -99,49 +109,66 @@ export default {
       <ModalOptionsToggleButton
         v-model="showPercentage"
         text="Show % gain:"
+        v-tooltip="`Show the increase in dimensions in percentages every second`"
       />
       <ModalOptionsToggleButton
         v-model="achievements"
         text="Achievement IDs:"
+        v-tooltip="`Display IDs over the achievements; Ordered in rows and columns`"
       />
       <ModalOptionsToggleButton
         v-model="achievementUnlockStates"
         text="Achievement unlock state indicators:"
+        v-tooltip="`Add icons to the achievements based on their current states; Adds accessibility`"
       />
       <ModalOptionsToggleButton
         v-if="infinityUnlocked"
         v-model="challenges"
         text="Challenge IDs:"
+        v-tooltip="`Display IDs for challenges`"
+      />
+      <ModalOptionsToggleButton
+        v-if="infinityUnlocked"
+        v-model="challengeStats"
+        text="Challenge completion statistics:"
+        v-tooltip="`Display extra statistics for completing challenges`"
       />
       <ModalOptionsToggleButton
         v-if="eternityUnlocked"
         v-model="studies"
         text="Time Study IDs:"
+        v-tooltip="`Display IDs under Time Studies; Helpful for tree sets and makes the guides 
+        more understandable`"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="glyphEffectDots"
-        text="Glyph effect dots:"
+        text="Diacritic dots:"
+        v-tooltip="`Display dots that represent individual diacritics in the glyph`"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="realityUpgrades"
         text="Reality Upgrade names:"
+        v-tooltip="realityUpgradeInfo"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="perks"
         text="Perk IDs:"
+        v-tooltip="`Display IDs under the Perk nodes`"
       />
       <ModalOptionsToggleButton
         v-if="perkShopUnlocked"
         v-model="perkShop"
         text="Perk Shop Levels:"
+        v-tooltip="`Display the levels under the Perk Shop upgrades`"
       />
       <ModalOptionsToggleButton
         v-if="alchemyUnlocked"
         v-model="alchemy"
         text="Alchemy resource amounts:"
+        v-tooltip="`Display counters under Glyph Alchemy resources`"
       />
     </div>
     Note: All types of additional info above will always display when holding shift.

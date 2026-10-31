@@ -14,10 +14,10 @@ export class Sacrifice {
   }
 
   static get disabledCondition() {
-    if (NormalChallenge(10).isRunning) return "8th Dimensions are disabled";
-    if (EternityChallenge(3).isRunning) return "Eternity Challenge 3";
+    if (NormalChallenge(10).isRunning) return `${AntimatterDimension(8).fullName(...[,], false, ...[,], 2)} are disabled`;
+    if (EternityChallenge(3).isRunning) return EternityChallenge(3).displayName();
     if (DimBoost.purchasedBoosts < 5) return `Requires ${formatInt(5)} Dimension Boosts`;
-    if (AntimatterDimension(8).totalAmount.eq(0)) return "No 8th Antimatter Dimensions";
+    if (AntimatterDimension(8).totalAmount.eq(0)) return `No ${AntimatterDimension(8).fullName(...[,,,], 2)}`;
     if (this.nextBoost.lte(1)) return `${formatX(1)} multiplier`;
     if (Player.isInAntimatterChallenge) return "Challenge goal reached";
     return "Need to Crunch";

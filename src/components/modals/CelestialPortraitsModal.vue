@@ -37,7 +37,7 @@ name: "CelestialPortraitsModal",
   },
   methods: {
     update() {
-      this.portraitName = this.celestial.displayName
+      this.portraitName = this.celestial.displayTitle
       this.hasMatureContent = player.options.mature
     },
   },

@@ -22,7 +22,8 @@ export default {
       isCompleted: false,
       isBroken: false,
       isUnlocked: false,
-      lockedAt: new Decimal()
+      lockedAt: new Decimal(),
+      reward: undefined,
     };
   },
   computed: {
@@ -43,10 +44,10 @@ export default {
     overrideLabel() {
       return this.isBroken ? "Broken" : "";
     },
-    reward() {
-      const reward = this.challenge.config.reward;
-      return typeof reward === "function" ? reward() : reward;
-    },
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.setReward());
+    this.setReward();
   },
   methods: {
     update() {
@@ -57,7 +58,11 @@ export default {
       this.lockedAt = this.challenge.config.lockedAt;
       this.isBroken = Enslaved.isRunning && Enslaved.BROKEN_CHALLENGES.includes(this.challenge.id);
       this.isCompleted = this.challenge.isCompleted && !this.isBroken;
-    }
+    },
+    setReward() {
+      const reward = this.challenge.config.reward;
+      this.reward = typeof reward === "function" ? reward() : reward;
+    },
   }
 };
 </script>

@@ -14,7 +14,7 @@ export const teresaQuotes = {
         showCelestialName: false,
         //image: "teresa_intro.png"
       },{
-        text: `My name is Teresa, the Celestial Of Reality. <br> Prove your worth.`,
+        text: `My name is Orias, the Celestial Of Reality. <br> Prove your worth.`,
         //image: "teresa_intro.png"
       }
     ]

@@ -227,7 +227,7 @@ export const BlockAutomator = {
   overflow-y: auto;
   tab-size: 1.5rem;
   width: 100%;
-  background: var(--leg-base);
+  background: var(--leg-base-render);
   box-shadow: var(--var-box-shadow, 0 0 2.5rem #00000080 inset);
   background-position: center;
   box-sizing: content-box;

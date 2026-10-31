@@ -34,17 +34,17 @@ export default {
           hasHigherLayers: false,
           exitFn: () => {
             beginProcessReality(getRealityProps(true));
-            if (player.options.audio.reality) AudioManagement.playSound("reset_reality-enter")
+            AudioManagement.playSound("reset_reality-enter", player.options.audio.reality)
           }
         });
         else {
           beginProcessReality(getRealityProps(true));
-          if (player.options.audio.reality) AudioManagement.playSound("reset_reality-exit");
+          AudioManagement.playSound("reset_reality-exit", player.options.audio.reality);
         };
       } else if (confirms.resetReality) Modal.resetReality.show();
       else {
         beginProcessReality(getRealityProps(true));
-        if (player.options.audio.reality) AudioManagement.playSound("reset_reality-reset");
+        AudioManagement.playSound("reset_reality-reset", player.options.audio.reality);
       };
     },
   }

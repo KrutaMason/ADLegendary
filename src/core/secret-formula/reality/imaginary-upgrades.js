@@ -131,8 +131,8 @@ export const imaginaryUpgrades = [
     name: "Transience of Information",
     id: 13,
     cost: 5e7,
-    requirement: () => `Reach ${format(Number.MAX_VALUE, 2)} projected Reality Machines within
-      ${player.options.naming.celestial?"the "+Enslaved.RealityName:"The Nameless Ones' Reality"}`,
+    requirement: () => `Reach ${format(Number.MAX_VALUE, 2)} projected Reality Machines within 
+    ${Enslaved.displayRealityName(false)}`,
     hasFailed: () => !Enslaved.isRunning,
     // This is for consistency with the UI, which displays an amplified "projected RM" value on the reality button
     checkRequirement: () => Enslaved.isRunning &&
@@ -148,8 +148,7 @@ export const imaginaryUpgrades = [
     id: 14,
     cost: 3.5e8,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach a tickspeed of ${format("1e75000000000")} / sec within 
-    ${player.options.naming.challenges?EternityChallenge(5).name:"Eternity Challenge 5"}`,
+    requirement: () => `Reach a tickspeed of ${format("1e75000000000")} / sec within ${EternityChallenge(5).displayName()}`,
     hasFailed: () => false,
     checkRequirement: () => EternityChallenge(5).isRunning && Tickspeed.perSecond.exponent >= 7.5e10,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
@@ -161,9 +160,7 @@ export const imaginaryUpgrades = [
     name: "Fabrication of Ideals",
     id: 15,
     cost: 1e9,
-    requirement: () => `Reach ${format("1e1500000000000")} antimatter without
-      ever having any ${player.options.naming.dimensions ? `Infinity ${InfinityDimension(1).uniqueName}s`
-       : "1st Infinity Dimensions"}`,
+    requirement: () => `Reach ${format("1e1500000000000")} antimatter without ever having any ${InfinityDimension(1).fullName(...[,,,], 2)}`,
     hasFailed: () => player.requirementChecks.reality.maxID1.gt(0),
     checkRequirement: () => player.requirementChecks.reality.maxID1.eq(0) && player.antimatter.exponent >= 1.5e12,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
@@ -182,12 +179,11 @@ export const imaginaryUpgrades = [
     id: 16,
     cost: 3.5e9,
     formatCost: x => format(x, 1),
-    requirement: () => `Destabilize Lai'tela's Reality in under ${formatInt(30)} seconds twice`,
+    requirement: () => `Destabilize ${Laitela.displayRealityName(false)} in under ${formatInt(30)} seconds twice`,
     hasFailed: () => false,
     checkRequirement: () => Laitela.maxAllowedDimension <= 6,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Unlock the ${player.options.naming.dimensions ? `Dark Matter ${DarkMatterDimension(2).uniqueName}`
-       : "2nd Dark Matter Dimension"}`,
+    description: () => `Unlock the ${DarkMatterDimension(2).fullName()}`,
   },
   {
     name: "Chiral Oscillation",
@@ -198,8 +194,7 @@ export const imaginaryUpgrades = [
     checkRequirement: () => Singularity.singularitiesGained >= 20 &&
       Currency.darkEnergy.gte(Singularity.cap * SingularityMilestone.autoCondense.effectOrDefault(Infinity)),
     checkEvent: GAME_EVENT.SINGULARITY_RESET_BEFORE,
-    description: () => `Unlock the ${player.options.naming.dimensions ? `Dark Matter ${DarkMatterDimension(3).uniqueName}`
-       : "3rd Dark Matter Dimension"}`,
+    description: () => `Unlock the ${DarkMatterDimension(3).fullName()}`,
   },
   {
     name: "Dimensional Symmetry",
@@ -211,8 +206,7 @@ export const imaginaryUpgrades = [
     checkRequirement: () => Replicanti.galaxies.total + player.galaxies +
       player.dilation.totalTachyonGalaxies >= 80000,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    description: () => `Unlock the ${player.options.naming.dimensions ? `Dark Matter ${DarkMatterDimension(4).uniqueName}`
-       : "4th Dark Matter Dimension"}`,
+    description: () => `Unlock the ${DarkMatterDimension(4).fullName()}`,
   },
   {
     name: "Deterministic Radiation",
@@ -263,9 +257,8 @@ export const imaginaryUpgrades = [
     id: 22,
     cost: 1.5e14,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach ${format("1e150000000000")} antimatter in 
-    ${player.options.naming.celestial?"the "+Effarig.RealityName:"Effarig's Reality"} with
-      at least ${formatInt(4)} Cursed Glyphs equipped`,
+    requirement: () => `Reach ${format("1e150000000000")} antimatter in ${Effarig.displayRealityName(false)} with 
+    at least ${formatInt(4)} Cursed Glyphs equipped`,
     // Note: 4 cursed glyphs is -12 glyph count, but equipping a positive glyph in the last slot is allowed
     hasFailed: () => !Effarig.isRunning || player.requirementChecks.reality.maxGlyphs > -10,
     checkRequirement: () => Effarig.isRunning && player.requirementChecks.reality.maxGlyphs < -10 &&
@@ -279,8 +272,8 @@ export const imaginaryUpgrades = [
     name: "Planar Purification",
     id: 23,
     cost: 6e14,
-    requirement: () => `Reach Glyph level ${formatInt(20000)} in 
-    ${player.options.naming.celestial?"Ra's Reality":"the "+Ra.RealityName} with at most ${formatInt(0)} Glyphs equipped`,
+    requirement: () => `Reach Glyph level ${formatInt(20000)} in ${Ra.displayRealityName(false)} with at most 
+    ${formatInt(0)} Glyphs equipped`,
     hasFailed: () => !Ra.isRunning || player.requirementChecks.reality.maxGlyphs > 0,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.maxGlyphs <= 0 &&
       gainedGlyphLevel().actualLevel >= 20000,
@@ -298,9 +291,8 @@ export const imaginaryUpgrades = [
     // We unfortunately don't have the UI space to be more descriptive on this button without causing text overflow,
     // so hopefully the additional modals (from the upgrade lock) will mostly communicate the idea that this is under
     // the same conditions as hard V's Post-destination
-    requirement: () => `Have ${formatInt(13000)} Antimatter Galaxies in 
-    ${player.options.naming.celestial?"the "+Ra.RealityName:"Ra's Reality"}
-      with a fully inverted Black Hole`,
+    requirement: () => `Have ${formatInt(13000)} Antimatter Galaxies in ${Ra.displayRealityName(false)} with a 
+    fully inverted Black Hole`,
     hasFailed: () => !Ra.isRunning || player.requirementChecks.reality.slowestBH > 1e-300,
     checkRequirement: () => Ra.isRunning && player.requirementChecks.reality.slowestBH <= 1e-300 &&
       player.galaxies >= 13000,
@@ -317,9 +309,8 @@ export const imaginaryUpgrades = [
     id: 25,
     cost: 1.6e15,
     formatCost: x => format(x, 1),
-    requirement: () => `Reach Reality in 
-    ${player.options.naming.celestial?"the "+Laitela.RealityName:"Lai'tela's Reality"}
-     with all Dimensions disabled and at least ${formatInt(4)} empty Glyph slots`,
+    requirement: () => `Reach Reality in ${Laitela.displayRealityName(false)} with all Dimensions 
+    disabled and at least ${formatInt(4)} empty Glyph slots`,
     hasFailed: () => !Laitela.isRunning || Laitela.maxAllowedDimension !== 0 ||
       Glyphs.activeWithoutCompanion.length > 1,
     checkRequirement: () => Laitela.isRunning && Laitela.maxAllowedDimension === 0 &&

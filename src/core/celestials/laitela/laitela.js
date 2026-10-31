@@ -5,12 +5,20 @@ import { DarkMatterDimensions } from "./dark-matter-dimension";
 
 export const Laitela = {
   displayName: "Lai'tela",
-  displayTitle: "Goddess Lai'tela",
-  fullName: "Lai'tela, Celestial of Dimensions",
-  celestialOf: "Dimensions",
+  displayTitle: "Lai'tela, The Entropic Scion",
+  epithet: "Dimensions",
   possessiveName: "Lai'tela's",
-  RealityName: "Nightfall",
-  LevelName: ["I","II","III","IV","V","VI","VII","VIII","Prime"],
+  realityName: "Perfect Prototype",
+  get dynamicRealityName() { 
+    if (this.difficultyTier>=8) return "last prototype";
+    let level = ["I","II","III","IV","V","VI","VII","VIII"]
+    return `Perfect Prototype ${level[this.difficultyTier]}`
+  },
+  displayRealityName(needsName = true, the = "the", altName = this.realityName) {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? altName : "Reality"
+    return `${celName} ${realName}`
+  },
   get celestial() {
     return player.celestials.laitela;
   },

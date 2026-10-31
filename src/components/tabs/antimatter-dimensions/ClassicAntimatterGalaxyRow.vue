@@ -34,9 +34,7 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     dimName() {
-      if (player.options.naming.dimensions) return `${AntimatterDimension(this.requirement.tier).uniqueName}s 
-      (${AntimatterDimension(this.requirement.tier).shortDisplayName})`
-      return `${AntimatterDimension(this.requirement.tier).displayName} Dimensions`;
+      return AntimatterDimension(this.requirement.tier).fullName(false, false, ...[,], this.requirement.amount);
     },
     buttonText() {
       if (this.lockText !== null) return this.lockText;
@@ -92,6 +90,9 @@ export default {
       };
     }
   },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("dimName"));
+  },
   methods: {
     update() {
       this.type = Galaxy.type;
@@ -125,8 +126,8 @@ export default {
     <div
       class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount l-text-wrapper"
     >
-      {{ typeName }} (<span class="l-dim-row__prestige-text--fixed">{{ sumText }}</span>):
-      requires <span :class="{'l-dim-row__prestige-text--fixed': isInaccessible(requirement.amount) }">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
+      {{ typeName }} (<span class="c-font--fixed">{{ sumText }}</span>):
+      requires <span :class="diffFont(requirement.amount)">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
       <div class="l-scaling-text-wrapper">
         {{ hasIncreasedScaling ? costScalingText : "" }}
       </div>

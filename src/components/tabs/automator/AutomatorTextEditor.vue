@@ -12,10 +12,17 @@ export default {
       markedLineNumber: 0,
       unclearedLines: false,
       isActiveScript: false,
-      panelTheme: 0,
-      panelColor: 0,
-      panelGradient: 0,
-      scanimation:false,
+      appearance: {
+        theme: 0,
+        color: 0,
+        customColor: "",
+        gradient: 0,
+      },
+      scanLine: {
+        animated: false,
+        size: 3,
+        opacity: 0,
+      }
     };
   },
   computed: {
@@ -26,13 +33,21 @@ export default {
     fullScreen() {
       return this.$viewModel.tabs.reality.automator.fullScreen;
     },
-    autovisuals(){
+    paneAppearance() {
       return {
-        "c-autoscan-animation":this.scanimation,
-        "c-autotheme-light":this.panelTheme===1,
-        "c-autotheme-dark":this.panelTheme===2,
-        [`c-autocolor-${this.panelColor}`]:true,
-        [`c-autograd-${this.panelGradient}`]:true,
+        "c-automator-animated": this.scanLine.animated,
+        "c-automator-theme-light": this.appearance.theme === 1,
+        "c-automator-theme-dark": this.appearance.theme === 2,
+        [`c-automator-background-gradient-${this.appearance.gradient}`]: true,
+      }
+    },
+    style() {
+      let color = this.appearance.color == AUTOMATOR_APPEARANCE.COLOR.CUSTOM ? 
+      this.appearance.customColor : AUTOMATOR_APPEARANCE.COLOR_CODES[this.appearance.color]
+      return {
+        "--color-automator-background-accent": color,
+        "--color-automator-scanline-opacity": `${this.scanLine.opacity * 100}%`,
+        "--color-automator-scanline-size": `${this.scanLine.size / 5}rem`,
       }
     }
   },
@@ -77,10 +92,17 @@ export default {
   },
   methods: {
     update() {
-      this.panelTheme=player.options.automator.theme[0]
-      this.panelColor=player.options.automator.color[0]
-      this.panelGradient=player.options.automator.gradient[0]
-      this.scanimation = player.options.automator.animation
+      this.appearance = {
+        theme: player.options.automatorAppearance.scriptPane.theme,
+        color: player.options.automatorAppearance.scriptPane.color,
+        customColor: player.options.automatorAppearance.scriptPane.customColor,
+        gradient: player.options.automatorAppearance.scriptPane.gradient,
+      };
+      this.scanLine = {
+        animated: player.options.automatorAppearance.scanLine.animated,
+        size: player.options.automatorAppearance.scanLine.size,
+        opacity: player.options.automatorAppearance.scanLine.opacity,
+      };
       AutomatorBackend.jumpToActiveLine();
       if (this.unclearedLines && !AutomatorBackend.isOn) this.clearAllActiveLines();
       if (AutomatorBackend.isOn) {
@@ -201,6 +223,7 @@ export const AutomatorTextUI = {
   <div
     ref="container"
     class="c-automator-editor l-automator-editor l-automator-pane__content"
-    :class="autovisuals"
+    :class="paneAppearance"
+    :style="style"
   />
 </template>

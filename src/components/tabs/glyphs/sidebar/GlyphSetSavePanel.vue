@@ -120,10 +120,11 @@ export default {
         }
       }
       if (missingGlyphs > 0) {
-        GameUI.notify.error(`Could not find or equip ${missingGlyphs} ${pluralize("Glyph", missingGlyphs)} from
-          ${this.setName(id)}.`);
+        GameUI.notify.error([`Could not find or equip ${missingGlyphs} ${pluralize("Glyph", missingGlyphs)} from
+          ${this.setName(id)}.`,"",`<div class="o-notification--icon"><i class="fa-solid fa-triangle-exclamation"></i></div>`]);
       } else {
-        GameUI.notify.success(`Successfully loaded ${this.setName(id)}.`);
+        GameUI.notify.success([`Successfully loaded ${this.setName(id)}.`,"",
+        `<div class="o-notification--icon"><i class="fas fa-ellipsis-h"></i></div>`]);
       }
     },
     // Given a list of options for suitable matches to those glyphs and a maximum glyph count to match, returns the

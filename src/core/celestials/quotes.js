@@ -111,7 +111,7 @@ class QuoteLine {
   }  
 
   get celestialName() {
-    return Celestials[this._parent.celestial].fullName;
+    return `${Celestials[this._parent.celestial].displayTitle}`;
   }
 
   get image() {

@@ -261,7 +261,7 @@ export default {
   color: var(--color-text);
   font-size: 2.5rem;
   line-height: 1.5;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   border-bottom: 0.1rem solid;
   border-top: 0.1rem solid;

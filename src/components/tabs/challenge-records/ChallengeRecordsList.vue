@@ -73,7 +73,7 @@ export default {
   display: inline-block;
   width: 90%;
   font-size: 1.8rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   line-height: 1.1;
   padding: 0.2rem 0.5rem;

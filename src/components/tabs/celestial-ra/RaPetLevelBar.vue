@@ -137,7 +137,9 @@ export default {
       <span class="fas fa-arrow-up" />
       <div class="c-ra-pet-upgrade__tooltip">
         <div class="c-ra-pet-upgrade__tooltip__name">
-          Level {{ pet.name }} to {{ formatInt(level + 1) }}
+          Level {{ pet.name }} to <span :class="diffFont(level + 1)">
+            {{ formatInt(level + 1) }}
+          </span>
         </div>
         <div class="c-ra-pet-upgrade__tooltip__description" v-if="reward">
           <span v-html="symbol"/> {{ name }} <span v-html="symbol"/> 
@@ -161,8 +163,13 @@ export default {
   </div>
 </template>
 <style scoped>
-.c-ra-exp-bar-inner-text{
-  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black, 0.1rem -0.1rem 0.1rem black, -0.1rem 0.1rem 0.1rem black);
+.c-ra-exp-bar-inner-text {
+  text-shadow: 
+    var(--var-text-shadow, 
+    0.1rem 0.1rem 0.1rem black, 
+    -0.1rem -0.1rem 0.1rem black, 
+    0.1rem -0.1rem 0.1rem black, 
+    -0.1rem 0.1rem 0.1rem black);
   color:white;
   font-style: italic;
   position: relative;
@@ -170,6 +177,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  z-index:1;
+  z-index: 1;
 }
 </style>

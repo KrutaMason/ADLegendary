@@ -238,6 +238,13 @@ window.GLYPH_MIME_TYPE = "text/x-ivark-glyph";
 // in order for reality glyph color parsing to work properly in the cosmetic handler
 window.GlyphRarities = [
   {
+    minStrength: 3.525,
+    name: "Exclusive!",
+    darkColor: "#00ffaa",
+    lightColor: "#008855",
+    darkHighContrast: "#00ff00",
+    lightHighContrast: "#00b000"
+  }, {
     minStrength: 3.5,
     name: "Celestial",
     darkColor: "#5151ec",
@@ -302,49 +309,63 @@ window.GLYPH_BG_SETTING = {
   DARK: 2,
 };
 
-window.AutomatorVisuals = {
-  COLOR:{
-      DEFAULT:0,
-      RED:1,
-      BLUE:2,
-      YELLOW:3,
-      PURPLE:4,
-      CYAN:5,
-      ORANGE:6,
-      MAGENTA:7,
-      GRAY:8,
+window.AUTOMATOR_APPEARANCE = {
+  COLOR: {
+    DEFAULT: 0,
+    RED: 1,
+    BLUE: 2,
+    YELLOW: 3,
+    PURPLE: 4,
+    CYAN: 5,
+    ORANGE: 6,
+    MAGENTA: 7,
+    GRAY: 8,
+    CUSTOM: 9,
   },
-  COLOR_LABELS: [
-    "Default Green",
-    "Red",
-    "Blue",
-    "Yellow",
-    "Purple",
-    "Cyan",
-    "Orange",
-    "Magenta",
-    "Gray"
-  ],
-  GRAD:{
-      UPDOWN:0,
-      DOWNUP:1,
-      LEFTRIGHT:2,
-      RIGHTLEFT:3,
-      VERTICAL:4,
-      HORIZONTAL:5,
-      RADIAL:6,
-      RADIALVERSE:7,
+  COLOR_LABELS: {
+    0: "Default Green",
+    1: "Red",
+    2: "Blue",
+    3: "Yellow",
+    4: "Purple",
+    5: "Cyan",
+    6: "Orange",
+    7: "Magenta",
+    8: "Gray",
+    9: "Custom",
   },
-  GRAD_LABELS: [
-    "Top ➜ Bottom",
-    "Bottom ➜ Top",
-    "Left ➜ Right",
-    "Right ➜ Left",
-    "Vertical",
-    "Horizontal",
-    "Radial",
-    "Reverse Radial"
-  ],
+  COLOR_CODES: {
+    0: "var(--color-reality)", // Reality color
+    1: "#ed143d", // Pelle color
+    2: "#5151ec", // Celestial / Orias color
+    3: "var(--color-v--base)", // V color
+    4: "var(--color-eternity)", // Eternity color
+    5: "var(--color-pelle--secondary)", // Pelle's secondary color
+    6: "#ff9800", // Infinity color in metro themes
+    7: "#ff00ff", // Just some random ass magenta
+    8: "currentcolor", // Uses the current color of the text
+    9: null,
+  },
+  GRAD: {
+    UPDOWN: 0,
+    DOWNUP: 1,
+    LEFTRIGHT: 2,
+    RIGHTLEFT: 3,
+    VERTICAL: 4,
+    HORIZONTAL: 5,
+    RADIAL: 6,
+    RADIALVERSE: 7,
+  },
+  GRAD_LABELS: {
+    0: "Top ➜ Bottom",
+    1: "Bottom ➜ Top",
+    2: "Left ➜ Right",
+    3: "Right ➜ Left",
+    4: "Vertical",
+    5: "Horizontal",
+    6: "Radial",
+    7: "Reverse Radial"
+  },
 };
 
 window.GLYPH_TYPES = [

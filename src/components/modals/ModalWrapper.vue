@@ -34,7 +34,8 @@ export default {
   border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
   border-radius: var(--var-border-radius, 0.5rem);
   padding: 0.6rem;
-  background: linear-gradient(transparent,var(--base) 500%);
+  background: var(--leg-secondary-render), linear-gradient(transparent,var(--base) 500%);
+  background-position: center;
   background-origin: border-box;
   --base: var(--color-accent)
 }

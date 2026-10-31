@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     setResource(id) {
-      player.options.sidebarResourceType[this.id] = id;
+      player.options.sidebar.resourceID[this.id] = id;
     }
   }
 };

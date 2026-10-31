@@ -144,7 +144,6 @@ export default {
 
 <style scoped>
 .o-selected {
-  color: var(--color-text-inverted);
-  background-color: var(--color-good);
+  --bg-dark: var(--color-good);
 }
 </style>

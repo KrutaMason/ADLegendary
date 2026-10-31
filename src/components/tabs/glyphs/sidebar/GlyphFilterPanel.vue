@@ -154,7 +154,7 @@ export default {
     // Clicking bumps the rarity over to adjacent thresholds between rarities; normal clicks move to the higher one
     // and shift-clicks move to the lower one. There is a loop-around that makes 100 go to 0 next and vice versa
     bumpRarity(type) {
-      const rarityThresholds = GlyphRarities.map(r => strengthToRarity(r.minStrength));
+      const rarityThresholds = GlyphRarities.map(r => strengthToRarity(r.minStrength)).slice(1);
       let newRarity;
       if (ui.view.shiftDown) {
         const lower = rarityThresholds.filter(s => s < this.rarityThresholds[type]);
@@ -184,7 +184,8 @@ export default {
       const simpleData = [filter.select, filter.simple, filter.trash].join("|");
       const typeData = ALCHEMY_BASIC_GLYPH_TYPES.map(t => serializeType(filter.types[t])).join("|");
       copyToClipboard(GameSaveSerializer.encodeText(`${simpleData}|${typeData}`, "glyph filter"));
-      GameUI.notify.info("Filter settings copied to clipboard");
+      GameUI.notify.info(["Filter settings copied to clipboard","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-clipboard"></i></div>`]);
     },
     importFilterSettings() {
       Modal.importFilter.show();

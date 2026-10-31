@@ -196,7 +196,7 @@ export const resourceGallery = {
         Eternity Points can be used on bite-sized eternity upgrades and Time Dimensions.
         ${Teresa.isUnlocked ? 
             `<br><br>Having at least ${format(TeresaUnlocks.epGen.price, 2)} Reality 
-            Machines filled into Teresa's container results in a 
+            Machines filled into Orias' container results in a 
             passive generation of EP that works similarly to TS181.`:``}`,
     },
     {
@@ -266,7 +266,7 @@ export const resourceGallery = {
         ${PlayerProgress.realityUnlocked() ? 
             `<br><br> The <b><i>Paradoxical Assurance</i></b> Perks allow purchases 
             from the 3rd rebuyable Dilation Upgrade to give more Tachyons.`:``}
-        ${Ra.pets.teresa.isCapped?`Maximizing Teresa's memories allows 
+        ${Ra.pets.teresa.isCapped?`Maximizing Orias' memories allows 
             you to gain Tachyons outside of Dilation, 
             but will only work if you aren't in any Celestial Reality.`:""}`,
     },
@@ -310,7 +310,7 @@ export const resourceGallery = {
         the final layer has the main currency of Machines. Constructing a new 
         Reality gives you these powerful tools that you can use on
         the reality-bending upgrades and the Black Hole that can make time pass faster.<br><br>
-        ${Teresa.isUnlocked?`With the introduction of Teresa, you can  
+        ${Teresa.isUnlocked?`With the introduction of Orias, you can  
             pour your Reality Machines into the container for higher gains 
             and unlocking new things.`:""}
         ${MachineHandler.isIMUnlocked?`<br><br>Unlike Infinity and Eternity Points, 
@@ -363,7 +363,7 @@ export const resourceGallery = {
         related: [19],
         info: () => `Perk Points help you make Realities easier 
         by allocating them into the Perk tree. 
-        ${TeresaUnlocks.shop.isUnlocked?`<br><br>With the introduction of Teresa's Perk Shop, you can also 
+        ${TeresaUnlocks.shop.isUnlocked?`<br><br>With the introduction of Orias' Perk Shop, you can also 
             spend your Perk Points on various upgrades e.g. enhancing your autobuyers.`:""} 
         ${VUnlocks.shardReduction.isUnlocked?`Additionally, Perk Points can be used to 
             reduce the goal requirement of all tiers of each V-Achievements.`:""}

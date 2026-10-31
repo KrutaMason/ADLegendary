@@ -153,6 +153,10 @@ class TimeDimensionState extends DimensionState {
     this._costIncreaseThresholds = COST_THRESHOLDS;
   }
 
+  get typeName () { return "Time"; }
+
+  get shortTypeName() { return "T"; }
+
   /** @returns {Decimal} */
   get cost() {
     return this.data.cost;

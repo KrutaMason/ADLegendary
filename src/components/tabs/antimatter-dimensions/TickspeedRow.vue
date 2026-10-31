@@ -161,7 +161,7 @@ export default {
   --border: var(--color-laitela--base);
   color: var(--color-laitela--accent);
   background: var(--color-laitela--base);
-  background-image: url(../../../../public/images/upgrades/button-continuum.png);
+  background-image: url(../../../../public/images/patterns/def_cont.png);
   box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--accent));
   border: 0.1rem solid var(--color-laitela--accent);
   background-position-y: center;
@@ -179,6 +179,6 @@ export default {
   background: var(--color-laitela--accent);
   background-position-y: center;
   box-shadow: var(--var-box-shadow, 0 0 0 0.1rem var(--color-laitela--base) inset, 0 0 1rem -0.2rem inset var(--color-laitela--base));
-  background-image: url(../../../../public/images/upgrades/button-continuum.png);
+  background-image: url(../../../../public/images/patterns/def_cont.png);
 }
 </style>

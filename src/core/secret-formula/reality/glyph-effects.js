@@ -689,13 +689,25 @@ export const glyphEffects = {
     bitmaskIndex: 10,
     isGenerated: false,
     glyphTypes: ["helios"],
-    singleDesc: "You have a 1 / {value} chance of getting this Glyph every Reality.",
-    shortDesc: "1 in {value} Glyphs",
-    totalDesc: () => (
-      (Enslaved.isRunning || Glyphs.active.countWhere(g => g?.type === "cursed"))
-       ? "This luck doesn't help you." : "You have the luck of the sun."),
+    singleDesc: "You have found this extraordinary type of Glyph after countless Realities! " +
+    "Despite having no actual powers, it still fills you with great luck and pride!",
+    shortDesc: "You're lucky!",
+    totalDesc: "+{value} unmatched pow- luck of the sun",
     // Thanks Kaj
-    effect: () => {return 5e5 / (AlchemyResource.multiversal.effectValue+1)},
+    effect: level => {return Math.floor(5e5 * (1 * Math.pow(2, level * 0.1))) / 5e5},
+    formatEffect: x => formatPercents(x, 2, 2),
+    combine: GlyphCombiner.add,
+    enabledInDoomed: true,
+  },
+  heliosChance: {
+    id: "heliosChance",
+    bitmaskIndex: 11,
+    isGenerated: false,
+    glyphTypes: ["helios"],
+    singleDesc: "You have a 1 / {value} chance of getting this Glyph every Reality. Congratulations!",
+    shortDesc: "1 Glyph in {value} Realities",
+    totalDesc: () => ((Enslaved.isRunning || Glyphs.active.countWhere(g => g?.type === "cursed")) ? "Unlucky you." : "Yay!"),
+    effect: level => {return Math.floor(Math.floor(5e5 * (1 * Math.pow(2, level * 0.1))) / (AlchemyResource.multiversal.effectValue+1))},
     formatEffect: x => formatInt(x),
     combine: GlyphCombiner.multiplyDecimal,
     enabledInDoomed: true,

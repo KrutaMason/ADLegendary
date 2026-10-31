@@ -161,6 +161,11 @@ export default {
 .o-redacted{
   background-color: black;
   text-shadow: none;
-  color:transparent
+  color:transparent;
+  pointer-events: visible;
+}
+
+.o-redacted:hover {
+  color: red
 }
 </style>

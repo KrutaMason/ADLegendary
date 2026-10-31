@@ -43,6 +43,8 @@ export default {
       inC1: Boolean,
       infinities: new Decimal(0),
       bestTime: 0,
+      hasName: false,
+      showHintText: false,
     };
   },
   computed: {
@@ -67,24 +69,44 @@ export default {
       if (this.isRunning || this.inC1) return "Running";
       if (this.isCompleted) return "Completed";
       if (this.isUnlocked) return "Start";
+      const currentInfs = isInaccessible(this.infinities) 
+        ? `<span class="c-font--fixed">${formatInt(this.infinities)}</span>`
+        : formatInt(this.infinities);
+      const requiredInfs = isInaccessible(this.lockedAt) 
+        ? `<span class="c-font--fixed">${formatInt(this.lockedAt)}</span>`
+        : formatInt(this.lockedAt);
       const lockedText = this.lockedAt === undefined
         ? ""
-        : ` (${formatInt(this.infinities)}/${formatInt(this.lockedAt)})`;
+        : ` (${currentInfs}/${requiredInfs})`;
       return `Locked${lockedText}`;
-    }
+    },
+    challengeName() {
+      if (this.hasName && this.showHintText) return `${this.name} : ${this.label}`;
+      if (this.hasName) return this.label;
+      if (this.showHintText) return this.name;
+      return "";
+    },
   },
   methods: {
     timeDisplayShort,
     update() {
       this.inC1 = this.name === "C1" && !this.isCompleted && !Player.isInAntimatterChallenge;
       this.infinities.copyFrom(Currency.infinities);
-      this.bestTime = this.completionString(this.name)
+      this.bestTime = this.completionString(this.name);
+      this.hasName = player.options.naming.challenges;
+      this.showHintText = player.options.showHintText.challenges || this.$viewModel.shiftDown;
     },
     completionString(id) {
       if (id === "C1") return "";
       let type = id.includes("IC") ? player.challenge.infinity.bestTimes.slice(0) : player.challenge.normal.bestTimes.slice(0)
       let time = type[id.replace(/C|IC/,"") - (id.includes("IC") ? 1 : 2)]
-      return time < Number.MAX_VALUE ? `${timeDisplayShort(time)}` : "??:??:??";
+      return time < Number.MAX_VALUE ? `${timeDisplayShort(time)}` : "--:--:--";
+    },
+    completionvalue(id) {
+      if (id === "C1") return 0;
+      let type = id.includes("IC") ? player.challenge.infinity.bestTimes.slice(0) : player.challenge.normal.bestTimes.slice(0)
+      let time = type[id.replace(/C|IC/,"") - (id.includes("IC") ? 1 : 2)]
+      return time < Number.MAX_VALUE ? time : Number.MAX_VALUE;
     }
   }
 };
@@ -94,26 +116,27 @@ export default {
   <div class="c-challenge-box l-challenge-box">
     <HintText
       type="challenges"
+      :secondaryRequirement="hasName"
       class="l-hint-text--challenge"
+      :data-text="challengeName"
     >
-      {{ name }} : {{ label }}
+      {{ challengeName }}
     </HintText>
     <HintText
-      type="challenges"
-      class="l-hint-text--challenge"
-      style="width:100%;text-align:right"
-      :class="{'l-hint-text--challenge--fixed': isInaccessible(bestTime) }"
-    >
-      {{ bestTime }}
-    </HintText>
+      type="challengeStats"
+      class="l-hint-text--challenge l-hint-text--challenge-secondary"
+      :class="diffFont(completionvalue(name))"
+      :data-text="bestTime"
+      v-html="displayGradientText(bestTime, completionvalue(name))"
+    />
+
     <slot name="top" />
     <div class="l-challenge-box__fill" />
     <button
       :class="buttonClassObject"
       @click="$emit('start')"
-    >
-      {{ buttonText }}
-    </button>
+      v-html="buttonText"
+    />
     <slot name="bottom" />
   </div>
 </template>

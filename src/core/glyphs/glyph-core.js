@@ -10,7 +10,7 @@ export const orderedEffectList = ["powerpow", "infinitypow", "replicationpow", "
   "effarigforgotten", "effarigdimensions", "effarigantimatter",
   "cursedgalaxies", "cursedtickspeed", "curseddimensions", "cursedEP",
   "realityglyphlevel", "realitygalaxies", "realityrow1pow", "realityDTglyph",
-  "companiondescription", "companionEP","heliosLuck"];
+  "companiondescription", "companionEP","heliosLuck","heliosChance"];
 
 export const generatedTypes = ["power", "infinity", "replication", "time", "dilation", "effarig"];
 
@@ -791,10 +791,11 @@ export const Glyphs = {
     }
     const cursedCount = this.allGlyphs.filter(g => g !== null && g.type === "cursed").length;
     if (cursedCount >= 5) {
-      GameUI.notify.error(`You don't need more than ${format(5)} Cursed Glyphs!`,undefined,"click_wrong");
+      GameUI.notify.error([`You don't need more than ${format(5)} Cursed Glyphs!`,"",
+        `<div class="o-notification--icon">${player.reality.glyphs.cosmetics.symbolMap.cursed ?? "⸸"}</div>`],undefined,"click_wrong");
     } else {
       this.addToInventory(GlyphGenerator.cursedGlyph());
-      GameUI.notify.error("Created a Cursed Glyph");
+      GameUI.notify.error(["Created a Cursed Glyph","",`<div class="o-notification--icon">${player.reality.glyphs.cosmetics.symbolMap.cursed ?? "⸸"}</div>`]);
     }
   }
 };
@@ -823,7 +824,7 @@ export function recalculateAllGlyphs() {
 // Makes sure level is a positive whole number and rarity is >0% (retroactive fixes) and recalculates effects
 export function calculateGlyph(glyph) {
   if (glyph.color === undefined && glyph.symbol === undefined) {
-    glyph.level = Math.max(1, Math.round(glyph.level));
+    glyph.level = glyph.type === "helios" ? Math.round(glyph.level) : Math.max(1, Math.round(glyph.level));
     if (glyph.rawLevel === undefined) {
       // Only correct below the second round of instability, but it only matters for glyphs produced before
       // this was merged, so it's not a big deal.
@@ -832,7 +833,7 @@ export function calculateGlyph(glyph) {
 
     // Used to randomly generate strength in this case; I don't think we actually care.
     if (glyph.strength === 1) glyph.strength = 1.5;
-    glyph.strength = Math.min(rarityToStrength(100), glyph.strength);
+    glyph.strength = glyph.type === "helios" ? glyph.strength : Math.min(rarityToStrength(100), glyph.strength);
   }
 }
 

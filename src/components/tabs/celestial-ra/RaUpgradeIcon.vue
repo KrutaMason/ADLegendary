@@ -62,7 +62,7 @@ export default {
     />
     <div class="c-ra-pet-upgrade__tooltip">
       <div class="c-ra-pet-upgrade__tooltip__name">
-        {{ petName }} Level {{ formatInt(level) }}
+        {{ petName }} Level <span :class="diffFont(level)">{{ formatInt(level) }}</span>
       </div>
       <div class="c-ra-pet-upgrade__tooltip__description"><span v-html="icon"/> {{ upgradeName }} <span v-html="icon"/></div>
       <div

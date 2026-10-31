@@ -161,10 +161,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:0 1rem;
+  padding: 0 1rem;
   border-left: 0.1rem solid var(--color-pelle--base);
   border-right: 0.1rem solid var(--color-pelle--base);
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset;
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset);
 }
 .s-base--dark .c-pelle-rift-column {
   background:#00000080

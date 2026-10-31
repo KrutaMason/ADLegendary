@@ -44,9 +44,7 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return player.options.naming.dimensions?
-      `Infinity ${InfinityDimension(this.tier).uniqueName}`:
-      `${InfinityDimension(this.tier).shortDisplayName} Infinity Dimension`;
+      return InfinityDimension(this.tier).fullName(...[,,], false);
     },
     costDisplay() {
       if (this.isUnlocked || this.shiftDown) {
@@ -83,6 +81,9 @@ export default {
     isAutobuyerOn(newValue) {
       Autobuyer.infinityDimension(this.tier).isActive = newValue;
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
   },
   methods: {
     update() {
@@ -134,6 +135,8 @@ export default {
       :name="name"
       :multiplier-text="!isDestabilized?formatX(multiplier, 2, 1) : 'Destabilized'"
       :amount-text="format(amount, 2)"
+      :amount-font="!isInaccessible(amount)"
+      :amount-value="amount"
       :rate="rateOfChange"
     />
     <div class="l-dim-row-multi-button-container">

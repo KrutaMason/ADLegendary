@@ -80,9 +80,10 @@ export default {
   background-image: url(../../../../public/images/background/credits_souls.png),
   url(../../../../public/images/background/credits_souls-2.png),
   url(../../../../public/images/background/credits.png);
-  background-position: center 0,center 0,center;
+  background-position: center 0, center 0, center;
   animation: a-credits-flow 120s infinite linear;
-  background-size: 51.2rem 51.2rem,51.2rem 51.2rem,100%;
+  background-size: 51.2rem 51.2rem, 51.2rem 51.2rem, 100%;
+  pointer-events: auto;
 }
 @keyframes a-credits-flow {
   from{background-position:center 0,center 0,center}

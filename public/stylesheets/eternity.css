@@ -1,12 +1,13 @@
 /* #region eternity-tab */
 
   .c-eternity-tab__header {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
     margin: 1rem 0;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     line-height: 1.1;
   }
+
   .l-eternity-upgrades-actual-grid {
     padding: 1rem;
     background: linear-gradient(transparent,var(--color-eternity) 150%),var(--leg-base);
@@ -14,17 +15,16 @@
     box-shadow: var(--var-box-shadow, 0 0 1.5rem var(--color-background) inset, 0 0 0 0.3rem var(--color-eternity) inset);
     border-radius: var(--var-border-radius,0.5rem);
   }
+
   .s-base--dark .l-eternity-upgrades-actual-grid {
-    background: url(../images/time-studies/ts-time.png),linear-gradient(#00000080,var(--color-eternity) 450%),var(--leg-base);
+    background: url(../images/patterns/ts_time.png),linear-gradient(#00000080,var(--color-eternity) 450%),var(--leg-base);
     background-position: center;
   }
+
   .c-eternity-tab__eternity-points {
     color: var(--color-eternity);
   }
-  .c-eternity-tab__eternity-points--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
-  }
+
   /* #region themes */
   
   /* #region t-dark t-s6 t-s10 */
@@ -57,17 +57,18 @@
     font-size: 1rem;
     background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
     border: 0.1rem solid var(--border);
+    border-color: color-mix(in srgb, var(--border) 80%, white) color-mix(in srgb, var(--border) 80%, black) color-mix(in srgb, var(--border) 70%, black) var(--border);
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
     box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
     border-radius: var(--var-border-radius, 0.4rem);
     transition-duration: 0.2s;
     cursor: pointer;
     background-position: center;
-    --bg:url(../images/upgrades/bought.png)
+    --bg: url(../images/patterns/upg_pur.png)
   }
-  
+
   .o-eternity-upgrade--useless {
-    --bg: url(../images/upgrades/pelle.png);
+    --bg: url(../images/patterns/cel_7.png);
     --bg-bright: #341213;
     --bg-dark: #741a28;
     color: #f089a3;
@@ -81,7 +82,7 @@
     --bg-dark: #370c49;
     --bg-bright: #15061b;
     box-shadow: inset 0 0 1rem 0;
-    --bg:url(../images/time-studies/ts-available.png);
+    --bg: url(../images/patterns/ts_avail.png);
   }
   .s-base--metro .o-eternity-upgrade--available {
     --border: #8d41e3;
@@ -138,7 +139,7 @@
     --bg-dark: #320a43;
     --border: #b168cf;
     cursor: default;
-    --bg:url(../images/time-studies/ts-time.png);
+    --bg: url(../images/patterns/ts_time.png);
   }
   .s-base--metro .o-eternity-upgrade--bought {
     --bg-bright: #491485;
@@ -216,15 +217,13 @@
   .o-eternity-milestone__goal {
     text-align: left;
     font-size: 2rem;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     color: var(--color-text);
   }
 
-  .o-eternity-milestone__goal--fixed {
+  .o-eternity-milestone__goal.c-font--fixed {
     font-size: 1.8rem;
-    font-family: Typewriter;
-    font-weight: normal;
   } 
 
   .o-eternity-milestone__reward {
@@ -233,36 +232,69 @@
     font-family: Typewriter, serif;
     font-size: 1.2rem;
     color: black;
-    background: url(../images/time-studies/ts-time.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: url(../images/patterns/ts_time.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     background-position: center;
     box-shadow: var(--var-box-shadow, 0 0 1rem inset black,var(--border) inset 0px 0px 0px 2px);
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
     border: 0.1rem solid var(--border);
+    border-color: color-mix(in srgb, var(--border) 80%, white) color-mix(in srgb, var(--border) 80%, black) color-mix(in srgb, var(--border) 70%, black) var(--border);
     border-radius: var(--var-border-radius, 0.4rem);
     transition-duration: 0.2s;
   }
-  
+
+  .s-base--metro .o-eternity-milestone__reward {
+    border-color: var(--border);
+  } 
+
   .o-eternity-milestone__reward--locked {
     --bg-bright:#423946;
     --bg-dark:#1b171c;
     color: gray;
     --border: #505050;
   }
+
+  .s-base--metro .o-eternity-milestone__reward--locked {
+    --bg-bright:#504858;
+    --bg-dark:#2c2830;
+    color: #808080;
+  }
+
   .t-hex .o-eternity-milestone__reward--locked {
     --bg-bright:#394546;
     --bg-dark:#171c1c;
   }
+
+  .t-s14 .o-eternity-milestone__reward--locked {
+    --bg-bright:#462e2e;
+    --bg-dark:#1d1414;
+  }
+
   .o-eternity-milestone__reward--reached {
     --bg-bright:#631485;
     --bg-dark:#946851;
     --border:#d290ee;
     color: white;
   }
+
+  .s-base--metro .o-eternity-milestone__reward--reached {
+    --bg-bright:#3f1485;
+    --bg-dark:#946851;
+    --border:#b990ee;
+    color: white;
+  }
+
   .t-hex .o-eternity-milestone__reward--reached {
     --bg-bright:#14857f;
     --bg-dark:#859451;
     --border:#90e8ee;
   }
+
+  .t-s14 .o-eternity-milestone__reward--reached {
+    --bg-bright: #851414;
+    --bg-dark: #430a0a;
+    --border: #e06161;
+  }
+
   .o-eternity-milestone__reward--small-font {
     font-size: 1.1rem;
   }
@@ -301,20 +333,36 @@
   .c-dilation-tab__tachyons {
     font-size: 3.5rem;
     color: black;
-    font-family: Cambria;
+    text-shadow: none;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
+    position: relative;
+    z-index: 0;
+    background-image: url(../images/visuals/text/text_tachyon-dark.png);
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0,0,0,0)
   }
-  
+  .c-dilation-tab__tachyons:before {
+    content: attr(data-text);
+    display: block;
+    width: 100%;
+    position: absolute;
+    text-shadow: var(--var-text-shadow, 0 0 10px #000,0 0 5px #000,0 0 5px #000);
+    left: 50%;
+    transform: translate(-50%);
+    top: 0;
+    text-align: center;
+    color: #0000;
+    z-index: -1;
+  }
   .c-dilation-tab__dilated-time {
     font-size: 2.5rem;
     color: black;
-    font-family: Cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     line-height: 1.2;
-  }
-  .c-dilation-tab__tachyons--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
   }
   
   .t-metro .c-dilation-tab__tachyons,
@@ -369,7 +417,7 @@
   .o-dilation-btn--locked {
     color: #aaaaaa;
     box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
-    background: url(../images/time-studies/ts-dilation.png),linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: url(../images/patterns/ts_dil.png),linear-gradient(var(--bg-bright),var(--bg-dark));
     --border: #505050;
     --bg-bright: #33382e;
     --bg-dark: #121410;
@@ -498,7 +546,7 @@
     border-radius: var(--var-border-radius,0.5rem);
   }
   .s-base--dark .l-dilation-upgrades-grid {
-    background: url(../images/time-studies/ts-dilation.png),linear-gradient(#00000080,var(--color-dilation) 700%),var(--leg-base);
+    background: url(../images/patterns/ts_dil.png), linear-gradient(#00000080,var(--color-dilation) 700%),var(--leg-base);
     background-position: center;
   }
   /* #endregion Dilation */

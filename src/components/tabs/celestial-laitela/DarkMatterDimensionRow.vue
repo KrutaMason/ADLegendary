@@ -37,9 +37,7 @@ export default {
   },
   computed: {
     name() {
-      return player.options.naming.dimensions?
-      `Dark Matter ${DarkMatterDimension(this.tier).uniqueName}`:
-      `${DarkMatterDimension(this.tier).shortDisplayName} Dark Matter Dimension`;
+      return DarkMatterDimension(this.tier).fullName(...[,,], false);
     },
     intervalClassObject() {
       return {
@@ -98,6 +96,9 @@ export default {
         Ascension multiplies interval by ${formatInt(this.intervalAscensionBump)},
         DM by ${formatInt(this.powerDMPerAscension)}, and DE by ${formatInt(POWER_DE_PER_ASCENSION)}.`;
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
   },
   methods: {
     update() {
@@ -163,8 +164,11 @@ export default {
   >
     <div class="o-dark-matter-dimension-amount">
       {{ name }}<span v-if="hasAscended">
-        (⯅<span v-if="hasAscended" :class="{'o-dark-matter-dimension-amount--fixed': isInaccessible(ascension) }">{{ formatInt(ascension) }}</span>)</span>: 
-      <span :class="{'o-dark-matter-dimension-amount--fixed': isInaccessible(amount) }">{{ format(amount, 2) }}</span>
+        (⯅<span 
+            v-if="hasAscended" 
+            :class="diffFont(ascension)">{{ formatInt(ascension) }}</span>)
+        </span>: 
+      <span :class="diffFont(amount)">{{ format(amount, 2) }}</span>
     </div>
     <div>
       Average gain: {{ format(productionPerSecond, 2, 2) }}/s

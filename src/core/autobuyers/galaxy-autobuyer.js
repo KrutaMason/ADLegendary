@@ -9,6 +9,10 @@ export class GalaxyAutobuyerState extends UpgradeableAutobuyerState {
     return `Antimatter Galaxy`;
   }
 
+  get key() {
+    return "G";
+  }
+
   get isUnlocked() {
     if (Pelle.isDisabled("galaxyAutobuyer")) return false;
     return this.canBeUpgraded;

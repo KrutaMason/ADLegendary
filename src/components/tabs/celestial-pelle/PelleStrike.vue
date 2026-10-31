@@ -17,6 +17,11 @@ export default {
       strikeReward: ""
     };
   },
+  computed: {
+    requirementText() {
+      return `▼ ${this.strike.requirement} ▼`
+    }
+  },
   methods: {
     update() {
       this.strikeReward = this.strike.reward();
@@ -29,9 +34,7 @@ export default {
   <div class="c-pelle-strike-container">
     <ExpandingControlBox container-class="c-pelle-strike">
       <template #header>
-        <div class="c-pelle-strike-header">
-          ▼ {{ strike.requirement }} ▼
-        </div>
+        <div class="c-pelle-strike-header" v-html="requirementText"/>
       </template>
       <template #dropdown>
         <div class="c-pelle-strike-dropdown">
@@ -49,12 +52,16 @@ export default {
   min-height: 3.8rem;
   z-index: 3;
   font-size: 1.3rem;
-  color: #ff5574;
-  background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(black,var(--color-pelle--base)300%);
-  background-position: center;
+  color: var(--color-text);
+  background: linear-gradient(var(--color-background),var(--color-pelle--base) 300%);
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: var(--var-box-shadow, 0 0 1rem black inset ,0 0 0 0.2rem var(--color-pelle--base) inset);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset ,0 0 0 0.2rem var(--color-pelle--base) inset);
   border-radius: var(--var-border-radius, 0.5rem);
+}
+
+.s-base--dark .c-pelle-strike {
+  background: url(../../../../public/images/patterns/cel_7.png), linear-gradient(var(--color-background),var(--color-pelle--base) 300%);
+  background-position: center;
 }
 
 .c-pelle-strike-container {
@@ -65,8 +72,16 @@ export default {
 }
 
 .c-pelle-strike-header {
+  color: var(--color-pelle--base);
   padding: 0.7rem;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 1.6rem;
   cursor: pointer;
+}
+
+.c-pelle-strike-header .c-font-fixed {
+  font-size: 1.5rem;
 }
 
 .c-pelle-strike-dropdown {

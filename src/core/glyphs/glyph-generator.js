@@ -191,16 +191,18 @@ export const GlyphGenerator = {
     };
   },
   heliosGlyph() {
-    // Store the pre-Reality EP value in the glyph's rarity
+    // Levels and rarities are based on how many times you have sacrificed them
+    const str = 1 + player.reality.glyphs.sac.helios / 40;
+    const lvl = 0 + player.reality.glyphs.sac.helios;
     const effects = orderedEffectList.filter(effect => effect.match("helios*"));
     const effectBitmask = makeGlyphEffectBitmask(effects);
     return {
       id: undefined,
       idx: null,
       type: "helios",
-      strength: 3.5,
-      level: 1,
-      rawLevel: 1,
+      strength: str,
+      level: lvl,
+      rawLevel: lvl,
       effects: effectBitmask,
     };
   },

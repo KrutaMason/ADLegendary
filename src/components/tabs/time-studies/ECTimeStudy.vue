@@ -25,7 +25,6 @@ export default {
       showTotalCompletions: false,
       isRunning: false,
       isUnlocked: false,
-      naming: false,
     };
   },
   computed: {
@@ -35,8 +34,11 @@ export default {
     id() {
       return this.study.id;
     },
-    label() {
-      return EternityChallenge(this.study.id).config.label;
+    dataText() {
+      return "EC" + this.id
+    },
+    name() {
+      return EternityChallenge(this.study.id).displayName();
     },
     config() {
       return this.study.config;
@@ -59,6 +61,9 @@ export default {
       return [3, 4, 7].includes(this.study.id);
     }
   },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("name"));
+  },
   methods: {
     update() {
       const id = this.id;
@@ -69,7 +74,6 @@ export default {
       this.showTotalCompletions = !Enslaved.isRunning || id !== 1;
       this.isRunning = EternityChallenge.current?.id === id;
       this.isUnlocked = ec.isUnlocked;
-      this.naming = player.options.naming.challenges
       if (!this.hasRequirement || id > 10) return;
       const requirement = this.requirement;
       if (this.hasNumberRequirement) {
@@ -89,10 +93,11 @@ export default {
     <HintText
       type="studies"
       class="l-hint-text--time-study"
+      :data-text="dataText"
     >
       EC{{ id }}
     </HintText>
-    {{ naming ? label : "Eternity Challenge " + id}}
+    {{ name }}
     ({{ formatInt(completions) }}<span v-if="showTotalCompletions">/{{ formatInt(5) }}</span>)
     <template v-if="hasRequirement">
       <br>

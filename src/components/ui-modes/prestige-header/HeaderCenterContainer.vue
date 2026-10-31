@@ -49,7 +49,7 @@ export default {
     <span class="c-game-background__antimatter">
       You have <span 
       class="c-game-header__antimatter"
-      :class="{'c-game-header__antimatter--fixed': isInaccessible(antimatter) }"
+      :class="diffFont(antimatter)"
       >{{ format(antimatter, 2, 1) }}</span> antimatter.
     </span>
     <div
@@ -78,16 +78,10 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.c-game-background__antimatter{
-  border-top:0.1rem solid;
-  border-bottom:0.1rem solid;
+.c-game-background__antimatter {
+  border-top: 0.1rem solid;
+  border-bottom: 0.1rem solid;
   background: linear-gradient(90deg, transparent,color-mix(in srgb, var(--color-accent) 30%, transparent), transparent);
   border-image: linear-gradient(90deg, transparent,var(--color-accent), transparent) 1;
-}
-.c-game-header__antimatter--fixed{
-  font-size: 2.3rem;
-  line-height: unset;
-  font-weight: normal;
-  font-family: typewriter;
 }
 </style>

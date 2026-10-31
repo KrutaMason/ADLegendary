@@ -33,7 +33,6 @@ export default {
       enslavedDone: false,
       laitelaTime: "",
       laitelaTier: 0,
-      labelmode:false,
     };
   },
   computed: {
@@ -48,10 +47,14 @@ export default {
       return description ? description() : "";
     },
     topLabel() {
-      return `${this.labelmode ? `${this.name} Reality` : `${this.name} ${this.celestial.RealityName}`}`;
+      return this.celestial.dynamicRealityName ? 
+      this.celestial.displayRealityName(...[,,], this.celestial.dynamicRealityName) : 
+      this.celestial.displayRealityName();
     },
     message() {
-      return `Perform a Reality reset and enter ${this.labelmode ? this.name+" Reality" : this.name+" "+this.celestial.RealityName}, in which:`;
+      return `Perform a Reality reset and enter ${this.celestial.dynamicRealityName ? 
+      this.celestial.displayRealityName(...[,,], this.celestial.dynamicRealityName) : 
+      this.celestial.displayRealityName()}, in which:`;
     },
     color() {
       switch (this.number) {
@@ -69,9 +72,9 @@ export default {
       switch (this.number) {
         case 0:
           return this.teresaBestAM.eq(1)
-            ? `You have not unlocked the reward for Teresa's Reality yet. Unlocking the reward requires
+            ? `You have not unlocked the reward for ${Teresa.displayRealityName(false)} yet. Unlocking the reward requires
               purchasing the Reality study and completing the Reality for the first time.`
-            : `Your highest Teresa completion was for ${format(this.teresaBestAM, 2, 2)} antimatter,
+            : `Your highest Orias completion was for ${format(this.teresaBestAM, 2, 2)} antimatter,
               gaining you a ${formatX(this.teresaRunMult, 2)} multiplier to Glyph Sacrifice power.`;
         case 1: return this.effarigDone
           ? "Effarig is completed!"
@@ -80,7 +83,7 @@ export default {
           ? "Have... we... not helped enough..."
           : "We... can help... Let us... help...";
         case 3: return "";
-        case 4: return `Within ${this.labelmode?"Ra's Reality":"the "+Ra.RealityName}, some resources will generate Memory Chunks
+        case 4: return `Within ${Ra.displayRealityName(false)}, some resources will generate Memory Chunks
           for Celestial Memories based on their amounts:`;
         case 5: return this.laitelaTier >= 8?"Lai'tela is fully destabilized." : this.laitelaFastest >= 300
           ? "You have not completed Lai'tela at this tier."
@@ -101,11 +104,10 @@ export default {
       this.laitelaFastest = player.celestials.laitela.fastestCompletion;
       this.laitelaTime = TimeSpan.fromSeconds(this.laitelaFastest).toStringShort();
       this.laitelaTier = Laitela.difficultyTier
-      this.labelmode =  !player.options.naming.celestial
     },
     handleYesClick() {
       beginProcessReality(getRealityProps(true));
-      if (player.options.audio.reality) AudioManagement.playSound("reset_reality-enter")
+      AudioManagement.playSound("reset_reality-enter", player.options.audio.reality)
       switch (this.number) {
         case 0: return Teresa.initializeRun();
         case 1: return Effarig.initializeRun();

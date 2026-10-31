@@ -34,13 +34,14 @@ export default {
     eternityChallenge() {
       const ec = EternityChallenge.current;
       if (ec.isFullyCompleted) {
-        return `Eternity Challenge ${ec.id} is already fully completed.`;
+        return `${EternityChallenge(ec.id).displayName()} is already fully completed.`;
       }
       if (!Perk.studyECBulk.isBought) {
-        return `You will gain one completion of Eternity Challenge ${ec.id}.`;
+        return `You will gain one completion of ${EternityChallenge(ec.id).displayName()}.`;
       }
       const gainedCompletions = ec.gainedCompletionStatus.gainedCompletions;
-      return `You will gain ${quantifyInt("completion", gainedCompletions)} for Eternity Challenge ${ec.id}.`;
+      return `You will gain ${quantifyInt("completion", gainedCompletions)} 
+      for Eternity Challenge ${EternityChallenge(ec.id).displayName()}.`;
     }
   },
   methods: {

@@ -43,6 +43,9 @@ export default {
       return this.isDoomed && this.config.pelleUseless;
     }
   },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("reward"));
+  },
   methods: {
     update() {
       this.isLocked = this.isDoomed && this.config.givenByPelle !== undefined;
@@ -58,7 +61,7 @@ export default {
     class="l-eternity-milestone"
   >
     <div class="o-eternity-milestone__goal">
-      <span :class="{'o-eternity-milestone__goal--fixed': isInaccessible(eternities) }">{{ formatInt(eternities) }}</span> 
+      <span :class="diffFont(eternities)">{{ formatInt(eternities) }}</span> 
       {{ pluralize("Eternity", eternities) }}:
     </div>
     <button

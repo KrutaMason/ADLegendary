@@ -17,8 +17,7 @@ export default {
       exitText: "",
       resetCelestial: false,
       inPelle: false,
-      naming: false,
-      celNaming: false,
+      showHelp: false,
       fade:1,
     };
   },
@@ -26,11 +25,11 @@ export default {
     parts() {
       // We need activityToken for NC/IC/EC because plain check of WhateverChallenge.isRunning
       // won't trigger display update if we, say, switch from one challenge to another
-      function celestialReality(celestial, name, tab,newname) {
+      function celestialReality(celestial, name, tab, newname) {
         return {
-          name: () => `${name} Reality`,
-          newname: () => `the ${newname} ${celestial==Laitela?Laitela.LevelName[Laitela.difficultyTier]:""}`,
-          bracket: () => `(${celestial.symbol})`,
+          name: () => `${celestial.dynamicRealityName ? celestial.displayRealityName(false, ...[,], celestial.dynamicRealityName) 
+          : celestial.displayRealityName(false)} (${celestial.symbol})`,
+          textName: () => `${name} Reality`,
           html: () => `<span class="c-challenge-text c-challenge-text--reality">`,
           isActive: token => token,
           activityToken: () => celestial.isRunning,
@@ -38,54 +37,50 @@ export default {
         };
       }
       return [
-        celestialReality(Teresa, "Teresa's", "teresa", Teresa.RealityName),
-        celestialReality(Effarig, "Effarig's", "effarig", Effarig.RealityName),
-        celestialReality(Enslaved, "The Nameless Ones'", "enslaved", Enslaved.RealityName),
-        celestialReality(V, "V's", "v", V.RealityName),
-        celestialReality(Ra, "Ra's", "ra", Ra.RealityName),
-        celestialReality(Laitela, "Lai'tela's", "laitela", Laitela.RealityName),
+        celestialReality(Teresa, "Orias'", "teresa", "realityName"),
+        celestialReality(Effarig, "Effarig's", "effarig", "dynamicRealityName"),
+        celestialReality(Enslaved, "The Nameless Ones'", "enslaved", "realityName"),
+        celestialReality(V, "V's", "v", "dynamicRealityName"),
+        celestialReality(Ra, "Ra's", "ra", "realityName"),
+        celestialReality(Laitela, "Lai'tela's", "laitela", "dynamicRealityName"),
         {
-          name: () => `Time Dilation`,
-          newname: () => `Time Dilation`,
-          bracket: () => `(Ψ)`,
+          name: () => `Time Dilation (Ψ)`,
+          textName: () => `Time Dilation`,
           html: () => `<span class="c-challenge-text c-challenge-text--dilation">`,
           isActive: token => token,
           activityToken: () => player.dilation.active
         },
         {
-          name: token => `Eternity Challenge ${token}`,
-          newname: token => `${EternityChallenge(token).name}`,
-          bracket: token => `(Δ${token})`,
+          name: token => `${EternityChallenge(token).displayName()} ${!this.showHelp ? "(Δ)" : ""}`,
+          textName: token => `Eternity Challenge ${token}`,
           html: () => `<span class="c-challenge-text c-challenge-text--eternity">`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.eternity.current
         },
         {
-          name: token => `Infinity Challenge ${token}`,
-          newname: token => `${InfinityChallenge(token).name}`,
-          bracket: token => `(∞${token})`,
+          name: token => `${InfinityChallenge(token).displayName()} ${!this.showHelp ? "(∞)" : ""}`,
+          textName: token => `Infinity Challenge ${token}`,
           html: () => `<span class="c-challenge-text c-challenge-text--infinity">`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.infinity.current
         },
         {
-          name: token => `${NormalChallenge(token).config.name()} Challenge`,
-          newname: token => `${NormalChallenge(token).name}`,
-          bracket: token => `(Ω${token})`,
+          name: token => `${NormalChallenge(token).displayName(...[,,], 
+          `${NormalChallenge(token).config.name()} Challenge`)} ${!this.showHelp ? "(Ω)" : ""}`,
+          textName: token => `${NormalChallenge(token).config.name()} Challenge`,
           html: () => `<span class="c-challenge-text c-challenge-text--antimatter">`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.normal.current
         },
       ];
     },
-    activeChallengeNames() {
+    activeChallengeNames(isnonHtml = true) {
       const names = [];
       for (let i = 0; i < this.activityTokens.length; i++) {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
-        const type = part.name(token).includes("Reality") ? this.celNaming : this.naming
-        if (part.name(token).includes("Eternity Challenge")) {
+        if (part.textName(token).includes("Eternity Challenge")) {
           const currEC = player.challenge.eternity.current;
           const nextCompletion = EternityChallenge(currEC).completions + 1;
           let completionText = "";
@@ -96,9 +91,9 @@ export default {
           } else {
             completionText = `(${formatInt(nextCompletion)}/${formatInt(5)})`;
           }
-          names.push(`${this.naming?part.html()+part.name(token)+"</span>":part.html()+part.newname(token)+" "+part.bracket(token)+"</span>"} ${completionText}`);
+          names.push(`${part.html()}${part.name(token)}</span> ${completionText}`);
         } else {
-          names.push(type?part.html()+part.name(token)+"</span>":part.html()+part.newname(token)+" "+part.bracket(token)+"</span>");
+          names.push(`${part.html()}${part.name(token)}</span>`);
         }
       }
       return names;
@@ -109,8 +104,7 @@ export default {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
-        const type = part.name(token).includes("Reality") ? this.celNaming : this.naming
-        if (part.name(token).includes("Eternity Challenge")) {
+        if (part.textName(token).includes("Eternity Challenge")) {
           const currEC = player.challenge.eternity.current;
           const nextCompletion = EternityChallenge(currEC).completions + 1;
           let completionText = "";
@@ -121,9 +115,9 @@ export default {
           } else {
             completionText = `(${formatInt(nextCompletion)}/${formatInt(5)})`;
           }
-          names.push(`${this.naming?part.name(token):part.newname(token)} ${completionText}`);
+          names.push(`${part.textName(token)} ${completionText}`);
         } else {
-          names.push(type?part.name(token):part.newname(token));
+          names.push(part.textName(token));
         }
       }
       return names;
@@ -132,20 +126,17 @@ export default {
       return this.infinityUnlocked || this.activeChallengeNames.length > 0;
     },
     isInFailableEC() {
-      return this.activeChallengeNames.some(str => str.match(this.naming ? /Eternity Challenge (4|12)/gu :  /Curtailed Abundance|Ephemerality/gu ));
+      return this.activeChallengeNamesnonHTML.some(str => str.match(/Eternity Challenge (4|12)/gu));
     },
     challengeDisplay() {
       if (this.inPelle && this.activeChallengeNames.length > 0) {
-        return `${this.activeChallengeNames.join(" + ")} in a <span class="c-challenge-text c-challenge-text--doomed"> Doomed Reality.</span> Good luck.`;
+        return `${this.activeChallengeNames.join(" + ")} in a <span class="c-challenge-text c-challenge-text--doomed"> Doomed Reality (♅).</span> Good luck.`;
       }
       if (this.inPelle) return `a <span class="c-challenge-text c-challenge-text--doomed">Doomed Reality.</span> Good luck.`;
       if (this.activeChallengeNames.length === 0) {
         return `<span class="c-challenge-text c-challenge-text--antimatter">the Antimatter Universe</span> (no active challenges)`;
       }
       return this.activeChallengeNames.join(" + ");
-    },
-    truechallengeDisplay() {
-    return "You are currently in " + this.challengeDisplay
     },
   },
   methods: {
@@ -159,8 +150,7 @@ export default {
       this.exitText = this.exitDisplay();
       this.resetCelestial = player.options.retryCelestial;
       this.inPelle = Pelle.isDoomed;
-      this.naming = !player.options.naming.challenges;
-      this.celNaming = !player.options.naming.celestial;
+      this.showHelp = player.options.naming.showHelp;
       this.fade = GameEnd.endState>1&&GameEnd.endState<END_STATE_MARKERS.CREDITS_START? Math.clamp(1-(GameEnd.endState-3),0,1):1
     },
     // Process exit requests from the inside out; Challenges first, then dilation, then Celestial Reality. If the
@@ -215,7 +205,7 @@ export default {
         const token = this.activityTokens[i];
         const part = this.parts[i];
         if (!part.isActive(token)) continue;
-        fullName = part.name(token);
+        fullName = part.textName(token);
         celestial = part.tabName?.();
         break;
       }
@@ -252,7 +242,7 @@ export default {
     <span
       :class="textClassObject()"
       @click="textClicked"
-      v-html="truechallengeDisplay"
+      v-html="'You are currently in ' + challengeDisplay"
     >
     </span>
     <FailableEcText v-if="isInFailableEC" />

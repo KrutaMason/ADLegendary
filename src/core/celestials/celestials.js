@@ -32,15 +32,14 @@ GameDatabase.celestials.descriptions = [
       Glyph levels are temporarily capped to ${formatInt(Effarig.glyphLevelCap)}, rarity is unaffected.`;
     },
     description() {
-      return `You will exit Effarig's Reality when you complete a Layer of it for the first time.`;
+      return `You will exit ${Effarig.displayRealityName(false)} when you complete a Layer of it for the first time.`;
     }
   },
   {
     name: "The Nameless Ones",
     effects() {
       return `Glyph levels are boosted to a minimum of ${formatInt(5000)}.
-      Infinity, Time, and ${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}`
-       : "8th Antimatter Dimension"} purchases are limited to ${formatInt(1)} each.
+      Infinity, Time, and ${AntimatterDimension(8).fullName(...[,,], false)} purchases are limited to ${formatInt(1)} each.
       Antimatter Dimension multipliers are always Dilated (the Glyph effect still only applies in actual Dilation).
       Time Study 192 (uncapped Replicanti) is locked.
       The Black Hole is disabled.
@@ -79,18 +78,12 @@ GameDatabase.celestials.descriptions = [
         case 0:
           disabledDims = "all Dimensions";
           break;
-        case 1:
-          disabledDims = player.options.naming.dimensions ? "Polygons and higher Dimensions" : "2nd and higher Dimensions";
-          break;
-        case 2:
-          disabledDims = player.options.naming.dimensions ? "Polyhedrons and higher Dimensions" : "3rd and higher Dimensions";
-          break;
         case 7:
-          disabledDims = player.options.naming.dimensions ? "Polyzettons" : "8th Dimensions";
+          disabledDims = `${TimeDimension(8).fullName(...[,], false, ...[,], 2)}`;
           break;
         default:
-          disabledDims = player.options.naming.dimensions ? `${AntimatterDimension(Math.min(highestActive + 1,8)).uniqueName}
-           and higher Dimensions` : `${highestActive + 1}th and higher Dimensions`;
+          disabledDims = `${player.options.naming.dimensions ? TimeDimension(Math.min(highestActive + 1, 8)).fullName(...[,], false, ...[,], 2) : 
+            TimeDimension(Math.min(highestActive + 1, 8)).shortDisplayName} and higher Dimensions`;
           break;
       }
       const disabledText = highestActive === 8

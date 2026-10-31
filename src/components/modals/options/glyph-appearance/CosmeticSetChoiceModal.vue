@@ -81,6 +81,7 @@ export default {
   <ModalWrapperChoice
     :cancel-fn="cancelSet"
     @confirm="chooseSet"
+    style="--base: var(--color-reality)"
   >
     <template #header>
       Choose a Glyph Cosmetic Set

@@ -36,6 +36,10 @@ export const state = {
         }
       },
     },
+    sidebar: {
+      rightSide: false,
+      fullHeight: false
+    },
     shiftDown: false,
     theme: "Normal",
     bigCrunch: false,
@@ -45,6 +49,7 @@ export const state = {
     tab: "dimensions",
     subtab: "antimatter",
     newUI: false,
+    newOptionsUI: false,
     news: false,
     initialized: false,
     tutorialState: 0,

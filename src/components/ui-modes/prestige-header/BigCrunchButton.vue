@@ -262,7 +262,7 @@ export default {
   box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-text) inset);
 }
 .o-fill-bar--red {
-  background: url(../../../../public/images/upgrades/ec-red.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
+  background: url(../../../../public/images/patterns/c_dgr.png),linear-gradient(transparent -100%, var(--color-bad) 200%);
   animation: a-possible 2s linear infinite;
   box-shadow: var(--var-box-shadow, 0 0 .5rem #ffffff inset, 0 0 1rem red inset);
 }

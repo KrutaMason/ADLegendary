@@ -155,16 +155,21 @@ export default {
   height: 9rem;
   font-family: Typewriter, serif;
   font-size: 1rem;
-  background: url(../../../../public/images/time-studies/ts-dilation.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+  background: url(../../../../public/images/patterns/ts_dil.png), linear-gradient(var(--bg-bright),var(--bg-dark));
   border: 0.1rem solid;
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
   border: 0.1rem solid var(--border);
+  border-color: color-mix(in srgb, var(--border) 80%, white) color-mix(in srgb, var(--border) 80%, black) color-mix(in srgb, var(--border) 70%, black) var(--border);
   box-shadow: var(--var-box-shadow, 0px 0px 1rem #000000 inset,var(--border) inset 0px 0px 0px 2px);
   text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black, 0.1rem 0.1rem 0.3rem black);
   --bg-dark: #0c0b0f;
   --bg-bright: #2b2f3b;
   background-position: center;
+}
+
+.s-base--metro .o-dilation-upgrade {
+  border-color: var(--border);
 }
 
 .o-dilation-upgrade--available {
@@ -184,11 +189,20 @@ export default {
   color: var(--color-pelle--secondary);
   --border:  var(--color-pelle--secondary);
 }
+
 .t-hex .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available {
   color: #ddc764;
   --border: #ddc164;
   border-color: #ddc164;
 }
+
+.t-s14 .o-dilation-upgrade--available,
+.t-s14 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available,
+.t-s14 .o-dilation-upgrade--pelle.o-dilation-upgrade--available {
+  color: #ff0000;
+  --border: #ff0000;
+}
+
 .o-dilation-upgrade--available:hover {
   --bg-dark: #477e09;
   color:white;
@@ -197,7 +211,8 @@ export default {
   --bg-dark: #097e65;
   color:white;
 }
-.o-dilation-upgrade--pelle.o-dilation-upgrade--available:hover {
+.o-dilation-upgrade--pelle.o-dilation-upgrade--available:hover,
+.t-hex .o-dilation-upgrade--pelle.o-dilation-upgrade--available:hover {
   --bg-dark: #096c7e;
   color:white;
 }
@@ -210,21 +225,43 @@ export default {
   color:white;
 }
 
-.o-dilation-upgrade--bought,
-.o-dilation-upgrade--capped {
+.t-s14 .o-dilation-upgrade--available:hover,
+.t-s14 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--available:hover,
+.t-s14 .o-dilation-upgrade--pelle.o-dilation-upgrade--available:hover {
+  --bg-dark: #850000;
+  color:white;
+}
+
+.o-dilation-upgrade--bought{
   color: #dfffab;
   --border:#9dff00;
   --bg-bright: #477e09;
   --bg-dark: #2c4603;
 }
 
-.t-hex .o-dilation-upgrade--bought,
-.t-hex .o-dilation-upgrade--capped {
+.t-hex .o-dilation-upgrade--bought{
   color: #ffdbab;
   --border:#ffae00;
   --bg-bright: #7e4f09;
   --bg-dark: #462303;
 }
+
+.t-s14 .o-dilation-upgrade--bought, 
+.t-s14 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--capped{
+  color: white;
+  --bg-bright: #851414;
+  --bg-dark: #430a0a;
+  --border: #e06161;
+}
+
+.t-s14 .o-dilation-upgrade--pelle.o-dilation-upgrade--bought,
+.t-s14 .o-dilation-upgrade--pelle.o-dilation-upgrade--capped{
+  color: white;
+  --bg-bright: #6d6d6d;
+  --bg-dark: #474747;
+  --border: #ff0000;
+}
+
 .o-dilation-upgrade--useless {
   color: #f089a3;
   --border: #bb3c5c;
@@ -233,39 +270,69 @@ export default {
 }
 
 .o-dilation-upgrade--unavailable {
+  color: #bbbbbb;
+  --border: #606060;
+  --bg-bright: #58614f;
+  --bg-dark: #262b22;
+}
+
+.s-base--dark .o-dilation-upgrade--unavailable {
   color: gray;
   --border: #505050;
   --bg-bright: #33382e;
   --bg-dark: #121410;
 }
+
 .t-hex .o-dilation-upgrade--unavailable {
   --bg-bright: #38332e;
   --bg-dark: #141210;
 }
+
 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--unavailable {
+  --bg-bright: #46554d;
+  --bg-dark: #24332c;
+  --border:#005a3f;
+}
+
+.s-base--dark .o-dilation-upgrade--rebuyable.o-dilation-upgrade--unavailable {
   --bg-bright: #2e3833;
   --bg-dark: #101412;
   --border:#005a3f;
 }
+
 .o-dilation-upgrade--pelle.o-dilation-upgrade--unavailable {
+  --bg-bright: #3b555a;
+  --bg-dark: #292f31;
+  --border:#005279;
+}
+
+.s-base--dark .o-dilation-upgrade--pelle.o-dilation-upgrade--unavailable {
   --bg-bright: #20373c;
   --bg-dark: #101314;
   --border:#003e5a;
 }
+
 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--capped {
   color: #abffd8;
   --border:#00ffb3;
   --bg-bright: #097e65;
   --bg-dark: #034635;
-  background-color: #64ddad;
 }
 
 .t-hex .o-dilation-upgrade--rebuyable.o-dilation-upgrade--unavailable {
   --bg-bright: #38372e;
   --bg-dark: #141310;
   --border:#5a4200;
-  /*border-color: #64ddad;*/
 }
+
+.t-s14 .o-dilation-upgrade--unavailable,
+.t-s14 .o-dilation-upgrade--rebuyable.o-dilation-upgrade--unavailable,
+.t-s14 .o-dilation-upgrade--pelle.o-dilation-upgrade--unavailable {
+  --bg-bright: #382323;
+  --bg-dark:#141010;
+  --border:#5a0000;
+}
+
 .t-hex .o-dilation-upgrade--rebuyable.o-dilation-upgrade--capped {
   color: #ffebab;
   --border:#ffd900;
@@ -280,7 +347,8 @@ export default {
   --bg-dark: #034446;
 }
 
-.o-dilation-upgrade--unavailable:hover {
+.o-dilation-upgrade--unavailable:hover, 
+.s-base--dark .o-dilation-upgrade--unavailable:hover{
   color: white;
   --bg-dark: var(--leg-bg-hover);
 }

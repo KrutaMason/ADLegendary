@@ -4,6 +4,7 @@ export default {
   data() {
     return {
       isDoomed: false,
+      isIMUnlocked: false,
       currencyValue: new Decimal(),
       currencyName: "",
       firstReality: false,
@@ -11,7 +12,8 @@ export default {
   },
   methods: {
     update() {
-      this.firstReality = player.realities <= 0
+      this.firstReality = player.realities <= 0;
+      this.isIMUnlocked = MachineHandler.isIMUnlocked;
       this.isDoomed = Pelle.isDoomed;
       if (this.isDoomed) {
         const shards = Currency.realityShards.value;
@@ -26,6 +28,7 @@ export default {
     resourceClass() {
       return {
         "c-reality-tab__reality-machines": true,
+        "c-imaginary-color": this.isIMUnlocked,
         "c-shard-color": this.isDoomed
       };
     }
@@ -48,6 +51,10 @@ export default {
 .c-reality-currency {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+}
+
+.c-imaginary-color {
+  color: var(--color-ra--base);
 }
 
 .c-shard-color {

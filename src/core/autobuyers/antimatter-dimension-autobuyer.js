@@ -20,6 +20,10 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
     return player.auto.antimatterDims.all[this.tier - 1];
   }
 
+  get key() {
+    return this.tier;
+  }
+
   get baseInterval() {
     return Player.defaultStart.auto.antimatterDims.all[this.tier - 1].interval;
   }

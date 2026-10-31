@@ -13,26 +13,6 @@ input.t-amoled-metro {
   text-shadow: 0 0 7px #64dd17;
 }
 
-.t-amoled-metro .c-tt-buy-button--unlocked {
-  --border: #3aacd6;
-  --bg-bright: #111111;
-  --bg-dark: #222222;
-}
-.t-amoled-metro .c-tt-buy-button--unlocked:hover {
-  --bg-dark: #3aacd6;
-}
-.t-amoled-metro .c-tt-buy-button--locked {
-  color: var(--color-bad);
-  --bg-bright: #222222;
-  --bg-dark: #444444;
-  --border: var(--color-bad);
-}
-
-.t-amoled-metro .c-tt-buy-button--locked:hover {
-  color:white;
-  --bg-dark: var(--color-bad);
-}
-
 .t-amoled-metro .c-rm-amount__desc {
   color: #757575;
 }
@@ -42,15 +22,6 @@ input.t-amoled-metro {
   border-color: white;
 }
 
-.t-amoled-metro .o-primary-btn--disabled {
-  background-color: #333333;
-}
-
-
-.t-amoled-metro .c-autobuyer-box-row {
-  border-color: #333333;
-}
-
 .t-amoled-metro .ttshop-background {
-  border-color: var(--color-text);
+  --border: var(--color-text);
 }

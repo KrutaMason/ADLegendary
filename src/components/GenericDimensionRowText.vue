@@ -18,6 +18,14 @@ export default {
       type: String,
       required: true
     },
+    amountFont: {
+      type: Boolean,
+      required: false
+    },
+    amountValue: {
+      type: Object,
+      required: true
+    },
     rate: {
       type: Object,
       required: true
@@ -58,7 +66,10 @@ export default {
 <template>
   <div class="l-dimension-text-container">
     <div :class="adjustableTextClass()">
-      <span class="c-dim-row__large c-dim-row__title">
+      <span 
+        class="c-dim-row__large c-dim-row__font"
+        :data-text="name"
+      >
         {{ name }}
       </span>
       <span class="c-dim-row__small">
@@ -66,9 +77,12 @@ export default {
       </span>
     </div>
     <div :class="adjustableTextClass()">
-      <span class="c-dim-row__large">
-        {{ amountText }}
-      </span>
+      <span 
+        class="c-dim-row__large"
+        :class="{'c-dim-row__font': amountFont}"
+        :data-text="amountText"
+        v-html="displayGradientText(amountText, amountValue)"
+      />
       <span
         v-if="rate.neq(0) && showPercentage"
         class="c-dim-row__small"
@@ -108,7 +122,24 @@ export default {
 .c-dim-row__large {
   text-align: left;
   margin-right: 1rem;
+
+  text-shadow: none;
+  background-image: linear-gradient(var(--color-text), var(--border) 150%);
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  position: relative;
 }
+
+.c-dim-row__large:before {
+  content: attr(data-text);
+  position: absolute;
+  text-shadow: var(--var-text-shadow, var(--text-shadow), 0 0.1rem 0 var(--border));
+  color: #0000;
+  z-index: -1;
+}
+
 .c-dim-row__small {
   font-size: 1.2rem;
   margin-right: 1rem;
@@ -119,15 +150,21 @@ export default {
   0.1rem -0.1rem 0.2rem var(--color-text-inverted),
   -0.1rem -0.1rem 0.2rem var(--border));
 }
+
 .c-dim-row--unstable .c-dim-row__large,
 .c-dim-row--unstable .c-dim-row__small {
   color:var(--color-laitela--base);
   font-weight: bold;
-  text-shadow: 0.1rem 0.1rem 0.2rem var(--color-laitela--accent),-0.1rem 0.1rem 0.2rem var(--color-laitela--accent),0.1rem -0.1rem 0.2rem var(--color-laitela--accent),-0.1rem -0.1rem 0.2rem var(--color-laitela--accent);
+  text-shadow: 0.1rem 0.1rem 0.2rem var(--color-laitela--accent), 
+  -0.1rem 0.1rem 0.2rem var(--color-laitela--accent), 
+  0.1rem -0.1rem 0.2rem var(--color-laitela--accent), 
+  -0.1rem -0.1rem 0.2rem var(--color-laitela--accent);
+  -webkit-text-fill-color: unset;
 }
-.c-dim-row__title{
-  font-size:1.9rem;
-  font-family: cambria;
-  font-weight:bold
+
+.c-dim-row__font {
+  font-size: 1.9rem;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
 }
 </style>

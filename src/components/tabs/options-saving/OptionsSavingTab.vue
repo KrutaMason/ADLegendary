@@ -2,6 +2,7 @@
 import AutosaveIntervalSlider from "./AutosaveIntervalSlider";
 import OpenModalHotkeysButton from "@/components/OpenModalHotkeysButton";
 import OptionsButton from "@/components/OptionsButton";
+import PrimaryButton from "@/components/PrimaryButton";
 import PrimaryToggleButton from "@/components/PrimaryToggleButton";
 import SaveFileName from "./SaveFileName";
 
@@ -13,6 +14,7 @@ export default {
     AutosaveIntervalSlider,
     OpenModalHotkeysButton,
     OptionsButton,
+    PrimaryButton,
     PrimaryToggleButton,
     SaveFileName
   },
@@ -110,6 +112,10 @@ export default {
         Modal.message.show(`You cannot modify your seed any more. Glyph RNG has already been used to generate
           at least one Glyph on this run.`);
       }
+    },
+    toggleOptionsUI() {
+      GameOptions.toggleOptionsUI();
+      Modal.optionsModal.show({showTab: "Saving"});
     }
   }
 };
@@ -117,12 +123,21 @@ export default {
 
 <template>
   <div class="l-options-tab">
+    <div class="c-subtab-option-container c-subtab-option-container--border">
+      <PrimaryButton
+        class="o-primary-btn--subtab-option"
+        @click="toggleOptionsUI"
+      >
+        Use options modal
+      </PrimaryButton>
+    </div>
     <div class="l-options-grid">
       <div class="l-options-grid__row">
         <OptionsButton
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.export()"
+          v-tooltip="'Copy your save file into your clipboard'"
         >
           Export save
         </OptionsButton>
@@ -130,6 +145,7 @@ export default {
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.import.show()"
+          v-tooltip="'Paste a save text into the prompt'"
         >
           Import save
         </OptionsButton>
@@ -137,6 +153,7 @@ export default {
           class="o-primary-btn--option_font-x-large o-primary-btn--hard_reset"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.hardReset.show()"
+          v-tooltip="'Perform a hard reset that will wipe all of your progress'"
         >
           RESET THE GAME
         </OptionsButton>
@@ -146,6 +163,7 @@ export default {
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.save(false, true)"
+          v-tooltip="'Click the button to save the game now'"
         >
           Save game
         </OptionsButton>
@@ -153,10 +171,12 @@ export default {
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.loadGame.show()"
+          v-tooltip="'Choose different saves from all 5 slots'"
         >
           Choose save
         </OptionsButton>
         <AutosaveIntervalSlider
+          v-tooltip="`Adjust the length of the automatic saving interval`"
           :min="10"
           :max="60"
           :interval="1"
@@ -166,12 +186,14 @@ export default {
         <OptionsButton
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="GameStorage.exportAsFile()"
+          v-tooltip="'Download your save as a .txt file'"
         >
           Export save as file
         </OptionsButton>
         <OptionsButton
           class="c-file-import-button"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
+          v-tooltip="'Use a save file to import it'"
         >
           <input
             class="c-file-import"
@@ -186,12 +208,14 @@ export default {
           class="o-primary-btn--option l-options-grid__button"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           label="Display time since save:"
+          v-tooltip="'Display a timer since your last save on the bottom left of the screen'"
         />
       </div>
       <div class="l-options-grid__row">
         <OptionsButton
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.backupWindows.show()"
+          v-tooltip="'Open a menu of automatic backups'"
         >
           Open Automatic Save Backup Menu
         </OptionsButton>
@@ -203,6 +227,7 @@ export default {
           class="o-primary-btn--option_font-x-large"
           :class="{ 'o-pelle-disabled-pointer': creditsClosed }"
           onclick="Modal.enterSpeedrun.show()"
+          v-tooltip="'Open a new save with the speedrun mode enabled'"
         >
           Start Speedrun
         </OptionsButton>
@@ -213,6 +238,7 @@ export default {
             'o-primary-btn--disabled': !canModifySeed
           }"
           @click="openSeedModal()"
+          v-tooltip="'Change the outcome of your future Glyph choices by changing the seed'"
         >
           Change Glyph RNG Seed
         </OptionsButton>

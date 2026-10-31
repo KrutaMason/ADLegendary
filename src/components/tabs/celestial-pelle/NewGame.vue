@@ -90,9 +90,9 @@ export default {
   transform: translate(-50%, -50%);
   pointer-events: auto;
   color:white;
-  font-family:cambria;
-  font-size:125%;
-  background:linear-gradient(90deg,transparent,color-mix(in srgb, #00ffaa 25%, transparent), transparent);
+  font-family: var(--var-secondary-font);
+  font-size: 125%;
+  background: linear-gradient(90deg,transparent, color-mix(in srgb, #00ffaa 25%, transparent), transparent);
   border-top: 0.1rem solid;
   border-bottom: 0.1rem solid;
   border-image: linear-gradient(90deg, transparent, #00ffaa, transparent) 1;
@@ -109,14 +109,22 @@ export default {
 }
 
 .c-new-game-button {
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   font-size: 2rem;
-  background: grey;
-  border: black;
+  width: 25rem;
+  color: white;
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
+  background: var(--leg-shading), linear-gradient(#00442d,#008357);
+  border: var(--var-border-width, 0.1rem) solid #00ffaa;
+  box-shadow: var(--var-box-shadow, 0 0 1rem black inset, 0 0 0 0.2rem #00ffaa inset);
   border-radius: var(--var-border-radius, 0.5rem);
   margin-top: 1rem;
   padding: 1rem;
   cursor: pointer;
+}
+
+.c-new-game-button:hover {
+  background: var(--leg-shading), linear-gradient(#00442d,#00ffaa);
 }
 </style>

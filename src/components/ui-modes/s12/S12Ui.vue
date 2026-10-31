@@ -45,6 +45,11 @@ export default {
     topPadding() {
       return this.$viewModel.news ? "" : "padding-top: 3.9rem";
     },
+    headerClassObject() {
+      return {
+        [`information-header--${Tabs.current.config.UIClassOther}`]: Tabs.current.config.UIClassOther
+      };
+    },
     isOldUi() {
       return !this.$viewModel.newUI;
     },
@@ -101,7 +106,8 @@ export default {
           class="tab-container"
         >
           <HeaderPrestigeGroup />
-          <div class="information-header">
+          <div class="information-header"
+            :class="headerClassObject">
             <HeaderChallengeDisplay />
             <HeaderChallengeEffects />
             <GameSpeedDisplay v-if="hasReality" />

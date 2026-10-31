@@ -187,7 +187,7 @@ export default {
 
 <style scoped>
 .c-alchemy-resource-info__name {
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-size: 1.75rem;
   line-height: 1.2
 }
@@ -202,7 +202,7 @@ export default {
   color: var(--base);
   font-size: 2rem;
   font-weight: bold;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
 }
 .c-alchemy-resource-info__tier{
   opacity: 0.5;

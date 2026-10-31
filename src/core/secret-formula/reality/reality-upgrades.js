@@ -164,13 +164,12 @@ export const realityUpgrades = [
     name: "The Knowing Existence",
     id: 12,
     cost: 50,
-    requirement: () => `Eternity for ${format(DC.E70)} Eternity Points without completing 
-    ${player.options.naming.challenges?EternityChallenge(1).name:"Eternity Challenge 1"}`,
+    requirement: () => `Eternity for ${format(DC.E70)} Eternity Points without completing ${EternityChallenge(1).displayName()}`,
     hasFailed: () => EternityChallenge(1).completions !== 0,
     checkRequirement: () => Currency.eternityPoints.exponent >= 70 && EternityChallenge(1).completions === 0,
     checkEvent: GAME_EVENT.ETERNITY_RESET_AFTER,
     canLock: true,
-    lockEvent: "complete Eternity Challenge 1",
+    lockEvent: () => `complete ${EternityChallenge(1).displayName()}`,
     description: "Eternity Point multiplier based on Reality and Time Theorem count",
     effect: () => Currency.timeTheorems.value
       .minus(DC.E3).clampMin(2)

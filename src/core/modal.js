@@ -24,6 +24,7 @@ import ResetRealityModal from "@/components/modals/prestige/ResetRealityModal";
 
 import AnimationOptionsModal from "@/components/modals/options/AnimationOptionsModal";
 import AwayProgressOptionsModal from "@/components/modals/options/AwayProgressOptionsModal";
+import AudioOptionsModal from "@/components/modals/options/AudioOptionsModal";
 import BackupWindowModal from "@/components/modals/options/BackupWindowModal";
 import ConfirmationOptionsModal from "@/components/modals/options/ConfirmationOptionsModal";
 import CosmeticSetChoiceModal from "@/components/modals/options/glyph-appearance/CosmeticSetChoiceModal";
@@ -31,9 +32,8 @@ import GlyphDisplayOptionsModal from "@/components/modals/options/glyph-appearan
 import HiddenTabsModal from "@/components/modals/options/hidden-tabs/HiddenTabsModal";
 import HotkeysModal from "@/components/modals/options/HotkeysModal";
 import InfoDisplayOptionsModal from "@/components/modals/options/InfoDisplayOptionsModal";
-import NewsOptionsModal from "@/components/modals/options/NewsOptionsModal";
-import AudioOptionsModal from "@/components/modals/options/AudioOptionsModal";
 import NamingOptionsModal from "@/components/modals/options/NamingOptionsModal";
+import NewsOptionsModal from "@/components/modals/options/NewsOptionsModal";
 import NotationModal from "@/components/modals/options/NotationModal";
 import SidebarModal from "@/components/modals/options/SidebarModal";
 import PreferredTreeModal from "@/components/modals/options/PreferredTreeModal";
@@ -70,6 +70,7 @@ import ImportTimeStudyConstants from "@/components/modals/ImportTimeStudyConstan
 import InformationModal from "@/components/modals/InformationModal";
 import LoadGameModal from "@/components/modals/LoadGameModal";
 import ModifySeedModal from "@/components/modals/ModifySeedModal";
+import OptionsModal from "@/components/modals/OptionsModal";
 import PelleEffectsModal from "@/components/modals/PelleEffectsModal";
 import RealityGlyphCreationModal from "@/components/modals/RealityGlyphCreationModal";
 import ReplaceGlyphModal from "@/components/modals/ReplaceGlyphModal";
@@ -260,6 +261,7 @@ Modal.glyphSetSaveDelete = new Modal(GlyphSetSaveDeleteModal);
 Modal.uiChoice = new Modal(UiChoiceModal);
 Modal.disclaimer = new Modal(DisclaimerModal);
 Modal.h2p = new Modal(H2PModal);
+Modal.optionsModal = new Modal(OptionsModal);
 Modal.information = new Modal(InformationModal);
 Modal.credits = new Modal(CreditsModal, 1);
 Modal.changelog = new Modal(ChangelogModal, 1);

@@ -51,7 +51,7 @@ export default {
         "All rewards from Effarig are disabled",
         "All features related to storing time are disabled",
         "All rewards from V are disabled",
-        `The Teresa Level ${formatInt(1)} effect from Ra is disabled`,
+        `The Orias Level ${formatInt(1)} effect from Ra is disabled`,
         "Infinity Upgrades cannot be charged",
         "Triad Studies and Space Theorems are disabled",
         "Imaginary Upgrades are disabled excluding those relating to DMD's and Celestial unlocks",

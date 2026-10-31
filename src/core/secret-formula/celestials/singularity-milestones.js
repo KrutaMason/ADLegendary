@@ -219,7 +219,7 @@ export const singularityMilestones = {
     start: 5e11,
     repeat: 0,
     limit: 1,
-    description: () => `Annihilation mult. generates ${player.options.naming.dimensions ? `DM PC`
+    description: () => `Annihilation mult. generates ${player.options.naming.dimensions ? `DM ${DarkMatterDimension(4).uniqueName}`
        : "4th DMD"} when Annihilation is available`,
     effect: () => Laitela.darkMatterMult,
     effectFormat: x => `${format(x, 2, 1)}/s`,

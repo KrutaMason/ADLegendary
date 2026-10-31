@@ -3,7 +3,7 @@ export const teresa = {
     run: {
       id: 0,
       price: 1e14,
-      description: () => `Unlock Teresa's ${player.options.naming.celestial?Teresa.RealityName:"Reality"}.`,
+      description: () => `Unlock ${Teresa.displayRealityName()}.`,
       onUnlock: () => Teresa.quotes.unlockReality.show(),
     },
     epGen: {
@@ -15,7 +15,7 @@ export const teresa = {
     shop: {
       id: 2,
       price: 1e21,
-      description: "Unlock Teresa's Perk Shop.",
+      description: "Unlock Orias' Perk Shop.",
     },
     effarig: {
       id: 3,

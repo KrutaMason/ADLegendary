@@ -110,7 +110,8 @@ export const shortcuts = [
     type: "bindHotkey",
     function: () => {
       player.respec = !player.respec;
-      GameUI.notify.info(`Time Study respec is now ${player.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(["<kbd>Shift</kbd><kbd>E</kbd>", `Time Study respec is now ${player.respec ? "active" : "inactive"}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
     },
     visible: () => PlayerProgress.eternityUnlocked()
   }, {
@@ -131,7 +132,8 @@ export const shortcuts = [
     type: "bindHotkey",
     function: () => {
       player.reality.respec = !player.reality.respec;
-      GameUI.notify.info(`Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(["<kbd>Shift</kbd><kbd>Y</kbd>", `Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
     },
     visible: () => PlayerProgress.realityUnlocked()
   }, {
@@ -183,7 +185,8 @@ export const shortcuts = [
     function: () => {
       if (!Pelle.isDoomed) return;
       player.reality.respec = !player.reality.respec;
-      GameUI.notify.info(`Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`);
+      GameUI.notify.info(["<kbd>Shift</kbd><kbd>Z</kbd>", `Glyph respec is now ${player.reality.respec ? "active" : "inactive"}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
     },
     visible: () => Pelle.isDoomed
   }, {
@@ -241,7 +244,7 @@ export const shortcuts = [
     },
     visible: true
   }, {
-    name: "Close Modal or open Options",
+    name: "Close Modal/Open Options",
     keys: ["esc"],
     type: "bind",
     function: () => {
@@ -254,7 +257,7 @@ export const shortcuts = [
     keys: ["f"],
     type: "bindRepeatable",
     function: () => {
-      GameUI.notify.info("Paying respects");
+      GameUI.notify.info(["<kbd>F</kbd>", "Paying respects", `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
       SecretAchievement(13).unlock();
     },
     visible: false
@@ -398,21 +401,25 @@ function toggleAutobuyer(buyer) {
   // Autobuyer.tickspeed.isUnlocked is false without NC9, but we still want the simpler one to be togglable via hotkey
   const isSimpleTickspeed = buyer === Autobuyer.tickspeed && buyer.isBought;
   if (buyer.disabledByContinuum) {
-    GameUI.notify.info("Continuum is enabled, you cannot alter this autobuyer");
+    GameUI.notify.info([`<kbd>Alt</kbd><kbd>${buyer.key}</kbd>`,"Continuum is enabled, you cannot alter this autobuyer",
+        `<div class="o-notification--icon"><i class="fas fa-ban"></i></div>`]);
   } else if (buyer.isUnlocked || isSimpleTickspeed) {
     buyer.toggle();
-    GameUI.notify.info(`${buyer.name} Autobuyer toggled ${(buyer.isActive) ? "on" : "off"}`);
+    GameUI.notify.info([`<kbd>Alt</kbd><kbd>${buyer.key}</kbd>`,`${buyer.name} Autobuyer toggled ${(buyer.isActive) ? "on" : "off"}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
   }
   return false;
 }
 
 function toggleBuySingles(buyer) {
   if (buyer.disabledByContinuum) {
-    GameUI.notify.info("Continuum is enabled, you cannot alter this autobuyer");
+    GameUI.notify.info([`<kbd>Alt</kbd><kbd>Shift</kbd><kbd>${buyer.key}</kbd>`,"Continuum is enabled, you cannot alter this autobuyer",
+        `<div class="o-notification--icon"><i class="fas fa-ban"></i></div>`]);
   } else if (buyer.isUnlocked && buyer.toggleMode !== null) {
     buyer.toggleMode();
     const bulkName = (buyer.name === "Tickspeed" || buyer.hasUnlimitedBulk) ? "max" : "10";
-    GameUI.notify.info(`${buyer.name} Autobuyer set to buy ${(buyer.mode === 1) ? "singles" : bulkName}`);
+    GameUI.notify.info([`<kbd>Alt</kbd><kbd>Shift</kbd><kbd>${buyer.key}</kbd>`,`${buyer.name} Autobuyer set to buy ${(buyer.mode === 1) ? "singles" : bulkName}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
   }
   return false;
 }
@@ -420,7 +427,8 @@ function toggleBuySingles(buyer) {
 function keyboardToggleAutobuyers() {
   if (Tab.automation.isUnlocked) {
     Autobuyers.toggle();
-    GameUI.notify.info(`Autobuyers ${player.auto.autobuyersOn ? "resumed" : "paused"}`);
+    GameUI.notify.info(["<kbd>A</kbd>", `Autobuyers ${player.auto.autobuyersOn ? "resumed" : "paused"}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
   }
 }
 
@@ -433,7 +441,8 @@ function keyboardToggleContinuum() {
   // This is a toggle despite the lack of !, because player.auto.disableContinuum
   // is negated compared to whether continuum is on.
   Laitela.setContinuum(player.auto.disableContinuum);
-  GameUI.notify.info(`${(player.auto.disableContinuum) ? "Disabled" : "Enabled"} Continuum`);
+  GameUI.notify.info([`<kbd>Alt</kbd><kbd>A</kbd>`,`${(player.auto.disableContinuum) ? "Disabled" : "Enabled"} Continuum`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
 }
 
 function keyboardAutomatorToggle() {
@@ -449,22 +458,26 @@ function keyboardAutomatorToggle() {
       AutomatorBackend.restart();
       AutomatorBackend.start(visibleIndex);
       if (AutomatorData.currentErrors().length === 0) {
-        GameUI.notify.automator(`Starting script "${AutomatorBackend.scriptName}"`);
+        GameUI.notify.automator(["<kbd>U</kbd>", `Starting script "${AutomatorBackend.scriptName}"`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
       } else {
-        GameUI.notify.error(`Cannot start script "${AutomatorBackend.scriptName}" (has errors)`);
+        GameUI.notify.error(["<kbd>U</kbd>", `Cannot start script "${AutomatorBackend.scriptName}" (has errors)`,
+        `<div class="o-notification--icon"><i class="fas fa-ban"></i></div>`]);
       }
       return;
     }
     const action = AutomatorBackend.isRunning ? "Resuming" : "Pausing";
     const linenum = AutomatorBackend.currentLineNumber;
-    GameUI.notify.automator(`${action} script "${AutomatorBackend.scriptName}" at line ${linenum}`);
+    GameUI.notify.automator(["<kbd>U</kbd>", `${action} script "${AutomatorBackend.scriptName}" at line ${linenum}`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
   }
 }
 
 function keyboardAutomatorRestart() {
   if (Player.automatorUnlocked) {
     const action = AutomatorBackend.isOn ? "Restarting" : "Starting";
-    GameUI.notify.automator(`${action} script "${AutomatorBackend.scriptName}"`);
+    GameUI.notify.automator(["<kbd>Shift</kbd><kbd>U</kbd>", `${action} script "${AutomatorBackend.scriptName}"`,
+        `<div class="o-notification--icon"><i class="fas fa-keyboard"></i></div>`]);
 
     AutomatorBackend.restart();
     AutomatorBackend.start();
@@ -479,7 +492,8 @@ function armageddonRequest() {
 function keyboardPressEscape() {
   if (Quote.isOpen || Quote.isHistoryOpen) Quote.clearAll();
   else if (Modal.isOpen) Modal.hideAll();
-  else Tab.options.show(true);
+  else if (!ui.view.newOptionsUI) Tab.options.show(true);
+  else Modal.optionsModal.show();
 }
 
 function keyboardPressQuestionMark() {

@@ -9,6 +9,10 @@ export class DimBoostAutobuyerState extends UpgradeableAutobuyerState {
     return `Dimension Boost`;
   }
 
+  get key() {
+    return "D";
+  }
+
   get isUnlocked() {
     if (Pelle.isDisabled("dimBoostAutobuyer")) return false;
     return this.canBeUpgraded;

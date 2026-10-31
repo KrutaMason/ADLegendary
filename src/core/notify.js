@@ -1,7 +1,6 @@
 export const notify = (function() {
   const template = document.createElement("div");
   template.classList.add("o-notification");
-  const bigtext = "o-notification--big";
   const enterAnimation = "a-notification--enter";
   const leaveAnimation = "a-notification--leave";
   function showNotification(text, elClass, duration = 3500, sound = "") {
@@ -10,10 +9,13 @@ export const notify = (function() {
       return;
     }
     const el = template.cloneNode();
-    el.innerHTML = Array.isArray(text)?`<div class="o-notification--header">${text[0]}</div>${text[1]}`:text;
+    if (text.length == 3 && text[2] !== "") el.innerHTML = `${text[2]} <div class="o-notification--big">
+    ${(text[1] !== "") ? `<div class="o-notification--header">${text[0]}</div><span>${text[1]}</span>` : `<span>${text[0]}</span>`}</div>`
+    else el.innerHTML = (text.length == 2 && text[1] !== "") ? `<div class="o-notification--header">${text[0]}</div>${text[1]}` : text[0]
     el.classList.add(elClass, enterAnimation);
-    if (Array.isArray(text)) el.classList.add(bigtext);
-    if (sound!=="")AudioManagement.notifyNoise(sound);
+    if (text.length == 2) el.classList.add("o-notification--big");
+    if (text.length == 3) el.classList.add("o-notification--iconed");
+    if (sound !== "") AudioManagement.notifyNoise(sound);
     const container = document.getElementById("notification-container");
     container.appendChild(el);
     let entered = false;

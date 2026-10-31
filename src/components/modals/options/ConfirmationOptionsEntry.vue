@@ -10,6 +10,10 @@ export default {
     index: {
       type: Number,
       required: true
+    },
+    isinOptionsModal: {
+      type: Boolean,
+      required: false
     }
   },
   data() {
@@ -23,7 +27,7 @@ export default {
       return ConfirmationTypes.index[this.index];
     },
     name() {
-      return `${this.entry.name}:`;
+      return this.isinOptionsModal ? "" : `${this.entry.name}:`;
     },
     styleObject() {
       return {

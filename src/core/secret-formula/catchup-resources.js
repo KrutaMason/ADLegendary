@@ -198,10 +198,10 @@ export const catchupResources = [
       to this point and will give similar results to leaving the game open for an equivalent amount of time.`
   },
   {
-    name: "Teresa",
+    name: "Orias",
     id: 26,
     requiredStage: PROGRESS_STAGE.TERESA,
-    description: `Teresa is the first Celestial, who has a more difficult Reality which gives a massive boost to Glyph
+    description: `Orias is the first Celestial, who has a more difficult Reality which gives a massive boost to Glyph
       Sacrifice depending upon completion. They unlock upgrades which focus on testing and automating Realities more
       easily.`
   },
@@ -243,9 +243,9 @@ export const catchupResources = [
     name: "V",
     id: 31,
     requiredStage: PROGRESS_STAGE.V,
-    description: `V is the fourth Celestial, with a modified Reality which is similar to Teresa's Reality / Michanipolis but only gives
-      rewards by reaching certain milestones of resources within. They give a new resource called Space Theorems, which
-      allow you to purchase additional Time Studies without path restrictions.`
+    description: () => `V is the fourth Celestial, with a modified Reality which is similar to ${Teresa.displayRealityName()} 
+      but only gives rewards by reaching certain milestones of resources within. They give a new resource called Space Theorems, 
+      which allow you to purchase additional Time Studies without path restrictions.`
   },
   {
     name: "Ra",
@@ -269,7 +269,7 @@ export const catchupResources = [
     id: 34,
     openH2pEntry: "Ra",
     requiredStage: PROGRESS_STAGE.RA,
-    description: `Teresa's Memories allow you to charge your Infinity Upgrades, maintaining a similar effect but
+    description: `Orias' Memories allow you to charge your Infinity Upgrades, maintaining a similar effect but
       strengthening them significantly. Which upgrades are charged can only be changed between Realities.`
   },
   {

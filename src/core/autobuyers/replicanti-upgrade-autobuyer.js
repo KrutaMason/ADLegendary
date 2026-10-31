@@ -36,7 +36,7 @@ export class ReplicantiUpgradeAutobuyerState extends IntervaledAutobuyerState {
 
   static get entryCount() { return 3; }
   static get autobuyerGroupName() { return "Replicanti Upgrade"; }
-  static get autobuyerColor() { return "#2196f3"; }
+  static get autobuyerColor() { return "var(--color-replicanti)"; }
   static get isActive() { return player.auto.replicantiUpgrades.isActive; }
   static set isActive(value) { player.auto.replicantiUpgrades.isActive = value; }
 }

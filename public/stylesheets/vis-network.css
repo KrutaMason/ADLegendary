@@ -710,7 +710,7 @@ div.vis-tooltip {
 .vis-tooltip__title{
     font-size: 1.8rem;
     font-weight:bold;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     line-height:1.2;
     border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
     border-top: none;

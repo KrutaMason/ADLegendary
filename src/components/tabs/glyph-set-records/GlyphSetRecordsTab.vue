@@ -27,7 +27,7 @@ export default {
         [true, Glyphs.copyForRecords(bestReality.speedSet), "Fastest Reality (real time)",
           `${TimeSpan.fromMilliseconds(bestReality.realTime).toStringShort()}`],
         [player.celestials.teresa.bestRunAM.gt(1), Glyphs.copyForRecords(player.celestials.teresa.bestAMSet),
-          `Highest Antimatter in ${Teresa.possessiveName} Reality`,
+          `Highest Antimatter in ${Teresa.displayRealityName()}`,
           `${format(player.celestials.teresa.bestRunAM, 2, 2)} Antimatter`],
         [Currency.imaginaryMachines.gt(0), Glyphs.copyForRecords(bestReality.iMCapSet),
           "Highest Imaginary Machine cap",
@@ -43,6 +43,7 @@ export default {
 </script>
 
 <template>
+<div>
   <div class="l-glyph-set-tab">
     <div
       v-for="(set, idx) in recordGlyphInfo"
@@ -63,9 +64,10 @@ export default {
           marginsize="0.5rem 0.7rem"
           :maxlength="50"
         />
-        {{ set[3] }}
+        <div class="l-glyph-set-entry-bottom">{{ set[3] }}</div>
         <br>
       </div>
     </div>
   </div>
+</div>
 </template>

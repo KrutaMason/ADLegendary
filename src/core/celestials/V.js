@@ -85,7 +85,8 @@ class VRunUnlockState extends GameMechanicState {
     Decimal.gte(playerData.runRecords[this.id], this.conditionValue)) {
       if (!V.isFlipped && this.config.isHard) continue;
       this.completions++;
-      GameUI.notify.success(["V-Achievement unlocked!",`'${this.config.name}' Tier ${formatInt(this.completions)}`]);
+      GameUI.notify.success(["V-Achievement completed!",`'${this.config.name}' Tier ${formatInt(this.completions)}`,
+        `<div class="o-notification--icon">⌬</div>`]);
 
       V.updateTotalRunUnlocks();
 
@@ -132,7 +133,8 @@ class VUnlockState extends BitUpgradeState {
   }
 
   onUnlock() {
-    GameUI.notify.success(["V, the celestial of Achievements",this.description]);
+    GameUI.notify.success(["V, the celestial of Achievements",this.description,
+        `<div class="o-notification--icon">⌬</div>`]);
   }
 }
 
@@ -156,11 +158,23 @@ export const VUnlocks = mapGameDataToObject(
 
 export const V = {
   displayName: "V",
-  displayTitle: "Star Dragon General V",
-  fullName: "V, Celestial of Achievements",
-  celestialOf: "Achievements",
+  displayTitle: "Nabob Advocate-General V",
+  epithet: "Achievements",
   possessiveName: "V's",
-  RealityName: "Palace of Pride",
+  get realityName() {
+    if (Theme.currentName() === "S14") return "Wealth of Nations";
+    return "Wealth of Cosmoses";
+  },
+  get dynamicRealityName() { 
+    let word =  Theme.currentName() === "S14" ? "Nations" : "Cosmoses";
+    if (this.isFlipped) return `Lost Wealth of ${word}`;
+    return `Wealth of ${word}`;
+  },
+  displayRealityName(needsName = true, the = "the", altName = this.realityName) {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? altName : "Reality"
+    return `${celName} ${realName}`
+  },
   spaceTheorems: 0,
   checkForUnlocks() {
     for (const unl of VUnlocks.all) {
@@ -184,8 +198,8 @@ export const V = {
   },
   unlockCelestial() {
     player.celestials.v.unlockBits |= (1 << VUnlocks.vAchievementUnlock.id);
-    GameUI.notify.celestial(["The Celestials","You have unlocked V, The Celestial Of Achievements!"]);
-    V.quotes.unlock.show();
+    GameUI.notify.celestial(["The Celestials","You have unlocked V, The Celestial Of Achievements!",
+        `<div class="o-notification--icon">⌬</div>`]);   V.quotes.unlock.show();
   },
   initializeRun() {
     clearCelestialRuns();

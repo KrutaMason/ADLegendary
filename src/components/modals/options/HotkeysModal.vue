@@ -93,11 +93,9 @@ export default {
           <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Buy 10 Dimensions</span>
           <kbd>1</kbd>-<kbd>8</kbd>
         </div>
-        <div
-          v-for="index in hotkeyCount"
-          :key="index"
-        >
           <span
+            v-for="index in hotkeyCount"
+            :key="index"
             v-if="visible[index - 1]"
             class="l-modal-hotkeys-row"
           >
@@ -110,7 +108,6 @@ export default {
             </kbd>
           </span>
         </div>
-      </div>
       <div class="l-modal-hotkeys__column l-modal-hotkeys__column--right">
         <div class="l-modal-hotkeys-row">
           <span class="c-modal-hotkeys-row__name l-modal-hotkeys-row__name">Modifier Key</span>
@@ -188,10 +185,9 @@ export default {
 
 .l-modal-hotkeys__column--right {
   margin-left: 1rem;
-}
-
-.c-modal-hotkeys {
-  font-size: 1.25rem;
+  padding-left: 1rem;
+  width: 29rem;
+  border-left: 0.4rem double color-mix(in srgb, var(--color-accent) 75%, transparent)
 }
 
 .l-modal-hotkeys {
@@ -202,12 +198,28 @@ export default {
 .l-modal-hotkeys-row {
   display: flex;
   flex-direction: row;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-accent) 25%, transparent) 10%, transparent);
   line-height: 1.6rem;
-  padding-bottom: 0.3rem;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  padding: 0.2rem 0rem;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, transparent, var(--color-accent) 10%, transparent) 1;
+}
+
+.l-modal-hotkeys-row:first-child {
+  border-top: 1px solid;
+}
+
+.l-modal-hotkeys__column--right .l-modal-hotkeys-row {
+  padding: 0.1rem 0rem;
+  margin-bottom: 0.3rem;
+  border-top: 0.1rem solid;
 }
 
 .c-modal-hotkeys-row__name {
   text-align: left;
+  padding-left: 0.0rem;
 }
 
 .l-modal-hotkeys-row__name {

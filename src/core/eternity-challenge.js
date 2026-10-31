@@ -49,6 +49,11 @@ export class EternityChallengeState extends GameMechanicState {
   get name() {
     return this._config.label
   }
+
+  displayName(needsHelp = true, isShort = false) {
+    if (player.options.naming.challenges) return `${this.name}${needsHelp && player.options.naming.showHelp ? ` (EC${this.id})` : ""}`
+    else return `${isShort ? `EC` : `Eternity Challenge `}${this.id}`
+  }
   
   get fullId() {
     return this._fullId;
@@ -199,11 +204,11 @@ export class EternityChallengeState extends GameMechanicState {
     if (!this.isUnlocked) return false;
     const maxInversion = player.requirementChecks.reality.slowestBH <= 1e-300;
     if (this.id === 12 && ImaginaryUpgrade(24).isLockingMechanics && Ra.isRunning && maxInversion) {
-      if (!auto) ImaginaryUpgrade(24).tryShowWarningModal("enter Eternity Challenge 12");
+      if (!auto) ImaginaryUpgrade(24).tryShowWarningModal(`enter ${EternityChallenge(12).displayName()}`);
       return false;
     }
     if (this.id === 7 && ImaginaryUpgrade(15).isLockingMechanics && TimeDimension(1).amount.gt(0)) {
-      if (!auto) ImaginaryUpgrade(15).tryShowWarningModal("enter Eternity Challenge 7");
+      if (!auto) ImaginaryUpgrade(15).tryShowWarningModal(`enter ${EternityChallenge(7).displayName()}`);
       return false;
     }
 
@@ -257,20 +262,20 @@ export class EternityChallengeState extends GameMechanicState {
     if (auto) {
       if (this.id === 4) {
         reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
+        `${EternityChallenge(this.id).displayName()} and made the next tier ` +
         `require having less Infinities (${quantifyInt("Infinity", restriction)} ` +
         `or less) than you had`;
       } else if (this.id === 12) {
         reason = restriction => `Auto Eternity Challenge completion completed ` +
-        `Eternity Challenge ${this.id} and made the next tier ` +
+        `${EternityChallenge(this.id).displayName()} and made the next tier ` +
         `require spending less time in it (${quantify("in-game second", restriction, 0, 1)} ` +
         `or less) than you had spent`;
       }
     } else if (this.id === 4) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
+      reason = restriction => `You failed ${EternityChallenge(this.id).displayName()} due to ` +
       `having more than ${quantifyInt("Infinity", restriction)}`;
     } else if (this.id === 12) {
-      reason = restriction => `You failed Eternity Challenge ${this.id} due to ` +
+      reason = restriction => `You failed ${EternityChallenge(this.id).displayName()} due to ` +
       `spending more than ${quantify("in-game second", restriction, 0, 1)} in it`;
     }
     Modal.message.show(`${reason(this.config.restriction(this.completions))}, ` +

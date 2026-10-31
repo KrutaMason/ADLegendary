@@ -21,10 +21,10 @@ export default {
   // - Near the "edges" (12% on each side) of each word's randomization time, it's blended with the previous or next
   //   word. This mostly serves to smoothly ease between strings of different lengths, and only occurs between
   //   strings which already have a high randomization fraction (frac > 1.3)
-  wordCycle(list, noBuffer = false) {
+  wordCycle(list, noBuffer = false, time = 250) {
     const len = list.length;
-    const tick = Math.floor(Date.now() / 250) % (len * 5);
-    const mod5 = ((Date.now() / 250) % (len * 5)) % 5;
+    const tick = Math.floor(Date.now() / time) % (len * 5);
+    const mod5 = ((Date.now() / time) % (len * 5)) % 5;
     const largeTick = Math.floor(tick / 5);
     let v = list[largeTick];
 

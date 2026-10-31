@@ -36,7 +36,7 @@ export default {
       let symbol = GLYPH_SYMBOLS[this.effectConfig.glyphTypes]
       return symbol
     },
-    textColor() {
+    backgroundColor() {
       if (!this.isColored) return { };
       const typeObject = this.effectConfig.id === "timeshardpow"
         ? CosmeticGlyphTypes.time
@@ -44,7 +44,6 @@ export default {
 
       let glyphColor = typeObject.currentColor.border;
       if (typeObject.id === "cursed") glyphColor = "var(--color-celestials)";
-
       return {
         color: glyphColor,
         "text-shadow": `-1px 1px 1px var(--color-text-base), 1px 1px 1px var(--color-text-base),
@@ -52,18 +51,6 @@ export default {
                             0 0 3px ${typeObject.currentColor.border}`,
         animation: typeObject.id === "reality" ? "a-reality-glyph-description-cycle 10s infinite" : undefined,
       };
-    },
-    backgroundColor(){
-      const typeObject = this.effectConfig.id === "timeshardpow"
-        ? CosmeticGlyphTypes.time
-        : CosmeticGlyphTypes[this.effectConfig.glyphTypes];
-
-      let glyphColor = typeObject.currentColor.border;
-      if (typeObject.id === "cursed") glyphColor = "#5151ec";
-      if (typeObject.id === "reality") glyphColor = "#0ba00e";
-      return{
-        "--bg":`${this.isColored ? glyphColor : "#0ba00e"}55`
-      }
     },
     valueClass() {
       return this.effect.value.capped ? "c-current-glyph-effects__effect--capped" : "";
@@ -87,7 +74,6 @@ export default {
   :style="backgroundColor"
   >
     <span
-      :style="textColor"
       :class="valueClass"
       v-html="formatText"
     />
@@ -96,12 +82,12 @@ export default {
 
 <style scoped>
 .Current-glyph_effect{
-  border-bottom: 1px solid ;
-  border-image: linear-gradient(90deg,#80808040,#808080a0,#80808040) 1;
-  background: linear-gradient(90deg,transparent,var(--bg),transparent);
+  border-top: 1px solid;
+  border-image: linear-gradient(90deg, #80808040, #808080a0, #80808040) 1;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, currentcolor 35%, transparent), transparent);
   text-shadow: var(--var-text-shadow, 0.05rem 0.05rem 0.1rem #000000aa);
 }
-.Current-glyph_effect:last-child{
+/*.Current-glyph_effect:last-child{
   border-bottom: none;
-}
+}*/
 </style>

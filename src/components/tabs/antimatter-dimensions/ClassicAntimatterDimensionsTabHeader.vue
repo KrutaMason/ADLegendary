@@ -21,7 +21,7 @@ export default {
       if (this.isFullyAutomated) {
         return "Sacrifice autobuyer is enabled and Achievement 118 is unlocked, so Sacrifice is now fully automated";
       }
-      return `Boosts 8th Antimatter Dimension by ${formatX(this.sacrificeBoost, 2, 2)}`;
+      return `Boosts ${AntimatterDimension(8).fullName()} by ${formatX(this.sacrificeBoost, 2, 2)}`;
     },
   },
   methods: {

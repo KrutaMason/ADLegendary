@@ -246,8 +246,12 @@ export default {
       <span class="o-run-drop-down-icon">
         <i :class="dropDownIconClass" />
       </span>
-      <span style="font-family:cambria;font-weight:bold;line-height:1.1;font-size:1.5rem">
-        <h3>Last <span :class="{'c-past-runs-prestige__fixed': isInaccessible(10)}">{{ formatInt(10) }}</span> {{ plural }}:</h3>
+      <span>
+        <h3>
+          Last 
+          <span :class="diffFont(10)">{{ formatInt(10) }}</span> 
+          {{ plural }}
+        </h3>
       </span>
     </div>
     <div v-show="shown" class="c-row-container-color">
@@ -299,10 +303,10 @@ export default {
   flex-direction: row;
   width: 100%;
 }
-.c-row-container-color{
+.c-row-container-color {
   background:#ffffff80
 }
-.s-base--dark .c-row-container-color{
+.s-base--dark .c-row-container-color {
   background:#00000080
 }
 .c-empty-row {
@@ -329,16 +333,16 @@ export default {
   border-radius: var(--var-border-radius,0.5rem);
   box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.3rem var(--color) inset)
 }
+
 .c-past-runs-prestige__infinity {
 --color:var(--color-infinity)
 }
+
 .c-past-runs-prestige__eternity {
 --color:var(--color-eternity)
 }
+
 .c-past-runs-prestige__reality {
 --color:var(--color-reality)
-}
-.c-past-runs-prestige__fixed {
-  font-family: Typewriter
 }
 </style>

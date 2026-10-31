@@ -182,7 +182,7 @@ export const dilationUpgrades = {
     id: 14,
     cost: 1e45,
     pelleOnly: true,
-    description: "Apply a cube root to the Tachyon Galaxy threshold",
+    description: "Apply a cube root to the Tachyonic Galaxy threshold",
     effect: 1 / 3
   },
   flatDilationMult: {

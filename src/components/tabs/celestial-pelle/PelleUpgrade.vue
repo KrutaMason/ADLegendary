@@ -186,7 +186,7 @@ export default {
   padding: 1rem;
   cursor: pointer;
   background-position: center;
-  --bg:url(../../../../public/images/upgrades/pelle-2.png)
+  --bg:url(../../../../public/images/patterns/cel_7s.png)
 }
 
 .c-pelle-upgrade:hover {
@@ -205,7 +205,7 @@ export default {
   --bg-dark: #0b3333;
   --bg-bright: rgb(87, 22, 35);
   box-shadow: none;
-  --bg:url(../../../../public/images/prestige/galgen-unlock.png),url(../../../../public/images/prestige/galgen-unlock-2.png),url(../../../../public/images/upgrades/pelle-2.png);
+  --bg:url(../../../../public/images/prestige/galgen-unlock.png),url(../../../../public/images/prestige/galgen-unlock-2.png),url(../../../../public/images/patterns/cel_7s.png);
   animation: a-galgenunlock 10s infinite linear;
 }
 @keyframes a-galgenunlock{

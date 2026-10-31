@@ -27,7 +27,11 @@ export default {
   },
   methods: {
     hardReset() {
-      if (this.willHardReset) GameStorage.hardReset();
+      if (this.willHardReset) {
+        GameStorage.hardReset();
+        //The options modal is still intact after this action so the line below this one hides it.
+        Modal.hideAll();
+      };
       this.input = "";
     },
   },

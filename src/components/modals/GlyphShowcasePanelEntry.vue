@@ -57,7 +57,7 @@ export default {
       return this.effectiveLevel && this.effectiveLevel > this.level;
     },
     levelText() {
-      if (this.type === "companion" || this.type === "helios") return "";
+      if (this.type === "companion") return "";
       // eslint-disable-next-line no-nested-ternary
       const arrow = this.isLevelCapped
         ? "<i class='fas fa-sort-down'></i>"
@@ -75,7 +75,7 @@ export default {
       return {
         color: GlyphAppearanceHandler.getBorderColor(this.type),
         "font-weight": "bold",
-        "font-family": "cambria",
+        "font-family": "var(--var-secondary-font)",
         "font-size": "1.4rem",
         "line-height": "1",
         "text-shadow": this.type === "cursed" ? "0.05rem 0.05rem var(--color-text)" : undefined,
@@ -86,7 +86,7 @@ export default {
       // Rarity is handled differently here than usual because this is in contrast with the theme BG, not the glyph BG
       const color = CosmeticGlyphTypes[this.glyph.type].ignoreRarityColor
         ? GlyphAppearanceHandler.getBorderColor(this.type)
-        : getRarity(this.glyph.strength)[Theme.current().isDark() ? "darkColor" : "lightColor"];
+        : GlyphAppearanceHandler.getRarityColor(this.glyph.strength, this.type);
       return {
         color,
         "font-weight": "bold",
@@ -109,7 +109,7 @@ export default {
       return effectStrings.filter(s => s !== "undefined");
     },
     rarityPercent() {
-      if (this.glyph.type === "companion" || this.glyph.type === "cursed" || this.glyph.type === "helios") return "";
+      if (this.glyph.type === "companion" || this.glyph.type === "cursed") return "";
       if (this.glyph.type === "reality") return "PURE"
       return formatRarity(strengthToRarity(this.glyph.strength));
     },

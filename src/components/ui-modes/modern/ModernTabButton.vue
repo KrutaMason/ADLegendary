@@ -123,7 +123,7 @@ export default {
   background-position-x: calc(-16px + var(--maths) / 8), 0;
   transition: width 0.15s;
 }
-.c-modern-sidebar-switched > .o-tab-btn::before {
+.c-modern-sidebar-switched > .c-modern-sidebar--sub  > .o-tab-btn::before {
   left: unset;
   background-image: url(../../../../public/images/visuals/active_tab.png),
   linear-gradient(-90deg,var(--color-active) 50%,transparent);

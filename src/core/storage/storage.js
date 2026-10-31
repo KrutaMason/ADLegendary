@@ -151,7 +151,7 @@ export const GameStorage = {
     Tabs.all.find(t => t.id === player.options.lastOpenTab).show(false);
     Modal.hideAll();
     Cloud.resetTempState();
-    GameUI.notify.info("Game loaded");
+    GameUI.notify.info(["Game loaded"]);
     Achievements.updateSteamStatus();
   },
 
@@ -180,7 +180,8 @@ export const GameStorage = {
     // You can doom your reality even if you haven't unlocked infinity yet if you import while the Pelle tab
     // is showing
     Tab.options.subtabs[0].show();
-    GameUI.notify.info("Game imported");
+    GameUI.notify.info(["Game imported","",
+        `<div class="o-notification--icon"><i class="fas fa-file-import"></i></div>`]);
     Achievements.updateSteamStatus();
   },
 
@@ -265,7 +266,7 @@ export const GameStorage = {
     };
     localStorage.setItem(this.localStorageKey, GameSaveSerializer.serialize(root));
     //AudioManagement.playSound("save")
-    if (!silent) GameUI.notify.info("Game saved",undefined,"save");
+    if (!silent) GameUI.notify.info(["Game saved"],undefined,"save");
   },
 
   // Saves a backup, updates save timers (this is called before nextBackup is updated), and then saves the timers too.
@@ -352,7 +353,8 @@ export const GameStorage = {
 
   export() {
     copyToClipboard(this.exportModifiedSave());
-    GameUI.notify.info("Exported current savefile to your clipboard");
+    GameUI.notify.info(["Exported current savefile to your clipboard","",
+        `<div class="o-notification--icon"><i class="fas fa-file-export"></i></div>`]);
   },
 
   get exportDateString() {
@@ -372,7 +374,8 @@ export const GameStorage = {
     download(
       `AD Save, Slot ${GameStorage.currentSlot + 1}${saveFileName} #${player.options.exportedFileCount} \
 (${this.exportDateString}).txt`, save);
-    GameUI.notify.info("Successfully downloaded current save file to your computer");
+    GameUI.notify.info(["Successfully downloaded current save file to your computer","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-download"></i></div>`]);
   },
 
   exportBackupsAsFile() {
@@ -386,7 +389,8 @@ export const GameStorage = {
     download(
       `AD Save Backups, Slot ${GameStorage.currentSlot + 1} #${player.options.exportedFileCount} \
 (${this.exportDateString}).txt`, GameSaveSerializer.serialize(backupData));
-    GameUI.notify.info("Successfully downloaded save file backups to your computer");
+    GameUI.notify.info(["Successfully downloaded save file backups to your computer","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-download"></i></div>`]);
   },
 
   importBackupsFromFile(importText) {
@@ -403,7 +407,8 @@ export const GameStorage = {
       };
     }
     this.resetBackupTimer();
-    GameUI.notify.info("Successfully imported save file backups from file");
+    GameUI.notify.info(["Successfully imported save file backups from file","",
+        `<div class="o-notification--icon"><i class="fa-solid fa-upload"></i></div>`]);
   },
 
   // There are a couple props which may need to export with different values, so we handle that here
@@ -475,6 +480,9 @@ export const GameStorage = {
 
     ui.view.news = player.options.news.enabled;
     ui.view.newUI = player.options.newUI;
+    ui.view.newOptionsUI = player.options.newOptionsUI;
+    ui.view.sidebar.rightSide = player.options.sidebar.rightSide;
+    ui.view.sidebar.fullHeight = player.options.sidebar.fullHeight;
     ui.view.tutorialState = player.tutorialState;
     ui.view.tutorialActive = player.tutorialActive;
 

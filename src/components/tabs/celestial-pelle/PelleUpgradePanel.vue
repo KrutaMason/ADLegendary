@@ -90,14 +90,14 @@ export default {
         <div class="c-armageddon-resources-container">
           <div>
             You have 
-            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(remnants) }">{{ format(remnants, 2) }}</span>
+            <span class="c-remnants-amount" :class="diffFont(remnants)">{{ format(remnants, 2) }}</span>
              Remnants.
           </div>
           <div>
             You have 
-            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(realityShards) }">{{ format(realityShards, 2) }}</span>
+            <span class="c-remnants-amount" :class="diffFont(realityShards)">{{ format(realityShards, 2) }}</span>
              Reality Shards.
-            <span class="c-remnants-amount" :class="{'c-remnants-amount--fixed': isInaccessible(shardRate) }">+{{ format(shardRate, 2, 2) }}/s</span>
+            <span class="c-remnants-amount" :class="diffFont(shardRate)">+{{ format(shardRate, 2, 2) }}/s</span>
           </div>
         </div>
       </div>
@@ -151,10 +151,15 @@ export default {
 }
 
 .o-pelle-button {
-  font-family: Typewriter;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 1.6rem;
   color: var(--color-text);
-  background: var(--color-text-inverted);
-  border: 0.1rem solid var(--color-pelle--base);
+  text-shadow: var(--var-text-shadow, var(--text-shadow));
+  background: var(--lighting),linear-gradient(var(--color-background),var(--color-pelle--base) 200%);
+  --lighting: linear-gradient(#ffffff88 -100%,transparent 49%, #00000022 50%, transparent 75%);
+  border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 0 0 0 0.2rem var(--color-pelle--base) inset);
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 1rem 0 0.5rem;
   padding: 1rem;
@@ -163,7 +168,13 @@ export default {
 }
 
 .o-pelle-button:hover {
-  box-shadow: 0.1rem 0.1rem 0.3rem var(--color-pelle--base);
+  background: var(--lighting),linear-gradient(var(--color-background) -25%,var(--color-pelle--base) 150%);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 
+  0 0 0 0.2rem var(--color-pelle--base) inset, 0.1rem 0.1rem 0.3rem var(--color-pelle--base));
+}
+
+.s-base--dark .o-pelle-button{
+  --lighting:linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent)
 }
 
 .c-pelle-upgrade-container {
@@ -179,7 +190,8 @@ export default {
   align-items: flex-start;
   align-self: center;
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--base);
-  box-shadow: 0 0 1rem black inset, 0 0 0 0.2rem var(--color-pelle--base) inset,inset 0 0 1rem 0.1rem rgba(237, 20, 61, 45%), 0 0 1rem 0.1rem rgba(237, 20, 61, 45%);
+  box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, 
+  0 0 0 0.2rem var(--color-pelle--base) inset, inset 0 0 1rem 0.1rem rgba(237, 20, 61, 45%), 0 0 1rem 0.1rem rgba(237, 20, 61, 45%));
   border-radius: var(--var-border-radius, 0.5rem);
   padding: 1rem;
   background: #ffffff40;
@@ -198,14 +210,8 @@ export default {
 
 .c-remnants-amount {
   font-size: 2.2rem;
-  font-family: Cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   color: var(--color-pelle--base);
 }
-
-.c-remnants-amount--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
-}
-
 </style>

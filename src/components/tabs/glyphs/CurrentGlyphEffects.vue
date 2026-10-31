@@ -138,7 +138,6 @@ export default {
 
 <style scoped>
 .Current-glyph_effect-start{
-  border-bottom: 1px solid ;
   border-image: linear-gradient(90deg,#80808040,#808080a0,#80808040) 1;
   background: linear-gradient(90deg,transparent,color-mix(in srgb,var(--color-reality) 25%,transparent),transparent)
 }

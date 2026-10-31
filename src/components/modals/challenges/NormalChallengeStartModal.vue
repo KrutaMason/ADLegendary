@@ -27,7 +27,7 @@ export default {
         You do not start with any Dimension Boosts or Galaxies, regardless of upgrades.`;
     },
     entranceLabel() {
-      return `You are about to enter ${player.options.naming.challenges?this.challenge.config.label:"Challenge "+this.id}`;
+      return `You are about to enter ${NormalChallenge(this.id).displayName()}`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward;

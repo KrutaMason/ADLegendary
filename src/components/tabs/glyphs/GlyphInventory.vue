@@ -90,9 +90,10 @@ export default {
 
 <template>
   <div class="l-glyph-inventory">
-    <span ach-tooltip="Click and drag or double-click to equip Glyphs.">
-        <i class="fas fa-question-circle" />
-      </span>
+    <div class="l-glyph-inventory__header">
+      <h1>Inventory</h1>
+      Click and drag or double-click to equip Glyphs.
+    </div>
     <div
       v-for="row in rowCount"
       :key="protectedRows + row"
@@ -125,5 +126,7 @@ export default {
 </template>
 
 <style scoped>
-
+.l-glyph-inventory__header > h1 {
+  font-family: var(--var-secondary-font);
+}
 </style>

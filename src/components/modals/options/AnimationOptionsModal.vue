@@ -124,41 +124,49 @@ export default {
       <ModalOptionsToggleButton
         v-model="wobbly"
         text="Wobbles:"
+        v-tooltip="'Has a wobbly effect when hovering over buttons'"
       />
       <ModalOptionsToggleButton
         v-if="infinityUnlocked"
         v-model="bigCrunch"
         text="Big Crunch:"
+        v-tooltip="'Shrinks the screen when performing a Big Crunch'"
       />
       <ModalOptionsToggleButton
         v-if="eternityUnlocked"
         v-model="eternity"
         text="Eternity:"
+        v-tooltip="'Makes the screen fade out when performing an Eternity'"
       />
       <ModalOptionsToggleButton
         v-if="dilationUnlocked"
         v-model="dilation"
         text="Dilation:"
+        v-tooltip="'Streches or compresses the screen when Dilating Time or exiting Dilation'"
       />
       <ModalOptionsToggleButton
         v-if="tachyonsUnlocked"
         v-model="tachyonParticles"
         text="Tachyons:"
+        v-tooltip="'Display Particles in the Time Dilation subtab; Disabling may improve performance'"
       />
       <ModalOptionsToggleButton
         v-if="realityUnlocked"
         v-model="reality"
         text="Reality:"
+        v-tooltip="'Travels through the stars when making a new Reality'"
       />
       <ModalOptionsToggleButton
         v-if="celestialsUnlocked"
         v-model="celreality"
         text="Celestial Reality:"
+        v-tooltip="'Show animation in the background while in a Celestial Reality'"
       />
       <ModalOptionsToggleButton
         v-if="isS11Unlocked && isBlackHoleUnlocked"
         v-model="blobHole"
         text="Always use Blobhole:"
+        v-tooltip="'Have the particles around the Black Hole be blobs on other themes'"
       />
       <div v-if="!isS11Active">
         <ModalOptionsToggleButton
@@ -166,6 +174,7 @@ export default {
           v-model="background"
           onclick="Themes.find(Theme.currentName()).set();"
           text="Background:"
+          v-tooltip="'Some themes have animations in the background; Disabling may improve performance'"
         />
       </div>
       <div v-else>
@@ -174,11 +183,13 @@ export default {
           v-model="background"
           onclick="Themes.find(Theme.currentName()).set();"
           text="Blobsnow:"
+          v-tooltip="'Blobs fall all over the screen; Disabling may improve performance'"
         />
       </div>
       <div
         v-if="isS11Active"
         class="c-blobflake-slider o-primary-btn o-primary-btn--modal-option o-primary-btn--slider"
+        v-tooltip="'Display how many blobs are falling at a time; Reducing the amount may improve performance'"
       >
         <b>{{ quantifyInt("Blobflake", parseInt(blobSnowflakes)) }}</b>
         <SliderComponent

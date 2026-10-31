@@ -21,7 +21,7 @@ export const ENSLAVED_UNLOCKS = {
     description() {
       const hasLevelRequirement = player.records.bestReality.glyphLevel >= 5000;
       const hasRarityRequirement = strengthToRarity(player.records.bestReality.glyphStrength) >= 100;
-      return `Unlock The Nameless Ones' Reality (requires ${hasLevelRequirement ? "[✓]" : "[✗]"} a level
+      return `Unlock ${Enslaved.displayRealityName()} (requires ${hasLevelRequirement ? "[✓]" : "[✗]"} a level
       ${formatInt(5000)} Glyph and ${hasRarityRequirement ? "[✓]" : "[✗]"} a ${formatRarity(100)} rarity Glyph)`;
     }
   }
@@ -30,10 +30,14 @@ export const ENSLAVED_UNLOCKS = {
 export const Enslaved = {
   displayName: "The Nameless Ones",
   displayTitle: "The Nameless Ones",
-  fullName: "The Nameless Ones, Celestial of Time",
-  celestialOf: "Time",
+  epithet: "Time",
   possessiveName: "The Nameless Ones'",
-  RealityName: "Temporal Stasis",
+  realityName: "Unwatched Panopticon",
+  displayRealityName(needsName = true, the = "the") {
+    let celName = (player.options.naming.celestial && !needsName) ? the : this.possessiveName
+    let realName = player.options.naming.celestial ? this.realityName : "Reality"
+    return `${celName} ${realName}`
+  },
   boostReality: false,
   BROKEN_CHALLENGES: [2, 3, 4, 5, 7, 8, 10, 11, 12],
   nextTickDiff: 50,
@@ -166,7 +170,8 @@ export const Enslaved = {
     AutomatorData.recalculateErrors();
     if (AutomatorBackend.state.mode === AUTOMATOR_MODE.RUN && AutomatorData.currentErrors().length) {
       AutomatorBackend.stop();
-      GameUI.notify.error(["The Automator","This Reality forbids Black Holes! (Automator stopped)"]);
+      GameUI.notify.error(["The Automator","This Reality forbids Black Holes! (Automator stopped)",
+        `<div class="o-notification--icon"><i class="fas fa-ban"></i></div>`]);
     }
 
     this.quotes.startRun.show();
@@ -251,7 +256,7 @@ class EnslavedProgressState extends BitUpgradeState {
   }
 
   get hintInfo() {
-    return this.config.hint;
+    return typeof this.config.hint === "function" ? this.config.hint() : this.config.hint;
   }
 
   get completedInfo() {
@@ -262,7 +267,8 @@ class EnslavedProgressState extends BitUpgradeState {
     // Bump the last hint time appropriately if the player found the hint
     if (this.hasHint && !this.hasProgress) {
       player.celestials.enslaved.zeroHintTime -= Math.log(2) / Math.log(3) * TimeSpan.fromDays(1).totalMilliseconds;
-      GameUI.notify.success("You found a crack in The Nameless Ones' Reality!", 10000);
+      GameUI.notify.success([`You found a crack in ${Enslaved.displayRealityName(false)}!`,"",
+        `<div class="o-notification--icon"><i class="fa-solid fa-house-crack"></i></div>`], 10000);
     }
     player.celestials.enslaved.progressBits |= (1 << this.id);
   }

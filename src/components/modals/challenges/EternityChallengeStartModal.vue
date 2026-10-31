@@ -28,7 +28,7 @@ export default {
         ${formatInt(5)} times, with increasing goals and bonuses.`;
     },
     entranceLabel() {
-      return `You are about to enter ${player.options.naming.challenges?this.challenge.config.label:"Eternity Challenge "+this.id}`;
+      return `You are about to enter ${this.challenge.displayName()}`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward.description;

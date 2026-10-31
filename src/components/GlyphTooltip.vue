@@ -113,9 +113,9 @@ export default {
       const cursedColor = GlyphAppearanceHandler.isLightBG ? "white" : "black";
       return {
         //color: this.type === "cursed" ? cursedColor : color,
-        "border-bottom": !this.specialGlyph ? "solid 1px" : "none",
+        "border-bottom": this.type !== "companion" ? "solid 1px" : "none",
         "text-shadow" : `var(--var-text-shadow, 0rem 0rem 0.5rem ${type})`,
-        "border-image": !this.specialGlyph ? `linear-gradient(90deg,transparent,${"cursed" === this.type ? cursedColor : "reality" === this.type ? "currentcolor" : color},transparent) 1` : undefined,
+        "border-image": this.type !== "companion" ? `linear-gradient(90deg,transparent,${"cursed" === this.type ? cursedColor : "reality" === this.type ? "currentcolor" : color},transparent) 1` : undefined,
         animation: this.type === "reality" ? "a-reality-glyph-name-cycle 10s infinite" : undefined
       };
     },
@@ -148,7 +148,7 @@ export default {
     rarityDescription() {
       switch (this.type) {
         case "helios":
-        break;
+          return `Solar ${this.rarityInfo.name}`;
         case "companion":
         break;
         case "cursed":
@@ -175,7 +175,7 @@ export default {
         ;background:linear-gradient(90deg,transparent,${color}88,transparent);">${formatRarity(strengthToRarity(strength))}</div>`;
     },
     levelText() {
-      if (this.type === "companion" || this.type === "helios") return "";
+      if (this.type === "companion") return "";
       // eslint-disable-next-line no-nested-ternary
       const arrow = this.isLevelCapped
         ? "<i class='fas fa-sort-down'></i>"
@@ -203,27 +203,25 @@ export default {
       const isReality = this.type === "reality";
       return {
         "pointer-events": this.onTouchDevice ? undefined : "none",
-        "border-image-source":isReality ?"var(--leg-border-reality-render)":"var(--leg-border-render)",
+        "border-image-source": isReality ? "var(--leg-border-reality-render)" : "var(--leg-border-render)",
+        "--background": this.baseColor,
+        "--pattern": `url(../images/glyphs-alchemy/background-glyph_${bg?`transparentlight`:`transparentdark`}.png)`,
+        "--type-color": this.type !== "reality" ? borderColor : "var(--color-reality)",
         //"border-image":`linear-gradient(${!isReality?borderColor:"var(--color-reality)"},white) 1`,
         //"box-shadow":`0 0 0 0.2rem ${this.baseColor} inset,0 0 0 0.4rem ${borderColor}44 inset`,
         color: this.textColor,
-        "--cover-border":"#808080a0",
-        "--cover":bg?"#ffffff80":"#00000080",
-        "--effect-color":bg?"#1c751c":"#76EE76",
-        "background-position":"center",
-        "background-image": 
-        `url(images/glyphs-alchemy/background-glyph_${bg?`transparentlight`:`transparentdark`}.png),
-        linear-gradient(${bg?"#ffffff":"#000000"} 25%,
-        ${!isReality?borderColor:"var(--color-reality)"} 200%)`,
+        "--cover-border" : "#808080a0",
+        "--cover": bg ? "#ffffff80" : "#00000080",
+        "--effect-color": bg ? "#1c751c" : "#76EE76",
       };
     },
     glyphHeaderStyle() {
       const isCursed = this.type === "cursed";
       const isReality = this.type === "reality";
       const bg = this.baseColor === "white";
-      let color = !player.celestials.pelle.doomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
+      let color = !Pelle.isDoomed ? GlyphAppearanceHandler.getRarityColor(this.strength, this.type) : "#ed143d";
       if (isCursed) color = this.textColor;
-      if (this.type === "companion" || this.type === "helios") color = GlyphAppearanceHandler.getBorderColor(this.type);
+      if (this.type === "companion") color = GlyphAppearanceHandler.getBorderColor(this.type);
       return {
         "border": `${color}aa 0.4rem double`,
         //"box-shadow": `0 0 0.5rem 0.1rem ${color}, 0 0 0.8rem ${color} inset`,
@@ -285,7 +283,7 @@ export default {
     },
     sacrificeText() {
       const bg = this.baseColor === "white"?"#00000044":"#ffffff44";
-      if (this.type === "companion" || this.type === "cursed" || this.type === "helios") return `<span style="font-style:italic;">No Sacrifice bonus</span>`;
+      if (this.type === "companion" || this.type === "cursed") return `<span style="font-style:italic;">No Sacrifice bonus</span>`;
       const powerText = `${format(this.sacrificeReward, 2, 2)}`;
       const isCurrentAction = this.currentAction === "sacrifice";
       return `<div style="font-style: ${isCurrentAction ? "italic" : ""}">
@@ -328,13 +326,13 @@ export default {
     >
     <div class="c-glyph-tooltip__g-container">
       <GlyphComponent
-    :disableTooltip="true"
-    :glyph="glyph"
-    :show-sacrifice="false"
-    :circular="true"
-    :hasCrate="1"
-    :needsZindex="false"
-    />
+        :disableTooltip="true"
+        :glyph="glyph"
+        :show-sacrifice="false"
+        :circular="true"
+        :hasCrate="1"
+        :needsZindex="false"
+      />
     </div>
       <span
         class="c-glyph-tooltip__description"
@@ -355,7 +353,7 @@ export default {
     </div>
     <div class="l-glyph-tooltip__effects">
       <div v-if='!specialGlyph' class="c-glyph-tooltip__effect c-glyph-tooltip__effect-start">
-         <span :class="{'c-glyph-tooltip__effect-start--fixed': isInaccessible(this.sortedEffects.length) }">{{formatInt(this.sortedEffects.length)}}</span>
+         <span :class="diffFont(this.sortedEffects.length)">{{formatInt(this.sortedEffects.length)}}</span>
          {{pluralize("Diacritic", this.sortedEffects.length)}}
       </div>
       <GlyphTooltipEffect
@@ -386,13 +384,10 @@ export default {
   border-radius: var(--var-border-radius, .8rem) var(--var-border-radius, .8rem) 0 0;
   padding: 0 0.5rem;
   font-weight: bold;
-  font-family:Cambria;
+  font-family:var(--var-secondary-font);
   font-size:1.3rem
 }
-.c-glyph-tooltip__effect-start--fixed{
-  font-weight: normal;
-  font-family: Typewriter;
-}
+
 .c-glyph-tooltip__sacrifice {
   width: 100%;
   padding: .3rem 0;

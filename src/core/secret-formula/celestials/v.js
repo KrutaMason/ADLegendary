@@ -110,8 +110,7 @@ export const v = {
     {
       id: 2,
       name: "Se7en deadly matters",
-      description: value => `Get ${format(Decimal.pow10(value))} Infinity Points in 
-      ${player.options.naming.challenges?EternityChallenge(7).name:"Eternity Challenge 7"}.`,
+      description: value => `Get ${format(Decimal.pow10(value))} Infinity Points in ${EternityChallenge(7).displayName()}.`,
       values: [6e5, 7.2e5, 8.4e5, 9.6e5, 1.08e6, 1.2e6],
       condition: () => V.isRunning && EternityChallenge(7).isRunning,
       currentValue: () => Currency.infinityPoints.value.log10(),
@@ -124,8 +123,7 @@ export const v = {
     {
       id: 3,
       name: "Young Boy",
-      description: value => `Get ${format(Decimal.pow10(value))} Antimatter in 
-      ${player.options.naming.challenges?EternityChallenge(12).name:"Eternity Challenge 12"} 
+      description: value => `Get ${format(Decimal.pow10(value))} Antimatter in ${EternityChallenge(12).displayName()} 
       without unlocking Time Dilation.`,
       values: [400e6, 450e6, 500e6, 600e6, 700e6, 800e6],
       condition: () => V.isRunning && EternityChallenge(12).isRunning && !PlayerProgress.dilationUnlocked(),
@@ -152,8 +150,7 @@ export const v = {
     {
       id: 5,
       name: "Matterception",
-      description: value => `Get ${formatInt(value)} Dimension Boosts while Dilated and inside 
-      ${player.options.naming.challenges?EternityChallenge(5).name:"Eternity Challenge 5"}.`,
+      description: value => `Get ${formatInt(value)} Dimension Boosts while Dilated and inside ${EternityChallenge(5).displayName()}.`,
       values: [51, 52, 53, 54, 55, 56],
       condition: () => V.isRunning && player.dilation.active && EternityChallenge(5).isRunning,
       currentValue: () => DimBoost.purchasedBoosts,
@@ -182,7 +179,7 @@ export const v = {
       id: 7,
       name: "Post-destination",
       description: value => `Get ${formatInt(400000)} Time Theorems with a /${format(Decimal.pow10(value), 2, 2)}
-        Black Hole or slower, without discharging or entering ${player.options.naming.challenges?EternityChallenge(12).name:"EC12"}.`,
+        Black Hole or slower, without discharging or entering ${EternityChallenge(12).displayName(...[,], true)}.`,
       values: [100, 150, 200, 250, 300],
       condition: () => V.isRunning,
       currentValue: () => (

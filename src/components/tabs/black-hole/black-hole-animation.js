@@ -130,7 +130,7 @@ export const BlackHoleAnimation = (function() {
     update(delta, dilationFactor) {
       const baseSpeed = 1.5;
       const speedFactor = Math.min(Math.pow(Math.max(dilationFactor, 2) / 2, 3), 5);
-      const particleSpeed = baseSpeed * speedFactor * Math.min(delta, 16) / 1000;
+      const particleSpeed = baseSpeed * speedFactor * Math.min(delta, 16) / 1000 * BlackHoles.unpauseAccelerationFactor;
 
       if (!this.isInside) {
         this.preLastAngle = this.lastAngle;

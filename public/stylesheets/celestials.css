@@ -29,10 +29,10 @@
     border: var(--var-border-width, 0.1rem) solid var(--color-teresa--base);
     border-radius: var(--var-border-radius, 0.5rem);
     box-shadow: var(--var-box-shadow, 0 0 2rem var(--color-background) inset, 0 0 0 0.3rem var(--color-teresa--base) inset);
-    background: linear-gradient(#00000040,#5151ec60),var(--leg-base);
+    background: linear-gradient(transparent, var(--color-teresa--base) 300%),var(--leg-base);
 }
 .s-base--dark .c-teresa-container{
-    background: url(../images/upgrades/teresa.png),linear-gradient(#00000060,#5151ec60), var(--leg-base);
+    background: url(../images/patterns/cel_1.png), linear-gradient(#00000060, var(--color-teresa--base) 300%), var(--leg-base);
     background-position: center;
 }
 .c-rm-store {
@@ -78,7 +78,7 @@
     color: white;
     margin-top: 1rem;
     padding:0.5rem;
-    background: url(../images/upgrades/teresa.png), linear-gradient(#3c3cb1,#131342);
+    background: url(../images/patterns/cel_1.png), linear-gradient(#3c3cb1,#131342);
     background-position: center;
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
     border: var(--var-border-width, 0.1rem) solid #8d8dff;
@@ -100,7 +100,7 @@
     font-size: 1rem;
     color: #8d8dff;
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
-    background: url(../images/upgrades/teresa.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: url(../images/patterns/cel_1.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     --bg-dark: #020220;
     --bg-bright: #0d0d3d;
     --border: var(--color-teresa--base);
@@ -177,7 +177,7 @@
 .c-teresa-unlock {
     width: 24.5rem;
     color: #e9e9ff;
-    background: url(../images/upgrades/teresa.png), linear-gradient(#3c3cb1,#131342);
+    background: url(../images/patterns/cel_1.png), linear-gradient(#3c3cb1,#131342);
     background-position: center;
     text-shadow: var(--var-text-shadow,-0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
     border: var(--var-border-width, 0.1rem) solid #8d8dff;
@@ -335,7 +335,7 @@
     margin-bottom: 1rem;
     padding: 1rem;
     transition-duration: 0.15s;
-    --bg: url(../images/upgrades/teresa.png);
+    --bg: url(../images/patterns/cel_1.png);
     --border:gray;
     background-color: var(--color-disabled);
     width: 20rem;
@@ -371,7 +371,7 @@
 .c-teresa-pour {
     width: 100%;
     font-size: 2rem;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     height: 4rem;
     margin:0 0 3rem;
@@ -410,16 +410,16 @@
     flex-direction: column;
 }
 
-.l-charger-button{
+.l-charger-button {
     font-family: Typewriter;
     width: 10rem;
     height: 5rem;
     margin: 0.2rem 0.3rem;
     border-radius: var(--var-border-radius, 0.4rem);
-    background: linear-gradient(#ffffff88 -100%,transparent 49%, #00000044 50%, transparent),url(../images/upgrades/button-dark.png),linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: var(--leg-shading), url(../images/patterns/ts_def.png), linear-gradient(var(--bg-bright), var(--bg-dark));
     background-position: center;
     font-size: 3rem;
-    color:white;
+    color: white;
     --bg-bright: #503816;
     --bg-dark: #8b6227;
     --border: #ffae3f;
@@ -476,7 +476,7 @@
     --bg-dark: var(--leg-bg-dark);
     --bg-bright: var(--leg-bg-bright);
     background-position: center;
-    --bg: url(../images/upgrades/effarig.png);
+    --bg: url(../images/patterns/cel_2.png);
     --border:gray;
     border-radius: var(--var-border-radius, 0.5rem);
     margin: .5rem;
@@ -708,17 +708,18 @@
     padding: 0.5rem;
     border-image: url(../images/frames/base-retro.png) 12 round;
     box-shadow: var(--var-box-shadow, 0 0 1rem black inset);
-    background: linear-gradient(#00000040,#d1373760), var(--leg-base);
+    background: linear-gradient(transparent, var(--color-effarig--base) 300%), var(--leg-base);
 }
 
-.l-effarig-relics,.l-effarig-shop{
+.l-effarig-relics,
+.l-effarig-shop {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     color: var(--color-text);
     margin: 0.5rem;
     padding: 0.6rem;
-    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);;
+    border: 0.4rem double color-mix(in srgb, var(--base) 75%, transparent);
     border-radius: var(--var-border-radius, 0.5rem);
     background: linear-gradient(transparent,var(--base) 500%);
     background-origin: border-box;
@@ -729,7 +730,7 @@
     display: inline-block;
     width: 90%;
     font-size: 2rem;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     line-height: 1.1;
     padding: 0.2rem 0.5rem;
@@ -770,14 +771,14 @@
     padding: 1rem;
     color: var(--color-text);
     box-shadow: var(--var-box-shadow, 0 0 2rem var(--color-background) inset, 0 0 0 3px var(--color-effarig--base) inset);
-    background: linear-gradient(#00000040,#d1373760), var(--leg-base);
+    background: linear-gradient(transparent, var(--color-effarig--base) 300%), var(--leg-base);
     background-position: center;
 }
 .s-base--dark .l-effarig-relics-and-shop,
 /*.s-base--dark .l-effarig-relics,
 .s-base--dark .l-effarig-shop,*/
 .s-base--dark .l-effarig-run{
-    background: url(../images/upgrades/effarig.png),linear-gradient(#00000060,#d1373760), var(--leg-base);
+    background: url(../images/patterns/cel_2.png), linear-gradient(#00000060, var(--color-effarig--base) 300%), var(--leg-base);
     background-position: center;
 }
 .c-effarig-run-description {
@@ -888,7 +889,7 @@
     text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-enslaved--base),-0.1rem -0.1rem 0.3rem var(--color-enslaved--base));
     font-family: Typewriter;
     background:var(--bg),linear-gradient(var(--bg-bright),var(--bg-dark));
-    --bg:url(../images/upgrades/button-light.png);
+    --bg: url(../images/patterns/def_light.png);
     background-position: center;
     --bg-bright: #e5c2a4;
     --bg-dark: #cf9f77;
@@ -917,7 +918,7 @@
     --border:sandybrown;
     color:white;
     box-shadow: var(--var-box-shadow, 0 0 1rem black inset,0 0 0 0.2rem var(--border) inset);
-    --bg:url(../images/upgrades/nameless.png);
+    --bg: url(../images/patterns/cel_3.png);
 }
 
 .l-enslaved-shop-container {
@@ -940,7 +941,7 @@
     color: #bbbbbb;
     border-radius: var(--var-border-radius, 0.5rem);
     background:var(--bg),linear-gradient(var(--bg-bright),var(--bg-dark));
-    --bg:url(../images/upgrades/nameless_gray.png);
+    --bg: url(../images/patterns/cel_3g.png);
     background-position: center;
     --bg-dark: var(--leg-bg-dark);
     --bg-bright: var(--leg-bg-bright);
@@ -1000,20 +1001,20 @@
     border: var(--var-border-width, 0.1rem) solid #cd945c;
     border-radius: var(--var-border-radius, 0.5rem);
     box-shadow: var(--var-box-shadow, 0 0 2rem var(--color-background) inset, 0 0 0 0.3rem #cd945c inset);
-    background: linear-gradient(#00000040,#d1893760), var(--leg-base);
+    background: linear-gradient(transparent, var(--color-ra-pet--enslaved) 200%), var(--leg-base);
     background-position: center;
 }
 .s-base--dark .c-enslaved-run-button,
 .s-base--dark .l-enslaved-shop-container,
 .s-base--dark .l-enslaved-top-container{
-    background: url(../images/upgrades/nameless.png),linear-gradient(#00000060,#d1893760), var(--leg-base);
+    background: url(../images/patterns/cel_3.png),linear-gradient(#00000060, var(--color-ra-pet--enslaved) 300%), var(--leg-base);
     background-position: center;
 }
 .c-enslaved-run-button__title {
     width: 100%;
     font-size: 1.6rem;
     font-weight: bold;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     border-top: solid 1px;
     border-bottom: solid 1px;
     border-image: linear-gradient(90deg, transparent, var(--color-enslaved--base), transparent) 1;
@@ -1177,26 +1178,57 @@
     --bg-dark:whitesmoke;
     padding: 1.25rem;
     background-position: center;
-    /*box-shadow: 0 0 2rem .5rem black inset;*/
 }
+
+.t-s16 .c-v-unlock {
+    color: var(--color-good);
+    background: url(../images/celestials/v-hexagon_s16.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+}
+
 .c-v-unlock-hard {
     background: url(../images/celestials/v-hexagon-hard.png),url(../images/celestials/v-background.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     background-position: center;
 }
-.c-v-empty {
-    background: url(../images/celestials/v-hexagon-empty.png),url(../images/celestials/hexagon-background-empty.png);
+
+.t-s16 .c-v-unlock-hard {
+    color: var(--color-bad);
+    background: url(../images/celestials/v-hexagon-hard_s16.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background-position: center;
 }
+
+.c-v-empty {
+    background: url(../images/celestials/v-hexagon-empty.png);
+    opacity: 0.5;
+}
+
+.t-s16 .c-v-empty {
+    background: url(../images/celestials/v-hexagon-empty_s16.png);
+    opacity: 0.5;
+}
+
+.s-base--dark .c-v-empty {
+    opacity: 1;
+}
+
 .o-v-unlock-name {
     font-size: 2rem;
     font-weight: bold;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     border-bottom: 1px solid;
     border-top: 1px solid;
     text-shadow: var(--var-text-shadow, 1px 2px 3px black, 0 0 3px black);
     border-image: linear-gradient(90deg, transparent, white, transparent) 1;
     background: linear-gradient(90deg, transparent, #00000088, transparent);
-    width:100%;
+    width: 100%;
     line-height: 1.2;
+}
+
+.t-s16 .o-v-unlock-name {
+    background: black;
+    color: var(--color-accent);
+    text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 1rem var(--color-accent));
+    border: 1px solid var(--color-accent);
+    border-radius: 1rem;
 }
 
 .o-v-unlock-desc {
@@ -1215,13 +1247,13 @@
     padding: 0.5rem;
     border-radius: var(--var-border-radius, 0.5rem);
     border: var(--var-border-width, 0.1rem) solid var(--color-v--base);
-    box-shadow: var(--var-box-shadow, 0 0 2rem black inset, 0 0 0 0.2rem var(--color-v--base) inset);
-    background: linear-gradient(#00000040,#d1ba3760), var(--leg-base);
+    box-shadow: var(--var-box-shadow, 0 0 2rem var(--color-background) inset, 0 0 0 0.2rem var(--color-v--base) inset);
+    background: linear-gradient(transparent, var(--color-v--base) 300%), var(--leg-base);
     background-position: center;
 }
 .s-base--dark .l-v-milestones-grid,
-.s-base--dark .c-v-unlock-container{
-    background: url(../images/upgrades/v.png),linear-gradient(#00000060,#d1ba3760), var(--leg-base);
+.s-base--dark .c-v-unlock-container {
+    background: url(../images/patterns/cel_4.png), linear-gradient(#00000060, var(--color-v--base) 300%), var(--leg-base);
     background-position: center;
 }
 .l-v-milestones-grid__row {
@@ -1230,7 +1262,7 @@
     justify-content: center;
     margin: 0.5rem;
 }
-.c-v-unlock-container{
+.c-v-unlock-container {
     padding: 1rem;
     border-radius: var(--var-border-radius, 0.5rem);
     border: var(--var-border-width, 0.1rem) solid var(--color-v--base);
@@ -1276,7 +1308,7 @@
     font-size: 1.1rem;
     color: gray;
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem black,0.1rem 0.1rem 0.3rem black);
-    background: url(../images/time-studies/ts-triad.png), linear-gradient(var(--bg-bright),var(--bg-dark));
+    background: url(../images/patterns/ts_triad.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     --bg-bright: #1c1b17;
     --bg-dark: #3e3b32;
     background-position: center;
@@ -1335,17 +1367,33 @@
     text-shadow: 0.1rem 0.1rem 0.2rem black,-0.1rem -0.1rem 0.2rem black,0.1rem -0.1rem 0.2rem black,-0.1rem 0.1rem 0.2rem black, 0 0 0.3rem black;
     background: var(--bg-img),url(../images/celestials/v-background.png), linear-gradient(var(--bg-bright),var(--bg-dark));
     --bg-img:url(../images/celestials/v-hexagon-button.png);
-    --bg-dark: rgb(209, 167, 51);
-    --bg-bright: rgb(70, 55, 17);
+    --bg-dark: #d1a733;
+    --bg-bright: #463711;
     padding: 3rem;
     transition-duration: 0.2s;
     background-position: center;
 }
 
-.c-v-run-button:hover, .c-v-run-button--running {
-    --bg-img:url(../images/celestials/v-hexagon-active.png);
+.c-v-run-button:hover, 
+.c-v-run-button--running {
+    --bg-img: url(../images/celestials/v-hexagon-active.png);
     --bg-dark: #b14242;
     --bg-bright: #5f2323;
+}
+
+.t-s16 .c-v-run-button {
+    color: var(--color-good);
+    background: url(../images/celestials/v-hexagon-button_s16.png);
+    background-position: center;
+}
+
+.t-s16 .c-v-run-button:hover, 
+.t-s16 .c-v-run-button--running {
+    color: var(--color-bad);
+    background: url(../images/celestials/v-hexagon-active_s16.png);
+    background-position: center;
+    --bg-dark: #000000;
+    --bg-bright: #000000;
 }
 
 .c-v-run-button__line {
@@ -1359,9 +1407,20 @@
     animation: v-bar 30s infinite linear;
 }
 
-.c-v-run-button:hover .c-v-run-button__line, .c-v-run-button--running .c-v-run-button__line {
+.c-v-run-button:hover .c-v-run-button__line, 
+.c-v-run-button--running .c-v-run-button__line {
     background-image: url(../images/celestials/v-bar-container-active.png),url(../images/celestials/v-bar-active.png);
 }
+
+.t-s16 .c-v-run-button__line {
+    background-image: url(../images/celestials/v-bar-container_s16.png),url(../images/celestials/v-bar_s16.png);
+}
+
+.t-s16 .c-v-run-button:hover .c-v-run-button__line, 
+.t-s16 .c-v-run-button--running .c-v-run-button__line {
+    background-image: url(../images/celestials/v-bar-container-active_s16.png),url(../images/celestials/v-bar-active_s16.png);
+}
+
 @keyframes v-bar {
     0%{background-position-x: 0,0;}
     100%{background-position-x: 0,256px;}
@@ -1479,7 +1538,7 @@
 .c-ra-pet-header {
     width: 35rem;
     height: 27rem;
-    background:url(../images/upgrades/ra.png),linear-gradient(var(--deg),#282828, var(--border) 300%);
+    background: url(../images/patterns/cel_5.png),linear-gradient(var(--deg),#282828, var(--border) 300%);
     background-position: center;
     border: 1px solid #555555;
     box-shadow: var(--var-box-shadow, 0 0 1.5rem black inset, 0 0 0 0.3rem inset #777777, 0 0 3rem 0.5rem inset #282828);
@@ -1506,7 +1565,7 @@
     --deg:-45deg;
 }
 .c-ra-pet-header--locked {
-    background: url(../images/upgrades/ra.png),linear-gradient(#141414, #222222);
+    background: url(../images/patterns/cel_5.png),linear-gradient(#141414, #222222);
     background-position: center;
     border: 1px solid #333333;
     box-shadow: var(--var-box-shadow, 0 0 1.5rem black inset, 0 0 0 .3rem inset #333333);
@@ -1518,17 +1577,14 @@
 
 .c-ra-pet-title {
     font-size: 2.2rem;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     line-height: 1.2;
     border-bottom: 0.1rem solid;
     border-top: 0.1rem solid;
     border-image: linear-gradient(90deg, transparent, currentcolor, transparent) 1;
 }
-.c-ra-pet-title--fixed {
-    font-family: Typewriter;
-    font-weight: normal;
-}
+
 .l-ra-bar-container {
     display: flex;
     width: 100%;
@@ -1537,7 +1593,7 @@
     border: 1px solid #777777;
     border-left: none;
     border-radius: 0 var(--var-border-radius, 1rem) var(--var-border-radius, 1rem) 0;
-    box-shadow: 0.5rem 0 1rem black;
+    box-shadow: var(--var-box-shadow, 0.5rem 0 1rem black);
 }
 .s-base--metro .l-ra-bar-container {
     height: 5.4rem;
@@ -1697,7 +1753,7 @@
     align-items: center;
     font-family: Typewriter;
     color: #9575cd;
-    background: url(../images/upgrades/ra.png),linear-gradient(#141414, var(--color-ra--base) 500%);
+    background: url(../images/patterns/cel_5.png), linear-gradient(#141414, var(--color-ra--base) 500%);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid var(--color-ra--base)/*#4b3d63*/;
     box-shadow: var(--var-box-shadow, 0 0 2rem black inset, 0 0 0 3px var(--color-ra--base) inset);
@@ -1792,7 +1848,7 @@
     justify-content: center;
     align-items: center;
     color: white;
-    background: url(../images/upgrades/ra.png),linear-gradient(#282828, var(--color-ra--base) 500%);
+    background: url(../images/patterns/cel_5.png), linear-gradient(#282828, var(--color-ra--base) 500%);
     border: 1px solid var(--color-ra--base);
     background-position: center;
     border-radius: var(--var-border-radius, 0.5rem);
@@ -1815,7 +1871,7 @@
     font-size: 2.5rem;
     color:white;
     text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem black,-0.1rem -0.1rem 0.3rem black);
-    background: url(../images/upgrades/ra.png), linear-gradient(var(--bg-bright),var(--bg-dark) 200%);
+    background: url(../images/patterns/cel_5.png), linear-gradient(var(--bg-bright),var(--bg-dark) 200%);
     border: 0.1rem solid var(--border);
     box-shadow: var(--var-box-shadow, 0 0 1rem inset black, 0 0 0 0.2rem inset var(--border));
     border-radius: var(--var-border-radius, 1rem);
@@ -1927,7 +1983,7 @@
     border: 1px solid #777777;
     border-right: none;
     border-radius: var(--var-border-radius, 1rem) 0 0 var(--var-border-radius, 1rem);
-    box-shadow: -0.5rem 0 1rem black;
+    box-shadow: var(--var-box-shadow, -0.5rem 0 1rem black);
 }
 .s-base--metro .l-ra-pet-upgrade-container {
     height:5.4rem
@@ -1950,7 +2006,7 @@
     --bg-dark: #252525;
     --bg-bright: #444444;
     --border: #777777;
-    --bg: url(../images/upgrades/bought.png);
+    --bg: url(../images/patterns/upg_pur.png);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid black;
     box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
@@ -1983,7 +2039,7 @@
     font-size: 1.4rem;
     opacity: 0;
     color: #888888;
-    background: url(../images/upgrades/ra.png),linear-gradient(var(--bg-dark), var(--bg-bright) 200%);
+    background: url(../images/patterns/cel_5.png), linear-gradient(var(--bg-dark), var(--bg-bright) 200%);
     --bg-dark: #222222;
     border: 0.1rem solid var(--border);
     border-radius: var(--var-border-radius, 0.8rem);
@@ -2084,7 +2140,7 @@
 .c-ra-pet-upgrade__tooltip__name {
     font-size: 1.8rem;
     line-height: 1.2;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-weight: bold;
     border-bottom: solid 1px;
     padding: 0.3rem 0.5rem;
@@ -2111,7 +2167,7 @@
 
 .c-ra-upgrade-icon .c-ra-pet-upgrade__tooltip__name {
     font-size: 2rem;
-    font-family: cambria;
+    font-family: var(--var-secondary-font);
     font-style: normal;
     line-height: 1.2;
 }
@@ -2139,7 +2195,7 @@
     --bg-dark: #252525;
     --bg-bright: #444444;
     --border: #777777;
-    --bg: url(../images/upgrades/bought.png);
+    --bg: url(../images/patterns/upg_pur.png);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid black;
     box-shadow: var(--var-box-shadow, 0 0 1rem black inset,var(--border) inset 0px 0px 0px 2px);
@@ -2323,6 +2379,9 @@
 }
 .t-s7 .l-resource-component:before{
     background-position-y: -28rem;
+}
+.t-s16 .l-resource-component:before{
+    background-position-y: -35rem;
 }
 .c-alchemy-resource-info__title {
     width: 30rem;
@@ -2720,7 +2779,7 @@
     font-family: Typewriter;
     font-size: 1.1rem;
     color: var(--color-laitela--accent);
-    background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6l.png), linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     border: var(--var-border-width, 0.1rem) solid #888888;
     box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,#888888 inset 0 0 0  0.3rem);
     border-radius: var(--var-border-radius, 0.5rem);
@@ -2744,7 +2803,7 @@
     width: 51rem;
     height: 15rem;
     color: var(--color-laitela--accent);
-    background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6l.png), linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid #888888;
     box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,0 0 0 0.3rem #888888 inset);
@@ -2757,24 +2816,21 @@
 .s-base--dark .o-laitela-run-button,
 .s-base--dark .l-laitela-annihilation-container,
 .s-base--dark .c-laitela-singularity-container{
-    background: url(../images/upgrades/laitela.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
 }
 .o-dark-matter-dimension-amount {
     font-size: 1.8rem;
     line-height: 1.1;
     font-weight: bold;
-    font-family: Cambria;
+    font-family: var(--var-secondary-font);
     border-bottom: 0.1rem solid;
     border-top: 0.1rem solid;
     border-image: linear-gradient(90deg, transparent, gray, transparent) 1;
     background: linear-gradient(90deg, transparent, #88888844, transparent);
     margin: 0.2rem
 }
-.o-dark-matter-dimension-amount--fixed {
-    font-weight: normal;
-    font-family: Typewriter;
-}
+
 .c-dark-matter-dimension-buttons {
     display: flex;
     height: 6rem;
@@ -2798,7 +2854,7 @@
     margin-bottom: 1rem;
     transition-duration: 0.15s;
     background-position: center;
-    --bg:url(../images/upgrades/bought.png)
+    --bg: url(../images/patterns/upg_pur.png)
 }
 .s-base--dark .o-dark-matter-dimension-button {
     --bg-dark: var(--leg-bg-dark);
@@ -2832,25 +2888,25 @@
     --bg-bright: var(--color-laitela--accent);
     box-shadow: 0 0 0.5rem 0.3rem inset, 0 0 0.5rem 0;
     animation: a-unstable 20s linear infinite;
-    --bg:url(../images/upgrades/button-continuum.png);
+    --bg: url(../images/patterns/def_cont.png);
 }
 
 @keyframes a-laitela-flash {
     0% {
         color: var(--color-laitela--base);
-        background-image: url(../images/upgrades/button-continuum.png);
+        background-image: url(../images/patterns/def_cont.png);
         background: var(--color-laitela--accent);
     }
 
     50% {
         color: var(--color-laitela--accent);
-        background-image: url(../images/upgrades/button-continuum.png);
+        background-image: url(../images/patterns/def_cont.png);
         background: var(--color-laitela--base);
     }
 
     100% {
         color: var(--color-laitela--base);
-        background-image: url(../images/upgrades/button-continuum.png);
+        background-image: url(../images/patterns/def_cont.png);
         background: var(--color-laitela--accent);
     }
 }
@@ -2896,7 +2952,7 @@
     justify-content: center;
     color: var(--color-laitela--accent);
     text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-laitela--base), -0.1rem -0.1rem 0.3rem var(--color-laitela--base));
-    background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6l.png), linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: 0.1rem solid var(--border);
     box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset, var(--border) inset 0px 0px 0px 3px);
@@ -2920,7 +2976,7 @@
     --color-laitela--base:#612f2f
 }
 .s-base--dark .c-laitela-milestone {
-    background: url(../images/upgrades/laitela.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
 }
 .c-laitela-milestone > span {
@@ -2991,7 +3047,7 @@
     justify-content: space-around;
     align-items: center;
     color: var(--color-laitela--accent);
-    background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6l.png), linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     background-position: center;
     border: var(--var-border-width, 0.1rem) solid #888888;
     box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,#888888 inset 0px 0px 0px 3px);
@@ -3004,14 +3060,14 @@
     width: 40rem;
     height: 11rem;
     color: black;
-    --stars:url(../images/celestials/laitela-sing-bg.png),url(../images/celestials/laitela-sing-bg-2.png);
+    --stars: url(../images/celestials/laitela-sing-bg.png),url(../images/celestials/laitela-sing-bg-2.png);
     background: var(--stars),linear-gradient(var(--bg-bright),var(--bg-dark) var(--distance));
     animation:a-sing-button 60s infinite linear;
     --bg-bright: white;
     --bg-dark: #888888;
     --distance: 400%;
     text-shadow: var(--var-text-shadow, -0.1rem -0.1rem 0.3rem white, 0.1rem 0.1rem 0.3rem white);
-    box-shadow: 0 0 1rem inset , 0 0 1rem;
+    box-shadow: var(--var-box-shadow, 0 0 1rem inset, 0 0 1rem);
     border: var(--var-border-width, 0.1rem) solid var(--color-laitela--accent);
     border-radius: var(--var-border-radius, 0.5rem);
     padding: 2rem;
@@ -3035,7 +3091,7 @@
 
 .c-laitela-singularity--active:hover {
     --distance: 150%;
-    box-shadow: 0 0 1rem inset, 0 0 2rem var(--color-text);
+    box-shadow: var(--var-box-shadow, 0 0 1rem inset, 0 0 2rem var(--color-text));
 }
 
 .c-laitela-singularity__cap-control {
@@ -3054,7 +3110,7 @@
     margin-bottom: 1rem;
     padding: 1rem;
     transition-duration: 0.15s;
-    --bg: url(../images/upgrades/button-dark.png);
+    --bg: url(../images/patterns/ts_def.png);
     background-position: center;
 }
 .s-base--dark .c-laitela-singularity__cap-control {
@@ -3135,7 +3191,7 @@
 .c-singularity-milestone-modal-sort-button {
     width: 26.5rem;
     height: 6rem;
-    font-family: Cambria;
+    font-family: var(--var-secondary-font);
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--color-laitela--accent);
@@ -3150,7 +3206,7 @@
     --border: #888888;
     margin: 0 0.5rem;
     transition-duration: 0.15s;
-    --bg: url(../images/upgrades/button-light.png);
+    --bg: url(../images/patterns/def_light.png);
     cursor: pointer;
 }
 
@@ -3183,7 +3239,7 @@
     padding: 0.6rem;
     transition-duration: 0.15s;
     cursor: pointer;
-    --bg:url(../images/upgrades/bought.png);
+    --bg: url(../images/patterns/upg_pur.png);
     background-position: center;
 }
 .s-base--dark .o-laitela-singularity-modal-button {
@@ -3197,7 +3253,7 @@
 .s-base--dark .o-dark-matter-dimension-button--ascend {
     text-shadow: 0.1rem 0.1rem 0.3rem var(--color-laitela--base), -0.1rem -0.1rem 0.3rem var(--color-laitela--base);
     color:var(--color-laitela--accent);
-    background: url(../images/upgrades/button-continuum.png), linear-gradient(90deg, var(--bg-bright) -20%,var(--bg-dark) 40% 60%,var(--bg-bright) 120%);
+    background: url(../images/patterns/def_cont.png), linear-gradient(90deg, var(--bg-bright) -20%,var(--bg-dark) 40% 60%,var(--bg-bright) 120%);
     border-color: var(--color-laitela--accent);
     box-shadow: 0 0 0.5rem 0.1rem inset, 0 0 0.3rem 0;
     --bg-dark: var(--color-laitela--base);
@@ -3282,7 +3338,7 @@
     font-family: Typewriter, serif;
     font-size: 1.2rem;
     color: var(--color-laitela--accent);
-    background: url(../images/upgrades/laitela-light.png),linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
+    background: url(../images/patterns/cel_6l.png), linear-gradient(transparent,var(--color-laitela--base)),var(--leg-base);
     border: var(--var-border-width, 0.1rem) solid #888888;
     box-shadow: var(--var-box-shadow, 0 0 1rem var(--color-background) inset,#888888 inset 0 0 0 0.3rem);
     border-radius: var(--var-border-radius, 0.5rem);
@@ -3291,7 +3347,7 @@
 .l-laitela-annihilation-button {
     width: 35rem;
     height: 3rem;
-    font-family: Cambria;
+    font-family: var(--var-secondary-font);
     font-size: 1.5rem;
     color: #bbbbbb;
     background: var(--bg), linear-gradient(var(--bg-bright),var(--bg-dark));
@@ -3303,7 +3359,7 @@
     border-radius: var(--var-border-radius, 0.5rem);
     padding: 0.5rem;
     background-position: center;
-    --bg:url(../images/upgrades/bought.png);
+    --bg: url(../images/patterns/upg_pur.png);
     transition-duration: 0.15s;
 }
 .s-base--dark .l-laitela-annihilation-button {

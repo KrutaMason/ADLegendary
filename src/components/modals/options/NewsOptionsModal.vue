@@ -22,6 +22,9 @@ export default {
     };
   },
   computed: {
+    newsMessageCount() {
+      return GameDatabase.news.length;
+    },
     newsOnOffLabel() {
       return `News: ${this.enabled ? "On" : "Off"}`;
     },
@@ -103,10 +106,14 @@ export default {
     <PrimaryButton
       class="o-primary-btn o-primary-btn--option-wide"
       onclick="GameOptions.toggleNews()"
+      v-tooltip="`Display the news ticker at the top of the screen with ${formatInt(newsMessageCount)} different messages`"
     >
       {{ newsOnOffLabel }}
     </PrimaryButton>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
+    <div 
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="`Number of news messages that will pass until you're able to see a same message again`"
+    >
       <b>{{ formatInt(parseInt(repeatBuffer)) }} message repeat buffer</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
@@ -115,7 +122,10 @@ export default {
         @input="adjustSliderValueRepeatBuffer($event)"
       />
     </div>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
+    <div 
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'Probability of an AI message showing next; AI messages are pre-generated with GPT-2'"
+    >
       <b>{{ formatPercents(parseFloat(AIChance)) }} AI messages</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
@@ -124,7 +134,10 @@ export default {
         @input="adjustSliderValueAIChance($event)"
       />
     </div>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
+    <div 
+      class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider"
+      v-tooltip="'How fast the news messages move; Slower scrolling speeds give more time to read'"
+    >
       <b>{{ formatPercents(parseFloat(speed)) }} scroll speed</b>
       <SliderComponent
         class="o-primary-btn--slider__slider"
@@ -137,6 +150,7 @@ export default {
       v-model="includeAnimated"
       class="o-primary-btn o-primary-btn--option-wide"
       text="Animation Effects:"
+      v-tooltip="'Some news messages have fancy animations'"
     />
   </ModalWrapperOptions>
 </template>

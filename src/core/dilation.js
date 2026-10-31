@@ -15,7 +15,7 @@ export function animateAndDilate() {
 // eslint-disable-next-line no-empty-function
 export function animateAndUndilate(callback) {
   FullScreenAnimationHandler.display("a-undilate", 2);
-  if (player.options.audio.eternity) AudioManagement.playSound("reset_wait");
+  AudioManagement.playSound("reset_wait", player.options.audio.eternity);
   setTimeout(() => {
     eternity(false, false, { switchingDilation: true });
     if (callback) callback();
@@ -51,7 +51,7 @@ export function startDilatedEternity(auto) {
   }
   Achievement(136).unlock();
   eternity(false, auto, { switchingDilation: true });
-  if (player.options.audio.eternity) AudioManagement.playSound(`reset_dilate-${auto?"auto":"enter"}`)
+  AudioManagement.playSound(`reset_dilate-${auto ? "auto" : "enter"}`, player.options.audio.eternity)
   player.dilation.active = true;
   if (Pelle.isDoomed) PelleStrikes.dilation.trigger();
   return true;

@@ -12,7 +12,8 @@ export default {
       sidebarID: 0,
       resourceName: "",
       resourceValue: new Decimal(0),
-      sidebarWidth:0,
+      width: 0,
+      arrowMode: false,
     };
   },
   computed: {
@@ -33,19 +34,22 @@ export default {
   },
   methods: {
     update() {
-      this.sidebarWidth = player.options.sidebarWidth
-      this.sidebarID = player.options.sidebarResourceType[this.id];
+      this.width = player.options.sidebar.width
+      this.sidebarID = player.options.sidebar.resourceID[this.id];
+      this.arrowMode = player.options.sidebar.arrowMode;
       this.resourceName = Pelle.transitionText(this.resource.resourceName ?? this.resource.optionName,"UNDEFINED",Math.clamp(GameEnd.endState**2,0,1));
       this.resourceValue.copyFrom(this.resource.value());
     },
-    cycleResource(dir) {
+    cycleResource(dir, mode = true) {
+      if (!mode) return;
       const oldID = this.sidebarID;
       this.sidebarID = (this.sidebarID + this.numDBEntries + dir) % this.numDBEntries;
       while (this.sidebarID !== oldID) {
         if (this.resource.isAvailable()) break;
         this.sidebarID = (this.sidebarID + this.numDBEntries + dir) % this.numDBEntries;
       }
-      player.options.sidebarResourceType[this.id] = this.sidebarID;
+      player.options.sidebar.resourceID[this.id] = this.sidebarID;
+      AudioManagement.playSound("click_light");
     },
     containerClass() {
       return {
@@ -55,15 +59,16 @@ export default {
     },
     containerStyle() {
       return {
-        "height": `${7 - (this.sidebarWidth/12.8)+1}rem`,
-        "padding": `${1 - (this.sidebarWidth/25.6)+.5}rem`,
+        "height": `${7 - (this.width / 12.8) + 1}rem`,
+        "padding": `${1 - (this.width / 25.6) + 0.5}rem`,
       };
     },
     styleObject() {
       const strLen = this.displayValue.length;
-      const ScaleRatio = this.sidebarWidth / 1.28
+      const ScaleRatio = this.width / 1
+      let size = strLen < Math.floor(ScaleRatio) ? 1 : (ScaleRatio / strLen) ** Math.clamp(1 - GameEnd.endState, 0, 1)
       return {
-        transform: `scale(${strLen < Math.floor(ScaleRatio) ? 1 : (ScaleRatio / strLen)**Math.clamp(1-GameEnd.endState,0,1)})`,
+        transform: `scale(${(this.resource.fixedSize instanceof Function ? this.resource.fixedSize() : undefined) ?? size})`,
       };
     }
   },
@@ -72,55 +77,70 @@ export default {
 
 <template>
 <div
-    :class="containerClass()"
+    :class="[containerClass(), resource.formatClass]"
     :style="containerStyle()"
-    @click.exact="cycleResource(1)"
-    @click.shift.exact="cycleResource(-1)"
+    @click.exact="cycleResource(1, !arrowMode)"
+    @click.shift.exact="cycleResource(-1, !arrowMode)"
   >
     <h2
-      :class="resource.formatClass"
+      :class="{'o-sidebar-currency--fixed' : isInaccessible(resourceValue) || sidebarID == 1}"
       :style="styleObject()"
       v-html="displayValue"
     >
     </h2>
-    <div class="c-sidebar-resource__information">
-      <span class="c-sidebar-resource__name">{{ resourceName }}</span>
-    </div>
+    <div class="c-sidebar-resource__information">{{ resourceName }}</div>
+    <i 
+      v-if="arrowMode"
+      class="fas fa-chevron-circle-left c-sidebar-arrow" 
+      @click.exact="cycleResource(-1)"
+      style="left: 1rem"
+    />
+    <i 
+      v-if="arrowMode"
+      class="fas fa-chevron-circle-right c-sidebar-arrow" 
+      @click.exact="cycleResource(1)"
+      style="right: 1rem"
+    />
   </div>
 </template>
 
 <style scoped>
 .c-sidebar-resource {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: var(--sidebar-width);
   height: 7rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-base);
   text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted),-0.1rem -0.1rem 0.3rem var(--color-text-inverted));
   box-shadow: var(--var-box-shadow, var(--box-shadow));
-  background: linear-gradient(-90deg, transparent,var(--color-accent) 400%),var(--leg-base-render);
-  border-right: 0.1rem solid var(--color-accent);
-  border-bottom: 0.1rem solid var(--color-accent);
+  background: linear-gradient(-90deg, transparent, var(--base) 400%),var(--leg-base-render);
+  border: 0.1rem solid var(--base);
   padding: 1rem;
+  margin-top: -0.1rem;
   user-select: none;
-  font-style: italic;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
   line-height: normal;
   overflow: hidden;
 }
-.c-modern-sidebar-switched > .c-sidebar-resource {
-  border-right: none;
-  border-left: 0.1rem solid var(--color-accent)
+
+
+.o-sidebar-currency--fixed {
+  font-family: Typewriter;
 }
+
 .c-sidebar-resource-default {
-  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.3rem var(--color-accent) inset;
+  box-shadow: 0 0 1rem var(--color-background) inset, 0 0 0 0.3rem inset var(--base);
 }
-.c-sidebar-resource:last-child {
-  border-bottom-right-radius: var(--var-border-radius, 0.5rem);
+
+.sh-text .c-sidebar-resource-default,
+.sh-none .c-sidebar-resource-default {
+  box-shadow: 0 0 0 0.1rem inset var(--base);
 }
+
 .c-sidebar-resource h2 {
-  z-index: 1;
   font-size: 1.8rem;
   margin: 0;
 }
@@ -133,24 +153,44 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  font-size: 1.5rem;
-  color: var(--color-text);
-}
-.c-sidebar-resource__name {
   font-size: 1.4rem;
-  font-family: cambria;
   font-weight: bold;
-  font-style: normal;
+  color: var(--color-text);
+  text-shadow: var(--var-text-shadow, 0.1rem 0.1rem 0.3rem var(--color-text-inverted),-0.1rem -0.1rem 0.3rem var(--color-text-inverted));
+}
+
+.c-sidebar-arrow {
+  z-index: 1;
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.1;
+  cursor: pointer;
+  transition: 0.1s all, 0s color;
+}
+
+.c-sidebar-resource:hover > .c-sidebar-arrow {
+  opacity: 0.5;
+}
+
+.c-sidebar-resource:hover > .c-sidebar-arrow:hover {
+  opacity: 1;
+}
+
+.o-sidebar-currency--blob {
+  color: #fbc21b;
+  --base: #fbc21b
 }
 .o-sidebar-currency--antimatter {
   color: black;
+  --base: var(--color-accent)
 }
 .t-normal .o-sidebar-currency--antimatter,
 .t-legacy .o-sidebar-currency--antimatter,
 .t-legendary .o-sidebar-currency--antimatter,
 .t-hex .o-sidebar-currency--antimatter,
 .t-s14 .o-sidebar-currency--antimatter,
-.t-s15 .o-sidebar-currency--antimatter {
+.t-s15 .o-sidebar-currency--antimatter,
+.t-s16 .o-sidebar-currency--antimatter {
   color: var(--color-accent);
 }
 .t-dark .o-sidebar-currency--antimatter,
@@ -169,33 +209,59 @@ export default {
 }
 .o-sidebar-currency--infinity {
   color: var(--color-infinity);
+  --base: var(--color-infinity);
 }
 .o-sidebar-currency--replicanti {
   color: var(--color-replicanti);
+  --base: var(--color-replicanti);
 }
 .o-sidebar-currency--eternity {
   color: var(--color-eternity);
+  --base: var(--color-eternity);
 }
 .o-sidebar-currency--dilation {
   color: var(--color-dilation);
+  --base: var(--color-dilation);
 }
 .o-sidebar-currency--reality {
   color: var(--color-reality);
+  --base: var(--color-reality);
 }
 .o-sidebar-currency--effarig {
   color: var(--color-effarig--base);
+  --base: var(--color-effarig--base);
 }
 .o-sidebar-currency--v {
   color: var(--color-v--base);
+  --base: var(--color-v--base);
 }
 .o-sidebar-currency--ra {
   color: var(--color-ra--base);
+  --base: var(--color-ra--base);
+}
+.o-sidebar-currency--ra-pet--orias {
+  color: var(--color-ra-pet--teresa);
+  --base: var(--color-ra-pet--teresa);
+}
+.o-sidebar-currency--ra-pet--effarig {
+  color: var(--color-ra-pet--effarig);
+  --base: var(--color-ra-pet--effarig);
+}
+.o-sidebar-currency--ra-pet--nameless {
+  color: var(--color-ra-pet--enslaved);
+  --base: var(--color-ra-pet--enslaved);
+}
+.o-sidebar-currency--ra-pet--v {
+  color: var(--color-ra-pet--v);
+  --base: var(--color-ra-pet--v);
 }
 .o-sidebar-currency--laitela {
   color: var(--color-laitela--base);
+  --base: var(--color-laitela--accent);
   text-shadow: 0.1rem 0.1rem 0.1rem var(--color-laitela--accent), 0.1rem -0.1rem 0.1rem var(--color-laitela--accent), -0.1rem 0.1rem 0.1rem var(--color-laitela--accent), -0.1rem -0.1rem 0.1rem var(--color-laitela--accent) !important;
 }
 .o-sidebar-currency--pelle {
   color: var(--color-pelle--base);
+  --base: var(--color-pelle--base);
 }
 </style>

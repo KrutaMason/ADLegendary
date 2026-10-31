@@ -3,7 +3,7 @@ import FullScreenAnimationHandler from "./full-screen-animation-handler";
 
 export function bigCrunchAnimation() {
   FullScreenAnimationHandler.display("a-implode", 2);
-  if (player.options.audio.infinity) AudioManagement.playSound("reset_implode")
+  AudioManagement.playSound("reset_implode", player.options.audio.infinity)
 }
 
 function handleChallengeCompletion() {
@@ -44,7 +44,7 @@ export function bigCrunchResetRequest(disableAnimation = false) {
     setTimeout(bigCrunchReset, 1000);
   } else {
     bigCrunchReset();
-    if (player.options.audio.infinity) AudioManagement.playSound("reset_crunch")
+    AudioManagement.playSound("reset_crunch", player.options.audio.infinity)
   }
 }
 

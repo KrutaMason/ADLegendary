@@ -88,7 +88,8 @@ export default {
       GameStorage.offlineEnabled = player.options.loadBackupWithoutOffline ? false : undefined;
       GameStorage.oldBackupTimer = player.backupTimer;
       GameStorage.loadPlayerObject(toLoad);
-      GameUI.notify.info(`Game loaded from backup slot #${this.slotData.id}`);
+      GameUI.notify.info([`Game loaded from backup slot #${this.slotData.id}`,"",
+        `<div class="o-notification--icon"><i class="fas fa-file-import"></i></div>`]);
       GameStorage.loadBackupTimes();
       GameStorage.ignoreBackupTimer = false;
       GameStorage.offlineEnabled = undefined;

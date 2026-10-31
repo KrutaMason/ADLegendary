@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     update() {
-      this.switchedSidebar = player.options.sidebarSideSwitch && this.$viewModel.newUI
+      this.switchedSidebar = player.options.sidebar.rightSide && this.$viewModel.newUI
       this.ending = GameEnd.endState >= END_STATE_MARKERS.FADE_AWAY && !GameEnd.creditsClosed;
     }
   }

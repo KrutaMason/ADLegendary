@@ -284,7 +284,9 @@ EventHub.logic.on(GAME_EVENT.GAME_LOAD, () => SingularityMilestones.lastNotified
 EventHub.logic.on(GAME_EVENT.SINGULARITY_RESET_AFTER, () => {
   const newMilestones = SingularityMilestones.unnotifiedMilestones.length;
   if (newMilestones === 0) return;
-  if (newMilestones === 1) GameUI.notify.blackHole(["Lai'tela, the Celestial of Dimensions",`You reached a Singularity milestone!`]);
-  else GameUI.notify.blackHole(["Lai'tela, the Celestial of Dimensions",`You reached ${formatInt(newMilestones)} Singularity milestones!`]);
+  if (newMilestones === 1) GameUI.notify.celestial(["Singulaity Condensed",`You reached a Singularity milestone!`,
+        `<div class="o-notification--icon">ᛝ</div>`]);
+  else GameUI.notify.celestial(["Singularity Condensed",`You reached ${formatInt(newMilestones)} Singularity milestones!`,
+        `<div class="o-notification--icon">ᛝ</div>`]);
   SingularityMilestones.lastNotified = Currency.singularities.value;
 });

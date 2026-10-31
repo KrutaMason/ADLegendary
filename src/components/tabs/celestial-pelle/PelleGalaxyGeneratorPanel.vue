@@ -92,10 +92,10 @@ export default {
       <div v-if="isUnlocked">
         <div>
           You have a total of
-          <span class="c-galaxies-amount" :class="{'c-galaxies--fixed': isInaccessible(Math.max(galaxies, 0)) }">{{ galaxyText }}</span>
+          <span class="c-galaxies-amount" :class="diffFont(Math.max(galaxies, 0))">{{ galaxyText }}</span>
           Galaxies.
           <span class="c-galaxies-amount c-small-text" 
-          :class="{'c-galaxies--fixed': isInaccessible(galaxiesPerSecond) }">+{{ formatInt(galaxiesPerSecond, 2, 1) }}/s</span>
+          :class="diffFont(galaxiesPerSecond)">+{{ formatInt(galaxiesPerSecond, 2, 1) }}/s</span>
         </div>
         <div>
           <button
@@ -137,8 +137,8 @@ export default {
               v-else
               class="c-increase-cap-text c-medium-text"
             >
-            <span :class="{'c-galaxies--fixed': isInaccessible(generatedGalaxies) }">{{ formatInt(generatedGalaxies) }}</span>
-            <span v-if="cap !== Infinity" :class="{'c-galaxies--fixed': isInaccessible(cap) }"> / {{ formatInt(cap) }}</span><br> 
+            <span :class="diffFont(generatedGalaxies)">{{ formatInt(generatedGalaxies) }}</span>
+            <span v-if="cap !== Infinity" :class="diffFont(cap)"> / {{ formatInt(cap) }}</span><br> 
             <div class="c-small-text">Galaxies generated</div>
             </div>
           </button>
@@ -167,7 +167,7 @@ export default {
 .c-galgen-panel-container{
   border: var(--var-border-width, 0.1rem) solid var(--color-pelle--secondary);
   box-shadow: var(--var-box-shadow, 0 0 2rem black inset, 0 0 0 0.3rem var(--color-pelle--secondary) inset);
-  background: url(../../../../public/images/upgrades/pelle.png),linear-gradient(#000000, var(--color-pelle--secondary) 200%);
+  background: url(../../../../public/images/patterns/cel_7.png), linear-gradient(#000000, var(--color-pelle--secondary) 200%);
 }
 .c-galgen-panel-container .l-pelle-content-container{
   color:white
@@ -220,7 +220,7 @@ export default {
 .c-galaxies-amount {
   font-size: 2.8rem;
   color:white;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   line-height: 1.1;
   text-shadow: 0.15rem 0.15rem 0.3rem var(--color-pelle--base),-0.15rem -0.15rem 0.3rem var(--color-pelle--secondary);
@@ -307,7 +307,7 @@ export default {
 }
 .c-big-text {
   font-size: 2.8rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   line-height: 1.1;
   text-shadow: var(--var-text-shadow, 0.2rem 0.2rem 0.2rem var(--color-pelle--base),-0.2rem -0.2rem 0.2rem var(--color-pelle--base));
@@ -315,7 +315,7 @@ export default {
 
 .c-medium-text {
   font-size: 2.5rem;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
   line-height: 1.1;
 }
@@ -327,10 +327,5 @@ export default {
   margin:0.2rem;
   padding:0.2rem;
   border-image: linear-gradient(90deg, transparent, white, transparent) 1;
-}
-
-.c-galaxies--fixed {
-  font-family: Typewriter;
-  font-weight: normal;
 }
 </style>

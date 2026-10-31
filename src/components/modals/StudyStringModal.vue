@@ -200,7 +200,8 @@ export default {
     savePreset() {
       if (this.inputIsValid) {
         player.timestudy.presets[this.id].studies = this.input;
-        GameUI.notify.eternity(["Time Studies",`Study Tree ${this.name} successfully edited.`]);
+        GameUI.notify.eternity(["Time Studies",`Study Tree ${this.name} successfully edited.`,
+        `<div class="o-notification--icon"><i class="fas far fa-edit"></i></div>`]);
         this.emitClose();
       }
     },
@@ -209,7 +210,8 @@ export default {
       const presetName = name ? `Study preset "${name}"` : "Study preset";
       player.timestudy.presets[this.id].studies = "";
       player.timestudy.presets[this.id].name = "";
-      GameUI.notify.eternity(["Time Studies",`${presetName} deleted from slot ${this.id + 1}`]);
+      GameUI.notify.eternity(["Time Studies",`${presetName} deleted from slot ${this.id + 1}`,
+        `<div class="o-notification--icon"><i class="fas fa-trash"></i></div>`]);
     },
     studyString(study) {
       return study instanceof ECTimeStudyState ? `EC${study.id}` : `${study.id}`;

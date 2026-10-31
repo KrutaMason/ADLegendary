@@ -31,8 +31,7 @@ export const ecTimeStudies = [
     requirement: [171],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     secondary: {
-      resource: () => `${player.options.naming.dimensions ? `Antimatter ${AntimatterDimension(8).uniqueName}s`
-       : "8th Antimatter Dimensions"}`,
+      resource: () => `${AntimatterDimension(8).fullName(...[,,,], 2)}`,
       current: () => AntimatterDimension(8).totalAmount,
       required: completions => new Decimal(17300 + Math.min(completions, 4) * 1250),
       formatValue: value => formatInt(Math.floor(value.toNumber()))

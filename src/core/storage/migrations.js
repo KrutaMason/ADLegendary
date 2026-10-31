@@ -421,8 +421,9 @@ export const migrations = {
       if (player.celestials.pelle.doomed) player.dilation.rebuyables[3] = 0;
     },
     26: player => {
-      // More sidebars
-      player.options.sidebarResourceType = [0,0,0,0]
+      // Added more sidebars and gave a mod disclaimer to vanilla saves
+      player.options.sidebarResourceType = [player.options.sidebarResourceID ?? 0, 0, 0, 0];
+      delete player.options.sidebarResourceID;
 
       if (player.options.confirmations.disclaimerModal) {
         window.disclaimerModalInterval = setTimeout(() => {
@@ -432,6 +433,59 @@ export const migrations = {
           }
         }, 500);
       }
+    },
+    27: player => {
+      // Improved sidebar database to be more convenient
+      player.options.newOptionsUI = false;
+      player.options.sidebar.amount = player.options.sidebarDisplayAmount ?? 1;
+      player.options.sidebar.width = player.options.sidebarWidth ?? 12.8;
+      player.options.sidebar.rightSide = player.options.sidebarSideSwitch ?? false;
+
+      // New sidebar options are added in-between so any player that uses the resources after the newly
+      // added ones will have their ids changed
+      for (let id = 0; id < 4; id++) {
+        player.options.sidebar.resourceID[id] = player.options.sidebarResourceType[id] ?? 0;
+        player.options.sidebar.resourceID[id] += player.options.sidebar.resourceID[id] > 11 ? 4 : 0;
+      }
+      
+      delete player.options.sidebarDisplayAmount;
+      delete player.options.sidebarWidth;
+      delete player.options.sidebarSideSwitch;
+      delete player.options.sidebarResourceType;
+
+      // Turned all non-master audio options into sliders for more variation
+      player.options.audio.softreset = player.options.audio.softreset ? 1 : 0;
+      player.options.audio.notify = player.options.audio.notify ? 1 : 0;
+      player.options.audio.infinity = player.options.audio.infinity ? 1 : 0;
+      player.options.audio.eternity = player.options.audio.eternity ? 1 : 0;
+      player.options.audio.reality = player.options.audio.reality ? 1 : 0;
+
+      // Refactored the automator appearance database to be more convenient
+      if (player.options.automator) {
+        player.options.automatorAppearance = {
+          scriptPane: {
+            theme: player.options.automator.theme[0] ?? 0,
+            color: player.options.automator.color[0] ?? 0,
+            customColor: "#888888",
+            gradient: player.options.automator.gradient[0] ?? 0,
+          },
+          infoPane: {
+            theme: player.options.automator.theme[1] ?? 0,
+            color: player.options.automator.color[1] ?? 0,
+            customColor: "#888888",
+            gradient: player.options.automator.gradient[1] ?? 0,
+          },
+          scanLine: {
+            animated: player.options.automator.animation ?? true,
+            size: 3,
+            opacity: 0.5,
+          }
+        };
+
+        delete player.options.automator
+      }
+
+      player.options.newOptionsUI = false;
     }
   },
 

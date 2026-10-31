@@ -24,6 +24,13 @@ export class GameOptions {
     GameStorage.save();
   }
 
+  static toggleOptionsUI(disclaimer = false) {
+    player.options.newOptionsUI = !player.options.newOptionsUI;
+    ui.view.newOptionsUI = player.options.newOptionsUI;
+    if (!disclaimer && ui.view.newOptionsUI) Tab.dimensions.antimatter.show(true);
+    if (!disclaimer) GameStorage.save();
+  }
+
   static toggleShadows() {
     player.options.extraShadows = (player.options.extraShadows + 1) % Object.keys(SHADOWS_SETTING).length
     document.body.classList.remove(Array.from(document.body.classList).filter((x) => x.startsWith("sh-")));

@@ -33,7 +33,7 @@ export const perks = {
   firstPerk: {
     id: 0,
     label: "START",
-    name:"Augmented Revitalization",
+    name: "Augmented Revitalization",
     family: PERK_FAMILY.REALITY,
     get description() {
       return `Remove the achievement requirement from the Reality Study
@@ -45,7 +45,7 @@ export const perks = {
   startAM: {
     id: 10,
     label: "SAM",
-    name:"Materialistic Inheritance",
+    name: "Materialistic Inheritance",
     family: PERK_FAMILY.ANTIMATTER,
     get description() {
       return `Start every reset with ${format(5e130)} antimatter.`;
@@ -57,7 +57,7 @@ export const perks = {
   startIP1: {
     id: 12,
     label: "SIP1",
-    name:"Boundless Benefaction I",
+    name: "Boundless Benefaction I",
     family: PERK_FAMILY.INFINITY,
     get description() {
       return `Start every Eternity and Reality with ${format(5e15)} Infinity Points.`;
@@ -69,7 +69,7 @@ export const perks = {
   startIP2: {
     id: 13,
     label: "SIP2",
-    name:"Boundless Benefaction II",
+    name: "Boundless Benefaction II",
     family: PERK_FAMILY.INFINITY,
     get description() {
       return `Start every Eternity and Reality with ${format(5e130)} Infinity Points.`;
@@ -81,7 +81,7 @@ export const perks = {
   startEP1: {
     id: 14,
     label: "SEP1",
-    name:"Eternal Bestowal I",
+    name: "Eternal Bestowal I",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `Start every Reality with ${formatInt(10)} Eternity Points.`;
@@ -95,7 +95,7 @@ export const perks = {
   startEP2: {
     id: 15,
     label: "SEP2",
-    name:"Eternal Bestowal II",
+    name: "Eternal Bestowal II",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `Start every Reality with ${format(5000)} Eternity Points.`;
@@ -107,7 +107,7 @@ export const perks = {
   startEP3: {
     id: 16,
     label: "SEP3",
-    name:"Eternal Bestowal III",
+    name: "Eternal Bestowal III",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `Start every Reality with ${format(5e9)} Eternity Points.`;
@@ -121,7 +121,7 @@ export const perks = {
   startTP: {
     id: 17,
     label: "STP",
-    name:"Superluminal Bequest",
+    name: "Superluminal Bequest",
     family: PERK_FAMILY.DILATION,
     get description() {
       return `After unlocking Dilation, gain ${formatInt(10)} Tachyons.`;
@@ -134,7 +134,7 @@ export const perks = {
   antimatterNoReset: {
     id: 30,
     label: "ANR",
-    name:"Dimensional Preservation",
+    name: "Dimensional Preservation",
     family: PERK_FAMILY.ANTIMATTER,
     description: `Dimension Boosts and Antimatter Galaxies no longer reset
       Antimatter, Antimatter Dimensions, Tickspeed, or Dimensional Sacrifice.`,
@@ -143,7 +143,7 @@ export const perks = {
   studyPassive: {
     id: 31,
     label: "PASS",
-    name:"Unassertive Supplement",
+    name: "Unassertive Supplement",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `Improve Time Study 122 to ${formatX(50)} Eternity Points and
@@ -155,7 +155,7 @@ export const perks = {
   autounlockEU1: {
     id: 40,
     label: "EU1",
-    name:"Timeless Suspense I",
+    name: "Timeless Suspense I",
     family: PERK_FAMILY.ETERNITY,
     description: `Automatically unlock the first row of Eternity Upgrades for free once you have Eternities.`,
     layoutPosList: [89407, 80601, 80201, 79800, 80591, 73007],
@@ -163,7 +163,7 @@ export const perks = {
   autounlockEU2: {
     id: 41,
     label: "EU2",
-    name:"Timeless Suspense II",
+    name: "Timeless Suspense II",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `The second row of Eternity Upgrades is automatically purchased
@@ -174,7 +174,7 @@ export const perks = {
   autounlockDilation1: {
     id: 42,
     label: "DU1",
-    name:"Temporal Anticipation I",
+    name: "Temporal Anticipation I",
     family: PERK_FAMILY.DILATION,
     description: "After unlocking Dilation, automatically unlock the second row of Dilation Upgrades for free.",
     layoutPosList: [119833, 81801, 79403, 79398, 80200, 97510],
@@ -182,7 +182,7 @@ export const perks = {
   autounlockDilation2: {
     id: 43,
     label: "DU2",
-    name:"Temporal Anticipation II",
+    name: "Temporal Anticipation II",
     family: PERK_FAMILY.DILATION,
     description: "After unlocking Dilation, automatically unlock the third row of Dilation Upgrades for free.",
     layoutPosList: [124260, 82201, 79003, 79397, 80203, 85513],
@@ -190,7 +190,7 @@ export const perks = {
   autounlockDilation3: {
     id: 44,
     label: "ATT",
-    name:"Academic Triviality",
+    name: "Academic Triviality",
     family: PERK_FAMILY.DILATION,
     description: "Automatically purchase the passive Time Theorem generation Dilation Upgrade once you can afford it.",
     automatorPoints: 5,
@@ -200,7 +200,7 @@ export const perks = {
   autounlockTD: {
     id: 45,
     label: "ATD",
-    name:"Transient Insignificance",
+    name: "Transient Insignificance",
     family: PERK_FAMILY.DILATION,
     description: "Auto-unlock Time Dimensions 5-8 once you can afford them.",
     automatorPoints: 5,
@@ -210,12 +210,11 @@ export const perks = {
   autounlockReality: {
     id: 46,
     label: "REAL",
-    name:"Pre-existential Unsealment",
+    name: "Pre-existential Unsealment",
     family: PERK_FAMILY.REALITY,
     get description() {
       return `Auto-unlocks Reality once you have ${format(DC.E4000)} Eternity Points
-        and have unlocked ${player.options.naming.dimensions ? `Time ${TimeDimension(8).uniqueName}`
-       : "Time Dimension 8"}.`;
+        and have unlocked ${TimeDimension(8).fullName()}.`;
     },
     automatorPoints: 10,
     shortDescription: () => "Auto-unlock Reality",
@@ -224,7 +223,7 @@ export const perks = {
   bypassIDAntimatter: {
     id: 51,
     label: "IDR",
-    name:"Immeasurable Withdraw",
+    name: "Immeasurable Withdraw",
     family: PERK_FAMILY.INFINITY,
     description: "Infinity Dimensions no longer have antimatter requirements.",
     layoutPosList: [51317, 80998, 79397, 80997, 82600, 104489],
@@ -232,7 +231,7 @@ export const perks = {
   bypassTGReset: {
     id: 52,
     label: "TGR",
-    name:"Sanctuary of Paradox",
+    name: "Sanctuary of Paradox",
     family: PERK_FAMILY.DILATION,
     description: "The 2nd rebuyable Dilation Upgrade no longer resets your Dilated Time.",
     layoutPosList: [116568, 81800, 79801, 79798, 81400, 112677],
@@ -240,10 +239,12 @@ export const perks = {
   bypassECDilation: {
     id: 53,
     label: "DILR",
-    name:"Dispensable Inconsistency",
+    name: "Dispensable Inconsistency",
     family: PERK_FAMILY.DILATION,
-    description: "Remove the Eternity Challenge 11, Eternity Challenge 12, and total Time Theorem " +
-      "requirements from Time Dilation unlock.",
+    get description() {
+      return `Remove the ${EternityChallenge(11).displayName()}, ${EternityChallenge(12).displayName()}, 
+      and total Time Theorem requirements from Time Dilation unlock.`;
+    },
     automatorPoints: 5,
     shortDescription: () => `Unlocking Dilation only requires TT`,
     layoutPosList: [129011, 81802, 80203, 80198, 80600, 109116],
@@ -251,39 +252,47 @@ export const perks = {
   bypassEC1Lock: {
     id: 54,
     label: "EC1R",
-    name:"Fulfilled Amplification I",
+    name: "Fulfilled Amplification I",
     family: PERK_FAMILY.ETERNITY,
-    description: "Remove the Eternity Challenge 1 requirement from Time Study 181.",
+    get description() {
+      return `Remove the ${EternityChallenge(1).displayName()} requirement from Time Study 181.`;
+    },
     layoutPosList: [64284, 79000, 81399, 80603, 78597, 44167],
   },
   bypassEC2Lock: {
     id: 55,
     label: "EC2R",
-    name:"Fulfilled Amplification II",
+    name: "Fulfilled Amplification II",
     family: PERK_FAMILY.ETERNITY,
-    description: "Remove the Eternity Challenge 2 requirement from Time Study 181.",
+    get description() {
+      return `Remove the ${EternityChallenge(2).displayName()} requirement from Time Study 181.`;
+    },
     layoutPosList: [55463, 78999, 80998, 80602, 78197, 48944],
   },
   bypassEC3Lock: {
     id: 56,
     label: "EC3R",
-    name:"Fulfilled Amplification III",
+    name: "Fulfilled Amplification III",
     family: PERK_FAMILY.ETERNITY,
-    description: "Remove the Eternity Challenge 3 requirement from Time Study 181.",
+    get description() {
+      return `Remove the ${EternityChallenge(3).displayName()} requirement from Time Study 181.`;
+    },
     layoutPosList: [75475, 79001, 81400, 80203, 78997, 47822],
   },
   bypassEC5Lock: {
     id: 57,
     label: "EC5R",
-    name:"Fulfilled Amplification V",
+    name: "Fulfilled Amplification V",
     family: PERK_FAMILY.ETERNITY,
-    description: "Remove the Eternity Challenge 5 requirement from Time Study 62.",
+    get description() {
+      return `Remove the ${EternityChallenge(5).displayName()} requirement from Time Study 181.`;
+    },
     layoutPosList: [70626, 79800, 81000, 80201, 78591, 62607],
   },
   autocompleteEC1: {
     id: 60,
     label: "PEC1",
-    name:"Effortless Fulfillment",
+    name: "Effortless Fulfillment",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Auto-complete one Eternity Challenge every ${formatInt(60)} minutes (real-time).
@@ -298,7 +307,7 @@ export const perks = {
   autocompleteEC2: {
     id: 61,
     label: "PEC2",
-    name:"Expeditious Execution I",
+    name: "Expeditious Execution I",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Auto-complete one Eternity Challenge every ${formatInt(40)} minutes (real-time).
@@ -310,7 +319,7 @@ export const perks = {
   autocompleteEC3: {
     id: 62,
     label: "PEC3",
-    name:"Expeditious Execution II",
+    name: "Expeditious Execution II",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Auto-complete one Eternity Challenge every ${formatInt(20)} minutes (real-time).
@@ -324,7 +333,7 @@ export const perks = {
   studyActiveEP: {
     id: 70,
     label: "ACT",
-    name:"Frictionless Paramount",
+    name: "Frictionless Paramount",
     family: PERK_FAMILY.ETERNITY,
     description: "Active path multipliers are always maximized.",
     layoutPosList: [56633, 79399, 80599, 80601, 78194, 58565],
@@ -332,7 +341,7 @@ export const perks = {
   studyIdleEP: {
     id: 71,
     label: "IDL",
-    name:"Languorous Leap",
+    name: "Languorous Leap",
     family: PERK_FAMILY.ETERNITY,
     get description() {
       return `Idle path multipliers start as if you have spent ${formatInt(15)} minutes in this Infinity/Eternity. 
@@ -344,7 +353,7 @@ export const perks = {
   studyECRequirement: {
     id: 72,
     label: "ECR",
-    name:"Olympic Negligibility",
+    name: "Olympic Negligibility",
     family: PERK_FAMILY.ETERNITY,
     description: "Remove non-Time Theorem requirements for unlocking Eternity Challenges.",
     automatorPoints: 10,
@@ -354,7 +363,7 @@ export const perks = {
   studyECBulk: {
     id: 73,
     label: "ECB",
-    name:"Immense Fulfillment",
+    name: "Immense Fulfillment",
     family: PERK_FAMILY.ETERNITY,
     description:
       `You can complete multiple tiers of Eternity Challenges at once if
@@ -366,7 +375,7 @@ export const perks = {
   retroactiveTP1: {
     id: 80,
     label: "TP1",
-    name:"Paradoxical Assurance I",
+    name: "Paradoxical Assurance I",
     family: PERK_FAMILY.DILATION,
     get description() {
       return `When buying the 3rd rebuyable Dilation Upgrade,
@@ -378,7 +387,7 @@ export const perks = {
   retroactiveTP2: {
     id: 81,
     label: "TP2",
-    name:"Paradoxical Assurance II",
+    name: "Paradoxical Assurance II",
     family: PERK_FAMILY.DILATION,
     get description() {
       return `When buying the 3rd rebuyable Dilation Upgrade,
@@ -390,7 +399,7 @@ export const perks = {
   retroactiveTP3: {
     id: 82,
     label: "TP3",
-    name:"Paradoxical Assurance III",
+    name: "Paradoxical Assurance III",
     family: PERK_FAMILY.DILATION,
     get description() {
       return `When buying the 3rd rebuyable Dilation Upgrade,
@@ -402,7 +411,7 @@ export const perks = {
   retroactiveTP4: {
     id: 83,
     label: "TP4",
-    name:"Paradoxical Assurance IV",
+    name: "Paradoxical Assurance IV",
     family: PERK_FAMILY.DILATION,
     get description() {
       return `When buying the 3rd rebuyable Dilation Upgrade,
@@ -416,7 +425,7 @@ export const perks = {
   autobuyerDilation: {
     id: 100,
     label: "DAU",
-    name:"Mechanized Paradox",
+    name: "Mechanized Paradox",
     family: PERK_FAMILY.AUTOMATION,
     description: "Unlock autobuyers for the repeatable Dilation Upgrades.",
     automatorPoints: 5,
@@ -426,7 +435,7 @@ export const perks = {
   autobuyerFasterID: {
     id: 101,
     label: "IDAS",
-    name:"Boundless Cybernation",
+    name: "Boundless Cybernation",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Infinity Dimension autobuyers work ${formatX(3)} faster.`;
@@ -439,7 +448,7 @@ export const perks = {
   autobuyerFasterReplicanti: {
     id: 102,
     label: "REPAS",
-    name:"Replicative Cybernation",
+    name: "Replicative Cybernation",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Replicanti autobuyers work ${formatX(3)} faster.`;
@@ -452,7 +461,7 @@ export const perks = {
   autobuyerFasterDilation: {
     id: 103,
     label: "DAS",
-    name:"Paradoxical Cybernation",
+    name: "Paradoxical Cybernation",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Dilation Upgrade autobuyers work ${formatX(3)} faster.`;
@@ -465,7 +474,7 @@ export const perks = {
   ttBuySingle: {
     id: 104,
     label: "TTS",
-    name:"Educated Machinations",
+    name: "Educated Machinations",
     family: PERK_FAMILY.AUTOMATION,
     description: "Unlock a Time Theorem Autobuyer which buys single Time Theorems every tick.",
     automatorPoints: 5,
@@ -475,7 +484,7 @@ export const perks = {
   ttFree: {
     id: 105,
     label: "TTF",
-    name:"Comprehensive Discount",
+    name: "Comprehensive Discount",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Purchasing Time Theorems no longer spends your Antimatter, Infinity Points, or Eternity Points.`;
@@ -485,7 +494,7 @@ export const perks = {
   ttBuyMax: {
     id: 106,
     label: "TTM",
-    name:"Abstractive Transcendence",
+    name: "Abstractive Transcendence",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Upgrade the Time Theorem Autobuyer to buy max Time Theorems.`;
@@ -497,7 +506,7 @@ export const perks = {
   dilationAutobuyerBulk: {
     id: 107,
     label: "DAB",
-    name:"Larger Absurdity",
+    name: "Larger Absurdity",
     family: PERK_FAMILY.AUTOMATION,
     get description() {
       return `Dilation Upgrade autobuyers buy three times as many Dilation Upgrades at once.`;
@@ -510,7 +519,7 @@ export const perks = {
   achievementGroup1: {
     id: 201,
     label: "ACH1",
-    name:"Accelerated Attainment I",
+    name: "Accelerated Attainment I",
     family: PERK_FAMILY.ACHIEVEMENT,
     get description() {
       return `Reduce the Achievement timer to ${formatInt(20)} minutes per
@@ -524,7 +533,7 @@ export const perks = {
   achievementGroup2: {
     id: 202,
     label: "ACH2",
-    name:"Accelerated Attainment II",
+    name: "Accelerated Attainment II",
     family: PERK_FAMILY.ACHIEVEMENT,
     get description() {
       return `Reduce the Achievement timer to ${formatInt(12)} minutes per
@@ -536,7 +545,7 @@ export const perks = {
   achievementGroup3: {
     id: 203,
     label: "ACH3",
-    name:"Accelerated Attainment III",
+    name: "Accelerated Attainment III",
     family: PERK_FAMILY.ACHIEVEMENT,
     get description() {
       return `Reduce the Achievement timer to ${formatInt(6)} minutes per
@@ -548,7 +557,7 @@ export const perks = {
   achievementGroup4: {
     id: 204,
     label: "ACH4",
-    name:"Accelerated Attainment IV",
+    name: "Accelerated Attainment IV",
     family: PERK_FAMILY.ACHIEVEMENT,
     get description() {
       return `Reduce the Achievement timer to ${formatInt(2)} minutes per
@@ -560,7 +569,7 @@ export const perks = {
   achievementGroup5: {
     id: 205,
     label: "ACHNR",
-    name:"Consistent Records",
+    name: "Consistent Records",
     family: PERK_FAMILY.ACHIEVEMENT,
     get description() {
       return `Immediately unlock the first ${formatInt(13)} rows of Achievements

@@ -142,13 +142,13 @@ class TabState {
     if (subtab !== undefined) {
       if (!Enslaved.isRunning) subtab.unhideTab();
       this._currentSubtab = subtab;
-      if (GameEnd.additionalEnd<1.5) AudioManagement.playSound("click_light")
+      if (GameEnd.additionalEnd < 1.5) AudioManagement.playSound("click_light")
     } else if (ui.view.tab === this.key && ui.view.initialized && manual) {
       this._currentSubtab = cycleThroughSubtabs(this.subtabs, this._currentSubtab);
-      if (GameEnd.additionalEnd<1.5) AudioManagement.playSound("click_light")
+      if (GameEnd.additionalEnd < 1.5) AudioManagement.playSound("click_light")
     } else {
       this._currentSubtab = findLastOpenSubtab(this.id, this.subtabs);
-      if (GameEnd.additionalEnd<1.5) AudioManagement.playSound("click_heavy")
+      if (GameEnd.additionalEnd < 1.5) AudioManagement.playSound("click_heavy")
     }
 
     if (!this._currentSubtab.isUnlocked) this.resetToUnlocked();

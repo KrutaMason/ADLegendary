@@ -78,7 +78,8 @@ SOFTWARE.
 }
 
 .c-ad-slider__bg {
-  background-color: #cccccc;
+  background: url(../images/celestials/v-bar-overlay.png), linear-gradient(var(--color-base));
+  background-size: contain, 100% 100%;
   border-radius: var(--var-border-radius, 1.5rem);
   box-shadow: 0.1rem 0.1rem 0.25rem 0.1rem #00000088;
 }
@@ -99,7 +100,8 @@ SOFTWARE.
 }
 
 .c-ad-slider__process {
-  background-color: var(--color-slider-blue);
+  background: url(../images/celestials/v-bar-overlay.png), linear-gradient(var(--color-accent));
+  background-size: contain, 100% 100%;
   border-radius: var(--var-border-radius, 15px);
 }
 
@@ -158,15 +160,19 @@ SOFTWARE.
 }
 
 .c-ad-slider__dot-handle {
-  background-color: #ffffff;
-  border: 0.1rem solid black;
+  background: linear-gradient(var(--color-background), var(--color-accent));
+  border: 0.1rem solid var(--color-accent);
+  border-color: 
+  color-mix(in srgb, var(--color-accent) 75%, white) 
+  color-mix(in srgb, var(--color-accent) 80%, black) 
+  color-mix(in srgb, var(--color-accent) 65%, black) var(--color-accent);
   border-radius: var(--var-border-radius, 50%) !important;
-  box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 32%);
+  box-shadow: 0 0 0.5rem var(--color-background) inset, 0 0 0 0.1rem var(--color-accent) inset, 0.5px 0.5px 2px 1px rgba(0, 0, 0, 32%);
   transition-duration: 0.2s;
 }
 
 .c-ad-slider__dot-handle:hover {
-  background-color: var(--color-slider-blue);
+  background: linear-gradient(var(--color-background) -50%, var(--color-accent));
 }
 
 .l-ad-slider__dot--focus .c-ad-slider__dot-handle {

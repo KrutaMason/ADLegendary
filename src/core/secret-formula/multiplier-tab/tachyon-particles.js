@@ -68,7 +68,7 @@ export const TP = {
   },
 
   nerfEnslaved: {
-    name: "The Nameless Ones' Reality",
+    name: () => Enslaved.displayRealityName(),
     powValue: () => Enslaved.tachyonNerf,
     isActive: () => Enslaved.isRunning,
     icon: MultiplierTabIcons.GENERIC_ENSLAVED,

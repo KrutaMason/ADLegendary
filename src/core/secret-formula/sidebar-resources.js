@@ -7,7 +7,7 @@ export const sidebarResources = [
       // This is a dummy value to prevent vue errors
       value: () => new Decimal(1),
       formatValue: () => "\uE010",
-      formatClass: "o-sidebar-currency--antimatter",
+      formatClass: "o-sidebar-currency--blob",
     },
     {
       id: 2,
@@ -86,11 +86,47 @@ export const sidebarResources = [
       optionName: "Space Theorems",
       isAvailable: () => VUnlocks.vAchievementUnlock.isUnlocked,
       value: () => new Decimal(V.spaceTheorems),
-      formatValue: x => formatInt(x) + " / " + (V.isFlipped?66:36),
+      formatValue: x => `${formatInt(x)} / ${formatInt(V.isFlipped ? 66 : 36)}`,
       formatClass: "o-sidebar-currency--v",
     },
     {
       id: 12,
+      optionName: "Orias Memories",
+      isAvailable: () => Ra.isUnlocked,
+      value: () => new Decimal(Ra.pets.teresa.memories),
+      formatValue: x => Ra.pets.teresa.isCapped ? `<span class="c-font--fixed-bold">Ϟ</span>` : format(x, 2),
+      formatClass: "o-sidebar-currency--ra-pet--orias",
+      fixedSize: () => Ra.pets.teresa.isCapped ? 1 : null
+    },
+    {
+      id: 13,
+      optionName: "Effarig Memories",
+      isAvailable: () => Ra.unlocks.effarigUnlock.isUnlocked,
+      value: () => new Decimal(Ra.pets.effarig.memories),
+      formatValue: x => Ra.pets.effarig.isCapped ? `<span class="c-font--fixed-bold">Ϙ</span>` : format(x, 2),
+      formatClass: "o-sidebar-currency--ra-pet--effarig",
+      fixedSize: () => Ra.pets.effarig.isCapped ? 1 : null
+    },
+    {
+      id: 14,
+      optionName: "Nameless Memories",
+      isAvailable: () => Ra.unlocks.enslavedUnlock.isUnlocked,
+      value: () => new Decimal(Ra.pets.enslaved.memories),
+      formatValue: x => Ra.pets.enslaved.isCapped ? `<span class="c-font--fixed">\uf0c1</span>` : format(x, 2),
+      formatClass: "o-sidebar-currency--ra-pet--nameless",
+      fixedSize: () => Ra.pets.enslaved.isCapped ? 1 : null
+    },
+    {
+      id: 15,
+      optionName: "V Memories",
+      isAvailable: () => Ra.unlocks.vUnlock.isUnlocked,
+      value: () => new Decimal(Ra.pets.v.memories),
+      formatValue: x => Ra.pets.v.isCapped ? `<span class="c-font--fixed-bold">⌬</span>` : format(x, 2),
+      formatClass: "o-sidebar-currency--ra-pet--v",
+      fixedSize: () => Ra.pets.v.isCapped ? 1 : null
+    },
+    {
+      id: 16,
       optionName: "Imaginary Machines",
       isAvailable: () => MachineHandler.isIMUnlocked,
       value: () => new Decimal(Currency.imaginaryMachines.value),
@@ -98,7 +134,7 @@ export const sidebarResources = [
       formatClass: "o-sidebar-currency--ra",
     },
     {
-      id: 13,
+      id: 17,
       optionName: "All Machines",
       resourceName: "Machines",
       isAvailable: () => MachineHandler.isIMUnlocked,
@@ -108,7 +144,7 @@ export const sidebarResources = [
       formatClass: "o-sidebar-currency--reality",
     },
     {
-      id: 14,
+      id: 18,
       optionName: "Dark Matter",
       isAvailable: () => Laitela.isUnlocked,
       value: () => Currency.darkMatter,
@@ -116,7 +152,7 @@ export const sidebarResources = [
       formatClass: "o-sidebar-currency--laitela",
     },
     {
-      id: 15,
+      id: 19,
       optionName: "Dark Energy",
       isAvailable: () => Laitela.isUnlocked,
       value: () => new Decimal(Currency.darkEnergy.value),
@@ -124,7 +160,7 @@ export const sidebarResources = [
       formatClass: "o-sidebar-currency--laitela",
     },
     {
-      id: 16,
+      id: 20,
       optionName: "Singularities",
       isAvailable: () => Laitela.isUnlocked,
       value: () => new Decimal(Currency.singularities.value),
@@ -132,7 +168,7 @@ export const sidebarResources = [
       formatClass: "o-sidebar-currency--laitela",
     },
     {
-      id: 17,
+      id: 21,
       optionName: "Reality Shards",
       isAvailable: () => Pelle.isDoomed,
       value: () => Currency.realityShards,

@@ -60,7 +60,7 @@ export default {
     border-right: none;
     border-image: var(--leg-border-render) 12 round;
     box-shadow: var(--var-box-shadow, var(--box-shadow));
-    background: url(../../../../public/images/upgrades/bought.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
+    background: url(../../../../public/images/patterns/upg_pur.png),linear-gradient(transparent,var(--color-accent) 500%),var(--leg-base-render);
     background-position: center;
     overflow: auto;
     padding: 0.5rem;

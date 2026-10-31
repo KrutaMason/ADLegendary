@@ -26,6 +26,10 @@ export class DarkMatterDimensionState extends DimensionState {
     super(() => player.celestials.laitela.dimensions, tier);
   }
 
+  get typeName () { return "Dark Matter"; }
+
+  get shortTypeName() { return "DM"; }
+
   // Does not include DM, only DE per second
   get productionPerSecond() { return this.powerDE * 1000 / this.interval; }
 

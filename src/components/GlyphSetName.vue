@@ -5,7 +5,7 @@ const GLYPH_NAMES = {
     noun: "Companion"
   },
   helios: {
-    adjective: "Solar",
+    adjective: { high: "Sunbathed", mid: "Sunlit", low: "Solar" },
     noun: "Helios"
   },
   reality: {
@@ -157,7 +157,7 @@ export default {
     // Check for single-type sets and give them a special name based on how much of the full equipped slots they take up
     singletonName() {
       if (this.sortedGlyphs[0].type === "effarig") return GLYPH_NAMES.effarig.noun[this.getEffarigProp()];
-      const singleGlyphTypes = ["reality", "companion","helios"];
+      const singleGlyphTypes = ["reality", "companion"];
       for (const key of singleGlyphTypes) {
         if (this.sortedGlyphs[0].type === key) return GLYPH_NAMES[key].noun;
       }

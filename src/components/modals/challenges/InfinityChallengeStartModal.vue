@@ -28,7 +28,7 @@ export default {
         You do not start with any Dimension Boosts or Galaxies, regardless of upgrades.`;
     },
     entranceLabel() {
-      return `You are about to enter ${player.options.naming.challenges?this.challenge.config.label:"Infinity Challenge "+this.id}`;
+      return `You are about to enter ${this.challenge.displayName()}`;
     },
     reward() {
       let rewardDescription = this.challenge._config.reward.description;

@@ -16,7 +16,7 @@ export default {
     <template #header>
       Save Selection
     </template>
-    <div class="c-entry-container">
+    <div class="c-entry-container c-modal--short">
     <LoadGameEntry
       v-for="id in 5"
       :key="id"
@@ -28,20 +28,18 @@ export default {
 </template>
 
 <style scoped>
-.l-wrapper{
-  width:60rem
+.l-wrapper {
+  width: 60rem
 }
 .c-entry-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
 }
+
 .c-entry-border {
-  width: 28rem;
-  border-radius: var(--var-border-radius, 0.4rem);
-  padding: 0.5rem 0.3rem;
-  margin: 0.3rem;
+  padding: 0 0 0.5rem 0;
+  margin: 0.5rem;
 }
 
 </style>

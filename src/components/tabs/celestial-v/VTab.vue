@@ -91,10 +91,6 @@ export default {
     runDescription() {
       return GameDatabase.celestials.descriptions[3].effects().replace(/^\w/u, c => c.toUpperCase());
     },
-    realityTitle() {
-      return player.options.naming.celestial ? `V's ${V.RealityName}`
-       : "V's Reality"
-    },
     realityVerb() {
       return player.options.naming.celestial ? "Enter" : "Start"
     },
@@ -116,6 +112,10 @@ export default {
     },
     unlockCelestial() {
       if (V.canUnlockCelestial) V.unlockCelestial();
+    },
+    runName(needsName = true, altName = false) {
+      let name = altName ? V.dynamicRealityName : V.realityName
+      return V.displayRealityName(needsName, ...[,], name)
     },
     startRun() {
       if (this.isDoomed) return;
@@ -154,9 +154,9 @@ export default {
       const hard = hex.isHard;
       const maxed = hex.config.values.length;
       if (completions === maxed) return `rgb(${(hard?219:209)/brightness}, ${(hard?132:167)/brightness}, ${(hard?90:51)/brightness})`;
-      const r = 255 - (hard?0:10) * completions;
-      const g = 255 - (hard?20:13) * completions;
-      const b = 255 - (hard?30:30) * completions;
+      const r = 255 - (hard ? 0 : 10) * completions;
+      const g = 255 - (hard ? 20 : 13) * completions;
+      const b = 255 - (hard ? 30 : 30) * completions;
       const l = 2-(Math.min(completions,6)/6)
       return `rgb(${r/l/brightness},${g/l/brightness},${b/l/brightness})`;
     },
@@ -292,7 +292,7 @@ export default {
             >
               <span v-if="isRunning">You are in <br></span>
               <span v-else>{{ realityVerb }}</span>
-              {{ realityTitle }}
+              {{ runName(...[,], true) }}
             </b>
             <br>
             <div :style="{ 'font-size': hasAlchemy ? '1.05rem' : '1.2rem'}">
@@ -309,7 +309,7 @@ export default {
         </li>
       </div>
       <div class="c-v-info-text">
-        V-Achievements can only be completed within {{ realityTitle }}, but are permanent and do not reset upon leaving
+        V-Achievements can only be completed within {{ runName(false) }}, but are permanent and do not reset upon leaving
         and re-entering the Reality.
       </div>
       <div class="c-v-info-text">
@@ -353,7 +353,7 @@ export default {
 .o-v-start-text {
   font-size: 1.8rem;
   line-height: 1.1;
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-weight: bold;
 }
 

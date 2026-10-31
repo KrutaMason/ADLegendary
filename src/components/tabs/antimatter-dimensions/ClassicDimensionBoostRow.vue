@@ -25,9 +25,7 @@ export default {
   computed: {
     isDoomed: () => Pelle.isDoomed,
     dimName() {
-      if (player.options.naming.dimensions) return `${AntimatterDimension(this.requirement.tier).uniqueName}s 
-      (${AntimatterDimension(this.requirement.tier).shortDisplayName})`
-      return `${AntimatterDimension(this.requirement.tier).displayName} Dimensions`;
+      return AntimatterDimension(this.requirement.tier).fullName(false, false, ...[,], this.requirement.amount);
     },
     boostCountText() {
       if (this.requirementText) return this.requirementText;
@@ -48,6 +46,9 @@ export default {
         "o-pelle-disabled-pointer": this.creditsClosed
       };
     }
+  },
+  created() {
+    this.on$(GAME_EVENT.NAME_CHANGED, () => this.$recompute("dimName"));
   },
   methods: {
     update() {
@@ -74,8 +75,8 @@ export default {
 <template>
   <div class="c-dimension-row c-antimatter-dim-row c-antimatter-prestige-row">
     <div class="l-dim-row__prestige-text c-dim-row__label c-dim-row__label--amount">
-      Dimension Boost (<span class="l-dim-row__prestige-text--fixed">{{ boostCountText }}</span>):
-      requires <span :class="{'l-dim-row__prestige-text--fixed': isInaccessible(requirement.amount) }">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
+      Dimension Boost (<span class="c-font--fixed">{{ boostCountText }}</span>):
+      requires <span :class="diffFont(requirement.amount)">{{ formatInt(requirement.amount) }}</span> {{ dimName }}
     </div>
     <PrimaryButton
       :enabled="isBuyable"

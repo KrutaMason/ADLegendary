@@ -91,6 +91,7 @@ export default {
     :class="rowClass"
     @click.self="toggleVisibility"
   >
+    <div class="c-hidden-tabs-label">{{ tabName }}</div>
     <HiddenSubtabsButton
       v-for="(subtab, i) in unlockedSubtabs"
       :key="i"
@@ -107,6 +108,16 @@ export default {
 </template>
 
 <style scoped>
+.c-hidden-tabs-label {
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
+  opacity: 0.5;
+  font-family: var(--var-secondary-font);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .c-indicator-icon {
   width: 2rem;
   position: absolute;

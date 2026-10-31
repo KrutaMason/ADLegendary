@@ -121,10 +121,6 @@ export default {
         : `${quantify("Imaginary Machine", this.lastMachines.dividedBy(DC.E10000), 2)}`;
     },
     isDoomed: () => Pelle.isDoomed,
-    realityTitle() {
-      return player.options.naming.celestial ? `Enter Teresa's ${Teresa.RealityName}`
-       : "Start Teresa's Reality"
-    },
     disChargeClassObject() {
       return {
         "o-primary-btn--subtab-option": true,
@@ -174,9 +170,15 @@ export default {
     clickHandler() {
     Tab.infinity.upgrades.show();
     },
+    runName(needsName = true, the = "the") {
+      return Teresa.displayRealityName(needsName, the)
+    },
     startRun() {
       if (this.isDoomed) return;
-      Modal.celestials.show({ name: "Teresa's", number: 0, celestial: Teresa });
+      Modal.celestials.show({ name: "Orias'", number: 0, celestial: Teresa });
+    },
+    runVerb() {
+      return player.options.naming.celestial ? "Enter" : "Start"
     },
     unlockDescriptionHeight(unlockInfo) {
       const maxPrice = TeresaUnlocks[Teresa.lastUnlock].price;
@@ -220,7 +222,7 @@ export default {
           class="c-teresa-run-title"
           :class="{ 'o-pelle-disabled': isDoomed }"
           >
-            {{ realityTitle }}
+            {{ runVerb() }} {{ runName() }}
           </span>
           <div
             :class="runButtonClassObject"
@@ -228,18 +230,18 @@ export default {
           >
             Ϟ
           </div>
-          {{ runDescription }}
+            {{ runDescription }}
           <br><br>
           <div>
             This Reality can be repeated for a stronger reward based on the antimatter gained within it.
             <br><br>
             <span v-if="showRunReward">
-              Your record antimatter in {{ realityTitle }} is {{ format(bestAM, 2) }},
+              Your record antimatter in {{ runName(false, "the") }} is {{ format(bestAM, 2) }},
               achieved with {{ lastMachinesString }}.
               <br><br>
               Glyph Set used:
               <GlyphSetPreview
-                text="Teresa's Best Glyph Set"
+                text="Orias' Best Glyph Set"
                 :text-hidden="true"
                 :force-name-color="false"
                 :glyphs="bestAMSet"
@@ -248,7 +250,7 @@ export default {
               />
             </span>
             <span v-else>
-              You have not completed {{ realityTitle }} yet.
+              You have not completed {{ runName(false, "the") }} yet.
             </span>
           </div>
         </div>
@@ -256,7 +258,7 @@ export default {
           v-if="showRunReward"
           class="c-teresa-unlock"
         >
-        {{ realityTitle }} reward: <br> Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
+        {{ runName(false, "") }} reward: <br> Glyph Sacrifice power {{ formatX(runReward, 2, 2) }}
         </div>
         <div
           v-if="hasEPGen"
@@ -328,7 +330,7 @@ export default {
         class="c-teresa-shop c-teresa-container"
       >
       <div class="c-shop-title c-teresa-shop-title">
-        Ϟ <span class="c-teresa-run-title" style="font-size: 2rem;">Teresa's Perk shop</span> Ϟ
+        Ϟ <span class="c-teresa-run-title" style="font-size: 2rem;">Orias' Perk shop</span> Ϟ
       </div>
         <span class="o-teresa-pp">
           You have {{ quantifyInt("Perk Point", perkPoints, 2, 0) }}.
@@ -398,7 +400,7 @@ export default {
     background: linear-gradient(90deg,transparent,#5151ec60,transparent);
 }
 .c-teresa-run-title {
-  font-family: cambria;
+  font-family: var(--var-secondary-font);
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: bold;
